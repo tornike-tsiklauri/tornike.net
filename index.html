@@ -1,66 +1,142 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <!-- Bootstrap 5 CSS -->
+    <title>Contact Us</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        .hero-section {
-            background: #f8f9fa;
-            padding: 80px 0;
-            text-align: center;
+        /* Optional: Add custom styles here */
+        .contact-form {
+            padding: 4rem 2rem;
+           /* background-color: #f8f9fa */; /* Light gray background */
+            border-radius: 0.5rem;
         }
-        footer {
-            background: #343a40;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+
+        /* Style the icons */
+        .contact-info i {
+           font-size: 2rem; /* Increase icon size */
+           margin-bottom: 0.5rem; /* Spacing below the icon */
+           display: block; /* Make the icon a block element */
+           text-align: center; /* Center the icon horizontally */
+        }
+        .contact-info .card {
+            border: none;
+        }
+      input::placeholder, textarea::placeholder {
+            color: #aaa !important; /* Set the placeholder text color */
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Tornike Eu</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    
-                </ul>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form bg-light shadow">
+                    <h2 class="mb-4 text-center text-primary"><i class="fa-solid fa-envelope"></i> Contact Us</h2>
+                    <p class="text-center mb-4 text-muted">We'd love to hear from you! Use the form below to send us a message.</p>
+<!-- Contact Information -->
+                     <div class="row mb-5">
+                        <div class="col-md-6">
+                            <h4 class="mb-3 text-center"><i class="fas fa-map-marker-alt text-primary"></i> Address</h4>
+                            <div class="card border-0">
+                                <div class="card-body text-center">
+                                    <p class="card-text">123 Main Street, City, State</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="mb-3 text-center"><i class="fas fa-phone text-primary"></i> Let's talk</h4>
+                            <div class="card border-0">
+                                <div class="card-body text-center">
+                                    <p class="card-text">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                    <form id="contactForm" action="send_email.php" method="POST">
+                        <div class="mb-3">
+                          <label for="name" class="form-label text-muted">Your Name:</label>
+                          <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="email" class="form-label text-muted">Your Email:</label>
+                          <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="subject" class="form-label text-muted">Subject:</label>
+                          <input type="text" class="form-control form-control-lg" id="subject" name="subject" placeholder="Enter the subject" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="message" class="form-label text-muted">Your Message:</label>
+                          <textarea class="form-control form-control-lg" id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Send Message</button>
+                        </div>
+                        <div id="form-message-success" class="alert alert-success mt-3 d-none" role="alert">
+                            Your message was sent successfully!
+                        </div>
+                        <div id="form-message-error" class="alert alert-danger mt-3 d-none" role="alert">
+                            There was an error sending your message. Please try again later.
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <p class="lead">Tornike.eu.org</p>
-            <a href="mailto:info@otornike.eu.org" class="btn btn-primary btn-lg">Contact us</a>
-        </div>
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('form-message-success');
+            const errorMessage = document.getElementById('form-message-error');
 
-    <!-- Content Section -->
-    <section class="container my-5">
-        <div class="row">
-        
-        </div>
-    </section>
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
 
-    <!-- Footer -->
-    <footer class="mt-5">
-        <div class="container">
-            <p>&copy; 2025 Tornike Eu All rights reserved.</p>
-        </div>
-    </footer>
+                // Disable the submit button to prevent multiple submissions
+                const submitButton = form.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...'; // Update button text with spinner
 
-    <!-- Bootstrap JS (Popper included) -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                const formData = new FormData(form);
+
+                fetch('send_email.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => { throw new Error(text) }); // Handle HTTP errors
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    successMessage.textContent = data
+                    successMessage.classList.remove('d-none');
+                    errorMessage.classList.add('d-none'); // Hide error message if it's visible
+                    form.reset(); // Clear the form
+                })
+                .catch(error => {
+                    errorMessage.textContent = error.message; //Display the error returned by PHP.
+                    errorMessage.classList.remove('d-none');
+                    successMessage.classList.add('d-none'); // Hide success message if it's visible
+                })
+                .finally(() => {
+                    submitButton.disabled = false; // Re-enable the submit button
+                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message'; // Restore button text
+                });
+            });
+        });
+    </script>
 </body>
 </html>
