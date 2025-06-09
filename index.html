@@ -3,140 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Coming Soon</title>
+    <link rel="icon" href="https://placehold.co/32x32/1a1a1a/ffffff?text=CS" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Optional: Add custom styles here */
-        .contact-form {
-            padding: 4rem 2rem;
-           /* background-color: #f8f9fa */; /* Light gray background */
-            border-radius: 0.5rem;
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        .coming-soon-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* Style the icons */
-        .contact-info i {
-           font-size: 2rem; /* Increase icon size */
-           margin-bottom: 0.5rem; /* Spacing below the icon */
-           display: block; /* Make the icon a block element */
-           text-align: center; /* Center the icon horizontally */
+        .coming-soon-container h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
-        .contact-info .card {
-            border: none;
+
+        .coming-soon-container p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
-      input::placeholder, textarea::placeholder {
-            color: #aaa !important; /* Set the placeholder text color */
-            font-style: italic;
+
+        .countdown-timer {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-top: 30px;
+            color: #FFC107;
+        }
+
+        .social-icons a {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            color: #FFC107;
+        }
+
+        @media (max-width: 768px) {
+            .coming-soon-container {
+                padding: 30px;
+            }
+            .coming-soon-container h1 {
+                font-size: 2.5rem;
+            }
+            .coming-soon-container p {
+                font-size: 1rem;
+            }
+            .countdown-timer {
+                font-size: 1.8rem;
+            }
+            .social-icons a {
+                font-size: 1.5rem;
+                margin: 0 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="contact-form bg-light shadow">
-                    <h2 class="mb-4 text-center text-primary"><i class="fa-solid fa-envelope"></i> Contact Us</h2>
-                    <p class="text-center mb-4 text-muted">We'd love to hear from you! Use the form below to send us a message.</p>
-<!-- Contact Information -->
-                     <div class="row mb-5">
-                        <div class="col-md-6">
-                            <h4 class="mb-3 text-center"><i class="fas fa-map-marker-alt text-primary"></i> Address</h4>
-                            <div class="card border-0">
-                                <div class="card-body text-center">
-                                    <p class="card-text">123 Main Street, City, State</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="mb-3 text-center"><i class="fas fa-phone text-primary"></i> Let's talk</h4>
-                            <div class="card border-0">
-                                <div class="card-body text-center">
-                                    <p class="card-text">+1 (555) 123-4567</p>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                    <form id="contactForm" action="send_email.php" method="POST">
-                        <div class="mb-3">
-                          <label for="name" class="form-label text-muted">Your Name:</label>
-                          <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Enter your name" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="email" class="form-label text-muted">Your Email:</label>
-                          <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter your email" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="subject" class="form-label text-muted">Subject:</label>
-                          <input type="text" class="form-control form-control-lg" id="subject" name="subject" placeholder="Enter the subject" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="message" class="form-label text-muted">Your Message:</label>
-                          <textarea class="form-control form-control-lg" id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Send Message</button>
-                        </div>
-                        <div id="form-message-success" class="alert alert-success mt-3 d-none" role="alert">
-                            Your message was sent successfully!
-                        </div>
-                        <div id="form-message-error" class="alert alert-danger mt-3 d-none" role="alert">
-                            There was an error sending your message. Please try again later.
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <div class="coming-soon-container">
+        <h1>We're Launching Soon!</h1>
+        <p>We are working hard to bring you something amazing. Our new website is currently under construction and will be available very soon. Stay tuned for updates!</p>
+
+        <div class="countdown-timer" id="countdown"></div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contactForm');
-            const successMessage = document.getElementById('form-message-success');
-            const errorMessage = document.getElementById('form-message-error');
+        const countdownElement = document.getElementById('countdown');
 
-            form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent default form submission
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 14);
 
-                // Disable the submit button to prevent multiple submissions
-                const submitButton = form.querySelector('button[type="submit"]');
-                submitButton.disabled = true;
-                submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...'; // Update button text with spinner
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate.getTime() - now;
 
-                const formData = new FormData(form);
+            if (distance < 0) {
+                countdownElement.innerHTML = "We're LIVE!";
+                return;
+            }
 
-                fetch('send_email.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.text().then(text => { throw new Error(text) }); // Handle HTTP errors
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    successMessage.textContent = data
-                    successMessage.classList.remove('d-none');
-                    errorMessage.classList.add('d-none'); // Hide error message if it's visible
-                    form.reset(); // Clear the form
-                })
-                .catch(error => {
-                    errorMessage.textContent = error.message; //Display the error returned by PHP.
-                    errorMessage.classList.remove('d-none');
-                    successMessage.classList.add('d-none'); // Hide success message if it's visible
-                })
-                .finally(() => {
-                    submitButton.disabled = false; // Re-enable the submit button
-                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message'; // Restore button text
-                });
-            });
-        });
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        updateCountdown();
     </script>
 </body>
 </html>
