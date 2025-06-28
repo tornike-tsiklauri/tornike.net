@@ -3,124 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <link rel="icon" href="https://placehold.co/32x32/1a1a1a/ffffff?text=CS" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Coming Soon- Tornike.net</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom font for a clean, modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(to right, #4CAF50, #8BC34A);
-            color: #ffffff;
+            background-color: #f0f2f5; /* Light grey background */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
+            padding: 20px; /* Add some padding for small screens */
             box-sizing: border-box;
         }
-
-        .coming-soon-container {
-            background-color: rgba(0, 0, 0, 0.6);
+        .container {
+            background-color: #ffffff; /* White card background */
             padding: 40px;
-            border-radius: 15px;
+            border-radius: 16px; /* Rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow */
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             width: 100%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-
-        .coming-soon-container h1 {
-            font-size: 3.5rem;
+        h1 {
+            color: #2c3e50; /* Darker blue-grey for headings */
             font-weight: 700;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
-
-        .coming-soon-container p {
-            font-size: 1.2rem;
-            font-weight: 300;
+        p {
+            color: #7f8c8d; /* Muted grey for body text */
+            font-weight: 400;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
-
-        .countdown-timer {
-            font-size: 2.5rem;
+        .highlight {
+            color: #3498db; /* Blue highlight color */
             font-weight: 600;
+        }
+        .contact-info {
             margin-top: 30px;
-            color: #FFC107;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1; /* Light border */
+        }
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: #2980b9;
+        }
+        .language-toggle {
+            margin-top: 30px;
+        }
+        .language-toggle button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .language-toggle button:hover {
+            background-color: #2980b9;
+        }
+        .language-toggle button.active {
+            background-color: #2c3e50; /* Darker background for active language */
         }
 
-        .social-icons a {
-            color: #ffffff;
-            font-size: 1.8rem;
-            margin: 0 15px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .social-icons a:hover {
-            transform: translateY(-5px);
-            color: #FFC107;
-        }
-
-        @media (max-width: 768px) {
-            .coming-soon-container {
-                padding: 30px;
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .container {
+                padding: 25px;
+                border-radius: 12px;
             }
-            .coming-soon-container h1 {
-                font-size: 2.5rem;
+            h1 {
+                font-size: 2.25rem; /* text-4xl */
             }
-            .coming-soon-container p {
-                font-size: 1rem;
-            }
-            .countdown-timer {
-                font-size: 1.8rem;
-            }
-            .social-icons a {
-                font-size: 1.5rem;
-                margin: 0 10px;
+            p {
+                font-size: 0.95rem; /* text-base */
             }
         }
     </style>
 </head>
 <body>
-    <div class="coming-soon-container">
-        <h1>We're Launching Soon!</h1>
-        <p>We are working hard to bring you something amazing. Our new website is currently under construction and will be available very soon. Stay tuned for updates!</p>
+    <div class="container">
+        <div id="content-en" class="language-content">
+            <h1 class="text-5xl font-extrabold mb-4">Coming Soon!</h1>
+            <p class="text-lg mb-6">
+                We're currently working on something amazing!
+                Our website will be launching very soon.
+            </p>
+            <p class="text-lg">
+                Stay tuned for updates!
+            </p>
+            <div class="contact-info">
+                <p class="text-base text-gray-600">
+                    For inquiries, feel free to connect:
+                </p>
+                <p class="text-lg">
+                    Email: <a href="mailto:contact@tornike.net">contact@tornike.net</a>
+                </p>
+            </div>
+        </div>
 
-        <div class="countdown-timer" id="countdown"></div>
+        <div id="content-ka" class="language-content hidden">
+            <h1 class="text-5xl font-extrabold mb-4">ძალიან მალე!</h1>
+            <p class="text-lg mb-6">
+                ამჟამად რაღაც გასაოცარზე ვმუშაობთ!
+                 ვებგვერდი მალე იქნება მზად.
+            </p>
+            <p class="text-lg">
+                თვალყური ადევნეთ განახლებებს!
+            </p>
+            <div class="contact-info">
+                <p class="text-base text-gray-600">
+                    კითხვებისთვის, დამიკავშირდით:
+                </p>
+                <p class="text-lg">
+                    ელ. ფოსტა: <a href="mailto:contact@tornike.net">contact@tornike.net</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="language-toggle">
+            <button id="toggle-en" class="active rounded-full px-5 py-2">English</button>
+            <button id="toggle-ka" class="rounded-full px-5 py-2 ml-2">ქართული</button>
+        </div>
     </div>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
     <script>
-        const countdownElement = document.getElementById('countdown');
+        // JavaScript to handle language toggling
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentEn = document.getElementById('content-en');
+            const contentKa = document.getElementById('content-ka');
+            const toggleEn = document.getElementById('toggle-en');
+            const toggleKa = document.getElementById('toggle-ka');
 
-        const launchDate = new Date();
-        launchDate.setDate(launchDate.getDate() + 14);
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = launchDate.getTime() - now;
-
-            if (distance < 0) {
-                countdownElement.innerHTML = "We're LIVE!";
-                return;
+            function showLanguage(lang) {
+                if (lang === 'en') {
+                    contentEn.classList.remove('hidden');
+                    contentKa.classList.add('hidden');
+                    toggleEn.classList.add('active');
+                    toggleKa.classList.remove('active');
+                } else {
+                    contentKa.classList.remove('hidden');
+                    contentEn.classList.add('hidden');
+                    toggleKa.classList.add('active');
+                    toggleEn.classList.remove('active');
+                }
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Set initial language based on browser preference or default to English
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('ka')) {
+                showLanguage('ka');
+            } else {
+                showLanguage('en'); // Default to English
+            }
 
-            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
-
-        setInterval(updateCountdown, 1000);
-
-        updateCountdown();
+            toggleEn.addEventListener('click', () => showLanguage('en'));
+            toggleKa.addEventListener('click', () => showLanguage('ka'));
+        });
     </script>
 </body>
 </html>
