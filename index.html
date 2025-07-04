@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon- Tornike.net</title>
+    <title>Coming Soon - Tornike.net</title>
+    <meta name="description" content="Tornike.net is coming soon! Get ready for something amazing in Information Technology. Learn about the role of IT support with Gemini AI.">
+    <link rel="icon" href="https://placehold.co/32x32/3498db/ffffff?text=T" type="image/x-icon"> <!-- Placeholder favicon -->
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -77,6 +79,53 @@
         .language-toggle button.active {
             background-color: #2c3e50; /* Darker background for active language */
         }
+        /* New styles for Gemini feature */
+        .gemini-feature {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .gemini-feature h2 {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .gemini-feature button {
+            background-color: #1abc9c; /* Greenish button for AI */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        .gemini-feature button:hover {
+            background-color: #16a085;
+            transform: translateY(-2px);
+        }
+        .gemini-feature button:active {
+            transform: translateY(0);
+        }
+        .ai-output { /* Renamed from slogan-output */
+            min-height: 50px; /* Ensure space for content */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700;
+            color: #2980b9; /* Blue for the content */
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #eaf6ff;
+            border-radius: 8px;
+            border: 1px dashed #aed6f1;
+        }
+        .ai-output.loading {
+            color: #7f8c8d;
+            font-style: italic;
+        }
 
         /* Responsive adjustments */
         @media (max-width: 640px) {
@@ -89,6 +138,12 @@
             }
             p {
                 font-size: 0.95rem; /* text-base */
+            }
+            .gemini-feature button {
+                padding: 10px 20px;
+            }
+            .ai-output { /* Renamed from slogan-output */
+                font-size: 1rem; /* text-base */
             }
         }
     </style>
@@ -104,13 +159,28 @@
             <p class="text-lg">
                 Stay tuned for updates!
             </p>
+
+            <!-- NEW GEMINI FEATURE SECTION (English) -->
+            <div class="gemini-feature mt-8 pt-4 border-t border-gray-200">
+                <h2 class="text-2xl font-semibold mb-3 text-gray-800">Curious about IT Support?</h2>
+                <p class="text-md text-gray-600 mb-4">Let our AI explain the vital role of IT support in a company:</p>
+                <button id="generateITRoleEn" class="rounded-lg">
+                    Explain IT Support
+                </button>
+                <p id="aiOutputEn" class="ai-output"></p>
+            </div>
+            <!-- END NEW GEMINI FEATURE SECTION -->
+
             <div class="contact-info">
                 <p class="text-base text-gray-600">
                     For inquiries, feel free to connect:
                 </p>
                 <p class="text-lg">
-                    Email: <a href="mailto:contact@tornike.net">contact@tornike.net</a>
+                    Email: <a href="contact@tornike.net">contact@tornike.net</span></a>
                 </p>
+                <noscript>
+                    <p class="text-lg text-gray-700">Email: <a href="mailto:info@tornike.net" class="highlight">info@tornike.net</a></p>
+                </noscript>
             </div>
         </div>
 
@@ -118,18 +188,33 @@
             <h1 class="text-5xl font-extrabold mb-4">ძალიან მალე!</h1>
             <p class="text-lg mb-6">
                 ამჟამად რაღაც გასაოცარზე ვმუშაობთ!
-                 ვებგვერდი მალე იქნება მზად.
+                ვებგვერდი მალე იქნება მზად.
             </p>
             <p class="text-lg">
                 თვალყური ადევნეთ განახლებებს!
             </p>
+
+            <!-- NEW GEMINI FEATURE SECTION (Georgian) -->
+            <div class="gemini-feature mt-8 pt-4 border-t border-gray-200">
+                <h2 class="text-2xl font-semibold mb-3 text-gray-800">გაინტერესებთ IT მხარდაჭერა?</h2>
+                <p class="text-md text-gray-600 mb-4">ჩვენი AI აგიხსნით IT მხარდაჭერის სასიცოცხლო როლს კომპანიაში:</p>
+                <button id="generateITRoleKa" class="rounded-lg">
+                    IT მხარდაჭერის ახსნა
+                </button>
+                <p id="aiOutputKa" class="ai-output"></p>
+            </div>
+            <!-- END NEW GEMINI FEATURE SECTION -->
+
             <div class="contact-info">
                 <p class="text-base text-gray-600">
                     კითხვებისთვის, დამიკავშირდით:
                 </p>
                 <p class="text-lg">
-                    ელ. ფოსტა: <a href="mailto:contact@tornike.net">contact@tornike.net</a>
+                    ელ. ფოსტა: <a href="contact@tornike.net"><span class="__cf_email__" data-cfemail="284b47465c494b5c685c475a4641434d06464d5c">contact@tornike.net</span></a>
                 </p>
+                <noscript>
+                    <p class="text-lg text-gray-700">ელ. ფოსტა: <a href="mailto:info@tornike.net" class="highlight">info@tornike.net</a></p>
+                </noscript>
             </div>
         </div>
 
@@ -138,15 +223,21 @@
             <button id="toggle-ka" class="rounded-full px-5 py-2 ml-2">ქართული</button>
         </div>
     </div>
-
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
-        // JavaScript to handle language toggling
+        // JavaScript to handle language toggling and Gemini feature
         document.addEventListener('DOMContentLoaded', () => {
             const contentEn = document.getElementById('content-en');
             const contentKa = document.getElementById('content-ka');
             const toggleEn = document.getElementById('toggle-en');
             const toggleKa = document.getElementById('toggle-ka');
 
+            const generateITRoleBtnEn = document.getElementById('generateITRoleEn'); // Updated ID
+            const aiOutputEn = document.getElementById('aiOutputEn');
+            const generateITRoleBtnKa = document.getElementById('generateITRoleKa'); // Updated ID
+            const aiOutputKa = document.getElementById('aiOutputKa');
+
+            // Function to show language content
             function showLanguage(lang) {
                 if (lang === 'en') {
                     contentEn.classList.remove('hidden');
@@ -169,9 +260,64 @@
                 showLanguage('en'); // Default to English
             }
 
+            // Event listeners for language toggle buttons
             toggleEn.addEventListener('click', () => showLanguage('en'));
             toggleKa.addEventListener('click', () => showLanguage('ka'));
+
+            // Gemini API integration
+            async function generateITRole(lang) { // Renamed function
+                const aiOutput = lang === 'en' ? aiOutputEn : aiOutputKa;
+                const prompt = lang === 'en'
+                    ? "Explain the vital importance and role of IT support within a company in a simple, clear, and engaging way for a broad audience. Focus on how it ensures smooth operations, problem-solving, and overall business success. Keep it concise, around 30-40 words."
+                    : "მარტივად, გასაგებად და მიმზიდველად ახსენით IT მხარდაჭერის სასიცოცხლო მნიშვნელობა და როლი კომპანიაში ფართო აუდიტორიისთვის. ყურადღება გაამახვილეთ იმაზე, თუ როგორ უზრუნველყოფს ის შეუფერხებელ ოპერაციებს, პრობლემების გადაჭრას და ბიზნესის საერთო წარმატებას. იყავით ლაკონური, დაახლოებით 30-40 სიტყვა.";
+
+                aiOutput.textContent = lang === 'en' ? 'Generating...' : 'გენერირება...';
+                aiOutput.classList.add('loading');
+
+                try {
+                    // Using the provided API key mechanism for Canvas environment
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                    const payload = { contents: chatHistory };
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        aiOutput.textContent = text;
+                    } else {
+                        aiOutput.textContent = lang === 'en' ? 'Failed to generate explanation. Try again.' : 'ახსნის გენერირება ვერ მოხერხდა. სცადეთ ხელახლა.';
+                        console.error('Gemini API response structure unexpected:', result);
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    aiOutput.textContent = lang === 'en' ? 'Error generating explanation. Please try again.' : 'შეცდომა ახსნის გენერირებისას. გთხოვთ, სცადოთ ხელახლა.';
+                } finally {
+                    aiOutput.classList.remove('loading');
+                }
+            }
+
+            // Event listeners for Gemini IT Role buttons
+            if (generateITRoleBtnEn) {
+                generateITRoleBtnEn.addEventListener('click', () => generateITRole('en'));
+            }
+            if (generateITRoleBtnKa) {
+                generateITRoleBtnKa.addEventListener('click', () => generateITRole('ka'));
+            }
         });
     </script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'959bd37ee979d0e4',t:'MTc1MTYwMjc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
