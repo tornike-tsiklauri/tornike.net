@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-en="Tornike tsiklauri - IT Support Portfolio" data-lang-ka="თორნიკე წიკლაური - IT მხარდაჭერის პორტფელი">Tornike tsiklauri - IT Support Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a8a8a8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        /* Hero section specific styling for background image */
+        .hero-background {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://files.tornike.net/gradient-dark-blue-futuristic-digital-grid-background.jpg') center center / cover no-repeat;
+            background-size: cover; /* Ensure background covers the area */
+            background-position: center; /* Center the background image */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 2rem; /* Add some padding for smaller screens */
+        }
+
+        /* Active navigation link styling */
+        .nav-link.active {
+            border-bottom: 2px solid #3B82F6; /* Tailwind's blue-500 */
+        }
+        /* Language button active state */
+        .language-button.active {
+            box-shadow: 0 0 0 2px #3B82F6; /* Blue ring for active language */
+        }
+        /* Form message styling */
+        .form-message {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .form-message.success {
+            background-color: #d1fae5; /* Tailwind green-100 */
+            color: #065f46; /* Tailwind green-800 */
+        }
+        .form-message.error {
+            background-color: #fee2e2; /* Tailwind red-100 */
+            color: #991b1b; /* Tailwind red-800 */
+        }
+
+        /* Custom styles for skill progress bars */
+        .skill-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 9999px; /* Full rounded */
+            height: 8px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        .skill-bar-fill {
+            background-color: #3B82F6; /* Tailwind blue-500 */
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Magic Icon and Message Styles */
+        #magicIcon {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background-color: #3B82F6; /* blue-600 */
+            color: white;
+            border-radius: 9999px; /* fully rounded */
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem; /* Adjust icon size */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 99; /* Below modal, above other content */
+        }
+        #magicIcon:hover {
+            background-color: #2563EB; /* blue-700 */
+            transform: scale(1.05);
+        }
+
+        #ephemeralMessage {
+            position: fixed;
+            bottom: 6rem; /* Above the magic icon */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            z-index: 98; /* Below magic icon */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        #ephemeralMessage.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-all duration-300 ease-in-out py-4" id="navbar">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#home" class="text-2xl font-bold text-blue-600 hover:text-blue-800 transition duration-300" data-lang-en="Tornike tsiklauri" data-lang-ka="თორნიკე წიკლაური">Tornike tsiklauri</a>
+            <div class="flex items-center space-x-4">
+                <button id="lang-en" class="language-button flex items-center p-1.5 rounded-full hover:bg-gray-100 transition duration-200" aria-label="Switch to English">
+                    <img src="https://flagsapi.com/US/flat/32.png" alt="English Flag" class="w-8 h-auto rounded-sm shadow-sm">
+                </button>
+                <button id="lang-ka" class="language-button flex items-center p-1.5 rounded-full hover:bg-gray-100 transition duration-200" aria-label="Switch to Georgian">
+                    <img src="https://flagsapi.com/GE/flat/32.png" alt="Georgian Flag" class="w-8 h-auto rounded-sm shadow-sm">
+                </button>
+
+                <button class="lg:hidden text-gray-700 hover:text-gray-900 focus:outline-none" id="navbar-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="hidden lg:flex space-x-6" id="navbar-menu">
+                <a href="#home" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Home" data-lang-ka="მთავარი">Home</a>
+                <a href="#about" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="About" data-lang-ka="ჩემს შესახებ">About</a>
+                <a href="#skills" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Skills" data-lang-ka="უნარები">Skills</a>
+                <a href="#portfolio" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Portfolio" data-lang-ka="პორტფოლიო">Portfolio</a>
+                <a href="#contact" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Contact" data-lang-ka="კონტაქტი">Contact</a>
+            </div>
+        </div>
+        <div class="hidden lg:hidden bg-white py-2" id="mobile-navbar-menu">
+            <a href="#home" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Home" data-lang-ka="მთავარი">Home</a>
+            <a href="#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="About" data-lang-ka="ჩემს შესახებ">About</a>
+            <a href="#skills" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Skills" data-lang-ka="უნარები">Skills</a>
+            <a href="#portfolio" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Portfolio" data-lang-ka="პორტფელი">Portfolio</a>
+            <a href="#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Contact" data-lang-ka="კონტაქტი">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-background text-center">
+        <div class="container mx-auto px-4 py-24 flex flex-col lg:flex-row items-center justify-center gap-8">
+            <div class="flex-shrink-0 mb-8 lg:mb-0 lg:mr-8 animate-fade-in-up">
+                <img src="https://files.tornike.net/Tornike-tsiklauri-about2.jpeg" alt="Professional Photo" class="rounded-full border-4 border-blue-400 shadow-xl w-48 h-48 object-cover mx-auto">
+            </div>
+            <div class="max-w-3xl animate-fade-in-up delay-100">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4"
+                    data-lang-en="Hi,"
+                    data-lang-ka="გამარჯობა,">
+                    Passionate IT Enthusiast Building Expertise
+                </h1>
+                <p class="text-2xl md:text-3xl font-light mb-4"
+                   data-lang-en="I'm <span class='text-blue-400'>Tornike tsiklauri</span>"
+                   data-lang-ka="მე ვარ <span class='text-blue-400'>თორნიკე წიკლაური </span>">
+                    , I'm <span class="text-blue-400">Tornike tsiklauri</span>
+                </p>
+                <p class="text-xl md:text-2xl font-light mb-8"
+                   data-lang-en="IT support has been my core hobbie to simplify peope lives around me."
+                   data-lang-ka="IT პრობლემების გადაჭრა ჩემი გამორჩეული ჰობია, რითაც გარშემომყოფების ცხოვრების გამარტივებას ვცდილობ.">
+                    
+                </p>
+                <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-fade-in-up delay-200"
+                   data-lang-en="Connect with Me"
+                   data-lang-ka="დამიკავშირდით">
+                    Connect with Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2">
+                <img src="https://files.tornike.net/about-me2.jpg" alt="Tornike Tsiklauri - About Me" class="rounded-lg shadow-xl w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <h2 class="text-4xl font-bold mb-6 text-gray-900" data-lang-en="About Me" data-lang-ka="ჩემს შესახებ">About Me</h2>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4"
+                   data-lang-en="I've had a passion for technology since I was little. My first real experience happened when I was 15 years old when I did my first reinstallation of a Windows operating system by myself. This had clearly shown me the importance of applying practical skills, paying attention to detail, and problem-solving methodically in IT. This experience changed my life and shaped me going forward. Today, I can work with computer systems comprehensively: building components, changing BIOS settings, to installing home security systems and cameras. For smartphones, I can improve the user's experience in a considerable amount by optimizing the system and installing lightweight software to make the device run extremely fast, regardless of how old it is. I pursue what I love in the belief that I can make people's lives easier; technology is an inherent part of our life."
+                   data-lang-ka="ბავშვობიდანვე ღრმად ვარ გატაცებული ტექნოლოგიებით. ჩემი პირველი მნიშვნელოვანი ნაბიჯი ამ სფეროში 15 წლის ასაკში გადავდგი, როდესაც პირველად დამოუკიდებლად გადავაყენე Windows-ის ოპერაციული სისტემა. ამ გამოცდილებამ ნათლად დამანახა პრაქტიკული მუშაობის, დეტალებისადმი ყურადღების და პრობლემების ეტაპობრივი გადაჭრის სასიცოცხლო მნიშვნელობა IT სფეროში. ეს მომენტი ჩემთვის გარდამტეხი აღმოჩნდა და საფუძველი ჩაუყარა ჩემს შემდგომ განვითარებას.
+დღეს ჩემი ცოდნა კომპიუტერული სისტემების მართვის ფართო სპექტრს მოიცავს: ნაწილების აწყობიდან და BIOS-ის ოპტიმიზაციიდან დაწყებული, სახლის უსაფრთხოების სისტემებისა და კამერების ინსტალაციით დამთავრებული. სმარტფონებთან დაკავშირებით, ნებისმიერ მოწყობილობას, ასაკის მიუხედავად, სისტემის ოპტიმიზაციითა და მსუბუქი პროგრამული უზრუნველყოფის დაყენებით ვაქცევ უსწრაფესად, რაც, ჩემი აზრით, მნიშვნელოვნად აუმჯობესებს ჩვენს პროდუქტიულობას.
+მჯერა, რომ საყვარელი საქმის კეთებით, შემიძლია ადამიანების ცხოვრება გავამარტივო, რადგან ტექნოლოგია ჩვენი ყოველდღიურობის განუყოფელი ნაწილია.">
+                    I've had a passion for technology since I was little. My first real experience happened when I was 15 years old when I did my first reinstallation of a Windows operating system by myself. This had clearly shown me the importance of applying practical skills, paying attention to detail, and problem-solving methodically in IT. This experience changed my life and shaped me going forward. Today, I can work with computer systems comprehensively: building components, changing BIOS settings, to installing home security systems and cameras. For smartphones, I can improve the user's experience in a considerable amount by optimizing the system and installing lightweight software to make the device run extremely fast, regardless of how old it is. I pursue what I love in the belief that I can make people's lives easier; technology is an inherent part of our life.
+                </p>
+
+
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-900" data-lang-en="Feedback" data-lang-ka=" უკუკავშირები">Feedback</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg shadow-md border-l-4 border-blue-400">
+                            <p class="text-gray-700 italic mb-4" data-lang-en="&quot;Tornike's response was incredibly fast and effective. He fixed my Laptop issue in no time!&quot;" data-lang-ka="&quot;თორნიკეს რეაგირება წარმოუდგენლად სწრაფი და ეფექტური იყო. მან ჩემი კომპიუტერის ხარვეზი უმოკლეს დროში მოაგვარა. მადლობა, რომ მეტი დრო დამაზოგინე!&quot;">&quot;Tornike's response was incredibly fast and effective. He fixed my network issue in no time. Highly recommend!&quot;</p>
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-lg shadow-md border-l-4 border-blue-400">
+                            <p class="text-gray-700 italic mb-4" data-lang-en="&quot;Always my first call for any computer issues. Patient, knowledgeable, and always finds a solution.&quot;" data-lang-ka="&quot;პირველი თორნიკეს ვურეკავ ნებისმიერი კომპიუტერულ პრობლემაზე. მომთმენი, მცოდნე და ყოველთვის რომ პოულობს გამოსავალს.&quot;">&quot;Always my first call for any computer issues. Patient, knowledgeable, and always finds a solution.&quot;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-gray-900" data-lang-en="My Skills" data-lang-ka="ჩემი უნარები">My Skills</h2>
+
+                     <!-- Technical Skills Group -->
+            <div class="mb-12">
+                <h3 class="text-3xl font-bold mb-8 text-gray-800" data-lang-en="Technical Skills" data-lang-ka="ტექნიკური უნარები">Technical Skills</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Skill Card 1: Operating Systems -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fas fa-desktop text-5xl text-blue-500 mb-4 group-hover:text-blue-600 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Operating Systems" data-lang-ka="ოპერაციული სისტემები">Operating Systems</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="Windows 7/8/10/11, macOS, Linux (Ubuntu/CentOS)" data-lang-ka="Windows 7/8/10/11, macOS, Linux (Ubuntu/CentOS)">Windows 7/8/10/11, macOS, Linux (Ubuntu/CentOS)</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Expert in diagnosing and resolving OS-related issues." data-lang-ka=" ოპერაციული სისტემების პრობლემების დიაგნოსტიკა და მოგვარება.">diagnosing and resolving OS-related issues.</p>
+                    </div>
+                    <!-- Skill Card 2: Networking -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fas fa-network-wired text-5xl text-green-500 mb-4 group-hover:text-green-600 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Networking" data-lang-ka="ქსელები">Networking</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="TCP/IP, DNS, DHCP, Routers, Switches, Wi-Fi, DIY File-sharing" data-lang-ka="TCP/IP, DNS, DHCP, როუტერები, სვიჩები, Wi-Fi, DIY ფაილების გაზიარება">TCP/IP, DNS, DHCP, Routers, Switches, Wi-Fi, DIY File-sharing</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Setting up secure Wi-Fi, configuring routers, and implementing local file-sharing solutions." data-lang-ka="უსაფრთხო Wi-Fi-ის დაყენება, როუტერების კონფიგურაცია და ლოკალური ფაილების გაზიარების დანერგვა.">Setting up secure Wi-Fi, configuring routers, and implementing local file-sharing solutions.</p>
+                    </div>            
+                    <!-- Skill Card 4: Cybersecurity Awareness -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fas fa-shield-alt text-5xl text-red-500 mb-4 group-hover:text-red-600 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Cybersecurity Awareness" data-lang-ka="კიბერუსაფრთხოების ცნობიერება">Cybersecurity Awareness</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="Antivirus, Malware Removal, Phishing Prevention, Basic Security Practices" data-lang-ka="ანტივირუსი, მავნე პროგრამების მოცილება, ფიშინგის პრევენცია, უსაფრთხოების ძირითადი პრაქტიკა">Antivirus, Malware Removal, Phishing Prevention, Basic Security Practices</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Protecting systems from common digital threats." data-lang-ka="სისტემების დაცვა გავრცელებული ციფრული საფრთხეებისგან.">Protecting systems from common digital threats.</p>
+                    </div>
+                    <!-- Skill Card 5: Cloud Computing -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fas fa-cloud text-5xl text-indigo-500 mb-4 group-hover:text-indigo-600 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Cloud Computing" data-lang-ka="ღრუბლოვანი გამოთვლები">Cloud Computing</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="AWS, Google Cloud Platform (GCP)" data-lang-ka="AWS, Google Cloud Platform (GCP)">AWS, Google Cloud Platform (GCP)</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Understanding of cloud fundamentals, services, and architecture." data-lang-ka="ღრუბლოვანი ტექნოლოგიების, სერვისებისა და არქიტექტურის საფუძვლები.">Understanding of cloud fundamentals, services, and architecture.</p>
+                    </div>
+                    <!-- Skill Card 6: Google Cloud Services -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fas fa-brain text-5xl text-orange-500 mb-4 group-hover:text-orange-600 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Google Cloud Services" data-lang-ka="Google Cloud სერვისები">Google Cloud Services</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="Vertex AI, Document AI, OCR, Cloud Storage, Compute Engine" data-lang-ka="Vertex AI, Document AI, OCR, Cloud Storage, Compute Engine">Vertex AI, Document AI, OCR, Cloud Storage, Compute Engine</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Practical experience with AI/ML, data processing, and virtual machine management on GCP." data-lang-ka="პრაქტიკული გამოცდილება AI/ML-თან, მონაცემთა დამუშავებასთან და ვირტუალური მანქანების მართვასთან GCP-ზე.">Practical experience with AI/ML, data processing, and virtual machine management on GCP.</p>
+                    </div>
+                    <!-- Skill Card 7: Linux System Administration -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fab fa-linux text-5xl text-gray-700 mb-4 group-hover:text-gray-900 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Linux System Administration" data-lang-ka="Linux სისტემის ადმინისტრირება">Linux System Administration</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="Command Line, File Systems, User Management, Server Hosting, LineageOS" data-lang-ka="Command Line, ფაილური სისტემები, მომხმარებლის მართვა, სერვერის ჰოსტინგი, LineageOS">Command Line, File Systems, User Management, Server Hosting, LineageOS</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Managing Linux environments, including server setup and custom ROM installations." data-lang-ka="Linux გარემოების მართვა, სერვერის დაყენების და პერსონალური ROM-ების ინსტალაციის ჩათვლით.">Managing Linux environments, including server setup and custom ROM installations.</p>
+                    </div>
+                </div>
+            </div>
+                     
+                </div>
+            </div>
+
+            <div>
+                <center><h3 class="text-3xl font-bold mb-8 text-gray-800" data-lang-en="Soft Skills" data-lang-ka="რბილი უნარები">Technical Skills</h3></center>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fas fa-lightbulb text-5xl text-yellow-500 mb-4 group-hover:text-yellow-600 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Problem Solving" data-lang-ka="პრობლემების გადაჭრა">Problem Solving</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="Analytical Thinking, Troubleshooting Methodologies" data-lang-ka="ანალიტიკური აზროვნება, პრობლემების მოგვარების მეთოდოლოგიები">Analytical Thinking, Troubleshooting Methodologies</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Efficiently identifying and resolving complex issues." data-lang-ka="რთული პრობლემების ეფექტურად იდენტიფიცირება და მოგვარება.">Efficiently identifying and resolving complex issues.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fas fa-comments text-5xl text-teal-500 mb-4 group-hover:text-teal-600 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Communication" data-lang-ka="კომუნიკაცია">Communication</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="Active Listening, Clear Explanations, User Empathy" data-lang-ka="აქტიური მოსმენა, გასაგებ ენაზე ახსნა, ემპათია">Active Listening, Clear Explanations, User Empathy</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Translating technical terms into understandable words." data-lang-ka="ტექნიკური ტერმინების გასაგებ ენაზე ახსნა.">Translating technical terms into understandable words.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fas fa-chart-line text-5xl text-orange-500 mb-4 group-hover:text-orange-600 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Analytical Skills" data-lang-ka="ანალიტიკური უნარები">Analytical Skills</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="Data Interpretation, Root Cause Analysis" data-lang-ka="მონაცემთა ინტერპრეტაცია, ძირეული მიზეზის ანალიზი">Data Interpretation, Root Cause Analysis</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 88%;" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Breaking down complex problems into manageable parts for effective solutions." data-lang-ka=" პრობლემების სამართავად მათი დაყოფა ეფექტური გადაწყვეტილებების მიღებისთვის.">Breaking down complex problems into manageable parts for effective solutions.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2 group">
+                        <i class="fas fa-clipboard-list text-5xl text-blue-400 mb-4 group-hover:text-blue-500 transition duration-300"></i>
+                        <h4 class="text-2xl font-semibold mb-2 text-gray-800" data-lang-en="Organization Skills" data-lang-ka="ორგანიზაციული უნარები">Organization Skills</h4>
+                        <p class="text-gray-600 text-sm mb-2" data-lang-en="Task Prioritization, Documentation, Workflow Management" data-lang-ka="ამოცანების პრიორიტეტიზაცია, დოკუმენტაცია, სამუშაო პროცესის მართვა">Task Prioritization, Documentation, Workflow Management</p>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 82%;" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div>
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2 skill-example" data-lang-en="Managing multiple tasks efficiently and maintaining clear records." data-lang-ka="დიდი რაოდენობის ამოცანის ეფექტურად მართვა და დეტალური ჩანაწერების შედგენა.">Managing multiple tasks efficiently and maintaining clear records.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-gray-900" data-lang-en="For me, only the result matters:" data-lang-ka="ჩემთვის მთავარი მხოლოდ შედეგია:">For me, only the result matters</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/add8e6/000000?text=LineageOS+Install" alt="LineageOS Installation" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-gray-800" data-lang-en="Custom Android OS Installation (LineageOS)" data-lang-ka="მორგებული Android OS-ის ინსტალაცია (LineageOS)">Custom Android OS Installation (LineageOS)</h3>
+                        <p class="text-gray-600 mb-4" data-lang-en="Successfully installed LineageOS on a older Android smartphone, significantly improving its performance and extending its lifespan. Involved unlocking bootloader, flashing custom recovery, and installing the ROM." data-lang-ka="წარმატებით დავაყენე LineageOS ძველ Android სმარტფონზე, რამაც მნიშვნელოვნად გააუმჯობესა მისი მუშაობა და გაუხანგრძლივა სიცოცხლის ხანგრძლივობა. მოიცავდა ჩამტვირთავის განბლოკვას, მორგებული აპდეითების დაყენებას და ROM ინსტალაციას.">Successfully installed LineageOS on a older Android smartphone, significantly improving its performance and extending its lifespan. Involved unlocking bootloader, flashing custom recovery, and installing the ROM.</p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium" data-lang-en="View Details" data-lang-ka="დეტალების ნახვა">View Details <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/90ee90/000000?text=Linux+install" alt="Linux installation" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-gray-800" data-lang-en="Linux (Lubuntu) Operating System installation & Optimization on older computer" data-lang-ka="Linux ოპერაციული სისტემის (Lubuntu) ინსტალაცია და ოპტიმიზაცია"> Operating System Reinstallation & Optimization</h3>
+                        <p class="text-gray-600 mb-4" data-lang-en="Performed a Lubuntu installation for a slow-performing PC, followed by driver installations, system updates, and performance optimization techniques. Resulted in a much faster and more stable system." data-lang-ka="Linux Lubuntu-ის  ინსტალაცია ძველი მოდელის კომპიუტერისთვის, რასაც მოჰყვა დრაივერების ინსტალაცია, სისტემის განახლებები და მუშაობის ოპტიმიზაცია. შედეგად მივიღე ბევრად სწრაფი და სტაბილური ლეპტოპი.">Performed a clean reinstallation of Windows for a slow-performing PC, followed by driver installations, system updates, and performance optimization techniques. Resulted in a much faster and more stable system.</p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium" data-lang-en="View Details" data-lang-ka="დეტალების ნახვა">View Details <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://placehold.co/600x400/ffb6c1/000000?text=Home+Security" alt="Home Security Setup Project" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-gray-800" data-lang-en="Home Network & Basic Security System Setup" data-lang-ka="სახლის ქსელის და ძირითადი უსაფრთხოების სისტემის დაყენება">Home Network & Basic Security System Setup</h3>
+                        <p class="text-gray-600 mb-4" data-lang-en="setting up a secure and high broadcasting home Wi-Fi network and integrating basic IP cameras for surveillance, ensuring remote access and secure configuration. with low and medium budget. " data-lang-ka=" სახლისთვის, უსაფრთხო და მაღალი სიგნალის Wi-Fi ქსელის დაყენება და IP კამერების ინტეგრირებაში მეთვალყურეობისთვის, დისტანციური წვდომისა და უსაფრთხო კონფიგურაციის უზრუნველყოფა, როგორც საშუალო ასევე მინიმალურ ბიუჯეტით.">setting up a secure home Wi-Fi network and integrating basic IP cameras for surveillance, ensuring remote access and secure configuration.</p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium" data-lang-en="View Details" data-lang-ka="დეტალების ნახვა">View Details <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-gray-900" data-lang-en="Let's Connect & Explore IT!" data-lang-ka="მომწერეთ, ერთად გავიგოთ მეტი IT სფეროზე!">Let's Connect & Explore IT!</h2>
+            <p class="text-lg text-gray-700 mb-8"
+               data-lang-en="Interested in collaborating, sharing knowledge, or discussing IT? Feel free to reach out to me!"
+               data-lang-ka="გსურთ ჩემთან თანამშრომლობა,  ცოდნის გაზიარება ან IT საკითხის განხილვა? მომწერეთ!">
+                Interested in collaborating, sharing knowledge, or discussing IT? Feel free to reach out to me!
+            </p>
+            <div class="max-w-3xl mx-auto bg-gray-50 p-10 rounded-lg shadow-xl">
+                <form id="contactForm" action="https://formspree.io/f/mzzgwpjp" method="POST" class="space-y-6">
+                    <div>
+                        <input type="text" id="name" name="name" placeholder="Your Name" data-lang-en-placeholder="Your Name" data-lang-ka-placeholder="თქვენი სახელი" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <input type="email" id="email" name="email" placeholder="Your Email" data-lang-en-placeholder="Your Email" data-lang-ka-placeholder="თქვენი ელ.ფოსტა" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <textarea id="message" name="message" rows="6" placeholder="Your Message" data-lang-en-placeholder="Your Message" data-lang-ka-placeholder="თქვენი შეტყობინება" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" required></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" id="submitButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105"
+                                data-lang-en="Send Message" data-lang-ka="შეტყობინების გაგზავნა">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                <div id="form-messages" class="form-message hidden"></div>
+
+                <div class="mt-10 text-gray-700">
+                    <p class="mb-2"><i class="fas fa-envelope mr-3 text-blue-500"></i> <a href="mailto:contact@tornike.net" class="hover:underline">contact@tornike.net</a></p>
+                    <div class="mt-6 flex justify-center space-x-6 text-2xl">
+                        <a href="https://www.linkedin.com/in/tornike-tsiklauri/" target="_blank" class="text-gray-700 hover:text-blue-700 transition duration-300" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; <span id="current-year"></span> <span data-lang-en="Tornike tsiklauri" data-lang-ka="თორნიკე წიკლაური Tornike tsiklauri">Tornike tsiklauri</span>. <span data-lang-en="All rights reserved." data-lang-ka="ყველა უფლება დაცულია.">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <button id="magicIcon" aria-label="Human-AI Integration Information">
+        <i class="fas fa-brain"></i>
+    </button>
+
+    <div id="ephemeralMessage" class="text-center">
+        <span data-lang-en="Built with Human Creativity & AI Optimization." data-lang-ka="შექმნილია ადამიანის კრეატიულობითა და AI ოპტიმიზაციით.">Built with Human Creativity & AI Assistance.</span>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Offset for fixed navigation bar
+                    const offset = document.getElementById('navbar').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-navbar-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Toggle mobile navigation menu
+        document.getElementById('navbar-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-navbar-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Highlight active navigation link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - document.getElementById('navbar').offsetHeight;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.href.includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Optional: Animate elements on scroll using Intersection Observer
+        const animateOnScrollElements = document.querySelectorAll('.animate-fade-in-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                } else {
+                    // Optional: Reset animation when not intersecting if you want it to re-animate on scroll up
+                    // entry.target.style.opacity = '0';
+                    // entry.target.style.transform = 'translateY(20px)';
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Adjust margin to trigger animation a bit earlier
+        });
+
+        animateOnScrollElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(element);
+        });
+
+        // Add delay for sequential animations
+        document.querySelector('.animate-fade-in-up.delay-100').style.transitionDelay = '0.1s';
+        document.querySelector('.animate-fade-in-up.delay-200').style.transitionDelay = '0.2s';
+
+
+        // --- Language Switcher Logic ---
+        const langEnBtn = document.getElementById('lang-en');
+        const langKaBtn = document.getElementById('lang-ka');
+        const htmlElement = document.documentElement; // The <html> tag
+
+        // Function to set the language
+        function setLanguage(lang) {
+            // Update lang attribute on html tag
+            htmlElement.lang = lang;
+
+            // Update text content based on data-lang attributes
+            document.querySelectorAll('[data-lang-en]').forEach(element => {
+                // Check if the element contains HTML, use innerHTML, otherwise textContent
+                if (element.dataset.langEn && element.dataset.langKa && (element.dataset.langEn.includes('<') || element.dataset.langKa.includes('<'))) {
+                    element.innerHTML = lang === 'en' ? element.dataset.langEn : element.dataset.langKa;
+                } else if (element.dataset.langEn && element.dataset.langKa) {
+                    element.textContent = lang === 'en' ? element.dataset.langEn : element.dataset.langKa;
+                }
+            });
+
+            // Update placeholder attributes for input fields
+            document.querySelectorAll('[data-lang-en-placeholder]').forEach(element => {
+                element.placeholder = lang === 'en' ? element.dataset.langEnPlaceholder : element.dataset.langKaPlaceholder;
+            });
+
+            // Update document title
+            const titleElement = document.querySelector('title');
+            if (titleElement) {
+                titleElement.textContent = titleElement.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+            }
+
+
+            // Set active state for language buttons
+            document.querySelectorAll('.language-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            if (lang === 'en') {
+                langEnBtn.classList.add('active');
+            } else {
+                langKaBtn.classList.add('active');
+            }
+
+            // Store preferred language in local storage
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Event listeners for language buttons
+        langEnBtn.addEventListener('click', () => setLanguage('en'));
+        langKaBtn.addEventListener('click', () => setLanguage('ka'));
+
+        // Load preferred language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'en'; // Default to English
+            setLanguage(savedLang);
+        });
+
+
+        // --- Contact Form Submission Logic ---
+        const contactForm = document.getElementById('contactForm');
+        const formMessages = document.getElementById('form-messages');
+        const submitButton = document.getElementById('submitButton');
+
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            // Clear previous messages
+            formMessages.textContent = '';
+            formMessages.classList.add('hidden');
+            formMessages.classList.remove('success', 'error');
+
+            submitButton.disabled = true; // Disable button to prevent multiple submissions
+            submitButton.textContent = 'Sending...'; // Change button text
+
+            const formData = new FormData(contactForm); // Get form data
+
+            try {
+                // Using Formspree for contact form submission
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Important for Formspree to return JSON
+                    }
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    formMessages.textContent = 'Message sent successfully! I will get back to you soon.';
+                    formMessages.classList.add('success');
+                    formMessages.classList.remove('hidden');
+                    contactForm.reset(); // Clear the form
+                } else {
+                    // Formspree returns errors in 'errors' array
+                    const errorMessage = result.errors ? result.errors.map(err => err.message).join(', ') : 'An unknown error occurred.';
+                    formMessages.textContent = `Error: ${errorMessage}`;
+                    formMessages.classList.add('error');
+                    formMessages.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                formMessages.textContent = 'Network error: Could not connect to the server.';
+                formMessages.classList.add('error');
+                formMessages.classList.remove('hidden');
+            } finally {
+                submitButton.disabled = false; // Re-enable button
+                // Restore original button text based on current language
+                const currentLang = htmlElement.lang;
+                const buttonTextKey = 'lang' + currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
+                submitButton.textContent = submitButton.dataset[buttonTextKey];
+            }
+        });
+
+        // --- Floating Magic Icon and Ephemeral Message Logic ---
+        const magicIcon = document.getElementById('magicIcon');
+        const ephemeralMessage = document.getElementById('ephemeralMessage');
+        let messageTimeout; // To store the timeout ID
+
+        magicIcon.addEventListener('click', () => {
+            // Clear any existing timeout to prevent flicker if clicked rapidly
+            clearTimeout(messageTimeout);
+
+            // Set message content based on current language
+            const currentLang = htmlElement.lang;
+            const messageTextElement = ephemeralMessage.querySelector('span');
+            if (currentLang === 'en') {
+                messageTextElement.textContent = messageTextElement.dataset.langEn;
+            } else {
+                messageTextElement.textContent = messageTextElement.dataset.langKa;
+            }
+
+            // Show the message
+            ephemeralMessage.classList.add('show');
+
+            // Hide the message after 3 seconds
+            messageTimeout = setTimeout(() => {
+                ephemeralMessage.classList.remove('show');
+            }, 3000);
+        });
+
+    </script>
+</body>
+</html>

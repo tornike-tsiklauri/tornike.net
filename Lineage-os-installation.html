@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-en="Project: LineageOS Installation" data-lang-ka="პროექტი: LineageOS-ის ინსტალაცია">Project: LineageOS Installation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a8a8a8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        /* Active navigation link styling */
+        .nav-link.active {
+            border-bottom: 2px solid #3B82F6; /* Tailwind's blue-500 */
+        }
+        /* Language button active state */
+        .language-button.active {
+            box-shadow: 0 0 0 2px #3B82F6; /* Blue ring for active language */
+        }
+
+        /* Gallery Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover;
+        }
+        .gallery-caption {
+            padding: 1rem;
+            text-align: left;
+        }
+        .gallery-caption h4 {
+            font-weight: 600;
+            font-size: 1.125rem; /* text-lg */
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        .gallery-caption p {
+            font-size: 0.875rem; /* text-sm */
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* AI Icon and Message Styles (from index.html) */
+        #aiIcon {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background-color: #3B82F6; /* blue-600 */
+            color: white;
+            border-radius: 9999px; /* fully rounded */
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem; /* Adjust icon size */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 99; /* Below modal, above other content */
+        }
+        #aiIcon:hover {
+            background-color: #2563EB; /* blue-700 */
+            transform: scale(1.05);
+        }
+
+        #ephemeralMessage {
+            position: fixed;
+            bottom: 6rem; /* Above the AI icon */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            z-index: 98; /* Below AI icon */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        #ephemeralMessage.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-all duration-300 ease-in-out py-4" id="navbar">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="index.html#home" class="text-2xl font-bold text-blue-600 hover:text-blue-800 transition duration-300" data-lang-en="Tornike tsiklauri" data-lang-ka="თორნიკე წიკლაური">Tornike tsiklauri</a>
+            <div class="flex items-center space-x-4">
+                <button id="lang-en" class="language-button flex items-center p-1.5 rounded-full hover:bg-gray-100 transition duration-200" aria-label="Switch to English">
+                    <img src="https://flagsapi.com/US/flat/32.png" alt="English Flag" class="w-8 h-auto rounded-sm shadow-sm">
+                </button>
+                <button id="lang-ka" class="language-button flex items-center p-1.5 rounded-full hover:bg-gray-100 transition duration-200" aria-label="Switch to Georgian">
+                    <img src="https://flagsapi.com/GE/flat/32.png" alt="Georgian Flag" class="w-8 h-auto rounded-sm shadow-sm">
+                </button>
+
+                <button class="lg:hidden text-gray-700 hover:text-gray-900 focus:outline-none" id="navbar-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="hidden lg:flex space-x-6" id="navbar-menu">
+                <a href="index.html#home" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Home" data-lang-ka="მთავარი">Home</a>
+                <a href="index.html#about" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="About" data-lang-ka="ჩემს შესახებ">About</a>
+                <a href="index.html#skills" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Skills" data-lang-ka="უნარები">Skills</a>
+                <a href="index.html#portfolio" class="nav-link text-lg font-medium text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Portfolio" data-lang-ka="პორტფოლიო">Portfolio</a>
+                <a href="index.html#contact" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Contact" data-lang-ka="კონტაქტი">Contact</a>
+            </div>
+        </div>
+        <div class="hidden lg:hidden bg-white py-2" id="mobile-navbar-menu">
+            <a href="index.html#home" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Home" data-lang-ka="მთავარი">Home</a>
+            <a href="index.html#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="About" data-lang-ka="ჩემს შესახებ">About</a>
+            <a href="index.html#skills" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Skills" data-lang-ka="უნარები">Skills</a>
+            <a href="index.html#portfolio" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Portfolio" data-lang-ka="პორტფელი">Portfolio</a>
+            <a href="index.html#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Contact" data-lang-ka="კონტაქტი">Contact</a>
+        </div>
+    </nav>
+
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <a href="index.html#portfolio" class="text-blue-600 hover:text-blue-800 transition duration-300 mb-8 inline-block" data-lang-en="&larr; Back to Portfolio" data-lang-ka="&larr; პორტფოლიოში დაბრუნება">&larr; Back to Portfolio</a>
+
+            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6" data-lang-en="Custom Android OS Installation (LineageOS)" data-lang-ka="მორგებული Android OS-ის ინსტალაცია (LineageOS)">Custom Android OS Installation (LineageOS)</h1>
+            <p class="text-lg text-gray-700 mb-10 leading-relaxed"
+               data-lang-en="This project involved breathing new life into an older Android smartphone by replacing its outdated, bloated stock operating system with a lightweight and performance-oriented custom ROM: LineageOS. This significantly improved the device's speed, battery life, and overall user experience, extending its useful lifespan for the client."
+               data-lang-ka="ეს პროექტი მოიცავდა ძველი Android სმარტფონის განახლებას, მისი მოძველებული ოპერაციული სისტემის შეცვლას მსუბუქი და წარმადობაზე ორიენტირებული პერსონალური ROM-ით: LineageOS-ით. ამან მნიშვნელოვნად გააუმჯობესა მოწყობილობის სიჩქარე, ბატარეის ხანგრძლივობა და საერთო მომხმარებლის გამოცდილება, რამაც გაუხანგრძლივა მისი სასარგებლო სიცოცხლის ხანგრძლივობა კლიენტისთვის.">
+                This project involved breathing new life into an older Android smartphone by replacing its outdated, bloated stock operating system with a lightweight and performance-oriented custom ROM: LineageOS. This significantly improved the device's speed, battery life, and overall user experience, extending its useful lifespan for the client.
+            </p>
+
+            <h2 class="text-3xl font-bold text-gray-800 mb-6" data-lang-en="Tools & Technologies Used" data-lang-ka="გამოყენებული ხელსაწყოები და ტექნოლოგიები">Tools & Technologies Used</h2>
+            <ul class="list-disc list-inside text-lg text-gray-700 mb-12 space-y-2">
+                <li data-lang-en="Android SDK Platform-Tools (ADB & Fastboot)" data-lang-ka="Android SDK Platform-Tools (ADB & Fastboot)">Android SDK Platform-Tools (ADB & Fastboot)</li>
+                <li data-lang-en="TWRP Custom Recovery" data-lang-ka="TWRP Custom Recovery">TWRP Custom Recovery</li>
+                <li data-lang-en="LineageOS ROM (device-specific build)" data-lang-ka="LineageOS ROM (მოწყობილობისთვის სპეციფიკური ვერსია)">LineageOS ROM (device-specific build)</li>
+                <li data-lang-en="Open GApps (optional, for Google services)" data-lang-ka="Open GApps (სურვილისამებრ, Google სერვისებისთვის)">Open GApps (optional, for Google services)</li>
+                <li data-lang-en="Device-specific drivers" data-lang-ka="მოწყობილობისთვის სპეციფიკური დრაივერები">Device-specific drivers</li>
+            </ul>
+
+            <h2 class="text-3xl font-bold text-gray-800 mb-8" data-lang-en="Process Gallery" data-lang-ka="პროცესის გალერეა">Process Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400/add8e6/000000?text=Step+1:+Bootloader+Unlock" alt="Screenshot of device in fastboot mode with unlock command">
+                    <div class="gallery-caption">
+                        <h4 data-lang-en="Step 1: Unlocking the Bootloader" data-lang-ka="ნაბიჯი 1: ჩამტვირთავის განბლოკვა">Step 1: Unlocking the Bootloader</h4>
+                        <p data-lang-en="The initial and crucial step involved enabling OEM unlocking in developer options and using Fastboot commands to unlock the device's bootloader. This prepares the device for flashing custom software." data-lang-ka="საწყისი და გადამწყვეტი ნაბიჯი მოიცავდა OEM განბლოკვის ჩართვას დეველოპერის პარამეტრებში და Fastboot ბრძანებების გამოყენებას მოწყობილობის ჩამტვირთავის განბლოკვისთვის. ეს ამზადებს მოწყობილობას პერსონალური პროგრამული უზრუნველყოფის დასაყენებლად.">The initial and crucial step involved enabling OEM unlocking in developer options and using Fastboot commands to unlock the device's bootloader. This prepares the device for flashing custom software.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400/add8e6/000000?text=Step+2:+Flashing+TWRP" alt="Screenshot of flashing TWRP via Fastboot terminal">
+                    <div class="gallery-caption">
+                        <h4 data-lang-en="Step 2: Flashing Custom Recovery (TWRP)" data-lang-ka="ნაბიჯი 2: პერსონალური აღდგენის დაყენება (TWRP)">Step 2: Flashing Custom Recovery (TWRP)</h4>
+                        <p data-lang-en="After unlocking, TWRP (Team Win Recovery Project) was flashed onto the device. TWRP is essential for installing custom ROMs, creating backups, and performing advanced system operations." data-lang-ka="განბლოკვის შემდეგ, მოწყობილობაზე დაყენდა TWRP (Team Win Recovery Project). TWRP აუცილებელია პერსონალური ROM-ების ინსტალაციისთვის, სარეზერვო ასლების შესაქმნელად და სისტემის მოწინავე ოპერაციების შესასრულებლად.">After unlocking, TWRP (Team Win Recovery Project) was flashed onto the device. TWRP is essential for installing custom ROMs, creating backups, and performing advanced system operations.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400/add8e6/000000?text=Step+3:+Wipe+Data" alt="Screenshot of TWRP wipe menu">
+                    <div class="gallery-caption">
+                        <h4 data-lang-en="Step 3: Wiping Data and Caches" data-lang-ka="ნაბიჯი 3: მონაცემებისა და ქეშების გასუფთავება">Step 3: Wiping Data and Caches</h4>
+                        <p data-lang-en="Inside TWRP, a full wipe of data, cache, and Dalvik cache was performed. This clean slate prevents conflicts with the new operating system and ensures a smooth installation." data-lang-ka="TWRP-ში შესრულდა მონაცემების, ქეშისა და Dalvik ქეშის სრული გასუფთავება. ეს სუფთა საწყისი ხელს უშლის კონფლიქტებს ახალ ოპერაციულ სისტემასთან და უზრუნველყოფს გლუვ ინსტალაციას.">Inside TWRP, a full wipe of data, cache, and Dalvik cache was performed. This clean slate prevents conflicts with the new operating system and ensures a smooth installation.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400/add8e6/000000?text=Step+4:+Flashing+ROM" alt="Screenshot of flashing LineageOS zip in TWRP">
+                    <div class="gallery-caption">
+                        <h4 data-lang-en="Step 4: Flashing LineageOS" data-lang-ka="ნაბიჯი 4: LineageOS-ის დაყენება">Step 4: Flashing LineageOS</h4>
+                        <p data-lang-en="The LineageOS ROM ZIP file was transferred to the device and then flashed through TWRP. This step installs the new custom operating system onto the phone." data-lang-ka="LineageOS ROM ZIP ფაილი გადატანილი იქნა მოწყობილობაზე და შემდეგ დაყენდა TWRP-ის მეშვეობით. ეს ნაბიჯი აყენებს ახალ პერსონალურ ოპერაციულ სისტემას ტელეფონზე.">The LineageOS ROM ZIP file was transferred to the device and then flashed through TWRP. This step installs the new custom operating system onto the phone.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400/add8e6/000000?text=Step+5:+GApps+Flash" alt="Screenshot of flashing GApps zip in TWRP">
+                    <div class="gallery-caption">
+                        <h4 data-lang-en="Step 5: (Optional) Flashing GApps" data-lang-ka="ნაბიჯი 5: (სურვილისამებრ) GApps-ის დაყენება">Step 5: (Optional) Flashing GApps</h4>
+                        <p data-lang-en="If desired, the Open GApps package (Google Apps) was flashed immediately after the ROM to include essential Google services like Play Store, Gmail, etc." data-lang-ka="სურვილის შემთხვევაში, Open GApps პაკეტი (Google აპლიკაციები) დაყენდა ROM-ის დაყენებისთანავე, რათა ჩართულიყო Google-ის ძირითადი სერვისები, როგორიცაა Play Store, Gmail და ა.შ.">If desired, the Open GApps package (Google Apps) was flashed immediately after the ROM to include essential Google services like Play Store, Gmail, etc.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/600x400/add8e6/000000?text=Step+6:+First+Boot" alt="Screenshot of LineageOS boot animation">
+                    <div class="gallery-caption">
+                        <h4 data-lang-en="Step 6: First Boot and Setup" data-lang-ka="ნაბიჯი 6: პირველი ჩართვა და კონფიგურაცია">Step 6: First Boot and Setup</h4>
+                        <p data-lang-en="Upon successful installation, the device was rebooted into the new LineageOS. The initial boot can take some time. After booting, the setup wizard was completed, and basic functionality was verified." data-lang-ka="წარმატებული ინსტალაციის შემდეგ, მოწყობილობა გადაიტვირთა ახალ LineageOS-ში. საწყის ჩართვას შეიძლება გარკვეული დრო დასჭირდეს. ჩართვის შემდეგ, შესრულდა კონფიგურაციის ოსტატი და გადამოწმდა ძირითადი ფუნქციონალობა.">Upon successful installation, the device was rebooted into the new LineageOS. The initial boot can take some time. After booting, the setup wizard was completed, and basic functionality was verified.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-gray-800 mt-12 mb-6" data-lang-en="Outcome & Learnings" data-lang-ka="შედეგი და შეძენილი ცოდნა">Outcome & Learnings</h2>
+            <p class="text-lg text-gray-700 mb-6 leading-relaxed"
+               data-lang-en="The client's smartphone was successfully revitalized, offering a much smoother and more responsive user experience. The device, which was previously considered slow and potentially unusable, gained a new lease on life. This project reinforced my understanding of Android's deep-level architecture, bootloader operations, and the critical importance of selecting the correct device-specific files for a successful flash."
+               data-lang-ka="კლიენტის სმარტფონი წარმატებით აღდგა, რამაც მნიშვნელოვნად გააუმჯობესა მომხმარებლის გამოცდილება. მოწყობილობამ, რომელიც ადრე ნელ და პოტენციურად გამოუყენებელ მოწყობილობად ითვლებოდა, ახალი სიცოცხლე მოიპოვა. ამ პროექტმა გაამყარა ჩემი ცოდნა Android-ის ღრმა დონის არქიტექტურის, ჩამტვირთავის ოპერაციების და წარმატებული ინსტალაციისთვის სწორი მოწყობილობის სპეციფიკური ფაილების შერჩევის კრიტიკული მნიშვნელობის შესახებ.">
+                The client's smartphone was successfully revitalized, offering a much smoother and more responsive user experience. The device, which was previously considered slow and potentially unusable, gained a new lease on life. This project reinforced my understanding of Android's deep-level architecture, bootloader operations, and the critical importance of selecting the correct device-specific files for a successful flash.
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; <span id="current-year"></span> <span data-lang-en="Tornike tsiklauri" data-lang-ka="თორნიკე წიკლაური">Tornike tsiklauri</span>. <span data-lang-en="All rights reserved." data-lang-ka="ყველა უფლება დაცულია.">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <button id="aiIcon" aria-label="Human-AI Integration Information">
+        <i class="fas fa-brain"></i>
+    </button>
+
+    <div id="ephemeralMessage" class="text-center">
+        <span data-lang-en="Crafted with Human Ingenuity & AI Assistance." data-lang-ka="შექმნილია ადამიანის გამომგონებლობითა და AI დახმარებით.">Crafted with Human Ingenuity & AI Assistance.</span>
+    </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Language Switcher Logic (Duplicated for standalone pages) ---
+        const langEnBtn = document.getElementById('lang-en');
+        const langKaBtn = document.getElementById('lang-ka');
+        const htmlElement = document.documentElement; // The <html> tag
+
+        function setLanguage(lang) {
+            htmlElement.lang = lang;
+            document.querySelectorAll('[data-lang-en]').forEach(element => {
+                 if (element.dataset.langEn && element.dataset.langKa && (element.dataset.langEn.includes('<') || element.dataset.langKa.includes('<'))) {
+                    element.innerHTML = lang === 'en' ? element.dataset.langEn : element.dataset.langKa;
+                } else if (element.dataset.langEn && element.dataset.langKa) {
+                    element.textContent = lang === 'en' ? element.dataset.langEn : element.dataset.langKa;
+                }
+            });
+            document.querySelectorAll('[data-lang-en-placeholder]').forEach(element => {
+                element.placeholder = lang === 'en' ? element.dataset.langEnPlaceholder : element.dataset.langKaPlaceholder;
+            });
+            const titleElement = document.querySelector('title');
+            if (titleElement) {
+                titleElement.textContent = titleElement.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+            }
+            document.querySelectorAll('.language-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            if (lang === 'en') {
+                langEnBtn.classList.add('active');
+            } else {
+                langKaBtn.classList.add('active');
+            }
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        langEnBtn.addEventListener('click', () => setLanguage('en'));
+        langKaBtn.addEventListener('click', () => setLanguage('ka'));
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'en'; // Default to English
+            setLanguage(savedLang);
+        });
+
+        // --- Floating AI Icon and Ephemeral Message Logic (Duplicated for standalone pages) ---
+        const aiIcon = document.getElementById('aiIcon');
+        const ephemeralMessage = document.getElementById('ephemeralMessage');
+        let messageTimeout;
+
+        aiIcon.addEventListener('click', () => {
+            clearTimeout(messageTimeout);
+            const currentLang = htmlElement.lang;
+            const messageTextElement = ephemeralMessage.querySelector('span');
+            if (currentLang === 'en') {
+                messageTextElement.textContent = messageTextElement.dataset.langEn;
+            } else {
+                messageTextElement.textContent = messageTextElement.dataset.langKa;
+            }
+            ephemeralMessage.classList.add('show');
+            messageTimeout = setTimeout(() => {
+                ephemeralMessage.classList.remove('show');
+            }, 3000);
+        });
+
+        // Toggle mobile navigation menu (Duplicated from index.html)
+        document.getElementById('navbar-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-navbar-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
