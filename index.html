@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-lang-en="Tornike tsiklauri - IT Support Portfolio" data-lang-ka="თორნიკე წიკლაური - IT მხარდაჭერის პორტფელი">Tornike tsiklauri - IT Support Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="https://files.tornike.net/favicon_tornike-net/favicon.ico">
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://files.tornike.net/favicon_tornike-net/apple-touch-icon.png">
+
+<link rel="icon" type="image/png" sizes="192x192" href="https://files.tornike.net/favicon_tornike-net/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="https://files.tornike.net/favicon_tornike-net/android-chrome-512x512.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="https://files.tornike.net/favicon_tornike-net/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://files.tornike.net/favicon_tornike-net/favicon-16x16.png">
+
+<link rel="manifest" href="https://files.tornike.net/favicon_tornike-net/site.webmanifest">
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-TileColor" content="#007bff">
+<meta name="msapplication-config" content="/browserconfig.xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -400,7 +414,7 @@
                 <div id="form-messages" class="form-message hidden"></div>
 
                 <div class="mt-10 text-gray-700">
-                    <p class="mb-2"><i class="fas fa-envelope mr-3 text-blue-500"></i> <a href="mailto:contact@tornike.net" class="hover:underline">contact@tornike.net</a></p>
+                    <p class="mb-2"><i class="fas fa-envelope mr-3 text-blue-500"></i> <a href="/cdn-cgi/l/email-protection#44272b2a3025273004302b362a2d2f216a2a2130" class="hover:underline"><span class="__cf_email__" data-cfemail="365559584257554276425944585f5d5318585342">[email&#160;protected]</span></a></p>
                     <div class="mt-6 flex justify-center space-x-6 text-2xl">
                         <a href="https://www.linkedin.com/in/tornike-tsiklauri/" target="_blank" class="text-gray-700 hover:text-blue-700 transition duration-300" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
                         </div>
@@ -412,9 +426,87 @@
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; <span id="current-year"></span> <span data-lang-en="Tornike tsiklauri" data-lang-ka="თორნიკე წიკლაური Tornike tsiklauri">Tornike tsiklauri</span>. <span data-lang-en="All rights reserved." data-lang-ka="ყველა უფლება დაცულია.">All rights reserved.</span></p>
+<button class="ai-enhanced-btn">
+  <i class="fas fa-magic"></i>
+  <span>Enhanced by AI</span>
+</button>
+
+<style>
+  .ai-enhanced-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.3rem;
+    border-radius: 50px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    background: linear-gradient(135deg, #6e48aa, #4776e6);
+    box-shadow: 0 4px 15px rgba(71, 118, 230, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ai-enhanced-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(71, 118, 230, 0.4);
+  }
+  
+  .ai-enhanced-btn:active {
+    transform: translateY(0);
+  }
+  
+  .ai-enhanced-btn i {
+    margin-right: 0.6rem;
+    font-size: 1rem;
+  }
+  
+  /* Magic wand animation */
+  @keyframes magic-sparkle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
+  .ai-enhanced-btn:hover i {
+    animation: magic-sparkle 0.8s ease;
+  }
+  
+  /* Glow effect */
+  .ai-enhanced-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      rgba(255,255,255,0) 0%, 
+      rgba(255,255,255,0.15) 50%, 
+      rgba(255,255,255,0) 100%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  
+  .ai-enhanced-btn:hover::after {
+    transform: translateX(100%);
+  }
+</style>
+
+<!-- Only needed if you don't already have Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         </div>
+        
     </footer>
 
+    <!-- REMOVE MAGIC ICON BUTTON AND EPHEMERAL MESSAGE -->
+    <!--
     <button id="magicIcon" aria-label="Human-AI Integration Information">
         <i class="fas fa-brain"></i>
     </button>
@@ -422,8 +514,9 @@
     <div id="ephemeralMessage" class="text-center">
         <span data-lang-en="Built with Human Creativity & AI Optimization." data-lang-ka="შექმნილია ადამიანის კრეატიულობითა და AI ოპტიმიზაციით.">Built with Human Creativity & AI Assistance.</span>
     </div>
+    -->
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -624,33 +717,8 @@
             }
         });
 
-        // --- Floating Magic Icon and Ephemeral Message Logic ---
-        const magicIcon = document.getElementById('magicIcon');
-        const ephemeralMessage = document.getElementById('ephemeralMessage');
-        let messageTimeout; // To store the timeout ID
-
-        magicIcon.addEventListener('click', () => {
-            // Clear any existing timeout to prevent flicker if clicked rapidly
-            clearTimeout(messageTimeout);
-
-            // Set message content based on current language
-            const currentLang = htmlElement.lang;
-            const messageTextElement = ephemeralMessage.querySelector('span');
-            if (currentLang === 'en') {
-                messageTextElement.textContent = messageTextElement.dataset.langEn;
-            } else {
-                messageTextElement.textContent = messageTextElement.dataset.langKa;
-            }
-
-            // Show the message
-            ephemeralMessage.classList.add('show');
-
-            // Hide the message after 3 seconds
-            messageTimeout = setTimeout(() => {
-                ephemeralMessage.classList.remove('show');
-            }, 3000);
-        });
-
+        
     </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95ff9a7dba3ed0c4","version":"2025.6.2","r":1,"token":"3ac330637fc64a29bca1f0e17e5d7372","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
 </body>
 </html>
