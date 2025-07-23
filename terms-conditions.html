@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PLVNF7C8');</script>
+<!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z12CGSGHSZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z12CGSGHSZ');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-en="Terms and Conditions - Tornike tsiklauri" data-lang-ka="წესები და პირობები - თორნიკე წიკლაური">Terms and Conditions - Tornike tsiklauri</title>
+    <link rel="icon" type="image/x-icon" href="https://files.tornike.net/favicon_tornike-net/favicon.ico">
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://files.tornike.net/favicon_tornike-net/apple-touch-icon.png">
+
+<link rel="icon" type="image/png" sizes="192x192" href="https://files.tornike.net/favicon_tornike-net/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="https://files.tornike.net/favicon_tornike-net/android-chrome-512x512.png">
+
+<link rel="manifest" href="https://files.tornike.net/favicon_tornike-net/site.webmanifest">
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-TileColor" content="#007bff">
+<meta name="msapplication-config" content="/browserconfig.xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a8a8a8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        /* Hero section specific styling for background image */
+        .hero-background {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://files.tornike.net/gradient-dark-blue-futuristic-digital-grid-background.jpg') center center / cover no-repeat;
+            background-size: cover; /* Ensure background covers the area */
+            background-position: center; /* Center the background image */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 2rem; /* Add some padding for smaller screens */
+        }
+
+        /* Active navigation link styling */
+        .nav-link.active {
+            border-bottom: 2px solid #3B82F6; /* Tailwind's blue-500 */
+        }
+        /* Language button active state */
+        .language-button.active {
+            box-shadow: 0 0 0 2px #3B82F6; /* Blue ring for active language */
+        }
+        /* Form message styling */
+        .form-message {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .form-message.success {
+            background-color: #d1fae5; /* Tailwind green-100 */
+            color: #065f46; /* Tailwind green-800 */
+        }
+        .form-message.error {
+            background-color: #fee2e2; /* Tailwind red-100 */
+            color: #991b1b; /* Tailwind red-800 */
+        }
+
+        /* Custom styles for skill progress bars */
+        .skill-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 9999px; /* Full rounded */
+            height: 8px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        .skill-bar-fill {
+            background-color: #3B82F6; /* Tailwind blue-500 */
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Magic Icon and Message Styles */
+        #magicIcon {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background-color: #3B82F6; /* blue-600 */
+            color: white;
+            border-radius: 9999px; /* fully rounded */
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem; /* Adjust icon size */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 99; /* Below modal, above other content */
+        }
+        #magicIcon:hover {
+            background-color: #2563EB; /* blue-700 */
+            transform: scale(1.05);
+        }
+
+        #ephemeralMessage {
+            position: fixed;
+            bottom: 6rem; /* Above the magic icon */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            z-index: 98; /* Below magic icon */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        #ephemeralMessage.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Styles for dynamic links to ensure they are visible and clickable */
+        .footer-link-item {
+            color: #ffffff; /* White color for footer links */
+            text-decoration: underline; /* Underline for links */
+            transition: color 0.3s ease;
+        }
+        .footer-link-item:hover {
+            color: #bfdbfe; /* Light blue on hover (Tailwind blue-200) */
+        }
+
+        /* Specific styles for policy content */
+        .policy-content {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 2rem auto;
+            line-height: 1.6;
+            color: #333;
+        }
+        .policy-content h1, .policy-content h2, .policy-content h3, .policy-content h4 {
+            color: #1a202c; /* Darker text for headings */
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+        .policy-content h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .policy-content h2 {
+            font-size: 2rem;
+        }
+        .policy-content h3 {
+            font-size: 1.5rem;
+        }
+        .policy-content h4 {
+            font-size: 1.25rem;
+        }
+        .policy-content p {
+            margin-bottom: 1rem;
+        }
+        .policy-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .policy-content ol {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .policy-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 pt-20"> <!-- Added pt-20 to prevent content from hiding behind fixed nav -->
+
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-all duration-300 ease-in-out py-4" id="navbar">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-800 transition duration-300" data-lang-en="Tornike tsiklauri" data-lang-ka="თორნიკე წიკლაური">Tornike tsiklauri</a>
+            <div class="flex items-center space-x-4">
+                <button id="lang-en" class="language-button flex items-center p-1.5 rounded-full hover:bg-gray-100 transition duration-200" aria-label="Switch to English">
+                    <img src="https://flagsapi.com/US/flat/32.png" alt="English Flag" class="w-8 h-auto rounded-sm shadow-sm">
+                </button>
+                <button id="lang-ka" class="language-button flex items-center p-1.5 rounded-full hover:bg-gray-100 transition duration-200" aria-label="Switch to Georgian">
+                    <img src="https://flagsapi.com/GE/flat/32.png" alt="Georgian Flag" class="w-8 h-auto rounded-sm shadow-sm">
+                </button>
+
+                <button class="lg:hidden text-gray-700 hover:text-gray-900 focus:outline-none" id="navbar-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="hidden lg:flex space-x-6" id="navbar-menu">
+                <a href="index.html#home" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Home" data-lang-ka="მთავარი">Home</a>
+                <a href="index.html#about" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="About" data-lang-ka="ჩემს შესახებ">About</a>
+                <a href="index.html#skills" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Skills" data-lang-ka="უნარები">Skills</a>
+                <a href="index.html#portfolio" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Portfolio" data-lang-ka="პორტფოლიო">Portfolio</a>
+                <a href="index.html#contact" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Contact" data-lang-ka="კონტაქტი">Contact</a>
+                <a href="https://blog.tornike.net" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Blog" data-lang-ka="ბლოგი">Blog</a>
+
+            </div>
+        </div>
+        <div class="hidden lg:hidden bg-white py-2" id="mobile-navbar-menu">
+            <a href="index.html#home" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Home" data-lang-ka="მთავარი">Home</a>
+            <a href="index.html#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="About" data-lang-ka="ჩემს შესახებ">About</a>
+            <a href="index.html#skills" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Skills" data-lang-ka="უნარები">Skills</a>
+            <a href="index.html#portfolio" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Portfolio" data-lang-ka="პორტფელი">Portfolio</a>
+            <a href="index.html#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Contact" data-lang-ka="კონტაქტი">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="policy-content">
+            <h1 data-lang-en="Terms and Conditions" data-lang-ka="წესები და პირობები">Terms and Conditions</h1>
+            <p data-lang-en="Last updated: July 23, 2025" data-lang-ka="ბოლოს განახლდა: 2025 წლის 23 ივლისი">Last updated: July 23, 2025</p>
+            <p data-lang-en="Please read these terms and conditions carefully before using Our Service." data-lang-ka="გთხოვთ, ყურადღებით წაიკითხოთ ეს წესები და პირობები ჩვენი სერვისის გამოყენებამდე."></p>
+
+            <h2 data-lang-en="Interpretation and Definitions" data-lang-ka="ინტერპრეტაცია და განმარტებები">Interpretation and Definitions</h2>
+            <h3 data-lang-en="Interpretation" data-lang-ka="ინტერპრეტაცია">Interpretation</h3>
+            <p data-lang-en="The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural." data-lang-ka="სიტყვებს, რომელთა საწყისი ასო კაპიტალიზებულია, აქვთ მნიშვნელობები, რომლებიც განსაზღვრულია შემდეგი პირობებით. შემდეგ განმარტებებს ექნებათ იგივე მნიშვნელობა, მიუხედავად იმისა, გამოჩნდებიან ისინი მხოლობით რიცხვში თუ მრავლობითში."></p>
+
+            <h3 data-lang-en="Definitions" data-lang-ka="განმარტებები">Definitions</h3>
+            <p data-lang-en="For the purposes of these Terms and Conditions:" data-lang-ka="ამ წესებისა და პირობების მიზნებისთვის:"></p>
+            <ul>
+                <li>
+                    <p><strong data-lang-en="Affiliate" data-lang-ka="ფილიალი">Affiliate</strong> <span data-lang-en="means an entity that controls, is controlled by or is under common control with a party, where &quot;control&quot; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority." data-lang-ka="ნიშნავს სუბიექტს, რომელიც აკონტროლებს, კონტროლდება ან იმყოფება საერთო კონტროლის ქვეშ მხარესთან, სადაც &quot;კონტროლი&quot; ნიშნავს აქციების, კაპიტალის წილის ან სხვა ფასიანი ქაღალდების 50%-ზე მეტის მფლობელობას, რომლებსაც აქვთ ხმის მიცემის უფლება დირექტორების ან სხვა მმართველი ორგანოს არჩევისთვის.">means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Country" data-lang-ka="ქვეყანა">Country</strong> <span data-lang-en="refers to: Georgia" data-lang-ka="ნიშნავს: საქართველო">refers to: Georgia</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Company" data-lang-ka="კომპანია">Company</strong> <span data-lang-en="(referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to Tornike tsiklauri - IT Support Portfolio." data-lang-ka="(ამ შეთანხმებაში მოხსენიებული როგორც &quot;კომპანია&quot;, &quot;ჩვენ&quot;, &quot;ჩვენი&quot;) ნიშნავს თორნიკე წიკლაური - IT მხარდაჭერის პორტფოლიოს.">(referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Tornike tsiklauri - IT Support Portfolio.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Device" data-lang-ka="მოწყობილობა">Device</strong> <span data-lang-en="means any device that can access the Service such as a computer, a cellphone or a digital tablet." data-lang-ka="ნიშნავს ნებისმიერ მოწყობილობას, რომელსაც შეუძლია სერვისზე წვდომა, როგორიცაა კომპიუტერი, მობილური ტელეფონი ან ციფრული ტაბლეტი.">means any device that can access the Service such as a computer, a cellphone or a digital tablet.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Service" data-lang-ka="სერვისი">Service</strong> <span data-lang-en="refers to the Website." data-lang-ka="ნიშნავს ვებსაიტს.">refers to the Website.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Terms and Conditions" data-lang-ka="წესები და პირობები">Terms and Conditions</strong> <span data-lang-en="(also referred as &quot;Terms&quot;) mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service. This Terms and Conditions agreement has been created with the help of the <a href=&quot;https://https://tornike.net/terms-conditions-generator/&quot; target=&quot;_blank&quot;>Terms and Conditions Generator</a>." data-lang-ka="(ასევე მოხსენიებული როგორც &quot;პირობები&quot;) ნიშნავს ამ წესებსა და პირობებს, რომლებიც წარმოადგენს სრულ შეთანხმებას თქვენსა და კომპანიას შორის სერვისის გამოყენებასთან დაკავშირებით. ეს წესები და პირობების შეთანხმება შექმნილია <a href=&quot;https://https://tornike.net/terms-conditions-generator/&quot; target=&quot;_blank&quot;>წესები და პირობების გენერატორის</a> დახმარებით."> (also referred as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service. This Terms and Conditions agreement has been created with the help of the <a href="https://https://tornike.net/terms-conditions-generator/" target="_blank">Terms and Conditions Generator</a>.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Third-party Social Media Service" data-lang-ka="მესამე მხარის სოციალური მედიის სერვისი">Third-party Social Media Service</strong> <span data-lang-en="means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service." data-lang-ka="ნიშნავს ნებისმიერ სერვისს ან შინაარსს (მონაცემების, ინფორმაციის, პროდუქტების ან სერვისების ჩათვლით), რომელიც მოწოდებულია მესამე მხარის მიერ და რომელიც შეიძლება გამოჩნდეს, ჩაერთოს ან ხელმისაწვდომი გახდეს სერვისის მიერ.">means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Website" data-lang-ka="ვებსაიტი">Website</strong> <span data-lang-en="refers to Tornike tsiklauri - IT Support Portfolio, accessible from <a href=&quot;https://tornike.net&quot; rel=&quot;external nofollow noopener&quot; target=&quot;_blank&quot;>https://tornike.net</a>" data-lang-ka="ნიშნავს თორნიკე წიკლაური - IT მხარდაჭერის პორტფოლიოს, ხელმისაწვდომია <a href=&quot;https://tornike.net&quot; rel=&quot;external nofollow noopener&quot; target=&quot;_blank&quot;>https://tornike.net</a>-დან.">refers to Tornike tsiklauri - IT Support Portfolio, accessible from <a href="https://tornike.net" rel="external nofollow noopener" target="_blank">https://tornike.net</a></span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="You" data-lang-ka="თქვენ">You</strong> <span data-lang-en="means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable." data-lang-ka="ნიშნავს ინდივიდს, რომელიც წვდება ან იყენებს სერვისს, ან კომპანიას, ან სხვა იურიდიულ პირს, რომლის სახელითაც ასეთი ინდივიდი წვდება ან იყენებს სერვისს, როგორც ეს მოქმედებს.">means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</span></p>
+                </li>
+            </ul>
+
+            <h2 data-lang-en="Acknowledgment" data-lang-ka="აღიარება">Acknowledgment</h2>
+            <p data-lang-en="These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service." data-lang-ka="ეს არის წესები და პირობები, რომლებიც არეგულირებს ამ სერვისის გამოყენებას და შეთანხმება, რომელიც მოქმედებს თქვენსა და კომპანიას შორის. ეს წესები და პირობები ადგენს ყველა მომხმარებლის უფლებებსა და ვალდებულებებს სერვისის გამოყენებასთან დაკავშირებით."></p>
+            <p data-lang-en="Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service." data-lang-ka="თქვენი წვდომა და სერვისის გამოყენება განპირობებულია ამ წესებისა და პირობების თქვენი მიღებითა და შესრულებით. ეს წესები და პირობები ვრცელდება ყველა ვიზიტორზე, მომხმარებელზე და სხვა პირზე, რომლებიც წვდებიან ან იყენებენ სერვისს."></p>
+            <p data-lang-en="By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service." data-lang-ka="სერვისზე წვდომით ან მისი გამოყენებით თქვენ ეთანხმებით ამ წესებისა და პირობების დაცვას. თუ თქვენ არ ეთანხმებით ამ წესებისა და პირობების რომელიმე ნაწილს, მაშინ თქვენ არ შეგიძლიათ სერვისზე წვდომა."></p>
+            <p data-lang-en="You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service." data-lang-ka="თქვენ აცხადებთ, რომ ხართ 18 წელზე მეტის. კომპანია არ აძლევს 18 წლამდე ასაკის პირებს სერვისის გამოყენების უფლებას."></p>
+            <p data-lang-en="Your access to and use of the Service is also conditioned on Your acceptance of and compliance with the Privacy Policy of the Company. Our Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your personal information when You use the Application or the Website and tells You about Your privacy rights and how the law protects You. Please read Our Privacy Policy carefully before using Our Service." data-lang-ka="თქვენი წვდომა და სერვისის გამოყენება ასევე განპირობებულია კომპანიის კონფიდენციალურობის პოლიტიკის თქვენი მიღებითა და შესრულებით. ჩვენი კონფიდენციალურობის პოლიტიკა აღწერს ჩვენს პოლიტიკასა და პროცედურებს თქვენი პერსონალური ინფორმაციის შეგროვების, გამოყენებისა და გამჟღავნების შესახებ, როდესაც იყენებთ აპლიკაციას ან ვებსაიტს და გიყვებათ თქვენი კონფიდენციალურობის უფლებებისა და იმის შესახებ, თუ როგორ გიცავთ კანონი. გთხოვთ, ყურადღებით წაიკითხოთ ჩვენი კონფიდენციალურობის პოლიტიკა ჩვენი სერვისის გამოყენებამდე."></p>
+
+            <h2 data-lang-en="Links to Other Websites" data-lang-ka="ბმულები სხვა ვებსაიტებზე">Links to Other Websites</h2>
+            <p data-lang-en="Our Service may contain links to third-party web sites or services that are not owned or controlled by the Company." data-lang-ka="ჩვენი სერვისი შეიძლება შეიცავდეს ბმულებს მესამე მხარის ვებსაიტებზე ან სერვისებზე, რომლებიც არ არის კომპანიის საკუთრებაში ან კონტროლში."></p>
+            <p data-lang-en="The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services." data-lang-ka="კომპანია არ აკონტროლებს და არ იღებს პასუხისმგებლობას მესამე მხარის ვებსაიტების ან სერვისების შინაარსზე, კონფიდენციალურობის პოლიტიკაზე ან პრაქტიკაზე. თქვენ შემდგომში აღიარებთ და ეთანხმებით, რომ კომპანია არ იქნება პასუხისმგებელი, პირდაპირ ან არაპირდაპირ, ნებისმიერ ზიანზე ან ზარალზე, რომელიც გამოწვეულია ან სავარაუდოდ გამოწვეულია ასეთი შინაარსის, საქონლის ან სერვისების გამოყენებით ან მათზე დაყრდნობით, რომლებიც ხელმისაწვდომია ასეთი ვებსაიტების ან სერვისების მეშვეობით."></p>
+            <p data-lang-en="We strongly advise You to read the terms and conditions and privacy policies of any third-party web sites or services that You visit." data-lang-ka="ჩვენ მკაცრად გირჩევთ, წაიკითხოთ ნებისმიერი მესამე მხარის ვებსაიტის ან სერვისის წესები და პირობები და კონფიდენციალურობის პოლიტიკა, რომელსაც თქვენ სტუმრობთ."></p>
+
+            <h2 data-lang-en="Termination" data-lang-ka="შეწყვეტა">Termination</h2>
+            <p data-lang-en="We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions." data-lang-ka="ჩვენ შეიძლება შევწყვიტოთ ან შევაჩეროთ თქვენი წვდომა დაუყოვნებლივ, წინასწარი შეტყობინების ან პასუხისმგებლობის გარეშე, ნებისმიერი მიზეზით, მათ შორის, შეუზღუდავად, თუ თქვენ დაარღვევთ ამ წესებსა და პირობებს."></p>
+            <p data-lang-en="Upon termination, Your right to use the Service will cease immediately." data-lang-ka="შეწყვეტისთანავე, თქვენი უფლება სერვისის გამოყენებაზე დაუყოვნებლივ შეწყდება."></p>
+
+            <h2 data-lang-en="Limitation of Liability" data-lang-ka="პასუხისმგებლობის შეზღუდვა">Limitation of Liability</h2>
+            <p data-lang-en="Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased anything through the Service." data-lang-ka="მიუხედავად ნებისმიერი ზიანისა, რომელიც შეიძლება მოგადგეთ, კომპანიისა და მისი ნებისმიერი მომწოდებლის სრული პასუხისმგებლობა ამ პირობების ნებისმიერი დებულების მიხედვით და თქვენი ექსკლუზიური საშუალება ყოველივე ზემოთქმულისთვის შემოიფარგლება თქვენს მიერ სერვისის მეშვეობით რეალურად გადახდილი თანხით ან 100 აშშ დოლარით, თუ თქვენ არაფერი გიყიდიათ სერვისის მეშვეობით."></p>
+            <p data-lang-en="To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of this Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose." data-lang-ka="მოქმედი კანონმდებლობით დაშვებულ მაქსიმალურ ფარგლებში, არცერთ შემთხვევაში კომპანია ან მისი მომწოდებლები არ იქნებიან პასუხისმგებელი რაიმე განსაკუთრებულ, შემთხვევით, არაპირდაპირ ან შემდგომ ზიანზე (მათ შორის, მაგრამ არ შემოიფარგლება, მოგების დაკარგვის, მონაცემების ან სხვა ინფორმაციის დაკარგვის, ბიზნესის შეფერხების, პირადი დაზიანების, კონფიდენციალურობის დაკარგვის გამო, რომელიც წარმოიშვა სერვისის გამოყენებასთან ან გამოუყენებლობასთან, მესამე მხარის პროგრამულ უზრუნველყოფასთან და/ან მესამე მხარის აპარატურასთან, რომელიც გამოიყენება სერვისთან, ან სხვაგვარად ამ პირობების ნებისმიერ დებულებასთან დაკავშირებით), მაშინაც კი, თუ კომპანიას ან რომელიმე მომწოდებელს ეცნობა ასეთი ზიანის შესაძლებლობის შესახებ და მაშინაც კი, თუ საშუალება ვერ ასრულებს თავის არსებით მიზანს."></p>
+            <p data-lang-en="Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party's liability will be limited to the greatest extent permitted by law." data-lang-ka="ზოგიერთი შტატი არ იძლევა ნაგულისხმევი გარანტიების გამორიცხვას ან შემთხვევითი ან შემდგომი ზიანის პასუხისმგებლობის შეზღუდვას, რაც ნიშნავს, რომ ზემოაღნიშნული შეზღუდვებიდან ზოგიერთი შეიძლება არ გავრცელდეს თქვენზე. ამ შტატებში, თითოეული მხარის პასუხისმგებლობა შემოიფარგლება კანონით დაშვებული უდიდესი ზომით."></p>
+
+            <h2 data-lang-en="&quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer" data-lang-ka="&quot;როგორც არის&quot; და &quot;როგორც ხელმისაწვდომია&quot; უარი პასუხისმგებლობაზე">&quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer</h2>
+            <p data-lang-en="The Service is provided to You &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Service, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no representation of any kind that the Service will meet Your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected." data-lang-ka="სერვისი მოწოდებულია თქვენთვის &quot;როგორც არის&quot; და &quot;როგორც ხელმისაწვდომია&quot; და ყველა ხარვეზითა და დეფექტით ყოველგვარი გარანტიის გარეშე. მოქმედი კანონმდებლობით დაშვებულ მაქსიმალურ ფარგლებში, კომპანია, საკუთარი სახელით და მისი ფილიალების, მისი და მათი შესაბამისი ლიცენზიარებისა და სერვისის პროვაიდერების სახელით, ცალსახად უარს ამბობს ყველა გარანტიაზე, იქნება ეს გამოხატული, ნაგულისხმევი, კანონით დადგენილი თუ სხვაგვარი, სერვისთან დაკავშირებით, მათ შორის ვაჭრობისუნარიანობის, კონკრეტული მიზნისთვის ვარგისიანობის, საკუთრებისა და არადარღვევის ყველა ნაგულისხმევ გარანტიაზე, და გარანტიებზე, რომლებიც შეიძლება წარმოიშვას საქმიანი ურთიერთობის, შესრულების კურსის, გამოყენების ან სავაჭრო პრაქტიკის შედეგად. ზემოაღნიშნულის შეუზღუდავად, კომპანია არ იძლევა გარანტიას ან ვალდებულებას და არ აკეთებს რაიმე სახის განცხადებას, რომ სერვისი დააკმაყოფილებს თქვენს მოთხოვნებს, მიაღწევს რაიმე განზრახ შედეგს, იქნება თავსებადი ან იმუშავებს ნებისმიერ სხვა პროგრამულ უზრუნველყოფასთან, აპლიკაციებთან, სისტემებთან ან სერვისებთან, იმუშავებს შეუფერხებლად, დააკმაყოფილებს რაიმე შესრულების ან საიმედოობის სტანდარტებს ან იქნება უშეცდომო, ან რომ რაიმე შეცდომა ან დეფექტი შეიძლება ან იქნება გამოსწორებული."></p>
+            <p data-lang-en="Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components." data-lang-ka="ზემოაღნიშნულის შეუზღუდავად, არც კომპანია და არც კომპანიის რომელიმე პროვაიდერი არ იძლევა რაიმე სახის წარმომადგენლობას ან გარანტიას, გამოხატულს ან ნაგულისხმევს: (i) სერვისის მუშაობის ან ხელმისაწვდომობის, ან მასზე შეტანილი ინფორმაციის, შინაარსის და მასალების ან პროდუქტების შესახებ; (ii) რომ სერვისი იქნება შეუფერხებელი ან უშეცდომო; (iii) სერვისის საშუალებით მოწოდებული ნებისმიერი ინფორმაციის ან შინაარსის სიზუსტის, საიმედოობის ან აქტუალურობის შესახებ; ან (iv) რომ სერვისი, მისი სერვერები, შინაარსი, ან კომპანიისგან ან კომპანიის სახელით გაგზავნილი ელ.ფოსტა თავისუფალია ვირუსებისგან, სკრიპტებისგან, ტროიანული ცხენებისგან, ჭიებისგან, მავნე პროგრამებისგან, დროის ბომბებისგან ან სხვა მავნე კომპონენტებისგან."></p>
+            <p data-lang-en="Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to You. But in such a case the exclusions and limitations set forth in this section shall be applied to the greatest extent enforceable under applicable law." data-lang-ka="ზოგიერთი იურისდიქცია არ იძლევა გარანტიების გარკვეული ტიპების გამორიცხვას ან მომხმარებლის მოქმედი კანონით დადგენილი უფლებების შეზღუდვას, ამიტომ ზემოაღნიშნული გამორიცხვებიდან და შეზღუდვებიდან ზოგიერთი ან ყველა შეიძლება არ გავრცელდეს თქვენზე. მაგრამ ასეთ შემთხვევაში ამ განყოფილებაში მოცემული გამორიცხვები და შეზღუდვები გამოყენებული იქნება მოქმედი კანონმდებლობით დაშვებულ უდიდეს ფარგლებში."></p>
+
+            <h2 data-lang-en="Governing Law" data-lang-ka="მოქმედი კანონმდებლობა">Governing Law</h2>
+            <p data-lang-en="The laws of the Country, excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws." data-lang-ka="ქვეყნის კანონები, მისი კანონთა კონფლიქტის წესების გამოკლებით, არეგულირებს ამ პირობებს და თქვენს მიერ სერვისის გამოყენებას. თქვენი აპლიკაციის გამოყენება ასევე შეიძლება დაექვემდებაროს სხვა ადგილობრივ, სახელმწიფო, ეროვნულ ან საერთაშორისო კანონებს."></p>
+
+            <h2 data-lang-en="Disputes Resolution" data-lang-ka="დავების მოგვარება">Disputes Resolution</h2>
+            <p data-lang-en="If You have any concern or dispute about the Service, You agree to first try to resolve the dispute informally by contacting the Company." data-lang-ka="თუ თქვენ გაქვთ რაიმე შეშფოთება ან დავა სერვისთან დაკავშირებით, თქვენ ეთანხმებით, რომ ჯერ შეეცადოთ დავის არაფორმალურად მოგვარებას კომპანიასთან დაკავშირებით."></p>
+
+            <h2 data-lang-en="For European Union (EU) Users" data-lang-ka="ევროკავშირის (EU) მომხმარებლებისთვის">For European Union (EU) Users</h2>
+            <p data-lang-en="If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which You are resident." data-lang-ka="თუ თქვენ ხართ ევროკავშირის მომხმარებელი, თქვენ ისარგებლებთ იმ ქვეყნის კანონის ნებისმიერი სავალდებულო დებულებით, რომელშიც თქვენ ცხოვრობთ."></p>
+
+            <h2 data-lang-en="United States Legal Compliance" data-lang-ka="შეერთებული შტატების იურიდიული შესაბამისობა">United States Legal Compliance</h2>
+            <p data-lang-en="You represent and warrant that (i) You are not located in a country that is subject to the United States government embargo, or that has been designated by the United States government as a &quot;terrorist supporting&quot; country, and (ii) You are not listed on any United States government list of prohibited or restricted parties." data-lang-ka="თქვენ აცხადებთ და გარანტიას იძლევით, რომ (i) თქვენ არ იმყოფებით ქვეყანაში, რომელიც ექვემდებარება შეერთებული შტატების მთავრობის ემბარგოს, ან რომელიც შეერთებული შტატების მთავრობის მიერ არის დასახელებული, როგორც &quot;ტერორიზმის მხარდამჭერი&quot; ქვეყანა, და (ii) თქვენ არ ხართ შეტანილი შეერთებული შტატების მთავრობის მიერ აკრძალული ან შეზღუდული მხარეების სიაში."></p>
+
+            <h2 data-lang-en="Severability and Waiver" data-lang-ka="განცალკევებადობა და უარის თქმა">Severability and Waiver</h2>
+            <h3 data-lang-en="Severability" data-lang-ka="განცალკევებადობა">Severability</h3>
+            <p data-lang-en="If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect." data-lang-ka="თუ ამ პირობების რომელიმე დებულება აღიარებულია, როგორც არააღსრულებადი ან არასწორი, ასეთი დებულება შეიცვლება და ინტერპრეტირებული იქნება ისე, რომ მიაღწიოს ამ დებულების მიზნებს მოქმედი კანონმდებლობის ფარგლებში მაქსიმალურად და დარჩენილი დებულებები ძალაში დარჩება."></p>
+            <h3 data-lang-en="Waiver" data-lang-ka="უარის თქმა">Waiver</h3>
+            <p data-lang-en="Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not affect a party's ability to exercise such right or require such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent breach." data-lang-ka="გარდა აქ მოცემულისა, უფლების განხორციელების ან ამ პირობებით ვალდებულების შესრულების მოთხოვნის შეუსრულებლობა არ იმოქმედებს მხარის შესაძლებლობაზე, განახორციელოს ასეთი უფლება ან მოითხოვოს ასეთი შესრულება ნებისმიერ შემდგომ დროს, არც დარღვევაზე უარის თქმა არ წარმოადგენს ნებისმიერ შემდგომ დარღვევაზე უარის თქმას."></p>
+
+            <h2 data-lang-en="Translation Interpretation" data-lang-ka="თარგმანის ინტერპრეტაცია">Translation Interpretation</h2>
+            <p data-lang-en="These Terms and Conditions may have been translated if We have made them available to You on our Service. You agree that the original English text shall prevail in the case of a dispute." data-lang-ka="ეს წესები და პირობები შესაძლოა თარგმნილი იყოს, თუ ჩვენ ისინი თქვენთვის ხელმისაწვდომი გავხადეთ ჩვენს სერვისზე. თქვენ ეთანხმებით, რომ დავის შემთხვევაში უპირატესობა მიენიჭება ორიგინალ ინგლისურ ტექსტს."></p>
+
+            <h2 data-lang-en="Changes to These Terms and Conditions" data-lang-ka="ცვლილებები ამ წესებსა და პირობებში">Changes to These Terms and Conditions</h2>
+            <p data-lang-en="We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion." data-lang-ka="ჩვენ ვიტოვებთ უფლებას, ჩვენი შეხედულებისამებრ, ნებისმიერ დროს შევცვალოთ ან შევცვალოთ ეს პირობები. თუ ცვლილება არსებითია, ჩვენ გონივრულ ძალისხმევას გამოვიყენებთ, რათა მივაწოდოთ მინიმუმ 30 დღით ადრე შეტყობინება ნებისმიერი ახალი პირობების ძალაში შესვლამდე. რა წარმოადგენს არსებით ცვლილებას, განისაზღვრება ჩვენი შეხედულებისამებრ."></p>
+            <p data-lang-en="By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the website and the Service." data-lang-ka="ჩვენი სერვისის წვდომის ან გამოყენების გაგრძელებით ამ ცვლილებების ძალაში შესვლის შემდეგ, თქვენ ეთანხმებით შესწორებული პირობების დაცვას. თუ თქვენ არ ეთანხმებით ახალ პირობებს, მთლიანად ან ნაწილობრივ, გთხოვთ, შეწყვიტოთ ვებსაიტისა და სერვისის გამოყენება."></p>
+
+            <h2 data-lang-en="Contact Us" data-lang-ka="დაგვიკავშირდით">Contact Us</h2>
+            <p data-lang-en="If you have any questions about these Terms and Conditions, You can contact us:" data-lang-ka="თუ თქვენ გაქვთ რაიმე შეკითხვა ამ წესებისა და პირობების შესახებ, შეგიძლიათ დაგვიკავშირდეთ:"></p>
+            <ul>
+                <li><span data-lang-en="By email: contact@tornike.net" data-lang-ka="ელ.ფოსტით: contact@tornike.net">By email: contact@tornike.net</span></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">
+                &copy; <span id="current-year"></span> <span data-lang-en="Tornike Tsiklauri" data-lang-ka="თორნიკე წიკლაური">Tornike Tsiklauri</span>. <span data-lang-en="All rights reserved." data-lang-ka="ყველა უფლება დაცულია.">All rights reserved.</span>
+            </p>
+            <p class="mb-4 text-sm">
+                <a href="privacy-policy.html" id="privacy-policy-link" class="footer-link-item">
+                    <span data-lang-en="Privacy Policy" data-lang-ka="კონფიდენციალურობის პოლიტიკა">Privacy Policy</span>
+                </a>
+                <span data-lang-en=" | " data-lang-ka=" | "> | </span>
+                <a href="terms-conditions.html" id="terms-conditions-link" class="footer-link-item">
+                    <span data-lang-en="Terms and Conditions" data-lang-ka="წესები და პირობები">Terms and Conditions</span>
+                </a>
+            </p>
+            <button class="ai-enhanced-btn">
+                <i class="fas fa-magic"></i>
+                <span>Enhanced by AI</span>
+            </button>
+
+            <style>
+                .ai-enhanced-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0.7rem 1.3rem;
+                    border-radius: 50px;
+                    font-family: 'Inter', sans-serif; /* Use Inter for consistency */
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    color: white;
+                    background: linear-gradient(135deg, #6e48aa, #4776e6);
+                    box-shadow: 0 4px 15px rgba(71, 118, 230, 0.3);
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    overflow: hidden;
+                    margin-top: 1rem; /* Add some space above the button */
+                }
+                
+                .ai-enhanced-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(71, 118, 230, 0.4);
+                }
+                
+                .ai-enhanced-btn:active {
+                    transform: translateY(0);
+                }
+                
+                .ai-enhanced-btn i {
+                    margin-right: 0.6rem;
+                    font-size: 1rem;
+                }
+                
+                /* Magic wand animation */
+                @keyframes magic-sparkle {
+                    0% { transform: rotate(0deg); }
+                    25% { transform: rotate(10deg); }
+                    50% { transform: rotate(0deg); }
+                    75% { transform: rotate(-10deg); }
+                    100% { transform: rotate(0deg); }
+                }
+                
+                .ai-enhanced-btn:hover i {
+                    animation: magic-sparkle 0.8s ease;
+                }
+                
+                /* Glow effect */
+                .ai-enhanced-btn::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, 
+                      rgba(255,255,255,0) 0%, 
+                      rgba(255,255,255,0.15) 50%, 
+                      rgba(255,255,255,0) 100%);
+                    transform: translateX(-100%);
+                    transition: transform 0.6s ease;
+                }
+                
+                .ai-enhanced-btn:hover::after {
+                    transform: translateX(100%);
+                }
+            </style>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links (adjusted for current page)
+        document.querySelectorAll('a[href^="index.html#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').split('#')[1];
+                window.location.href = 'index.html#' + targetId; // Redirect to index and then scroll
+            });
+        });
+
+        // Toggle mobile navigation menu
+        document.getElementById('navbar-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-navbar-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Language Switcher Logic ---
+        const langEnBtn = document.getElementById('lang-en');
+        const langKaBtn = document.getElementById('lang-ka');
+        const htmlElement = document.documentElement; // The <html> tag
+
+        // Define the links for each language for Privacy Policy and Terms & Conditions
+        const dynamicLinksConfig = {
+            'privacy-policy-link': {
+                en: {
+                    url: "privacy-policy.html", // Link to English Privacy Policy
+                    text: "Privacy Policy"
+                },
+                ka: {
+                    url: "ka/privacy-policy.html", // Link to Georgian Privacy Policy
+                    text: "კონფიდენციალურობის პოლიტიკა"
+                }
+            },
+            'terms-conditions-link': {
+                en: {
+                    url: "terms-conditions.html", // Link to English Terms and Conditions
+                    text: "Terms and Conditions"
+                },
+                ka: {
+                    url: "ka/terms-conditions.html", // Link to Georgian Terms and Conditions
+                    text: "წესები და პირობები"
+                }
+            }
+        };
+
+        // Function to set the language
+        function setLanguage(lang) {
+            // Update lang attribute on html tag
+            htmlElement.lang = lang;
+
+            // Update text content based on data-lang attributes
+            document.querySelectorAll('[data-lang-en], [data-lang-ka]').forEach(element => {
+                // Check if the element contains HTML, use innerHTML, otherwise textContent
+                if (element.dataset.langEn && element.dataset.langKa && (element.dataset.langEn.includes('<') || element.dataset.langKa.includes('<'))) {
+                    element.innerHTML = lang === 'en' ? element.dataset.langEn : element.dataset.langKa;
+                } else if (element.dataset.langEn && element.dataset.langKa) {
+                    element.textContent = lang === 'en' ? element.dataset.langEn : element.dataset.langKa;
+                }
+            });
+
+            // Update placeholder attributes for input fields (if any on this page)
+            document.querySelectorAll('[data-lang-en-placeholder]').forEach(element => {
+                element.placeholder = lang === 'en' ? element.dataset.langEnPlaceholder : element.dataset.langKaPlaceholder;
+            });
+
+            // Update document title
+            const titleElement = document.querySelector('title');
+            if (titleElement) {
+                titleElement.textContent = titleElement.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+            }
+
+            // Update dynamic links (Privacy Policy, Terms & Conditions)
+            for (const linkId in dynamicLinksConfig) {
+                const linkElement = document.getElementById(linkId);
+                if (linkElement) {
+                    linkElement.href = dynamicLinksConfig[linkId][lang].url;
+                    // Update the span inside the link, or the link's text directly if no span
+                    const linkTextSpan = linkElement.querySelector('span');
+                    if (linkTextSpan) {
+                        linkTextSpan.textContent = dynamicLinksConfig[linkId][lang].text;
+                    } else {
+                        linkElement.textContent = dynamicLinksConfig[linkId][lang].text;
+                    }
+                }
+            }
+
+            // Set active state for language buttons
+            document.querySelectorAll('.language-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            if (lang === 'en') {
+                langEnBtn.classList.add('active');
+            } else {
+                langKaBtn.classList.add('active');
+            }
+
+            // Store preferred language in local storage
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Event listeners for language buttons
+        langEnBtn.addEventListener('click', () => setLanguage('en'));
+        langKaBtn.addEventListener('click', () => setLanguage('ka'));
+
+        // Load preferred language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'en'; // Default to English
+            setLanguage(savedLang);
+        });
+
+        // No contact form on this page, so no form submission logic needed.
+        
+    </script>
+<script src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" xintegrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95ff9a7dba3ed0c4","version":"2025.6.2","r":1,"token":"3ac330637fc64a29bca1f0e17e5d7372","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+</body>
+</html>
