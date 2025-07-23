@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PLVNF7C8');</script>
+<!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z12CGSGHSZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z12CGSGHSZ');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-en="Privacy Policy - Tornike tsiklauri" data-lang-ka="კონფიდენციალურობის პოლიტიკა - თორნიკე წიკლაური">Privacy Policy - Tornike tsiklauri</title>
+    <link rel="icon" type="image/x-icon" href="https://files.tornike.net/favicon_tornike-net/favicon.ico">
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://files.tornike.net/favicon_tornike-net/apple-touch-icon.png">
+
+<link rel="icon" type="image/png" sizes="192x192" href="https://files.tornike.net/favicon_tornike-net/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="https://files.tornike.net/favicon_tornike-net/android-chrome-512x512.png">
+
+<link rel="manifest" href="https://files.tornike.net/favicon_tornike-net/site.webmanifest">
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-TileColor" content="#007bff">
+<meta name="msapplication-config" content="/browserconfig.xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a8a8a8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        /* Hero section specific styling for background image */
+        .hero-background {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://files.tornike.net/gradient-dark-blue-futuristic-digital-grid-background.jpg') center center / cover no-repeat;
+            background-size: cover; /* Ensure background covers the area */
+            background-position: center; /* Center the background image */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 2rem; /* Add some padding for smaller screens */
+        }
+
+        /* Active navigation link styling */
+        .nav-link.active {
+            border-bottom: 2px solid #3B82F6; /* Tailwind's blue-500 */
+        }
+        /* Language button active state */
+        .language-button.active {
+            box-shadow: 0 0 0 2px #3B82F6; /* Blue ring for active language */
+        }
+        /* Form message styling */
+        .form-message {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .form-message.success {
+            background-color: #d1fae5; /* Tailwind green-100 */
+            color: #065f46; /* Tailwind green-800 */
+        }
+        .form-message.error {
+            background-color: #fee2e2; /* Tailwind red-100 */
+            color: #991b1b; /* Tailwind red-800 */
+        }
+
+        /* Custom styles for skill progress bars */
+        .skill-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 9999px; /* Full rounded */
+            height: 8px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        .skill-bar-fill {
+            background-color: #3B82F6; /* Tailwind blue-500 */
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Magic Icon and Message Styles */
+        #magicIcon {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background-color: #3B82F6; /* blue-600 */
+            color: white;
+            border-radius: 9999px; /* fully rounded */
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem; /* Adjust icon size */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 99; /* Below modal, above other content */
+        }
+        #magicIcon:hover {
+            background-color: #2563EB; /* blue-700 */
+            transform: scale(1.05);
+        }
+
+        #ephemeralMessage {
+            position: fixed;
+            bottom: 6rem; /* Above the magic icon */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            z-index: 98; /* Below magic icon */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        #ephemeralMessage.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Styles for dynamic links to ensure they are visible and clickable */
+        .footer-link-item {
+            color: #ffffff; /* White color for footer links */
+            text-decoration: underline; /* Underline for links */
+            transition: color 0.3s ease;
+        }
+        .footer-link-item:hover {
+            color: #bfdbfe; /* Light blue on hover (Tailwind blue-200) */
+        }
+
+        /* Specific styles for policy content */
+        .policy-content {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 2rem auto;
+            line-height: 1.6;
+            color: #333;
+        }
+        .policy-content h1, .policy-content h2, .policy-content h3, .policy-content h4 {
+            color: #1a202c; /* Darker text for headings */
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+        .policy-content h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .policy-content h2 {
+            font-size: 2rem;
+        }
+        .policy-content h3 {
+            font-size: 1.5rem;
+        }
+        .policy-content h4 {
+            font-size: 1.25rem;
+        }
+        .policy-content p {
+            margin-bottom: 1rem;
+        }
+        .policy-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .policy-content ol {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .policy-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 pt-20"> <!-- Added pt-20 to prevent content from hiding behind fixed nav -->
+
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-all duration-300 ease-in-out py-4" id="navbar">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-800 transition duration-300" data-lang-en="Tornike tsiklauri" data-lang-ka="თორნიკე წიკლაური">Tornike tsiklauri</a>
+            <div class="flex items-center space-x-4">
+                <button id="lang-en" class="language-button flex items-center p-1.5 rounded-full hover:bg-gray-100 transition duration-200" aria-label="Switch to English">
+                    <img src="https://flagsapi.com/US/flat/32.png" alt="English Flag" class="w-8 h-auto rounded-sm shadow-sm">
+                </button>
+                <button id="lang-ka" class="language-button flex items-center p-1.5 rounded-full hover:bg-gray-100 transition duration-200" aria-label="Switch to Georgian">
+                    <img src="https://flagsapi.com/GE/flat/32.png" alt="Georgian Flag" class="w-8 h-auto rounded-sm shadow-sm">
+                </button>
+
+                <button class="lg:hidden text-gray-700 hover:text-gray-900 focus:outline-none" id="navbar-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="hidden lg:flex space-x-6" id="navbar-menu">
+                <a href="index.html#home" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Home" data-lang-ka="მთავარი">Home</a>
+                <a href="index.html#about" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="About" data-lang-ka="ჩემს შესახებ">About</a>
+                <a href="index.html#skills" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Skills" data-lang-ka="უნარები">Skills</a>
+                <a href="index.html#portfolio" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Portfolio" data-lang-ka="პორტფოლიო">Portfolio</a>
+                <a href="index.html#contact" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Contact" data-lang-ka="კონტაქტი">Contact</a>
+                <a href="https://blog.tornike.net" class="nav-link text-lg font-medium text-gray-700 hover:text-blue-600 transition duration-300 px-3 py-2 rounded-md" data-lang-en="Blog" data-lang-ka="ბლოგი">Blog</a>
+
+            </div>
+        </div>
+        <div class="hidden lg:hidden bg-white py-2" id="mobile-navbar-menu">
+            <a href="index.html#home" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Home" data-lang-ka="მთავარი">Home</a>
+            <a href="index.html#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="About" data-lang-ka="ჩემს შესახებ">About</a>
+            <a href="index.html#skills" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Skills" data-lang-ka="უნარები">Skills</a>
+            <a href="index.html#portfolio" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Portfolio" data-lang-ka="პორტფელი">Portfolio</a>
+            <a href="index.html#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-lang-en="Contact" data-lang-ka="კონტაქტი">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="policy-content">
+            <h1 data-lang-en="Privacy Policy" data-lang-ka="კონფიდენციალურობის პოლიტიკა">Privacy Policy</h1>
+            <p data-lang-en="Last updated: July 23, 2025" data-lang-ka="ბოლოს განახლდა: 2025 წლის 23 ივლისი">Last updated: July 23, 2025</p>
+            <p data-lang-en="This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You." data-lang-ka="ეს კონფიდენციალურობის პოლიტიკა აღწერს ჩვენს პოლიტიკასა და პროცედურებს თქვენი ინფორმაციის შეგროვების, გამოყენებისა და გამჟღავნების შესახებ, როდესაც იყენებთ სერვისს და გიყვებათ თქვენი კონფიდენციალურობის უფლებებისა და იმის შესახებ, თუ როგორ გიცავთ კანონი."></p>
+            <p data-lang-en="We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the <a href=&quot;https://tornike.net/privacy-policy-generator/&quot; target=&quot;_blank&quot;>Privacy Policy Generator</a>." data-lang-ka="ჩვენ ვიყენებთ თქვენს პერსონალურ მონაცემებს სერვისის უზრუნველსაყოფად და გასაუმჯობესებლად. სერვისის გამოყენებით, თქვენ ეთანხმებით ინფორმაციის შეგროვებასა და გამოყენებას ამ კონფიდენციალურობის პოლიტიკის შესაბამისად. ეს კონფიდენციალურობის პოლიტიკა შექმნილია <a href=&quot;https://tornike.net/privacy-policy-generator/&quot; target=&quot;_blank&quot;>კონფიდენციალურობის პოლიტიკის გენერატორის</a> დახმარებით."></p>
+
+            <h2 data-lang-en="Interpretation and Definitions" data-lang-ka="ინტერპრეტაცია და განმარტებები">Interpretation and Definitions</h2>
+            <h3 data-lang-en="Interpretation" data-lang-ka="ინტერპრეტაცია">Interpretation</h3>
+            <p data-lang-en="The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural." data-lang-ka="სიტყვებს, რომელთა საწყისი ასო კაპიტალიზებულია, აქვთ მნიშვნელობები, რომლებიც განსაზღვრულია შემდეგი პირობებით. შემდეგ განმარტებებს ექნებათ იგივე მნიშვნელობა, მიუხედავად იმისა, გამოჩნდებიან ისინი მხოლობით რიცხვში თუ მრავლობითში."></p>
+
+            <h3 data-lang-en="Definitions" data-lang-ka="განმარტებები">Definitions</h3>
+            <p data-lang-en="For the purposes of this Privacy Policy:" data-lang-ka="ამ კონფიდენციალურობის პოლიტიკის მიზნებისთვის:"></p>
+            <ul>
+                <li>
+                    <p><strong data-lang-en="Account" data-lang-ka="ანგარიში">Account</strong> <span data-lang-en="means a unique account created for You to access our Service or parts of our Service." data-lang-ka="ნიშნავს უნიკალურ ანგარიშს, რომელიც შექმნილია თქვენთვის ჩვენს სერვისზე ან ჩვენი სერვისის ნაწილებზე წვდომისთვის.">means a unique account created for You to access our Service or parts of our Service.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Affiliate" data-lang-ka="ფილიალი">Affiliate</strong> <span data-lang-en="means an entity that controls, is controlled by or is under common control with a party, where &quot;control&quot; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority." data-lang-ka="ნიშნავს სუბიექტს, რომელიც აკონტროლებს, კონტროლდება ან იმყოფება საერთო კონტროლის ქვეშ მხარესთან, სადაც &quot;კონტროლი&quot; ნიშნავს აქციების, კაპიტალის წილის ან სხვა ფასიანი ქაღალდების 50%-ზე მეტის მფლობელობას, რომლებსაც აქვთ ხმის მიცემის უფლება დირექტორების ან სხვა მმართველი ორგანოს არჩევისთვის.">means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Company" data-lang-ka="კომპანია">Company</strong> <span data-lang-en="(referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to Tornike tsiklauri - IT Support Portfolio." data-lang-ka="(ამ შეთანხმებაში მოხსენიებული როგორც &quot;კომპანია&quot;, &quot;ჩვენ&quot;, &quot;ჩვენი&quot;) ნიშნავს თორნიკე წიკლაური - IT მხარდაჭერის პორტფოლიოს.">(referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Tornike tsiklauri - IT Support Portfolio.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Cookies" data-lang-ka="ქუქი-ფაილები">Cookies</strong> <span data-lang-en="are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses." data-lang-ka="არის პატარა ფაილები, რომლებიც განთავსებულია თქვენს კომპიუტერზე, მობილურ მოწყობილობაზე ან ნებისმიერ სხვა მოწყობილობაზე ვებსაიტის მიერ, რომელიც შეიცავს თქვენი დათვალიერების ისტორიის დეტალებს ამ ვებსაიტზე მრავალ სხვა გამოყენებასთან ერთად.">are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Country" data-lang-ka="ქვეყანა">Country</strong> <span data-lang-en="refers to: Georgia" data-lang-ka="ნიშნავს: საქართველო">refers to: Georgia</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Device" data-lang-ka="მოწყობილობა">Device</strong> <span data-lang-en="means any device that can access the Service such as a computer, a cellphone or a digital tablet." data-lang-ka="ნიშნავს ნებისმიერ მოწყობილობას, რომელსაც შეუძლია სერვისზე წვდომა, როგორიცაა კომპიუტერი, მობილური ტელეფონი ან ციფრული ტაბლეტი.">means any device that can access the Service such as a computer, a cellphone or a digital tablet.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Personal Data" data-lang-ka="პერსონალური მონაცემები">Personal Data</strong> <span data-lang-en="is any information that relates to an identified or identifiable individual." data-lang-ka="არის ნებისმიერი ინფორმაცია, რომელიც ეხება იდენტიფიცირებულ ან იდენტიფიცირებად ინდივიდს.">is any information that relates to an identified or identifiable individual.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Service" data-lang-ka="სერვისი">Service</strong> <span data-lang-en="refers to the Website." data-lang-ka="ნიშნავს ვებსაიტს.">refers to the Website.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Service Provider" data-lang-ka="სერვისის პროვაიდერი">Service Provider</strong> <span data-lang-en="means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used." data-lang-ka="ნიშნავს ნებისმიერ ფიზიკურ ან იურიდიულ პირს, რომელიც ამუშავებს მონაცემებს კომპანიის სახელით. ის ეხება მესამე მხარის კომპანიებს ან პირებს, რომლებიც დასაქმებულნი არიან კომპანიის მიერ სერვისის გასაადვილებლად, სერვისის კომპანიის სახელით უზრუნველსაყოფად, სერვისთან დაკავშირებული სერვისების შესასრულებლად ან კომპანიის დასახმარებლად სერვისის გამოყენების ანალიზში.">means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Usage Data" data-lang-ka="გამოყენების მონაცემები">Usage Data</strong> <span data-lang-en="refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit)." data-lang-ka="ეხება ავტომატურად შეგროვებულ მონაცემებს, რომლებიც წარმოიქმნება სერვისის გამოყენებით ან თავად სერვისის ინფრასტრუქტურიდან (მაგალითად, გვერდის მონახულების ხანგრძლივობა).">refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Website" data-lang-ka="ვებსაიტი">Website</strong> <span data-lang-en="refers to Tornike tsiklauri - IT Support Portfolio, accessible from <a href=&quot;https://tornike.net&quot; rel=&quot;external nofollow noopener&quot; target=&quot;_blank&quot;>https://tornike.net</a>" data-lang-ka="ნიშნავს თორნიკე წიკლაური - IT მხარდაჭერის პორტფოლიოს, ხელმისაწვდომია <a href=&quot;https://tornike.net&quot; rel=&quot;external nofollow noopener&quot; target=&quot;_blank&quot;>https://tornike.net</a>-დან.">refers to Tornike tsiklauri - IT Support Portfolio, accessible from <a href="https://tornike.net" rel="external nofollow noopener" target="_blank">https://tornike.net</a></span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="You" data-lang-ka="თქვენ">You</strong> <span data-lang-en="means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable." data-lang-ka="ნიშნავს ინდივიდს, რომელიც წვდება ან იყენებს სერვისს, ან კომპანიას, ან სხვა იურიდიულ პირს, რომლის სახელითაც ასეთი ინდივიდი წვდება ან იყენებს სერვისს, როგორც ეს მოქმედებს.">means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</span></p>
+                </li>
+            </ul>
+
+            <h2 data-lang-en="Collecting and Using Your Personal Data" data-lang-ka="თქვენი პერსონალური მონაცემების შეგროვება და გამოყენება">Collecting and Using Your Personal Data</h2>
+            <h3 data-lang-en="Types of Data Collected" data-lang-ka="შეგროვებული მონაცემების ტიპები">Types of Data Collected</h3>
+            <h4 data-lang-en="Personal Data" data-lang-ka="პერსონალური მონაცემები">Personal Data</h4>
+            <p data-lang-en="While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:" data-lang-ka="ჩვენი სერვისის გამოყენებისას, ჩვენ შეიძლება გთხოვოთ მოგვაწოდოთ გარკვეული პერსონალურად იდენტიფიცირებადი ინფორმაცია, რომელიც შეიძლება გამოყენებულ იქნას თქვენთან დასაკავშირებლად ან თქვენი იდენტიფიცირებისთვის. პერსონალურად იდენტიფიცირებადი ინფორმაცია შეიძლება მოიცავდეს, მაგრამ არ შემოიფარგლება შემდეგით:"></p>
+            <ul>
+                <li>
+                    <p><span data-lang-en="Email address" data-lang-ka="ელ.ფოსტის მისამართი">Email address</span></p>
+                </li>
+                <li>
+                    <p><span data-lang-en="First name and last name" data-lang-ka="სახელი და გვარი">First name and last name</span></p>
+                </li>
+                <li>
+                    <p><span data-lang-en="Phone number" data-lang-ka="ტელეფონის ნომერი">Phone number</span></p>
+                </li>
+                <li>
+                    <p><span data-lang-en="Address, State, Province, ZIP/Postal code, City" data-lang-ka="მისამართი, შტატი, პროვინცია, საფოსტო კოდი, ქალაქი">Address, State, Province, ZIP/Postal code, City</span></p>
+                </li>
+                <li>
+                    <p><span data-lang-en="Usage Data" data-lang-ka="გამოყენების მონაცემები">Usage Data</span></p>
+                </li>
+            </ul>
+
+            <h4 data-lang-en="Usage Data" data-lang-ka="გამოყენების მონაცემები">Usage Data</h4>
+            <p data-lang-en="Usage Data is collected automatically when using the Service." data-lang-ka="გამოყენების მონაცემები ავტომატურად გროვდება სერვისის გამოყენებისას."></p>
+            <p data-lang-en="Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data." data-lang-ka="გამოყენების მონაცემები შეიძლება მოიცავდეს ინფორმაციას, როგორიცაა თქვენი მოწყობილობის ინტერნეტ პროტოკოლის მისამართი (მაგ. IP მისამართი), ბრაუზერის ტიპი, ბრაუზერის ვერსია, ჩვენი სერვისის გვერდები, რომლებსაც თქვენ სტუმრობთ, თქვენი ვიზიტის დრო და თარიღი, ამ გვერდებზე გატარებული დრო, უნიკალური მოწყობილობის იდენტიფიკატორები და სხვა დიაგნოსტიკური მონაცემები."></p>
+            <p data-lang-en="When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data." data-lang-ka="როდესაც თქვენ წვდებით სერვისს მობილური მოწყობილობის საშუალებით, ჩვენ შეიძლება ავტომატურად შევაგროვოთ გარკვეული ინფორმაცია, მათ შორის, მაგრამ არ შემოიფარგლება შემდეგით: მობილური მოწყობილობის ტიპი, რომელსაც იყენებთ, თქვენი მობილური მოწყობილობის უნიკალური ID, თქვენი მობილური მოწყობილობის IP მისამართი, თქვენი მობილური ოპერაციული სისტემა, მობილური ინტერნეტ ბრაუზერის ტიპი, რომელსაც იყენებთ, უნიკალური მოწყობილობის იდენტიფიკატორები და სხვა დიაგნოსტიკური მონაცემები."></p>
+            <p data-lang-en="We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device." data-lang-ka="ჩვენ ასევე შეიძლება შევაგროვოთ ინფორმაცია, რომელსაც თქვენი ბრაუზერი აგზავნის ყოველთვის, როდესაც თქვენ სტუმრობთ ჩვენს სერვისს ან როდესაც თქვენ წვდებით სერვისს მობილური მოწყობილობის საშუალებით."></p>
+
+            <h4 data-lang-en="Tracking Technologies and Cookies" data-lang-ka="თვალთვალის ტექნოლოგიები და ქუქი-ფაილები">Tracking Technologies and Cookies</h4>
+            <p data-lang-en="We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service. The technologies We use may include:" data-lang-ka="ჩვენ ვიყენებთ ქუქი-ფაილებს და მსგავს თვალთვალის ტექნოლოგიებს ჩვენს სერვისზე აქტივობის დასაკვირვებლად და გარკვეული ინფორმაციის შესანახად. გამოყენებული თვალთვალის ტექნოლოგიებია შუქურები, ტეგები და სკრიპტები ინფორმაციის შესაგროვებლად და დასაკვირვებლად და ჩვენი სერვისის გასაუმჯობესებლად და ანალიზისთვის. ტექნოლოგიები, რომლებსაც ჩვენ ვიყენებთ, შეიძლება მოიცავდეს:"></p>
+            <ul>
+                <li><strong data-lang-en="Cookies or Browser Cookies." data-lang-ka="ქუქი-ფაილები ან ბრაუზერის ქუქი-ფაილები.">Cookies or Browser Cookies.</strong> <span data-lang-en="A cookie is a small file placed on Your Device. You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of our Service. Unless you have adjusted Your browser setting so that it will refuse Cookies, our Service may use Cookies." data-lang-ka="ქუქი-ფაილი არის პატარა ფაილი, რომელიც განთავსებულია თქვენს მოწყობილობაზე. თქვენ შეგიძლიათ დაავალოთ თქვენს ბრაუზერს უარი თქვას ყველა ქუქი-ფაილზე ან მიუთითოს, როდის იგზავნება ქუქი-ფაილი. თუმცა, თუ თქვენ არ მიიღებთ ქუქი-ფაილებს, შესაძლოა ვერ შეძლოთ ჩვენი სერვისის ზოგიერთი ნაწილის გამოყენება. თუ თქვენ არ შეცვალეთ თქვენი ბრაუზერის პარამეტრები ისე, რომ ის უარს იტყვის ქუქი-ფაილებზე, ჩვენმა სერვისმა შეიძლება გამოიყენოს ქუქი-ფაილები.">A cookie is a small file placed on Your Device. You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of our Service. Unless you have adjusted Your browser setting so that it will refuse Cookies, our Service may use Cookies.</span></li>
+                <li><strong data-lang-en="Web Beacons." data-lang-ka="ვებ შუქურები.">Web Beacons.</strong> <span data-lang-en="Certain sections of our Service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity)." data-lang-ka="ჩვენი სერვისის გარკვეული სექციები და ჩვენი ელ.ფოსტა შეიძლება შეიცავდეს მცირე ელექტრონულ ფაილებს, რომლებიც ცნობილია როგორც ვებ შუქურები (ასევე მოხსენიებული როგორც გამჭვირვალე gif-ები, პიქსელ ტეგები და ერთპიქსელიანი gif-ები), რომლებიც კომპანიას საშუალებას აძლევს, მაგალითად, დაითვალოს მომხმარებლები, რომლებმაც მოინახულეს ეს გვერდები ან გახსნეს ელ.ფოსტა და სხვა დაკავშირებული ვებსაიტის სტატისტიკისთვის (მაგალითად, გარკვეული სექციის პოპულარობის ჩაწერა და სისტემისა და სერვერის მთლიანობის შემოწმება).">Certain sections of our Service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity).</span></li>
+            </ul>
+            <p data-lang-en="Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser. You can learn more about cookies on <a href=&quot;https://tornike.net/blog/cookies/#What_Are_Cookies&quot; target=&quot;_blank&quot;>TermsFeed website</a> article." data-lang-ka="ქუქი-ფაილები შეიძლება იყოს &quot;მუდმივი&quot; ან &quot;სესიის&quot; ქუქი-ფაილები. მუდმივი ქუქი-ფაილები რჩება თქვენს პერსონალურ კომპიუტერზე ან მობილურ მოწყობილობაზე, როდესაც ხაზგარეშე ხართ, ხოლო სესიის ქუქი-ფაილები იშლება, როგორც კი დახურავთ თქვენს ვებ ბრაუზერს. შეგიძლიათ გაიგოთ მეტი ქუქი-ფაილების შესახებ <a href=&quot;https://tornike.net/#; target=&quot;_blank&quot;>TermsFeed ვებსაიტის</a> სტატიაში."></p>
+
+            <p data-lang-en="We use both Session and Persistent Cookies for the purposes set out below:" data-lang-ka="ჩვენ ვიყენებთ როგორც სესიის, ასევე მუდმივ ქუქი-ფაილებს ქვემოთ მოცემული მიზნებისთვის:"></p>
+            <ul>
+                <li>
+                    <p><strong data-lang-en="Necessary / Essential Cookies" data-lang-ka="აუცილებელი / ძირითადი ქუქი-ფაილები">Necessary / Essential Cookies</strong></p>
+                    <p><span data-lang-en="Type: Session Cookies" data-lang-ka="ტიპი: სესიის ქუქი-ფაილები">Type: Session Cookies</span></p>
+                    <p><span data-lang-en="Administered by: Us" data-lang-ka="მართავს: ჩვენ">Administered by: Us</span></p>
+                    <p><span data-lang-en="Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services." data-lang-ka="მიზანი: ეს ქუქი-ფაილები აუცილებელია თქვენთვის ვებსაიტის საშუალებით ხელმისაწვდომი სერვისების უზრუნველსაყოფად და მისი ზოგიერთი ფუნქციის გამოყენების გასააქტიურებლად. ისინი ხელს უწყობენ მომხმარებლების ავთენტიფიკაციას და მომხმარებლის ანგარიშების თაღლითური გამოყენების თავიდან აცილებას. ამ ქუქი-ფაილების გარეშე, სერვისები, რომლებიც თქვენ მოითხოვეთ, ვერ იქნება მოწოდებული, და ჩვენ ვიყენებთ ამ ქუქი-ფაილებს მხოლოდ თქვენთვის ამ სერვისების უზრუნველსაყოფად.">Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Cookies Policy / Notice Acceptance Cookies" data-lang-ka="ქუქი-ფაილების პოლიტიკა / შეტყობინების მიღების ქუქი-ფაილები">Cookies Policy / Notice Acceptance Cookies</strong></p>
+                    <p><span data-lang-en="Type: Persistent Cookies" data-lang-ka="ტიპი: მუდმივი ქუქი-ფაილები">Type: Persistent Cookies</span></p>
+                    <p><span data-lang-en="Administered by: Us" data-lang-ka="მართავს: ჩვენ">Administered by: Us</span></p>
+                    <p><span data-lang-en="Purpose: These Cookies identify if users have accepted the use of cookies on the Website." data-lang-ka="მიზანი: ეს ქუქი-ფაილები იდენტიფიცირებს, მიიღეს თუ არა მომხმარებლებმა ქუქი-ფაილების გამოყენება ვებსაიტზე.">Purpose: These Cookies identify if users have accepted the use of cookies on the Website.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="Functionality Cookies" data-lang-ka="ფუნქციონალური ქუქი-ფაილები">Functionality Cookies</strong></p>
+                    <p><span data-lang-en="Type: Persistent Cookies" data-lang-ka="ტიპი: მუდმივი ქუქი-ფაილები">Type: Persistent Cookies</span></p>
+                    <p><span data-lang-en="Administered by: Us" data-lang-ka="მართავს: ჩვენ">Administered by: Us</span></p>
+                    <p><span data-lang-en="Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website." data-lang-ka="მიზანი: ეს ქუქი-ფაილები საშუალებას გვაძლევს დავიმახსოვროთ თქვენი არჩევანი, როდესაც იყენებთ ვებსაიტს, როგორიცაა თქვენი შესვლის დეტალები ან ენის უპირატესობა. ამ ქუქი-ფაილების მიზანია მოგაწოდოთ უფრო პერსონალური გამოცდილება და თავიდან აიცილოთ თქვენი პარამეტრების ხელახლა შეყვანა ყოველ ჯერზე, როდესაც იყენებთ ვებსაიტს.">Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website.</span></p>
+                </li>
+            </ul>
+            <p data-lang-en="For more information about the cookies we use and your choices regarding cookies, please visit our Cookies Policy or the Cookies section of our Privacy Policy." data-lang-ka="ჩვენს მიერ გამოყენებული ქუქი-ფაილებისა და ქუქი-ფაილებთან დაკავშირებული თქვენი არჩევანის შესახებ დამატებითი ინფორმაციისთვის, გთხოვთ, ეწვიოთ ჩვენს ქუქი-ფაილების პოლიტიკას ან ჩვენი კონფიდენციალურობის პოლიტიკის ქუქი-ფაილების განყოფილებას."></p>
+
+            <h3 data-lang-en="Use of Your Personal Data" data-lang-ka="თქვენი პერსონალური მონაცემების გამოყენება">Use of Your Personal Data</h3>
+            <p data-lang-en="The Company may use Personal Data for the following purposes:" data-lang-ka="კომპანიამ შეიძლება გამოიყენოს პერსონალური მონაცემები შემდეგი მიზნებისთვის:"></p>
+            <ul>
+                <li>
+                    <p><strong data-lang-en="To provide and maintain our Service" data-lang-ka="ჩვენი სერვისის უზრუნველსაყოფად და შესანარჩუნებლად">To provide and maintain our Service</strong>, <span data-lang-en="including to monitor the usage of our Service." data-lang-ka="მათ შორის ჩვენი სერვისის გამოყენების მონიტორინგისთვის.">including to monitor the usage of our Service.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="To manage Your Account:" data-lang-ka="თქვენი ანგარიშის სამართავად:">To manage Your Account:</strong> <span data-lang-en="to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user." data-lang-ka="თქვენი რეგისტრაციის სამართავად, როგორც სერვისის მომხმარებლის. თქვენს მიერ მოწოდებულ პერსონალურ მონაცემებს შეუძლია მოგცეთ წვდომა სერვისის სხვადასხვა ფუნქციონალზე, რომლებიც თქვენთვის ხელმისაწვდომია, როგორც რეგისტრირებული მომხმარებლისთვის.">to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="For the performance of a contract:" data-lang-ka="ხელშეკრულების შესრულებისთვის:">For the performance of a contract:</strong> <span data-lang-en="the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service." data-lang-ka="პროდუქტების, ნივთების ან სერვისების შესყიდვის ხელშეკრულების შემუშავება, შესრულება და განხორციელება, ან ნებისმიერი სხვა ხელშეკრულება ჩვენთან სერვისის საშუალებით.">the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="To contact You:" data-lang-ka="თქვენთან დასაკავშირებლად:">To contact You:</strong> <span data-lang-en="To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation." data-lang-ka="თქვენთან დასაკავშირებლად ელ.ფოსტით, სატელეფონო ზარებით, SMS-ით, ან ელექტრონული კომუნიკაციის სხვა ეკვივალენტური ფორმებით, როგორიცაა მობილური აპლიკაციის push შეტყობინებები ფუნქციონალებთან, პროდუქტებთან ან კონტრაქტირებულ სერვისებთან დაკავშირებული განახლებების ან ინფორმაციული კომუნიკაციების შესახებ, მათ შორის უსაფრთხოების განახლებები, როდესაც ეს აუცილებელია ან მიზანშეწონილია მათი განხორციელებისთვის.">To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="To provide You" data-lang-ka="თქვენთვის მოსაწოდებლად">To provide You</strong> <span data-lang-en="with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information." data-lang-ka="სიახლეები, სპეციალური შეთავაზებები და ზოგადი ინფორმაცია სხვა საქონლის, სერვისებისა და ღონისძიებების შესახებ, რომლებსაც ჩვენ ვთავაზობთ, რომლებიც მსგავსია იმისა, რაც უკვე შეიძინეთ ან იკითხეთ, თუ თქვენ არ აირჩიეთ ასეთი ინფორმაციის მიღებაზე უარი.">with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="To manage Your requests:" data-lang-ka="თქვენი მოთხოვნების სამართავად:">To manage Your requests:</strong> <span data-lang-en="To attend and manage Your requests to Us." data-lang-ka="ჩვენთან თქვენი მოთხოვნების დასაკმაყოფილებლად და სამართავად.">To attend and manage Your requests to Us.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="For business transfers:" data-lang-ka="ბიზნესის გადაცემისთვის:">For business transfers:</strong> <span data-lang-en="We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred." data-lang-ka="ჩვენ შეიძლება გამოვიყენოთ თქვენი ინფორმაცია შერწყმის, გაყოფის, რესტრუქტურიზაციის, რეორგანიზაციის, დაშლის ან ჩვენი აქტივების ნაწილის ან მთლიანი გაყიდვის ან გადაცემის შესაფასებლად ან განსახორციელებლად, იქნება ეს მოქმედი საწარმო თუ გაკოტრების, ლიკვიდაციის ან მსგავსი პროცედურის ნაწილი, რომლის დროსაც ჩვენს მიერ ჩვენი სერვისის მომხმარებლების შესახებ შენახული პერსონალური მონაცემები გადაცემულ აქტივებს შორისაა.">We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred.</span></p>
+                </li>
+                <li>
+                    <p><strong data-lang-en="For other purposes" data-lang-ka="სხვა მიზნებისთვის">For other purposes</strong>: <span data-lang-en="We may use Your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, products, services, marketing and your experience." data-lang-ka="ჩვენ შეიძლება გამოვიყენოთ თქვენი ინფორმაცია სხვა მიზნებისთვის, როგორიცაა მონაცემთა ანალიზი, გამოყენების ტენდენციების იდენტიფიცირება, ჩვენი სარეკლამო კამპანიების ეფექტურობის განსაზღვრა და ჩვენი სერვისის, პროდუქტების, სერვისების, მარკეტინგის და თქვენი გამოცდილების შეფასება და გაუმჯობესება.">We may use Your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, products, services, marketing and your experience.</span></p>
+                </li>
+            </ul>
+
+            <p data-lang-en="We may share Your personal information in the following situations:" data-lang-ka="ჩვენ შეიძლება გავაზიაროთ თქვენი პერსონალური ინფორმაცია შემდეგ სიტუაციებში:"></p>
+            <ul>
+                <li><strong data-lang-en="With Service Providers:" data-lang-ka="სერვისის პროვაიდერებთან:">With Service Providers:</strong> <span data-lang-en="We may share Your personal information with Service Providers to monitor and analyze the use of our Service, to contact You." data-lang-ka="ჩვენ შეიძლება გავაზიაროთ თქვენი პერსონალური ინფორმაცია სერვისის პროვაიდერებთან ჩვენი სერვისის გამოყენების მონიტორინგისა და ანალიზისთვის, თქვენთან დასაკავშირებლად.">We may share Your personal information with Service Providers to monitor and analyze the use of our Service, to contact You.</span></li>
+                <li><strong data-lang-en="For business transfers:" data-lang-ka="ბიზნესის გადაცემისთვის:">For business transfers:</strong> <span data-lang-en="We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company." data-lang-ka="ჩვენ შეიძლება გავაზიაროთ ან გადავცეთ თქვენი პერსონალური ინფორმაცია ნებისმიერ შერწყმასთან, კომპანიის აქტივების გაყიდვასთან, დაფინანსებასთან ან ჩვენი ბიზნესის მთლიანი ან ნაწილის სხვა კომპანიის მიერ შეძენასთან დაკავშირებით, ან მოლაპარაკებების დროს.">We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.</span></li>
+                <li><strong data-lang-en="With Affiliates:" data-lang-ka="ფილიალებთან:">With Affiliates:</strong> <span data-lang-en="We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us." data-lang-ka="ჩვენ შეიძლება გავაზიაროთ თქვენი ინფორმაცია ჩვენს ფილიალებთან, ამ შემთხვევაში ჩვენ მოვთხოვთ ამ ფილიალებს დაიცვან ეს კონფიდენციალურობის პოლიტიკა. ფილიალები მოიცავს ჩვენს მშობელ კომპანიას და ნებისმიერ სხვა შვილობილ კომპანიას, ერთობლივი საწარმოს პარტნიორებს ან სხვა კომპანიებს, რომლებსაც ჩვენ ვაკონტროლებთ ან რომლებიც ჩვენთან საერთო კონტროლის ქვეშ არიან.">We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</span></li>
+                <li><strong data-lang-en="With business partners:" data-lang-ka="ბიზნეს პარტნიორებთან:">With business partners:</strong> <span data-lang-en="We may share Your information with Our business partners to offer You certain products, services or promotions." data-lang-ka="ჩვენ შეიძლება გავაზიაროთ თქვენი ინფორმაცია ჩვენს ბიზნეს პარტნიორებთან, რათა შემოგთავაზოთ გარკვეული პროდუქტები, სერვისები ან აქციები.">We may share Your information with Our business partners to offer You certain products, services or promotions.</span></li>
+                <li><strong data-lang-en="With other users:" data-lang-ka="სხვა მომხმარებლებთან:">With other users:</strong> <span data-lang-en="when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside." data-lang-ka="როდესაც თქვენ აზიარებთ პერსონალურ ინფორმაციას ან სხვაგვარად ურთიერთობთ საჯარო ადგილებში სხვა მომხმარებლებთან, ასეთი ინფორმაცია შეიძლება ნახოს ყველა მომხმარებელმა და შეიძლება საჯაროდ გავრცელდეს გარეთ.">when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.</span></li>
+                <li><strong data-lang-en="With Your consent" data-lang-ka="თქვენი თანხმობით">With Your consent</strong>: <span data-lang-en="We may disclose Your personal information for any other purpose with Your consent." data-lang-ka="ჩვენ შეიძლება გავამჟღავნოთ თქვენი პერსონალური ინფორმაცია ნებისმიერი სხვა მიზნით თქვენი თანხმობით.">We may disclose Your personal information for any other purpose with Your consent.</span></li>
+            </ul>
+
+            <h3 data-lang-en="Retention of Your Personal Data" data-lang-ka="თქვენი პერსონალური მონაცემების შენახვა">Retention of Your Personal Data</h3>
+            <p data-lang-en="The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies." data-lang-ka="კომპანია შეინახავს თქვენს პერსონალურ მონაცემებს მხოლოდ იმდენ ხანს, რამდენიც საჭიროა ამ კონფიდენციალურობის პოლიტიკით გათვალისწინებული მიზნებისთვის. ჩვენ შევინახავთ და გამოვიყენებთ თქვენს პერსონალურ მონაცემებს იმდენად, რამდენადაც აუცილებელია ჩვენი იურიდიული ვალდებულებების შესასრულებლად (მაგალითად, თუ ჩვენ მოგვეთხოვება თქვენი მონაცემების შენახვა მოქმედი კანონების შესასრულებლად), დავების მოსაგვარებლად და ჩვენი იურიდიული შეთანხმებებისა და პოლიტიკის აღსასრულებლად."></p>
+            <p data-lang-en="The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods." data-lang-ka="კომპანია ასევე შეინახავს გამოყენების მონაცემებს შიდა ანალიზის მიზნებისთვის. გამოყენების მონაცემები, როგორც წესი, ინახება უფრო მოკლე ვადით, გარდა იმ შემთხვევისა, როდესაც ეს მონაცემები გამოიყენება უსაფრთხოების გასაძლიერებლად ან ჩვენი სერვისის ფუნქციონალურობის გასაუმჯობესებლად, ან ჩვენ იურიდიულად ვალდებულნი ვართ შევინახოთ ეს მონაცემები უფრო ხანგრძლივი დროის განმავლობაში."></p>
+
+            <h3 data-lang-en="Transfer of Your Personal Data" data-lang-ka="თქვენი პერსონალური მონაცემების გადაცემა">Transfer of Your Personal Data</h3>
+            <p data-lang-en="Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from Your jurisdiction." data-lang-ka="თქვენი ინფორმაცია, პერსონალური მონაცემების ჩათვლით, მუშავდება კომპანიის ოპერაციულ ოფისებში და ნებისმიერ სხვა ადგილას, სადაც დამუშავებაში ჩართული მხარეები იმყოფებიან. ეს ნიშნავს, რომ ეს ინფორმაცია შეიძლება გადაეცეს — და შეინახოს — კომპიუტერებზე, რომლებიც მდებარეობს თქვენი შტატის, პროვინციის, ქვეყნის ან სხვა სამთავრობო იურისდიქციის გარეთ, სადაც მონაცემთა დაცვის კანონები შეიძლება განსხვავდებოდეს თქვენი იურისდიქციის კანონებისგან."></p>
+            <p data-lang-en="Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer." data-lang-ka="თქვენი თანხმობა ამ კონფიდენციალურობის პოლიტიკაზე, რასაც მოჰყვება ასეთი ინფორმაციის წარდგენა, წარმოადგენს თქვენს თანხმობას ამ გადაცემაზე."></p>
+            <p data-lang-en="The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information." data-lang-ka="კომპანია მიიღებს ყველა გონივრულად აუცილებელ ზომას, რათა უზრუნველყოს თქვენი მონაცემების უსაფრთხოდ და ამ კონფიდენციალურობის პოლიტიკის შესაბამისად დამუშავება და თქვენი პერსონალური მონაცემების გადაცემა არ მოხდება ორგანიზაციაში ან ქვეყანაში, თუ არ არსებობს ადეკვატური კონტროლი, მათ შორის თქვენი მონაცემებისა და სხვა პერსონალური ინფორმაციის უსაფრთხოება."></p>
+
+            <h3 data-lang-en="Delete Your Personal Data" data-lang-ka="თქვენი პერსონალური მონაცემების წაშლა">Delete Your Personal Data</h3>
+            <p data-lang-en="You have the right to delete or request that We assist in deleting the Personal Data that We have collected about You." data-lang-ka="თქვენ გაქვთ უფლება წაშალოთ ან მოითხოვოთ, რომ ჩვენ დაგეხმაროთ თქვენს შესახებ შეგროვებული პერსონალური მონაცემების წაშლაში."></p>
+            <p data-lang-en="Our Service may give You the ability to delete certain information about You from within the Service." data-lang-ka="ჩვენმა სერვისმა შეიძლება მოგცეთ შესაძლებლობა წაშალოთ თქვენს შესახებ გარკვეული ინფორმაცია სერვისის ფარგლებში."></p>
+            <p data-lang-en="You may update, amend, or delete Your information at any time by signing in to Your Account, if you have one, and visiting the account settings section that allows you to manage Your personal information. You may also contact Us to request access to, correct, or delete any personal information that You have provided to Us." data-lang-ka="თქვენ შეგიძლიათ განაახლოთ, შეასწოროთ ან წაშალოთ თქვენი ინფორმაცია ნებისმიერ დროს თქვენს ანგარიშში შესვლით, თუ თქვენ გაქვთ ასეთი, და ანგარიშის პარამეტრების განყოფილების მონახულებით, რომელიც საშუალებას გაძლევთ მართოთ თქვენი პერსონალური ინფორმაცია. თქვენ ასევე შეგიძლიათ დაგვიკავშირდეთ, რათა მოითხოვოთ წვდომა, შესწორება ან წაშლა ნებისმიერი პერსონალური ინფორმაციის, რომელიც თქვენ მოგვაწოდეთ."></p>
+            <p data-lang-en="Please note, however, that We may need to retain certain information when we have a legal obligation or lawful basis to do so." data-lang-ka="გთხოვთ გაითვალისწინოთ, რომ ჩვენ შეიძლება დაგვჭირდეს გარკვეული ინფორმაციის შენახვა, როდესაც გვაქვს ამის იურიდიული ვალდებულება ან კანონიერი საფუძველი."></p>
+
+            <h3 data-lang-en="Disclosure of Your Personal Data" data-lang-ka="თქვენი პერსონალური მონაცემების გამჟღავნება">Disclosure of Your Personal Data</h3>
+            <h4 data-lang-en="Business Transactions" data-lang-ka="ბიზნეს ტრანზაქციები">Business Transactions</h4>
+            <p data-lang-en="If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy." data-lang-ka="თუ კომპანია ჩართულია შერწყმაში, შეძენაში ან აქტივების გაყიდვაში, თქვენი პერსონალური მონაცემები შეიძლება გადაეცეს. ჩვენ შეგატყობინებთ თქვენი პერსონალური მონაცემების გადაცემამდე და სხვა კონფიდენციალურობის პოლიტიკის მოქმედების დაწყებამდე."></p>
+
+            <h4 data-lang-en="Law enforcement" data-lang-ka="სამართალდამცავი ორგანოები">Law enforcement</h4>
+            <p data-lang-en="Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency)." data-lang-ka="გარკვეულ გარემოებებში, კომპანიას შეიძლება მოეთხოვოს თქვენი პერსონალური მონაცემების გამჟღავნება, თუ ეს მოთხოვნილია კანონით ან საჯარო ორგანოების (მაგ. სასამართლო ან სამთავრობო სააგენტო) მოქმედი მოთხოვნების საპასუხოდ."></p>
+
+            <h4 data-lang-en="Other legal requirements" data-lang-ka="სხვა იურიდიული მოთხოვნები">Other legal requirements</h4>
+            <p data-lang-en="The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:" data-lang-ka="კომპანიამ შეიძლება გაამჟღავნოს თქვენი პერსონალური მონაცემები კეთილსინდისიერი რწმენით, რომ ასეთი ქმედება აუცილებელია:"></p>
+            <ul>
+                <li><span data-lang-en="Comply with a legal obligation" data-lang-ka="იურიდიული ვალდებულების შესასრულებლად">Comply with a legal obligation</span></li>
+                <li><span data-lang-en="Protect and defend the rights or property of the Company" data-lang-ka="კომპანიის უფლებებისა და საკუთრების დასაცავად">Protect and defend the rights or property of the Company</span></li>
+                <li><span data-lang-en="Prevent or investigate possible wrongdoing in connection with the Service" data-lang-ka="სერვისთან დაკავშირებული შესაძლო არასწორი ქმედებების თავიდან ასაცილებლად ან გამოსაძიებლად">Prevent or investigate possible wrongdoing in connection with the Service</span></li>
+                <li><span data-lang-en="Protect the personal safety of Users of the Service or the public" data-lang-ka="სერვისის მომხმარებლების ან საზოგადოების პირადი უსაფრთხოების დასაცავად">Protect the personal safety of Users of the Service or the public</span></li>
+                <li><span data-lang-en="Protect against legal liability" data-lang-ka="იურიდიული პასუხისმგებლობისგან დასაცავად">Protect against legal liability</span></li>
+            </ul>
+
+            <h3 data-lang-en="Security of Your Personal Data" data-lang-ka="თქვენი პერსონალური მონაცემების უსაფრთხოება">Security of Your Personal Data</h3>
+            <p data-lang-en="The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security." data-lang-ka="თქვენი პერსონალური მონაცემების უსაფრთხოება ჩვენთვის მნიშვნელოვანია, მაგრამ გახსოვდეთ, რომ ინტერნეტით გადაცემის არცერთი მეთოდი, ან ელექტრონული შენახვის მეთოდი არ არის 100% უსაფრთხო. მიუხედავად იმისა, რომ ჩვენ ვცდილობთ გამოვიყენოთ კომერციულად მისაღები საშუალებები თქვენი პერსონალური მონაცემების დასაცავად, ჩვენ ვერ ვიძლევით მისი აბსოლუტური უსაფრთხოების გარანტიას."></p>
+
+            <h2 data-lang-en="Children's Privacy" data-lang-ka="ბავშვთა კონფიდენციალურობა">Children's Privacy</h2>
+            <p data-lang-en="Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers." data-lang-ka="ჩვენი სერვისი არ არის განკუთვნილი 13 წლამდე ასაკის არცერთი პირისთვის. ჩვენ შეგნებულად არ ვაგროვებთ პერსონალურად იდენტიფიცირებად ინფორმაციას 13 წლამდე ასაკის არცერთი პირისგან. თუ თქვენ ხართ მშობელი ან მეურვე და იცით, რომ თქვენმა შვილმა მოგვაწოდა პერსონალური მონაცემები, გთხოვთ, დაგვიკავშირდეთ. თუ ჩვენ გავიგებთ, რომ შევაგროვეთ პერსონალური მონაცემები 13 წლამდე ასაკის პირისგან მშობლის თანხმობის დადასტურების გარეშე, ჩვენ ვდგამთ ნაბიჯებს ამ ინფორმაციის ჩვენი სერვერებიდან ამოსაღებად."></p>
+            <p data-lang-en="If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information." data-lang-ka="თუ ჩვენ გვჭირდება თანხმობა, როგორც თქვენი ინფორმაციის დამუშავების იურიდიული საფუძველი და თქვენი ქვეყანა მოითხოვს მშობლის თანხმობას, ჩვენ შეიძლება მოვითხოვოთ თქვენი მშობლის თანხმობა ამ ინფორმაციის შეგროვებამდე და გამოყენებამდე."></p>
+
+            <h2 data-lang-en="Links to Other Websites" data-lang-ka="ბმულები სხვა ვებსაიტებზე">Links to Other Websites</h2>
+            <p data-lang-en="Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit." data-lang-ka="ჩვენი სერვისი შეიძლება შეიცავდეს ბმულებს სხვა ვებსაიტებზე, რომლებიც არ იმართება ჩვენს მიერ. თუ თქვენ დააწკაპუნებთ მესამე მხარის ბმულზე, თქვენ გადამისამართდებით ამ მესამე მხარის საიტზე. ჩვენ მკაცრად გირჩევთ, გადახედოთ ყველა საიტის კონფიდენციალურობის პოლიტიკას, რომელსაც თქვენ სტუმრობთ."></p>
+            <p data-lang-en="We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services." data-lang-ka="ჩვენ არ გვაქვს კონტროლი და არ ვიღებთ პასუხისმგებლობას მესამე მხარის საიტების ან სერვისების შინაარსზე, კონფიდენციალურობის პოლიტიკაზე ან პრაქტიკაზე."></p>
+
+            <h2 data-lang-en="Changes to this Privacy Policy" data-lang-ka="ცვლილებები ამ კონფიდენციალურობის პოლიტიკაში">Changes to this Privacy Policy</h2>
+            <p data-lang-en="We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page." data-lang-ka="ჩვენ შეიძლება დროდადრო განვაახლოთ ჩვენი კონფიდენციალურობის პოლიტიკა. ჩვენ შეგატყობინებთ ნებისმიერი ცვლილების შესახებ ახალი კონფიდენციალურობის პოლიტიკის ამ გვერდზე გამოქვეყნებით."></p>
+            <p data-lang-en="We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the &quot;Last updated&quot; date at the top of this Privacy Policy." data-lang-ka="ჩვენ შეგატყობინებთ ელ.ფოსტით და/ან თვალსაჩინო შეტყობინებით ჩვენს სერვისზე, ცვლილების ძალაში შესვლამდე და განვაახლებთ &quot;ბოლო განახლების&quot; თარიღს ამ კონფიდენციალურობის პოლიტიკის ზედა ნაწილში."></p>
+            <p data-lang-en="You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page." data-lang-ka="გირჩევთ, პერიოდულად გადახედოთ ამ კონფიდენციალურობის პოლიტიკას ნებისმიერი ცვლილებისთვის. ცვლილებები ამ კონფიდენციალურობის პოლიტიკაში ძალაში შედის ამ გვერდზე გამოქვეყნებისთანავე."></p>
+
+            <h2 data-lang-en="Contact Us" data-lang-ka="დაგვიკავშირდით">Contact Us</h2>
+            <p data-lang-en="If you have any questions about this Privacy Policy, You can contact us:" data-lang-ka="თუ თქვენ გაქვთ რაიმე შეკითხვა ამ კონფიდენციალურობის პოლიტიკის შესახებ, შეგიძლიათ დაგვიკავშირდეთ:"></p>
+            <ul>
+                <li><span data-lang-en="By email: contact@tornike.net" data-lang-ka="ელ.ფოსტით: contact@tornike.net">By email: contact@tornike.net</span></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">
+                &copy; <span id="current-year"></span> <span data-lang-en="Tornike Tsiklauri" data-lang-ka="თორნიკე წიკლაური">Tornike Tsiklauri</span>. <span data-lang-en="All rights reserved." data-lang-ka="ყველა უფლება დაცულია.">All rights reserved.</span>
+            </p>
+            <p class="mb-4 text-sm">
+                <a href="privacy-policy.html" id="privacy-policy-link" class="footer-link-item">
+                    <span data-lang-en="Privacy Policy" data-lang-ka="კონფიდენციალურობის პოლიტიკა">Privacy Policy</span>
+                </a>
+                <span data-lang-en=" | " data-lang-ka=" | "> | </span>
+                <a href="terms-conditions.html" id="terms-conditions-link" class="footer-link-item">
+                    <span data-lang-en="Terms and Conditions" data-lang-ka="წესები და პირობები">Terms and Conditions</span>
+                </a>
+            </p>
+            <button class="ai-enhanced-btn">
+                <i class="fas fa-magic"></i>
+                <span>Enhanced by AI</span>
+            </button>
+
+            <style>
+                .ai-enhanced-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0.7rem 1.3rem;
+                    border-radius: 50px;
+                    font-family: 'Inter', sans-serif; /* Use Inter for consistency */
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    color: white;
+                    background: linear-gradient(135deg, #6e48aa, #4776e6);
+                    box-shadow: 0 4px 15px rgba(71, 118, 230, 0.3);
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    overflow: hidden;
+                    margin-top: 1rem; /* Add some space above the button */
+                }
+                
+                .ai-enhanced-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(71, 118, 230, 0.4);
+                }
+                
+                .ai-enhanced-btn:active {
+                    transform: translateY(0);
+                }
+                
+                .ai-enhanced-btn i {
+                    margin-right: 0.6rem;
+                    font-size: 1rem;
+                }
+                
+                /* Magic wand animation */
+                @keyframes magic-sparkle {
+                    0% { transform: rotate(0deg); }
+                    25% { transform: rotate(10deg); }
+                    50% { transform: rotate(0deg); }
+                    75% { transform: rotate(-10deg); }
+                    100% { transform: rotate(0deg); }
+                }
+                
+                .ai-enhanced-btn:hover i {
+                    animation: magic-sparkle 0.8s ease;
+                }
+                
+                /* Glow effect */
+                .ai-enhanced-btn::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, 
+                      rgba(255,255,255,0) 0%, 
+                      rgba(255,255,255,0.15) 50%, 
+                      rgba(255,255,255,0) 100%);
+                    transform: translateX(-100%);
+                    transition: transform 0.6s ease;
+                }
+                
+                .ai-enhanced-btn:hover::after {
+                    transform: translateX(100%);
+                }
+            </style>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links (adjusted for current page)
+        document.querySelectorAll('a[href^="index.html#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').split('#')[1];
+                window.location.href = 'index.html#' + targetId; // Redirect to index and then scroll
+            });
+        });
+
+        // Toggle mobile navigation menu
+        document.getElementById('navbar-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-navbar-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Language Switcher Logic ---
+        const langEnBtn = document.getElementById('lang-en');
+        const langKaBtn = document.getElementById('lang-ka');
+        const htmlElement = document.documentElement; // The <html> tag
+
+        // Define the links for each language for Privacy Policy and Terms & Conditions
+        const dynamicLinksConfig = {
+            'privacy-policy-link': {
+                en: {
+                    url: "privacy-policy.html", // Link to English Privacy Policy
+                    text: "Privacy Policy"
+                },
+                ka: {
+                    url: "ka/privacy-policy.html", // Link to Georgian Privacy Policy
+                    text: "კონფიდენციალურობის პოლიტიკა"
+                }
+            },
+            'terms-conditions-link': {
+                en: {
+                    url: "terms-conditions.html", // Link to English Terms and Conditions
+                    text: "Terms and Conditions"
+                },
+                ka: {
+                    url: "ka/terms-conditions.html", // Link to Georgian Terms and Conditions
+                    text: "წესები და პირობები"
+                }
+            }
+        };
+
+        // Function to set the language
+        function setLanguage(lang) {
+            // Update lang attribute on html tag
+            htmlElement.lang = lang;
+
+            // Update text content based on data-lang attributes
+            document.querySelectorAll('[data-lang-en], [data-lang-ka]').forEach(element => {
+                // Check if the element contains HTML, use innerHTML, otherwise textContent
+                if (element.dataset.langEn && element.dataset.langKa && (element.dataset.langEn.includes('<') || element.dataset.langKa.includes('<'))) {
+                    element.innerHTML = lang === 'en' ? element.dataset.langEn : element.dataset.langKa;
+                } else if (element.dataset.langEn && element.dataset.langKa) {
+                    element.textContent = lang === 'en' ? element.dataset.langEn : element.dataset.langKa;
+                }
+            });
+
+            // Update placeholder attributes for input fields (if any on this page)
+            document.querySelectorAll('[data-lang-en-placeholder]').forEach(element => {
+                element.placeholder = lang === 'en' ? element.dataset.langEnPlaceholder : element.dataset.langKaPlaceholder;
+            });
+
+            // Update document title
+            const titleElement = document.querySelector('title');
+            if (titleElement) {
+                titleElement.textContent = titleElement.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+            }
+
+            // Update dynamic links (Privacy Policy, Terms & Conditions)
+            for (const linkId in dynamicLinksConfig) {
+                const linkElement = document.getElementById(linkId);
+                if (linkElement) {
+                    linkElement.href = dynamicLinksConfig[linkId][lang].url;
+                    // Update the span inside the link, or the link's text directly if no span
+                    const linkTextSpan = linkElement.querySelector('span');
+                    if (linkTextSpan) {
+                        linkTextSpan.textContent = dynamicLinksConfig[linkId][lang].text;
+                    } else {
+                        linkElement.textContent = dynamicLinksConfig[linkId][lang].text;
+                    }
+                }
+            }
+
+            // Set active state for language buttons
+            document.querySelectorAll('.language-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            if (lang === 'en') {
+                langEnBtn.classList.add('active');
+            } else {
+                langKaBtn.classList.add('active');
+            }
+
+            // Store preferred language in local storage
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Event listeners for language buttons
+        langEnBtn.addEventListener('click', () => setLanguage('en'));
+        langKaBtn.addEventListener('click', () => setLanguage('ka'));
+
+        // Load preferred language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'en'; // Default to English
+            setLanguage(savedLang);
+        });
+
+        // No contact form on this page, so no form submission logic needed.
+        
+    </script>
+<script src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" xintegrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95ff9a7dba3ed0c4","version":"2025.6.2","r":1,"token":"3ac330637fc64a29bca1f0e17e5d7372","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+</body>
+</html>
