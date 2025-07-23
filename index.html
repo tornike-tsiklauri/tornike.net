@@ -447,82 +447,94 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; <span id="current-year"></span> <span data-lang-en="Tornike tsiklauri" data-lang-ka="თორნიკე წიკლაური Tornike tsiklauri">Tornike tsiklauri</span>. <span data-lang-en="All rights reserved." data-lang-ka="ყველა უფლება დაცულია.">All rights reserved.</span></p>
-<button class="ai-enhanced-btn">
-  <i class="fas fa-magic"></i>
-  <span>Enhanced by AI</span>
-</button>
+            <p class="mb-4">
+                &copy; <span id="current-year"></span> <span data-lang-en="Tornike Tsiklauri" data-lang-ka="თორნიკე წიკლაური">Tornike Tsiklauri</span>. <span data-lang-en="All rights reserved." data-lang-ka="ყველა უფლება დაცულია.">All rights reserved.</span>
+            </p>
+            <p class="mb-4 text-sm">
+                <a href="#" id="privacy-policy-link" class="footer-link-item">
+                    <span data-lang-en="Privacy Policy" data-lang-ka="კონფიდენციალურობის პოლიტიკა">Privacy Policy</span>
+                </a>
+                <span data-lang-en=" | " data-lang-ka=" | "> | </span>
+                <a href="#" id="terms-conditions-link" class="footer-link-item">
+                    <span data-lang-en="Terms and Conditions" data-lang-ka="წესები და პირობები">Terms and Conditions</span>
+                </a>
+            </p>
+            <button class="ai-enhanced-btn">
+                <i class="fas fa-magic"></i>
+                <span>Enhanced by AI</span>
+            </button>
 
-<style>
-  .ai-enhanced-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.7rem 1.3rem;
-    border-radius: 50px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: white;
-    background: linear-gradient(135deg, #6e48aa, #4776e6);
-    box-shadow: 0 4px 15px rgba(71, 118, 230, 0.3);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .ai-enhanced-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(71, 118, 230, 0.4);
-  }
-  
-  .ai-enhanced-btn:active {
-    transform: translateY(0);
-  }
-  
-  .ai-enhanced-btn i {
-    margin-right: 0.6rem;
-    font-size: 1rem;
-  }
-  
-  /* Magic wand animation */
-  @keyframes magic-sparkle {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(10deg); }
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(-10deg); }
-    100% { transform: rotate(0deg); }
-  }
-  
-  .ai-enhanced-btn:hover i {
-    animation: magic-sparkle 0.8s ease;
-  }
-  
-  /* Glow effect */
-  .ai-enhanced-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      rgba(255,255,255,0) 0%, 
-      rgba(255,255,255,0.15) 50%, 
-      rgba(255,255,255,0) 100%);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-  }
-  
-  .ai-enhanced-btn:hover::after {
-    transform: translateX(100%);
-  }
-</style>
+            <style>
+                .ai-enhanced-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0.7rem 1.3rem;
+                    border-radius: 50px;
+                    font-family: 'Inter', sans-serif; /* Use Inter for consistency */
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    color: white;
+                    background: linear-gradient(135deg, #6e48aa, #4776e6);
+                    box-shadow: 0 4px 15px rgba(71, 118, 230, 0.3);
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    overflow: hidden;
+                    margin-top: 1rem; /* Add some space above the button */
+                }
+                
+                .ai-enhanced-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(71, 118, 230, 0.4);
+                }
+                
+                .ai-enhanced-btn:active {
+                    transform: translateY(0);
+                }
+                
+                .ai-enhanced-btn i {
+                    margin-right: 0.6rem;
+                    font-size: 1rem;
+                }
+                
+                /* Magic wand animation */
+                @keyframes magic-sparkle {
+                    0% { transform: rotate(0deg); }
+                    25% { transform: rotate(10deg); }
+                    50% { transform: rotate(0deg); }
+                    75% { transform: rotate(-10deg); }
+                    100% { transform: rotate(0deg); }
+                }
+                
+                .ai-enhanced-btn:hover i {
+                    animation: magic-sparkle 0.8s ease;
+                }
+                
+                /* Glow effect */
+                .ai-enhanced-btn::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, 
+                      rgba(255,255,255,0) 0%, 
+                      rgba(255,255,255,0.15) 50%, 
+                      rgba(255,255,255,0) 100%);
+                    transform: translateX(-100%);
+                    transition: transform 0.6s ease;
+                }
+                
+                .ai-enhanced-btn:hover::after {
+                    transform: translateX(100%);
+                }
+            </style>
 
-<!-- Only needed if you don't already have Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            <!-- Only needed if you don't already have Font Awesome -->
+            <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
         </div>
         
     </footer>
@@ -631,13 +643,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const langKaBtn = document.getElementById('lang-ka');
         const htmlElement = document.documentElement; // The <html> tag
 
+        const dynamicLinksConfig = {
+            'privacy-policy-link': {
+                en: {
+                    url: "https://tornike.net/privacy-policy.html",
+                    text: "Privacy Policy"
+                },
+                ka: {
+                    url: "https://tornike.net/terms-conditions.html",
+                    text: "კონფიდენციალურობის პოლიტიკა"
+                }
+            },
+            'terms-conditions-link': {
+                en: {
+                    url: "https://tornike.net/terms-conditions.html",
+                    text: "Terms and Conditions"
+                },
+                ka: {
+                    url: "https://tornike.net/terms-conditions.html",
+                    text: "წესები და პირობები"
+                }
+            }
+        };
+
         // Function to set the language
         function setLanguage(lang) {
             // Update lang attribute on html tag
             htmlElement.lang = lang;
 
             // Update text content based on data-lang attributes
-            document.querySelectorAll('[data-lang-en]').forEach(element => {
+            document.querySelectorAll('[data-lang-en], [data-lang-ka]').forEach(element => {
                 // Check if the element contains HTML, use innerHTML, otherwise textContent
                 if (element.dataset.langEn && element.dataset.langKa && (element.dataset.langEn.includes('<') || element.dataset.langKa.includes('<'))) {
                     element.innerHTML = lang === 'en' ? element.dataset.langEn : element.dataset.langKa;
@@ -657,6 +692,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 titleElement.textContent = titleElement.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
             }
 
+            // Update dynamic links (Privacy Policy, Terms & Conditions)
+            for (const linkId in dynamicLinksConfig) {
+                const linkElement = document.getElementById(linkId);
+                if (linkElement) {
+                    linkElement.href = dynamicLinksConfig[linkId][lang].url;
+                    // Update the span inside the link, or the link's text directly if no span
+                    const linkTextSpan = linkElement.querySelector('span');
+                    if (linkTextSpan) {
+                        linkTextSpan.textContent = dynamicLinksConfig[linkId][lang].text;
+                    } else {
+                        linkElement.textContent = dynamicLinksConfig[linkId][lang].text;
+                    }
+                }
+            }
 
             // Set active state for language buttons
             document.querySelectorAll('.language-button').forEach(button => {
@@ -741,6 +790,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         
     </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95ff9a7dba3ed0c4","version":"2025.6.2","r":1,"token":"3ac330637fc64a29bca1f0e17e5d7372","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+<script src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" xintegrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95ff9a7dba3ed0c4","version":"2025.6.2","r":1,"token":"3ac330637fc64a29bca1f0e17e5d7372","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
 </body>
 </html>
