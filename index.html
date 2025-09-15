@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tornike Tsiklauri - Homepage</title>
+    <title>თორნიკე წიკლაური - მთავარი გვერდი</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
@@ -89,14 +89,14 @@
 <body>
 
 <div class="language-switcher">
-    <button id="lang-en" class="btn btn-sm btn-outline-light active">EN</button>
-    <button id="lang-ka" class="btn btn-sm btn-outline-light">KA</button>
+    <button id="lang-en" class="btn btn-sm btn-outline-light">EN</button>
+    <button id="lang-ka" class="btn btn-sm btn-outline-light active">KA</button>
 </div>
 
 <header class="hero-section">
     <div class="container">
-        <h1 id="hero-title">Tornike Tsiklauri</h1>
-        <p id="hero-subtitle">Personal Email Address</p>
+        <h1 id="hero-title"></h1>
+        <p id="hero-subtitle"></p>
     </div>
 </header>
 
@@ -106,8 +106,8 @@
             <div class="col-md-6">
                 <div class="icon-box">
                     <i class="bi bi-envelope-fill"></i>
-                    <h3 id="email-title">Personal Mail Address</h3>
-                    <p id="email-text">This domain is used exclusively for my personal email. It's the best way to get in touch with me directly.</p>
+                    <h3 id="email-title"></h3>
+                    <p id="email-text"></p>
                 </div>
             </div>
         </div>
@@ -116,9 +116,9 @@
 
 <section class="contact-section">
     <div class="container">
-        <h2 id="contact-title">Contact</h2>
-        <p id="contact-text">For any inquiries, feel free to reach out:</p>
-        <p><a href="mailto:info@tornike.net" id="contact-email">info@tornike.net</a></p>
+        <h2 id="contact-title"></h2>
+        <p id="contact-text"></p>
+        <p><a href="mailto:info@torniketsiklauri.com" id="contact-email"></a></p>
     </div>
 </section>
 
@@ -129,10 +129,10 @@
             heroTitle: "Tornike Tsiklauri",
             heroSubtitle: "Personal Email Address",
             emailTitle: "Personal Mail Address",
-            emailText: "This domain is used exclusively for my personal email. It's the best way to get in touch with me directly.",
+            emailText: "I currently use this domain exclusively for email, which I consider an effective and fast means of communication.",
             contactTitle: "Contact",
             contactText: "For any inquiries, feel free to reach out:",
-            contactEmail: "info@tornike.net"
+            contactEmail: "info@torniketsiklauri.com"
         },
         ka: {
             heroTitle: "თორნიკე წიკლაური",
@@ -140,8 +140,8 @@
             emailTitle: "პირადი ელ-ფოსტა",
             emailText: "ამ დომენს ამჟამად მხოლოდ ელ-ფოსტისთვის ვიყენებ, რაც ეფექტურ და სწრაფ საშუალებად მიმაჩნია კომუნიკაციისთვის.",
             contactTitle: "კონტაქტი",
-            contactText: "ნებისმიერი შეკითხვისთვის დამიკავშირდით:",
-            contactEmail: "info@tornike.net"
+            contactText: "ნებისმიერი შეკითხვისთვის დაგვიკავშირდით:",
+            contactEmail: "info@torniketsiklauri.com"
         }
     };
 
@@ -171,7 +171,7 @@
     langKaBtn.addEventListener('click', () => setLanguage('ka'));
 
     // Set default language on load
-    setLanguage('en');
+    setLanguage('ka');
 </script>
 
 </body>
