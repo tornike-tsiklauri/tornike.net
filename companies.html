@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-ag">-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Georgian Companies</title>
     <style>
@@ -162,14 +162,14 @@
             const card = document.createElement('div');
             card.className = 'company-card';
 
-            card.innerHTML = \`
-                <div class="company-logo" style="background-color: #${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}30;">\${company.logo}</div>
+            card.innerHTML = `
+                <div class="company-logo" style="background-color: #${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}30;">${company.logo}</div>
                 <div class="company-info">
-                    <h2>\${company.name}</h2>
-                    <p>\${company.industry}</p>
+                    <h2>${company.name}</h2>
+                    <p>${company.industry}</p>
                 </div>
-                <button class="rating-button" data-company="\${company.name}">View Rating</button>
-            \`;
+                <button class="rating-button" data-company="${company.name}">View Rating</button>
+            `;
             companyGrid.appendChild(card);
         });
 
@@ -179,7 +179,7 @@
                 const rating = (Math.random() * (5 - 3.5) + 3.5).toFixed(1); // Random rating between 3.5 and 5.0
 
                 modalCompanyName.textContent = companyName;
-                modalCompanyRating.textContent = \`\${rating} / 5.0\`;
+                modalCompanyRating.textContent = `${rating} / 5.0`;
                 modal.style.display = 'flex';
             }
         });
