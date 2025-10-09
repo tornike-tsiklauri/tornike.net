@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Georgian Companies</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #1c1e21;
+            margin-bottom: 2rem;
+        }
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .company-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        .company-logo {
+            background-color: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 180px;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4b4f56;
+        }
+        .company-info {
+            padding: 1.5rem;
+        }
+        .company-info h2 {
+            margin: 0 0 0.5rem;
+            font-size: 1.5rem;
+            color: #1c1e21;
+        }
+        .company-info p {
+            margin: 0;
+            color: #606770;
+        }
+        .rating-button {
+            display: block;
+            width: calc(100% - 3rem);
+            margin: 1.5rem;
+            padding: 0.75rem;
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .rating-button:hover {
+            background-color: #166fe5;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Top Companies in Georgia</h1>
+        <div class="company-grid" id="company-grid">
+            <!-- Companies will be injected here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="ratingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-company-name"></h2>
+            <p>Rating:</p>
+            <p id="modal-company-rating" style="font-size: 2rem; font-weight: bold; margin-top: 0.5rem;"></p>
+        </div>
+    </div>
+
+    <script>
+        const companies = [
+            { name: "TBC Bank Group", industry: "Banking/Finance", logo: "TBC" },
+            { name: "Sun Petroleum Georgia", industry: "Energy", logo: "SPG" },
+            { name: "Silknet JSC", industry: "Telecommunications", logo: "S" },
+            { name: "Georgia Capital", industry: "Investment", logo: "GC" },
+            { name: "Rich Metals Group", industry: "Metals & Mining", logo: "RMG" },
+            { name: "Aversi", industry: "Pharmaceuticals", logo: "A" },
+            { name: "Wissol", industry: "Energy", logo: "W" },
+            { name: "Rustavi Steel", industry: "Metals & Mining", logo: "RS" },
+            { name: "Georgian State Electrosystem", industry: "Utilities", logo: "GSE" },
+            { name: "Imss", industry: "Healthcare", logo: "IMSS" }
+        ];
+
+        const companyGrid = document.getElementById('company-grid');
+        const modal = document.getElementById('ratingModal');
+        const modalCompanyName = document.getElementById('modal-company-name');
+        const modalCompanyRating = document.getElementById('modal-company-rating');
+        const closeButton = document.querySelector('.close-button');
+
+        companies.forEach(company => {
+            const card = document.createElement('div');
+            card.className = 'company-card';
+
+            card.innerHTML = \`
+                <div class="company-logo" style="background-color: #${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}30;">\${company.logo}</div>
+                <div class="company-info">
+                    <h2>\${company.name}</h2>
+                    <p>\${company.industry}</p>
+                </div>
+                <button class="rating-button" data-company="\${company.name}">View Rating</button>
+            \`;
+            companyGrid.appendChild(card);
+        });
+
+        companyGrid.addEventListener('click', function(event) {
+            if (event.target.classList.contains('rating-button')) {
+                const companyName = event.target.getAttribute('data-company');
+                const rating = (Math.random() * (5 - 3.5) + 3.5).toFixed(1); // Random rating between 3.5 and 5.0
+
+                modalCompanyName.textContent = companyName;
+                modalCompanyRating.textContent = \`\${rating} / 5.0\`;
+                modal.style.display = 'flex';
+            }
+        });
+
+        closeButton.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
