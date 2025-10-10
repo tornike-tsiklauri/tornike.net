@@ -1,205 +1,642 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Georgian Companies</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            margin: 0;
-            padding: 2rem;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            color: #1c1e21;
-            margin-bottom: 2rem;
-        }
-        .company-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .company-card {
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .company-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-        .company-logo-container {
-            background-color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 180px;
-            padding: 1rem;
-            box-sizing: border-box;
-        }
-        .company-logo {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .company-info {
-            padding: 1.5rem;
-        }
-        .company-info h2 {
-            margin: 0 0 0.5rem;
-            font-size: 1.5rem;
-            color: #1c1e21;
-        }
-        .company-info p {
-            margin: 0;
-            color: #606770;
-        }
-        .rating-button {
-            display: block;
-            width: calc(100% - 3rem);
-            margin: 1.5rem;
-            padding: 0.75rem;
-            background-color: #1877f2;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .rating-button:hover {
-            background-color: #166fe5;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: auto;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            animation: fadeIn 0.3s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close-button:hover {
-            color: #333;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Top Georgian Companies</title>
+  <meta name="description" content="A curated list of notable companies in Georgia with ratings, filtering and accessible modal details." />
+
+  <style>
+    :root{
+      --bg:#f6f8fa;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#1877f2;
+      --accent-600:#166fe5;
+      --radius:12px;
+      --shadow: 0 6px 18px rgba(15,23,42,0.08);
+      --shadow-hover: 0 10px 30px rgba(15,23,42,0.12);
+      --max-width:1200px;
+      --gap:1.25rem;
+      --glass: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.9));
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 400px at 10% 10%, rgba(24,119,242,0.04), transparent), var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:2rem 1rem;
+    }
+
+    .container{
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+
+    header{
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      align-items:stretch;
+      margin-bottom:1.5rem;
+    }
+
+    header .title-row{
+      display:flex;
+      gap:1rem;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    h1{
+      margin:0;
+      font-size:1.5rem;
+      font-weight:700;
+      color:#0b1220;
+    }
+    p.lead{
+      margin:0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .controls{
+      display:flex;
+      gap:0.75rem;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .search {
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+      background:var(--card);
+      padding:0.4rem 0.6rem;
+      border-radius:10px;
+      box-shadow: var(--shadow);
+      min-width:220px;
+    }
+
+    .search input{
+      border:0;
+      outline:0;
+      font-size:0.95rem;
+      background:transparent;
+      width:220px;
+    }
+
+    .select, .button-clear{
+      background:var(--card);
+      border:0;
+      padding:0.5rem 0.75rem;
+      border-radius:10px;
+      box-shadow: var(--shadow);
+      cursor:pointer;
+      font-size:0.95rem;
+    }
+
+    .button-clear{
+      background:transparent;
+      box-shadow:none;
+      color:var(--muted);
+    }
+
+    .company-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap:var(--gap);
+      margin-top:1rem;
+    }
+
+    .company-card{
+      background:var(--glass);
+      border-radius:var(--radius);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:transform .18s ease, box-shadow .18s ease;
+      box-shadow: var(--shadow);
+      border:1px solid rgba(15,23,42,0.03);
+    }
+    .company-card:focus-within,
+    .company-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-hover) }
+
+    .company-top{
+      display:flex;
+      gap:1rem;
+      align-items:center;
+      padding:1rem;
+    }
+    .logo-wrap{
+      width:72px;
+      height:72px;
+      flex:0 0 72px;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg, #fff, #fbfcff);
+      border:1px solid rgba(15,23,42,0.03);
+    }
+    .logo-wrap img{
+      max-width:64px;
+      max-height:64px;
+      object-fit:contain;
+      display:block;
+    }
+
+    .company-meta{
+      flex:1;
+      min-width:0;
+    }
+    .company-meta h2{
+      margin:0;
+      font-size:1.05rem;
+      font-weight:600;
+      color:#0b1220;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .company-meta p{
+      margin:0.3rem 0 0;
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+
+    .card-bottom{
+      display:flex;
+      gap:0.75rem;
+      align-items:center;
+      padding:0.85rem 1rem 1rem;
+    }
+
+    .rating{
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+      margin-left:auto;
+    }
+    .rating .score{
+      font-weight:700;
+      color:#0b1220;
+    }
+
+    .rating-button{
+      background:var(--accent);
+      color:white;
+      border:0;
+      padding:0.5rem 0.85rem;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      transition:background .14s;
+      box-shadow: 0 6px 14px rgba(24,119,242,0.14);
+    }
+    .rating-button:hover{ background:var(--accent-600) }
+
+    /* star display */
+    .stars{ display:inline-flex; gap:3px; align-items:center; }
+    .star{
+      width:16px;
+      height:16px;
+      display:inline-block;
+      color: #fbbf24;
+    }
+
+    /* Modal */
+    .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:1200;
+      background:rgba(2,6,23,0.5);
+      align-items:center;
+      justify-content:center;
+      padding:1rem;
+    }
+    .modal[open]{ display:flex }
+
+    .modal-dialog{
+      width:100%;
+      max-width:520px;
+      background:var(--card);
+      border-radius:14px;
+      padding:1.25rem;
+      box-shadow: 0 20px 60px rgba(2,6,23,0.35);
+      position:relative;
+      outline:0;
+    }
+    .modal-close{
+      position:absolute;
+      right:0.6rem;
+      top:0.4rem;
+      border:0;
+      background:transparent;
+      font-size:1.25rem;
+      color:var(--muted);
+      cursor:pointer;
+      padding:0.4rem;
+      border-radius:8px;
+    }
+    .modal-close:focus{ box-shadow:0 0 0 3px rgba(24,119,242,0.12) }
+
+    .modal-content{
+      display:flex;
+      gap:1rem;
+      align-items:center;
+      margin-top:0.2rem;
+    }
+    .modal-logo{
+      width:96px;
+      height:96px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg,#fff,#fbfcff);
+      border:1px solid rgba(15,23,42,0.03);
+      flex:0 0 96px;
+    }
+    .modal-body h3{ margin:0; font-size:1.25rem }
+    .modal-body p{ margin:0.4rem 0 0; color:var(--muted) }
+
+    .modal-rating{
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+      margin-top:0.6rem;
+    }
+
+    footer{ margin-top:1.5rem; color:var(--muted); font-size:0.9rem; text-align:center }
+
+    @media (max-width:540px){
+      .logo-wrap{ width:56px; height:56px; flex:0 0 56px }
+      .modal-content{ flex-direction:column; align-items:flex-start }
+      .modal-logo{ width:84px; height:84px }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Top Companies in Georgia</h1>
-        <div class="company-grid" id="company-grid">
-            <!-- Companies will be injected here by JavaScript -->
+  <div class="container" id="page">
+    <header>
+      <div class="title-row">
+        <div>
+          <h1>Top Companies in Georgia</h1>
+          <p class="lead">Curated list with quick ratings — search, sort and view details. Data is illustrative.</p>
         </div>
-    </div>
 
-    <!-- The Modal -->
-    <div id="ratingModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 id="modal-company-name"></h2>
-            <p>Rating:</p>
-            <p id="modal-company-rating" style="font-size: 2rem; font-weight: bold; margin-top: 0.5rem;"></p>
+        <div class="controls" aria-hidden="false">
+          <div class="search" role="search" aria-label="Search companies">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 21l-4.35-4.35" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="11" cy="11" r="6" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <input id="searchInput" type="search" placeholder="Search by name or industry" aria-label="Search companies" />
+          </div>
+
+          <select id="sortSelect" class="select" aria-label="Sort companies">
+            <option value="rating-desc">Sort: Rating (high → low)</option>
+            <option value="rating-asc">Sort: Rating (low → high)</option>
+            <option value="name-asc">Sort: Name (A → Z)</option>
+            <option value="name-desc">Sort: Name (Z → A)</option>
+            <option value="industry-asc">Sort: Industry (A → Z)</option>
+          </select>
+
+          <button id="clearBtn" class="button-clear" title="Clear search and sort">Reset</button>
         </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="company-grid" id="companyGrid" aria-live="polite" aria-label="Companies list">
+        <!-- injected cards -->
+      </section>
+    </main>
+
+    <footer>
+      Data is for demonstration purposes. Logos and names are trademarks of their respective owners.
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="ratingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document" tabindex="-1">
+      <button class="modal-close" id="modalClose" aria-label="Close details">&times;</button>
+      <div class="modal-content">
+        <div class="modal-logo" id="modalLogoWrap">
+          <img src="" alt="" id="modalLogo" style="max-width:84px; max-height:84px; object-fit:contain" />
+        </div>
+        <div class="modal-body">
+          <h3 id="modalTitle">Company</h3>
+          <p id="modalIndustry" class="muted">Industry</p>
+
+          <div class="modal-rating" aria-hidden="false">
+            <div id="modalStars" class="stars" aria-hidden="true"></div>
+            <div class="score" id="modalScore" style="font-weight:700;"></div>
+          </div>
+
+          <p id="modalNote" style="margin-top:0.6rem;color:var(--muted);font-size:0.95rem;">Click outside or press Esc to close.</p>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script>
-        const companies = [
-            { name: "TBC Bank Group", industry: "Banking/Finance", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/TBC_Bank_logo.svg", rating: 4.8 },
-            { name: "Sun Petroleum Georgia (Gulf)", industry: "Energy", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Gulf_Oil_logo.svg/1200px-Gulf_Oil_logo.svg.png", rating: 4.5 },
-            { name: "Silknet JSC", industry: "Telecommunications", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Silknet_logo_2017.svg/1200px-Silknet_logo_2017.svg.png", rating: 4.2 },
-            { name: "Georgia Capital", industry: "Investment", logo: "https://georgiacapital.ge/themes/georgia-capital/assets/images/logo.svg", rating: 4.6 },
-            { name: "Rich Metals Group (RMG)", industry: "Metals & Mining", logo: "https://rmg.ge/wp-content/uploads/2021/09/logo-en.svg", rating: 3.9 },
-            { name: "Aversi", industry: "Pharmaceuticals", logo: "https://upload.wikimedia.org/wikipedia/commons/8/85/Aversi_Pharma_Logo.png", rating: 4.7 },
-            { name: "Wissol", industry: "Energy", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Wissol_logo.svg/1200px-Wissol_logo.svg.png", rating: 4.4 },
-            { name "Rustavi Steel", industry: "Metals & Mining", logo: "https://www.rustavisteel.com/images/logo.png", rating: 4.1 },
-            { name: "Georgian State Electrosystem", industry: "Utilities", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Georgian_State_Electrosystem_Logo.svg/1200px-Georgian_State_Electrosystem_Logo.svg.png", rating: 4.3 },
-            { name: "Evex Hospitals", industry: "Healthcare", logo: "https://evex.ge/images/logo.svg", rating: 4.0 }
-        ];
 
-        const companyGrid = document.getElementById('company-grid');
-        const modal = document.getElementById('ratingModal');
-        const modalCompanyName = document.getElementById('modal-company-name');
-        const modalCompanyRating = document.getElementById('modal-company-rating');
-        const closeButton = document.querySelector('.close-button');
+  <script>
+    // Data - corrected and sanitized entries
+    const companies = [
+      { name: "TBC Bank Group", industry: "Banking & Finance", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/TBC_Bank_logo.svg", rating: 4.8 },
+      { name: "Sun Petroleum Georgia (Gulf)", industry: "Energy", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Gulf_Oil_logo.svg/600px-Gulf_Oil_logo.svg.png", rating: 4.5 },
+      { name: "Silknet JSC", industry: "Telecommunications", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Silknet_logo_2017.svg", rating: 4.2 },
+      { name: "Georgia Capital", industry: "Investment", logo: "https://georgiacapital.ge/themes/georgia-capital/assets/images/logo.svg", rating: 4.6 },
+      { name: "Rich Metals Group (RMG)", industry: "Metals & Mining", logo: "https://rmg.ge/wp-content/uploads/2021/09/logo-en.svg", rating: 3.9 },
+      { name: "Aversi", industry: "Pharmaceuticals", logo: "https://upload.wikimedia.org/wikipedia/commons/8/85/Aversi_Pharma_Logo.png", rating: 4.7 },
+      { name: "Wissol", industry: "Energy", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Wissol_logo.svg/600px-Wissol_logo.svg.png", rating: 4.4 },
+      { name: "Rustavi Steel", industry: "Metals & Mining", logo: "https://www.rustavisteel.com/images/logo.png", rating: 4.1 },
+      { name: "Georgian State Electrosystem", industry: "Utilities", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Georgian_State_Electrosystem_Logo.svg", rating: 3.8 },
+      { name: "Evex Hospitals", industry: "Healthcare", logo: "https://evex.ge/images/logo.svg", rating: 4.0 }
+    ];
 
-        companies.forEach(company => {
-            const card = document.createElement('div');
-            card.className = 'company-card';
+    // Fallback data URI (simple SVG) used when an image fails to load
+    const FALLBACK_SVG = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">' +
+      '<rect width="100%" height="100%" fill="#f3f4f6"/>' +
+      '<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#9ca3af" font-family="Arial" font-size="20">No Logo</text>' +
+      '</svg>'
+    );
 
-            card.innerHTML = `
-                <div class="company-logo-container">
-                    <img src="${company.logo}" alt="${company.name} Logo" class="company-logo">
-                </div>
-                <div class="company-info">
-                    <h2>${company.name}</h2>
-                    <p>${company.industry}</p>
-                </div>
-                <button class="rating-button" data-company-name="${company.name}" data-company-rating="${company.rating}">View Rating</button>
-            `;
-            companyGrid.appendChild(card);
-        });
+    // DOM elements
+    const grid = document.getElementById('companyGrid');
+    const searchInput = document.getElementById('searchInput');
+    const sortSelect = document.getElementById('sortSelect');
+    const clearBtn = document.getElementById('clearBtn');
 
-        companyGrid.addEventListener('click', function(event) {
-            if (event.target.classList.contains('rating-button')) {
-                const companyName = event.target.getAttribute('data-company-name');
-                const rating = event.target.getAttribute('data-company-rating');
+    const modal = document.getElementById('ratingModal');
+    const modalDialog = modal.querySelector('.modal-dialog');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalIndustry = document.getElementById('modalIndustry');
+    const modalScore = document.getElementById('modalScore');
+    const modalStars = document.getElementById('modalStars');
+    const modalLogo = document.getElementById('modalLogo');
 
-                modalCompanyName.textContent = companyName;
-                modalCompanyRating.textContent = `${rating} / 5.0`;
-                modal.style.display = 'flex';
-            }
-        });
+    let currentData = [...companies];
+    let lastFocusedElement = null;
 
-        closeButton.onclick = function() {
-            modal.style.display = 'none';
+    // Utility: create star nodes (support partial star by using clipPath)
+    function renderStars(container, rating, max = 5) {
+      container.innerHTML = '';
+      const full = Math.floor(rating);
+      const frac = rating - full;
+
+      for (let i = 0; i < max; i++) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        svg.setAttribute('viewBox','0 0 24 24');
+        svg.setAttribute('width','18');
+        svg.setAttribute('height','18');
+        svg.classList.add('star');
+        const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+        path.setAttribute('d','M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.402 8.17L12 18.896 4.664 23.17l1.402-8.17L.132 9.213l8.2-1.192z');
+        path.setAttribute('fill', i < full ? '#f59e0b' : (i === full && frac > 0 ? `url(#grad-${i})` : '#e6e7ea'));
+        svg.appendChild(path);
+
+        // if fractional, add linearGradient definition clipped to fraction
+        if (i === full && frac > 0) {
+          const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+          const grad = document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
+          grad.setAttribute('id', `grad-${i}`);
+          grad.setAttribute('x1','0');
+          grad.setAttribute('x2','1');
+          grad.setAttribute('y1','0');
+          grad.setAttribute('y2','0');
+          const stop1 = document.createElementNS('http://www.w3.org/2000/svg','stop');
+          stop1.setAttribute('offset', `${frac*100}%`);
+          stop1.setAttribute('stop-color','#f59e0b');
+          const stop2 = document.createElementNS('http://www.w3.org/2000/svg','stop');
+          stop2.setAttribute('offset', `${frac*100}%`);
+          stop2.setAttribute('stop-color','#e6e7ea');
+          grad.appendChild(stop1);
+          grad.appendChild(stop2);
+          defs.appendChild(grad);
+          svg.insertBefore(defs, path);
         }
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
+        container.appendChild(svg);
+      }
+    }
 
+    // Render a single card
+    function createCard(company){
+      const card = document.createElement('article');
+      card.className = 'company-card';
+      card.setAttribute('tabindex','-1');
+
+      const top = document.createElement('div');
+      top.className = 'company-top';
+
+      const logoWrap = document.createElement('div');
+      logoWrap.className = 'logo-wrap';
+      const img = document.createElement('img');
+      img.src = company.logo;
+      img.alt = `${company.name} logo`;
+      img.loading = 'lazy';
+      // fallback
+      img.onerror = () => { img.onerror = null; img.src = FALLBACK_SVG; };
+      logoWrap.appendChild(img);
+
+      const meta = document.createElement('div');
+      meta.className = 'company-meta';
+      const name = document.createElement('h2');
+      name.textContent = company.name;
+      const industry = document.createElement('p');
+      industry.textContent = company.industry;
+
+      meta.appendChild(name);
+      meta.appendChild(industry);
+
+      top.appendChild(logoWrap);
+      top.appendChild(meta);
+
+      const bottom = document.createElement('div');
+      bottom.className = 'card-bottom';
+
+      const viewBtn = document.createElement('button');
+      viewBtn.className = 'rating-button';
+      viewBtn.type = 'button';
+      viewBtn.setAttribute('aria-haspopup','dialog');
+      viewBtn.textContent = 'View Rating';
+      viewBtn.addEventListener('click', () => openModal(company, img.src, viewBtn));
+
+      const ratingWrap = document.createElement('div');
+      ratingWrap.className = 'rating';
+      const starHolder = document.createElement('div');
+      starHolder.className = 'stars';
+      renderStars(starHolder, company.rating, 5);
+      const score = document.createElement('div');
+      score.className = 'score';
+      score.textContent = `${company.rating.toFixed(1)}/5`;
+
+      ratingWrap.appendChild(starHolder);
+      ratingWrap.appendChild(score);
+
+      bottom.appendChild(viewBtn);
+      bottom.appendChild(ratingWrap);
+
+      card.appendChild(top);
+      card.appendChild(bottom);
+
+      return card;
+    }
+
+    // Render list given data
+    function renderList(list){
+      grid.innerHTML = '';
+      if (!list.length) {
+        const empty = document.createElement('div');
+        empty.style.padding = '2rem';
+        empty.style.textAlign = 'center';
+        empty.style.color = 'var(--muted)';
+        empty.textContent = 'No companies match your search.';
+        grid.appendChild(empty);
+        return;
+      }
+      const frag = document.createDocumentFragment();
+      for (const c of list){
+        frag.appendChild(createCard(c));
+      }
+      grid.appendChild(frag);
+    }
+
+    // Filter and sort helpers
+    function normalize(str){
+      return String(str || '').toLowerCase().trim();
+    }
+
+    function applyFilters(){
+      const q = normalize(searchInput.value);
+      let out = companies.filter(c =>
+        normalize(c.name).includes(q) || normalize(c.industry).includes(q)
+      );
+
+      const sort = sortSelect.value;
+      switch (sort){
+        case 'rating-desc':
+          out.sort((a,b)=> b.rating - a.rating); break;
+        case 'rating-asc':
+          out.sort((a,b)=> a.rating - b.rating); break;
+        case 'name-asc':
+          out.sort((a,b)=> a.name.localeCompare(b.name)); break;
+        case 'name-desc':
+          out.sort((a,b)=> b.name.localeCompare(a.name)); break;
+        case 'industry-asc':
+          out.sort((a,b)=> a.industry.localeCompare(b.industry)); break;
+      }
+
+      currentData = out;
+      renderList(out);
+    }
+
+    // debounce small helper
+    function debounce(fn, wait=200){
+      let t;
+      return (...args) => {
+        clearTimeout(t);
+        t = setTimeout(()=> fn.apply(this,args), wait);
+      };
+    }
+
+    // Modal management
+    function openModal(company, logoSrc, opener){
+      lastFocusedElement = opener || document.activeElement;
+      modal.setAttribute('aria-hidden','false');
+      modal.open = true; // non-standard, but we use attribute to show
+      modal.style.display = 'flex';
+      modalDialog.focus();
+
+      modalTitle.textContent = company.name;
+      modalIndustry.textContent = company.industry;
+      modalScore.textContent = `${company.rating.toFixed(1)} / 5.0`;
+      modalLogo.src = logoSrc || company.logo || FALLBACK_SVG;
+      modalLogo.alt = `${company.name} logo`;
+      modalLogo.onerror = () => { modalLogo.onerror = null; modalLogo.src = FALLBACK_SVG; };
+
+      renderStars(modalStars, company.rating, 5);
+
+      // trap focus to close button (simple approach)
+      modalClose.focus();
+      document.addEventListener('keydown', onKeyDown);
+    }
+
+    function closeModal(){
+      modal.setAttribute('aria-hidden','true');
+      modal.open = false;
+      modal.style.display = 'none';
+      document.removeEventListener('keydown', onKeyDown);
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus();
+    }
+
+    function onKeyDown(e){
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+      // simple focus trap: keep focus in modal when Tab cycles
+      if (e.key === 'Tab') {
+        const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    // Event bindings
+    searchInput.addEventListener('input', debounce(applyFilters, 180));
+    sortSelect.addEventListener('change', applyFilters);
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      sortSelect.value = 'rating-desc';
+      applyFilters();
+      searchInput.focus();
+    });
+
+    // Close modal events
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Initialize
+    applyFilters();
+
+    // Accessibility: allow Enter on cards to open first button
+    grid.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const card = e.target.closest('.company-card');
+        if (!card) return;
+        const btn = card.querySelector('.rating-button');
+        if (btn) btn.click();
+      }
+    });
+
+    // Expose small helper for debugging (optional)
+    window.__companies = companies;
+
+  </script>
 </body>
 </html>
