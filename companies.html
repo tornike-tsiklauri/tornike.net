@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-ag">-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Georgian Companies</title>
     <style>
@@ -40,15 +40,19 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
-        .company-logo {
-            background-color: #f0f2f5;
+        .company-logo-container {
+            background-color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 180px;
-            font-size: 3rem;
-            font-weight: bold;
-            color: #4b4f56;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        .company-logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
         .company-info {
             padding: 1.5rem;
@@ -140,16 +144,16 @@
 
     <script>
         const companies = [
-            { name: "TBC Bank Group", industry: "Banking/Finance", logo: "TBC" },
-            { name: "Sun Petroleum Georgia", industry: "Energy", logo: "SPG" },
-            { name: "Silknet JSC", industry: "Telecommunications", logo: "S" },
-            { name: "Georgia Capital", industry: "Investment", logo: "GC" },
-            { name: "Rich Metals Group", industry: "Metals & Mining", logo: "RMG" },
-            { name: "Aversi", industry: "Pharmaceuticals", logo: "A" },
-            { name: "Wissol", industry: "Energy", logo: "W" },
-            { name: "Rustavi Steel", industry: "Metals & Mining", logo: "RS" },
-            { name: "Georgian State Electrosystem", industry: "Utilities", logo: "GSE" },
-            { name: "Imss", industry: "Healthcare", logo: "IMSS" }
+            { name: "TBC Bank Group", industry: "Banking/Finance", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/TBC_Bank_logo.svg", rating: 4.8 },
+            { name: "Sun Petroleum Georgia (Gulf)", industry: "Energy", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Gulf_Oil_logo.svg/1200px-Gulf_Oil_logo.svg.png", rating: 4.5 },
+            { name: "Silknet JSC", industry: "Telecommunications", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Silknet_logo_2017.svg/1200px-Silknet_logo_2017.svg.png", rating: 4.2 },
+            { name: "Georgia Capital", industry: "Investment", logo: "https://georgiacapital.ge/themes/georgia-capital/assets/images/logo.svg", rating: 4.6 },
+            { name: "Rich Metals Group (RMG)", industry: "Metals & Mining", logo: "https://rmg.ge/wp-content/uploads/2021/09/logo-en.svg", rating: 3.9 },
+            { name: "Aversi", industry: "Pharmaceuticals", logo: "https://upload.wikimedia.org/wikipedia/commons/8/85/Aversi_Pharma_Logo.png", rating: 4.7 },
+            { name: "Wissol", industry: "Energy", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Wissol_logo.svg/1200px-Wissol_logo.svg.png", rating: 4.4 },
+            { name "Rustavi Steel", industry: "Metals & Mining", logo: "https://www.rustavisteel.com/images/logo.png", rating: 4.1 },
+            { name: "Georgian State Electrosystem", industry: "Utilities", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Georgian_State_Electrosystem_Logo.svg/1200px-Georgian_State_Electrosystem_Logo.svg.png", rating: 4.3 },
+            { name: "Evex Hospitals", industry: "Healthcare", logo: "https://evex.ge/images/logo.svg", rating: 4.0 }
         ];
 
         const companyGrid = document.getElementById('company-grid');
@@ -163,20 +167,22 @@
             card.className = 'company-card';
 
             card.innerHTML = `
-                <div class="company-logo" style="background-color: #${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}30;">${company.logo}</div>
+                <div class="company-logo-container">
+                    <img src="${company.logo}" alt="${company.name} Logo" class="company-logo">
+                </div>
                 <div class="company-info">
                     <h2>${company.name}</h2>
                     <p>${company.industry}</p>
                 </div>
-                <button class="rating-button" data-company="${company.name}">View Rating</button>
+                <button class="rating-button" data-company-name="${company.name}" data-company-rating="${company.rating}">View Rating</button>
             `;
             companyGrid.appendChild(card);
         });
 
         companyGrid.addEventListener('click', function(event) {
             if (event.target.classList.contains('rating-button')) {
-                const companyName = event.target.getAttribute('data-company');
-                const rating = (Math.random() * (5 - 3.5) + 3.5).toFixed(1); // Random rating between 3.5 and 5.0
+                const companyName = event.target.getAttribute('data-company-name');
+                const rating = event.target.getAttribute('data-company-rating');
 
                 modalCompanyName.textContent = companyName;
                 modalCompanyRating.textContent = `${rating} / 5.0`;
