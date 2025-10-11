@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Assistant</title>
-  <meta name="description" content="A simple, centered button to reliably launch the DigitalOcean AI Agent bubble chat." />
+  <meta name="description" content="A premium landing page for a DigitalOcean AI assistant, guiding users to the chat bubble." />
 
   <!-- Bootstrap 5 CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
       --primary-accent: #38bdf8;
       --text: #e5eafc;
       --muted: #a1a9c4;
-      --ring: rgba(88, 80, 245, 0.3);
+      --border: rgba(94, 102, 147, 0.2);
     }
 
     html, body {
@@ -35,40 +35,85 @@
       text-align: center;
       background-color: var(--bg);
       color: var(--text);
-      padding-top: 5rem;
-      padding-bottom: 5rem;
+      padding: 2rem;
     }
     
-    .btn-primary {
-      background: var(--primary);
+    .lang-switch {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 10;
+    }
+    .lang-switch .btn {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: all .2s;
+    }
+    .lang-switch .btn:hover {
+      background-color: var(--surface);
+      color: var(--text);
+    }
+    .lang-switch .btn.active {
+      background-color: var(--primary);
       border-color: var(--primary);
-      font-weight: 600;
-      transition: transform .2s, box-shadow .2s;
+      color: #fff;
     }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px -10px var(--ring);
-    }
-    .btn-primary:disabled {
-        cursor: wait;
+
+    .main-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 2rem;
+        filter: drop-shadow(0 0 25px rgba(88, 80, 245, 0.3));
     }
 
     .features-section {
         margin-top: 4rem;
         max-width: 900px;
     }
+    .feature-card {
+        background-color: transparent;
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: background-color .2s;
+    }
+    .feature-card:hover {
+        background-color: var(--surface);
+    }
     .feature-icon {
-        width: 3.5rem;
-        height: 3.5rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        color: var(--primary-accent);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Animated pointer to guide the user */
+    .pointer-guide {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        width: 60px;
+        height: 60px;
+        border: 2px solid rgba(88, 80, 245, 0.5);
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary), var(--primary-accent));
-        color: #fff;
-        font-size: 1.75rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        animation: pulse 2s infinite;
+        pointer-events: none; /* Allows clicking through it */
+        z-index: 9998; /* Just below the chat widget */
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(88, 80, 245, 0.7);
+      }
+      70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 15px rgba(88, 80, 245, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(88, 80, 245, 0);
+      }
     }
     
     footer {
@@ -77,45 +122,67 @@
       left: 0;
       right: 0;
     }
+
+    /* Bilingual visibility classes */
+    .i18n { display: none; }
+    [data-lang="en"] .i18n-en { display: inline; }
+    [data-lang="ka"] .i18n-ka { display: inline; }
+    [data-lang="en"] .i18n-block-en { display: block; }
+    [data-lang="ka"] .i18n-block-ka { display: block; }
   </style>
 </head>
 <body>
 
+  <!-- Language Switcher -->
+  <div class="lang-switch">
+    <div class="btn-group" role="group" aria-label="Language switch">
+      <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" title="English">🇬🇧 EN</button>
+      <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" title="ქართული">🇬🇪 KA</button>
+    </div>
+  </div>
+
   <main>
     <div class="container">
-      <h1 class="display-4 fw-bold mb-3">AI Assistant</h1>
-      <p class="lead muted col-lg-8 mx-auto">Click the button below to start a conversation with our AI assistant.</p>
+      <img src="https://www.svgrepo.com/show/375527/ai-platform.svg" class="main-icon" alt="AI Platform Icon">
       
-      <div class="mt-4 pt-2">
-        <button class="btn btn-primary btn-lg px-5 py-3" id="open-chat-button">
-          <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-          <i class="bi bi-chat-dots-fill me-2"></i>
-          Start Chat
-        </button>
-      </div>
+      <h1 class="display-5 fw-bold mb-3">
+        <span class="i18n i18n-en">AI Assistant is Ready</span>
+        <span class="i18n i18n-ka">AI ასისტენტი მზად არის</span>
+      </h1>
+      
+      <p class="lead muted col-lg-8 mx-auto">
+        <span class="i18n i18n-en">To start the chat, please use the button on the bottom-right.</span>
+        <span class="i18n i18n-ka">საუბრის დასაწყებად, გთხოვთ გამოიყენოთ ღილაკი ქვედა მარჯვენა კუთხეში.</span>
+      </p>
 
+      <!-- Features Section -->
       <section class="features-section">
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="feature-icon">
-                    <i class="bi bi-rocket-takeoff-fill"></i>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+                    <h6 class="fw-semibold">
+                        <span class="i18n i18n-en">Trusted Technology</span>
+                        <span class="i18n i18n-ka">სანდო ტექნოლოგია</span>
+                    </h6>
+                    <p class="small text-white-50 mb-0">
+                        <span class="i18n i18n-en">Powered by DigitalOcean and the DeepSeek R1 Distill Llama 70B model.</span>
+                        <span class="i18n i18n-ka">აშენებულია DigitalOcean-ზე და მუშაობს DeepSeek R1 Distill Llama 70B მოდელით.</span>
+                    </p>
                 </div>
-                <h5 class="fw-semibold">Fast & Responsive</h5>
-                <p class="small text-white-50">Get instant answers without delay, powered by a lightweight and optimized interface.</p>
             </div>
-            <div class="col-md-4">
-                <div class="feature-icon">
-                    <i class="bi bi-shield-check"></i>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-lightbulb-fill"></i></div>
+                    <h6 class="fw-semibold">
+                        <span class="i18n i18n-en">Simple & Intuitive</span>
+                        <span class="i18n i18n-ka">მარტივი და ინტუიციური</span>
+                    </h6>
+                    <p class="small text-white-50 mb-0">
+                        <span class="i18n i18n-en">A clean, focused experience. The assistant is always one click away.</span>
+                        <span class="i18n i18n-ka">სუფთა, ფოკუსირებული გამოცდილება. ასისტენტი ყოველთვის ერთ კლიკშია.</span>
+                    </p>
                 </div>
-                <h5 class="fw-semibold">Trusted Technology</h5>
-                <p class="small text-white-50">Built on DigitalOcean and powered by the advanced DeepSeek R1 Distill Llama 70B model.</p>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-icon">
-                    <i class="bi bi-lightbulb-fill"></i>
-                </div>
-                <h5 class="fw-semibold">Simple to Use</h5>
-                <p class="small text-white-50">A clean, intuitive experience. Just click 'Start Chat' to begin your conversation.</p>
             </div>
         </div>
       </section>
@@ -123,96 +190,31 @@
     </div>
   </main>
 
+  <!-- Animated guide to point to the chat bubble -->
+  <div class="pointer-guide"></div>
+
   <footer class="text-center">
-      <small class="muted">© <span id="year">2025</span> AI Assistant by tornike-tsiklauri</small>
+      <small class="muted">© <span id="year"></span> AI Assistant by tornike-tsiklauri</small>
   </footer>
 
   <script>
-    const openChatButton = document.getElementById('open-chat-button');
-    const buttonIcon = openChatButton.querySelector('i');
-    const buttonSpinner = openChatButton.querySelector('.spinner-border');
-
-    function resetButtonState() {
-        openChatButton.disabled = false;
-        buttonIcon.classList.remove('d-none');
-        buttonSpinner.classList.add('d-none');
-    }
-
-    function handleOpenChatClick() {
-      // Show loading state
-      openChatButton.disabled = true;
-      buttonIcon.classList.add('d-none');
-      buttonSpinner.classList.remove('d-none');
-      console.log("Attempting to open chat...");
-
-      // --- STRATEGY A: Try the official API first ---
-      tryOfficialApi().then(success => {
-        if (success) {
-          console.log("SUCCESS: Chat opened via official API.");
-          resetButtonState();
-        } else {
-          // --- STRATEGY B: Fallback to a 'Deep Click' if API fails ---
-          console.log("API method failed. Falling back to Deep Click method.");
-          tryDeepClick().then(success => {
-            if (success) {
-              console.log("SUCCESS: Chat opened via Deep Click method.");
-            } else {
-              console.error("FAILURE: All methods failed. Chat widget could not be activated.");
-              alert('Chat widget could not be loaded. Please try refreshing the page.');
-            }
-            resetButtonState();
-          });
-        }
-      });
-    }
-
-    function tryOfficialApi() {
-      return new Promise(resolve => {
-        if (window.doai && typeof window.doai.openChat === 'function') {
-          window.doai.openChat();
-          resolve(true);
-          return;
-        }
-        
-        let attempts = 0;
-        const interval = setInterval(() => {
-          attempts++;
-          if (window.doai && typeof window.doai.openChat === 'function') {
-            clearInterval(interval);
-            window.doai.openChat();
-            resolve(true);
-          } else if (attempts > 12) { // Wait for 3 seconds
-            clearInterval(interval);
-            resolve(false);
-          }
-        }, 250);
-      });
-    }
-
-    function tryDeepClick() {
-      return new Promise(resolve => {
-        let attempts = 0;
-        const interval = setInterval(() => {
-          attempts++;
-          const hostElement = document.getElementById('do-genai-embed-container');
-          // The button might be inside a Shadow DOM
-          const button = hostElement?.shadowRoot?.querySelector('button');
-
-          if (button) {
-            clearInterval(interval);
-            console.log("Found button inside Shadow DOM. Dispatching click.");
-            const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
-            button.dispatchEvent(clickEvent);
-            resolve(true);
-          } else if (attempts > 12) { // Wait another 3 seconds
-            clearInterval(interval);
-            resolve(false);
-          }
-        }, 250);
-      });
-    }
+    // Bilingual Language Switcher
+    (function() {
+      const root = document.documentElement;
+      function setLang(lang) {
+        if (lang !== 'en' && lang !== 'ka') return;
+        root.setAttribute('data-lang', lang);
+        localStorage.setItem('lang', lang);
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        document.getElementById('lang-ka').classList.toggle('active', lang === 'ka');
+      }
+      // Set default language to English if no preference is saved
+      setLang(localStorage.getItem('lang') || 'en');
+      document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
+      document.getElementById('lang-ka').addEventListener('click', () => setLang('ka'));
+    })();
     
-    openChatButton.addEventListener('click', handleOpenChatClick);
+    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
