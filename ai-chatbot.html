@@ -20,7 +20,6 @@
       --text: #e5eafc;
       --muted: #a1a9c4;
       --ring: rgba(88, 80, 245, 0.3);
-      --border: rgba(94, 102, 147, 0.2);
     }
 
     html, body {
@@ -132,83 +131,89 @@
     const openChatButton = document.getElementById('open-chat-button');
     const buttonIcon = openChatButton.querySelector('i');
     const buttonSpinner = openChatButton.querySelector('.spinner-border');
-    let doChatButton = null;
 
-    /**
-     * Uses a MutationObserver to reliably find the real chat button
-     * once the external script adds it to the page.
-     */
-    function findChatButtonOnPage() {
-      console.log("Looking for the chat widget button...");
-      
-      const observer = new MutationObserver((mutations, obs) => {
-        const chatBubble = document.querySelector('#do-genai-embed-container button');
-        if (chatBubble) {
-          console.log('SUCCESS: Chat button element found by observer.', chatBubble);
-          doChatButton = chatBubble;
-          obs.disconnect(); // Stop observing once we've found it
-        }
-      });
-
-      // Start observing the body for new child elements
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true 
-      });
+    function resetButtonState() {
+        openChatButton.disabled = false;
+        buttonIcon.classList.remove('d-none');
+        buttonSpinner.classList.add('d-none');
     }
-
-    // Start looking for the button as soon as the page loads
-    findChatButtonOnPage();
 
     function handleOpenChatClick() {
       // Show loading state
       openChatButton.disabled = true;
       buttonIcon.classList.add('d-none');
       buttonSpinner.classList.remove('d-none');
-      console.log("'Start Chat' clicked. Looking for the real button to activate.");
+      console.log("Attempting to open chat...");
 
-      const clickTheButton = (button) => {
-        console.log("Attempting to dispatch a synthetic click event to the chat button.");
-        const clickEvent = new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            view: window
-        });
-        // Dispatching the event to simulate a real click
-        const dispatched = button.dispatchEvent(clickEvent);
-        console.log(`Event dispatched successfully: ${dispatched}`);
-        resetButtonState();
-      };
-      
-      // If the button is already found, click it immediately.
-      if (doChatButton) {
-        clickTheButton(doChatButton);
-        return;
-      }
-      
-      // If the button isn't found yet, wait for a short period.
-      let attempts = 0;
-      const interval = setInterval(() => {
-        attempts++;
-        if (doChatButton) {
-          clearInterval(interval);
-          clickTheButton(doChatButton);
-        } else if (attempts > 20) { // Timeout after 5 seconds
-          clearInterval(interval);
-          console.error("TIMEOUT: Chat widget button was not found on the page.");
-          alert('Chat widget could not be loaded. Please try refreshing the page.');
+      // --- STRATEGY A: Try the official API first ---
+      tryOfficialApi().then(success => {
+        if (success) {
+          console.log("SUCCESS: Chat opened via official API.");
           resetButtonState();
+        } else {
+          // --- STRATEGY B: Fallback to a 'Deep Click' if API fails ---
+          console.log("API method failed. Falling back to Deep Click method.");
+          tryDeepClick().then(success => {
+            if (success) {
+              console.log("SUCCESS: Chat opened via Deep Click method.");
+            } else {
+              console.error("FAILURE: All methods failed. Chat widget could not be activated.");
+              alert('Chat widget could not be loaded. Please try refreshing the page.');
+            }
+            resetButtonState();
+          });
         }
-      }, 250);
+      });
     }
-    
-    function resetButtonState() {
-        openChatButton.disabled = false;
-        buttonIcon.classList.remove('d-none');
-        buttonSpinner.classList.add('d-none');
+
+    function tryOfficialApi() {
+      return new Promise(resolve => {
+        if (window.doai && typeof window.doai.openChat === 'function') {
+          window.doai.openChat();
+          resolve(true);
+          return;
+        }
+        
+        let attempts = 0;
+        const interval = setInterval(() => {
+          attempts++;
+          if (window.doai && typeof window.doai.openChat === 'function') {
+            clearInterval(interval);
+            window.doai.openChat();
+            resolve(true);
+          } else if (attempts > 12) { // Wait for 3 seconds
+            clearInterval(interval);
+            resolve(false);
+          }
+        }, 250);
+      });
+    }
+
+    function tryDeepClick() {
+      return new Promise(resolve => {
+        let attempts = 0;
+        const interval = setInterval(() => {
+          attempts++;
+          const hostElement = document.getElementById('do-genai-embed-container');
+          // The button might be inside a Shadow DOM
+          const button = hostElement?.shadowRoot?.querySelector('button');
+
+          if (button) {
+            clearInterval(interval);
+            console.log("Found button inside Shadow DOM. Dispatching click.");
+            const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+            button.dispatchEvent(clickEvent);
+            resolve(true);
+          } else if (attempts > 12) { // Wait another 3 seconds
+            clearInterval(interval);
+            resolve(false);
+          }
+        }, 250);
+      });
     }
     
     openChatButton.addEventListener('click', handleOpenChatClick);
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
   <!-- DigitalOcean AI Agent Bubble Chat Widget Script -->
