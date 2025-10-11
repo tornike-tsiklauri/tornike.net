@@ -16,23 +16,28 @@
       --bg: #0A0F1E;
       --surface: #11192E;
       --primary: #5850f5;
+      --primary-accent: #38bdf8;
       --text: #e5eafc;
       --muted: #a1a9c4;
       --ring: rgba(88, 80, 245, 0.3);
+      --border: rgba(94, 102, 147, 0.2);
     }
 
     html, body {
       height: 100%;
-      overflow: hidden;
+      overflow-y: auto; /* Allow scrolling for features */
     }
 
     body {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       background-color: var(--bg);
       color: var(--text);
+      padding-top: 5rem;
+      padding-bottom: 5rem;
     }
     
     /* Button Styles */
@@ -48,7 +53,29 @@
       border-color: var(--primary);
       box-shadow: 0 10px 25px -10px var(--ring);
     }
+    .btn-primary:disabled {
+        cursor: wait;
+    }
 
+    /* Features Section */
+    .features-section {
+        margin-top: 4rem;
+        max-width: 900px;
+    }
+    .feature-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--primary-accent));
+        color: #fff;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
     /* Footer */
     footer {
       position: absolute;
@@ -64,49 +91,110 @@
     <div class="container">
       <h1 class="display-4 fw-bold mb-3">AI Assistant</h1>
       <p class="lead muted col-lg-8 mx-auto">Click the button below to start a conversation with our AI assistant.</p>
+      
+      <!-- Main Button -->
       <div class="mt-4 pt-2">
-        <button class="btn btn-primary btn-lg px-5 py-3" id="open-chat">
+        <button class="btn btn-primary btn-lg px-5 py-3" id="open-chat-button">
           <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
           <i class="bi bi-chat-dots-fill me-2"></i>
           Start Chat
         </button>
       </div>
+
+      <!-- Features Section -->
+      <section class="features-section">
+        <div class="row g-4">
+            <!-- Feature 1: Speed -->
+            <div class="col-md-4">
+                <div class="feature-icon">
+                    <i class="bi bi-rocket-takeoff-fill"></i>
+                </div>
+                <h5 class="fw-semibold">Fast & Responsive</h5>
+                <p class="small text-white-50">Get instant answers without delay, powered by a lightweight and optimized interface.</p>
+            </div>
+            <!-- Feature 2: Trust -->
+            <div class="col-md-4">
+                <div class="feature-icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <h5 class="fw-semibold">Trusted Technology</h5>
+                <p class="small text-white-50">Built on DigitalOcean and powered by the advanced DeepSeek R1 Distill Llama 70B model.</p>
+            </div>
+            <!-- Feature 3: Simplicity -->
+            <div class="col-md-4">
+                <div class="feature-icon">
+                    <i class="bi bi-lightbulb-fill"></i>
+                </div>
+                <h5 class="fw-semibold">Simple to Use</h5>
+                <p class="small text-white-50">A clean, intuitive experience. Just click 'Start Chat' to begin your conversation.</p>
+            </div>
+        </div>
+      </section>
+
     </div>
   </main>
 
   <footer class="text-center">
-      <small class="muted">© 2025 AI Assistant by tornike-tsiklauri</small>
+      <small class="muted">© <span id="year"></span> AI Assistant by tornike-tsiklauri</small>
   </footer>
 
   <script>
-    const openChatButton = document.getElementById('open-chat');
+    const openChatButton = document.getElementById('open-chat-button');
     const buttonIcon = openChatButton.querySelector('i');
     const buttonSpinner = openChatButton.querySelector('.spinner-border');
+    let doChatButton = null;
 
     /**
-     * This function reliably opens the DigitalOcean AI chat widget.
-     * It waits for the widget's API to be available before trying to open it.
+     * This function uses a MutationObserver to reliably find the real chat button
+     * once the external script adds it to the page.
      */
-    function openDoAiChat() {
+    function findChatButtonOnPage() {
+      // First, check if the button is already there
+      const existingButton = document.querySelector('#do-genai-embed-container button');
+      if (existingButton) {
+        doChatButton = existingButton;
+        return;
+      }
+
+      // If not, create an observer to watch for when it's added
+      const observer = new MutationObserver((mutations, obs) => {
+        const chatBubble = document.querySelector('#do-genai-embed-container button');
+        if (chatBubble) {
+          doChatButton = chatBubble;
+          obs.disconnect(); // Stop observing once we've found it
+        }
+      });
+
+      // Start observing the body for new child elements
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true 
+      });
+    }
+
+    // Start looking for the button as soon as the page loads
+    findChatButtonOnPage();
+
+    function handleOpenChatClick() {
       // Show loading state
       openChatButton.disabled = true;
       buttonIcon.classList.add('d-none');
       buttonSpinner.classList.remove('d-none');
 
-      // Check if the API is already available
-      if (window.doai && typeof window.doai.openChat === 'function') {
-        window.doai.openChat();
+      // If the button is found, click it.
+      if (doChatButton) {
+        doChatButton.click();
         resetButtonState();
         return;
       }
-
-      // If not available, wait for it.
+      
+      // If the button is not found yet, wait for it.
       let attempts = 0;
       const interval = setInterval(() => {
         attempts++;
-        if (window.doai && typeof window.doai.openChat === 'function') {
+        if (doChatButton) {
           clearInterval(interval);
-          window.doai.openChat();
+          doChatButton.click();
           resetButtonState();
         } else if (attempts > 20) { // Timeout after 5 seconds
           clearInterval(interval);
@@ -121,9 +209,9 @@
         buttonIcon.classList.remove('d-none');
         buttonSpinner.classList.add('d-none');
     }
-
-    // Attach click listener to the button
-    openChatButton.addEventListener('click', openDoAiChat);
+    
+    document.getElementById('year').textContent = new Date().getFullYear();
+    openChatButton.addEventListener('click', handleOpenChatClick);
   </script>
 
   <!-- DigitalOcean AI Agent Bubble Chat Widget Script -->
