@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Assistant Pro — DeepSeek R1 Distill Llama 70B Chatbot</title>
-  <meta name="description" content="A simplified, user-friendly Bootstrap 5 template for a modern AI chatbot. Featuring improved UX, bilingual UI (EN/KA), and enhanced visuals." />
+  <title>AI Assistant Pro — Full-Screen Chat Experience</title>
+  <meta name="description" content="A full-screen, immersive AI chat experience powered by DigitalOcean's AI Agent. Bilingual UI (EN/KA)." />
 
   <!-- Bootstrap 5 CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,44 +14,51 @@
   <style>
     :root {
       --bg: #0A0F1E;
-      --surface-darker: #0D1426;
       --surface: #11192e;
-      --primary: #5850f5;           /* Brighter, more vibrant indigo */
-      --primary-accent: #38bdf8;     /* Light blue for gradients */
+      --primary: #5850f5;
+      --primary-accent: #38bdf8;
       --text: #e5eafc;
       --muted: #a1a9c4;
       --border: rgba(94, 102, 147, 0.2);
       --ring: rgba(88, 80, 245, 0.3);
     }
 
-    html { scroll-behavior: smooth; }
+    html, body {
+      height: 100%;
+      overflow: hidden; /* Prevent scrollbars */
+    }
+
     body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: var(--bg);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-
-    /* Navbar */
-    .navbar {
-      backdrop-filter: saturate(150%) blur(10px);
-      background-color: rgba(13, 20, 38, 0.75) !important;
-      border-bottom: 1px solid var(--border);
+    
+    .main-content {
+      transition: opacity 0.4s ease, filter 0.4s ease;
     }
-    .navbar .nav-link {
-      color: var(--muted);
-      font-weight: 500;
-      transition: color .2s;
-    }
-    .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--text); }
-    .navbar-brand { letter-spacing: -0.5px; }
 
+    /* Style for when the chat is active */
+    body.chat-active .main-content {
+      opacity: 0.1;
+      filter: blur(8px);
+      pointer-events: none;
+    }
+    
     /* Lang switcher */
+    .lang-switch {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+    }
     .lang-switch .btn {
       background-color: transparent;
       border: 1px solid var(--border);
       color: var(--muted);
-      transition: all .2s;
     }
     .lang-switch .btn:hover {
       background-color: var(--surface);
@@ -63,19 +70,7 @@
       color: #fff;
     }
 
-    /* Hero */
-    .hero {
-      padding: 7rem 0;
-      background:
-        radial-gradient(600px 400px at 110% -10%, rgba(88, 80, 245, 0.15), transparent 70%),
-        radial-gradient(500px 400px at -10% 10%, rgba(56, 189, 248, 0.1), transparent 70%);
-    }
-    .gradient-text {
-      background: linear-gradient(90deg, var(--text), var(--primary-accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
+    /* Badge */
     .badge-soft {
       background-color: rgba(88, 80, 245, 0.15);
       color: #c0bdfb;
@@ -96,47 +91,20 @@
       border-color: var(--primary);
       box-shadow: 0 10px 25px -10px var(--ring);
     }
-    .btn-secondary {
-      background-color: var(--surface);
-      border-color: var(--border);
-      color: var(--text);
-      font-weight: 600;
-    }
-     .btn-secondary:hover {
-      background-color: var(--surface-darker);
-      border-color: var(--border);
-      color: var(--text);
-    }
-
-    /* Sections / Cards */
-    .section { padding: 5rem 0; }
-    .feature-card {
-      background-color: var(--surface-darker);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px -15px rgba(0,0,0,0.4);
-    }
-    .feature-icon {
-      width: 3rem; height: 3rem;
-      display: inline-flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-accent));
-      color: #fff;
-      font-size: 1.5rem;
-    }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--border);
-      background-color: var(--surface-darker);
+      position: absolute;
+      bottom: 1.5rem;
+      left: 0;
+      right: 0;
     }
-
-    /* Anchor offset for sticky nav */
-    :target { scroll-margin-top: 90px; }
+    
+    /* HIDE the default chat widget button */
+    #do-ai-widget-container {
+      display: none !important;
+      visibility: hidden !important;
+    }
 
     /* Simple i18n visibility */
     .i18n { display: none; }
@@ -144,136 +112,44 @@
     [data-lang="ka"] .i18n-ka { display: inline; }
     [data-lang="en"] .i18n-block-en { display: block; }
     [data-lang="ka"] .i18n-block-ka { display: block; }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
-    }
   </style>
 </head>
 <body>
-  <!-- Header & Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">
-        <i class="bi bi-stars text-primary-accent"></i>
-        AI Assistant Pro
-      </a>
-      <div class="d-flex align-items-center">
-        <div class="btn-group lang-switch me-3 me-lg-0" role="group" aria-label="Language switch">
-          <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" title="English">🇬🇧 EN</button>
-          <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" title="ქართული">🇬🇪 KA</button>
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <div id="topNav" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
-          <li class="nav-item"><a class="nav-link" href="#features"><span class="i18n i18n-en">Features</span><span class="i18n i18n-ka">თვისებები</span></a></li>
-          <li class="nav-item d-lg-none mt-2">
-            <button class="btn btn-primary w-100" id="open-chat-mobile">
-              <i class="bi bi-chat-dots-fill me-2"></i>
-              <span class="i18n i18n-en">Start Chat</span><span class="i18n i18n-ka">ჩატის დაწყება</span>
-            </button>
-          </li>
-        </ul>
-      </div>
+  <!-- Language Switcher -->
+  <div class="lang-switch">
+    <div class="btn-group" role="group" aria-label="Language switch">
+      <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" title="English">🇬🇧 EN</button>
+      <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" title="ქართული">🇬🇪 KA</button>
     </div>
-  </nav>
+  </div>
 
-  <!-- Hero -->
-  <header class="hero text-center">
+  <!-- Main Content -->
+  <main class="main-content text-center">
     <div class="container">
       <span class="badge rounded-pill badge-soft px-3 py-2 mb-3">
         <i class="bi bi-cpu-fill me-1"></i>
         DeepSeek R1 Distill Llama 70B
       </span>
       <h1 class="display-4 fw-bold mb-3">
-        <span class="i18n i18n-block-en">Your fast and reliable AI assistant</span>
-        <span class="i18n i18n-block-ka">თქვენი სწრაფი და სანდო AI ასისტენტი</span>
+        <span class="i18n i18n-block-en">AI Chat Assistant</span>
+        <span class="i18n i18n-block-ka">ხელოვნური ინტელექტის ასისტენტი</span>
       </h1>
       <p class="lead muted col-lg-8 mx-auto">
-        <span class="i18n i18n-en">This service is free, making information more accessible and helping you make decisions faster. The chat is available in English for now.</span>
-        <span class="i18n i18n-ka">ეს სერვისი უფასოა, რათა ინფორმაცია უფრო ხელმისაწვდომი იყოს და გადაწყვეტილებების მიღება გაგიმარტივდეთ. ამჟამად ჩატი მუშაობს მხოლოდ ინგლისურად.</span>
+        <span class="i18n i18n-en">Click below to start a conversation. This service is free to make information more accessible.</span>
+        <span class="i18n i18n-ka">საუბრის დასაწყებად დააჭირეთ ღილაკს. ეს სერვისი უფასოა ინფორმაციის ხელმისაწვდომობის გასაზრდელად.</span>
       </p>
-      <div class="d-flex gap-3 justify-content-center mt-4 pt-2">
-        <button class="btn btn-primary btn-lg px-4" id="open-chat">
+      <div class="mt-4 pt-2">
+        <button class="btn btn-primary btn-lg px-5 py-3" id="open-chat">
           <i class="bi bi-chat-dots-fill me-2"></i>
           <span class="i18n i18n-en">Start Chat</span><span class="i18n i18n-ka">ჩატის დაწყება</span>
         </button>
-        <a class="btn btn-secondary btn-lg px-4" href="#features">
-          <i class="bi bi-info-circle me-2"></i>
-          <span class="i18n i18n-en">Learn More</span><span class="i18n i18n-ka">გაიგეთ მეტი</span>
-        </a>
       </div>
     </div>
-  </header>
-
-  <!-- Features Section -->
-  <section id="features" class="section">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">
-          <span class="i18n i18n-en">Designed for everyone</span>
-          <span class="i18n i18n-ka">შექმნილია ყველასთვის</span>
-        </h2>
-        <p class="muted col-lg-6 mx-auto">
-          <span class="i18n i18n-en">A powerful tool that's simple to use and respects your privacy.</span>
-          <span class="i18n i18n-ka">ძლიერი ინსტრუმენტი, რომელიც მარტივია და იცავს თქვენს პირად მონაცემებს.</span>
-        </p>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="feature-card h-100 p-4 text-center">
-            <div class="feature-icon mx-auto mb-3"><i class="bi bi-universal-access"></i></div>
-            <h5 class="fw-semibold">
-              <span class="i18n i18n-en">Accessible Information</span>
-              <span class="i18n i18n-ka">ხელმისაწვდომი ინფორმაცია</span>
-            </h5>
-            <p class="muted mb-0">
-              <span class="i18n i18n-en">Provided for free to help you find answers quickly and efficiently.</span>
-              <span class="i18n i18n-ka">გთავაზობთ უფასოდ, რათა პასუხები იპოვოთ სწრაფად და ეფექტურად.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="feature-card h-100 p-4 text-center">
-            <div class="feature-icon mx-auto mb-3"><i class="bi bi-shield-check"></i></div>
-            <h5 class="fw-semibold">
-              <span class="i18n i18n-en">Privacy First</span>
-              <span class="i18n i18n-ka">კონფიდენციალურობა</span>
-            </h5>
-            <p class="muted mb-0">
-              <span class="i18n i18n-en">Your conversations are private. The tool loads without slowing down your browser.</span>
-              <span class="i18n i18n-ka">თქვენი საუბრები პირადია. ინსტრუმენტი არ ანელებს თქვენს ბრაუზერს.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="feature-card h-100 p-4 text-center">
-            <div class="feature-icon mx-auto mb-3"><i class="bi bi-lightbulb"></i></div>
-            <h5 class="fw-semibold">
-              <span class="i18n i18n-en">Simple and Intuitive</span>
-              <span class="i18n i18n-ka">მარტივი და ინტუიციური</span>
-            </h5>
-            <p class="muted mb-0">
-              <span class="i18n i18n-en">Just click to start. If you can't find the chat bubble, the "Start Chat" button works too.</span>
-              <span class="i18n i18n-ka">უბრალოდ დააჭირეთ ღილაკს. თუ ჩატის ღილაკს ვერ პოულობთ, გამოიყენეთ „ჩატის დაწყება“.</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="py-4">
-    <div class="container text-center">
+  <footer class="text-center">
       <small class="muted">© <span id="year"></span> AI Assistant Pro by Tornike Tsiklauri</small>
-    </div>
   </footer>
 
   <!-- Bootstrap 5 JS (Bundle with Popper) -->
@@ -283,11 +159,8 @@
     // i18n toggle
     (function() {
       const root = document.documentElement;
-      let currentLang = 'en';
-
       function setLang(lang) {
         if (lang !== 'en' && lang !== 'ka') return;
-        currentLang = lang;
         root.setAttribute('data-lang', lang);
         localStorage.setItem('lang', lang);
         document.getElementById('lang-en').classList.toggle('active', lang === 'en');
@@ -295,15 +168,12 @@
         document.getElementById('lang-en').setAttribute('aria-pressed', String(lang === 'en'));
         document.getElementById('lang-ka').setAttribute('aria-pressed', String(lang === 'ka'));
       }
-
-      const savedLang = localStorage.getItem('lang');
-      setLang(savedLang || 'en'); // Default to English
-
+      setLang(localStorage.getItem('lang') || 'en');
       document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
       document.getElementById('lang-ka').addEventListener('click', () => setLang('ka'));
     })();
 
-    // Set current year in footer
+    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     /**
@@ -311,29 +181,55 @@
      * It waits for the widget's API to be available on the window object.
      */
     function openDoAiChat() {
-      // Check if the API is available
       if (window.doai && typeof window.doai.openChat === 'function') {
         window.doai.openChat();
+        document.body.classList.add('chat-active');
         return;
       }
-
-      // If not available, set up a poller to wait for it.
+      
+      // If not available, wait for it.
       let attempts = 0;
       const interval = setInterval(() => {
         attempts++;
         if (window.doai && typeof window.doai.openChat === 'function') {
           clearInterval(interval);
           window.doai.openChat();
+          document.body.classList.add('chat-active');
         } else if (attempts > 20) { // Timeout after ~5 seconds
           clearInterval(interval);
           alert('Chat widget could not be loaded. Please try refreshing the page.');
         }
       }, 250);
     }
-
-    // Attach click listeners to all "Start Chat" buttons
+    
+    // Attach click listener
     document.getElementById('open-chat').addEventListener('click', openDoAiChat);
-    document.getElementById('open-chat-mobile').addEventListener('click', openDoAiChat);
+
+    /**
+     * Listen for the chat to close so we can restore the main view.
+     * This relies on observing mutations on the widget's container.
+     */
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        // The widget adds a 'do-ai-widget--open' class when it's open.
+        // We check for its removal to detect when the chat is closed.
+        if (mutation.attributeName === 'class' && !mutation.target.classList.contains('do-ai-widget--open')) {
+          document.body.classList.remove('chat-active');
+        }
+      }
+    });
+
+    // We must wait for the widget container to exist before observing it.
+    const containerObserver = new MutationObserver((_, self) => {
+      const container = document.getElementById('do-ai-widget-container');
+      if (container) {
+        observer.observe(container, { attributes: true });
+        self.disconnect(); // Stop looking for the container itself
+      }
+    });
+    
+    containerObserver.observe(document.body, { childList: true });
+
   </script>
 
   <!-- CHATBOT EMBED SCRIPT (DO NOT DELETE) -->
@@ -346,7 +242,7 @@
     data-secondary-color="#E5E8ED"
     data-button-background-color="#0061EB"
     data-starting-message="Hello! How can I help you today?"
-    data-logo="https://files.tornike.net/favicon_tornike-net/android-chrome-192x192.png">
+    data-logo="https://www.svgrepo.com/show/375527/ai-platform.svg">
   </script>
 </body>
 </html>
