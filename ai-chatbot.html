@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Assistant Pro — DeepSeek R1 Distill Llama 70B Chatbot (DigitalOcean AI Agent)</title>
-  <meta name="description" content="A single-file Bootstrap 5 landing template for a modern AI chatbot. Bilingual UI (English/Georgian) with simple language switcher. The chatbot widget typically appears on the bottom-right." />
+  <title>AI Assistant Pro — DeepSeek R1 Distill Llama 70B Chatbot</title>
+  <meta name="description" content="A simplified, user-friendly Bootstrap 5 template for a modern AI chatbot. Featuring improved UX, bilingual UI (EN/KA), and enhanced visuals." />
 
   <!-- Bootstrap 5 CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,23 +13,20 @@
 
   <style>
     :root {
-      --bg: #0b1020;
-      --surface: #0f172a;
-      --primary: #4f46e5;   /* indigo */
-      --primary-600: #4338ca;
-      --accent: #22d3ee;    /* cyan */
-      --text: #e6e9f0;
-      --muted: #94a3b8;
-      --border: rgba(255,255,255,.10);
-      --ring: rgba(79,70,229,.35);
+      --bg: #0A0F1E;
+      --surface-darker: #0D1426;
+      --surface: #11192e;
+      --primary: #5850f5;           /* Brighter, more vibrant indigo */
+      --primary-accent: #38bdf8;     /* Light blue for gradients */
+      --text: #e5eafc;
+      --muted: #a1a9c4;
+      --border: rgba(94, 102, 147, 0.2);
+      --ring: rgba(88, 80, 245, 0.3);
     }
 
     html { scroll-behavior: smooth; }
     body {
-      background:
-        radial-gradient(1000px 600px at 110% -10%, rgba(79,70,229,.10), transparent 60%),
-        radial-gradient(800px 500px at -10% 10%, rgba(34,211,238,.08), transparent 60%),
-        linear-gradient(180deg, #0a0f1e 0%, var(--bg) 100%);
+      background-color: var(--bg);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -37,102 +34,106 @@
 
     /* Navbar */
     .navbar {
-      backdrop-filter: saturate(150%) blur(8px);
-      background-color: rgba(11,16,32,.70) !important;
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      backdrop-filter: saturate(150%) blur(10px);
+      background-color: rgba(13, 20, 38, 0.75) !important;
+      border-bottom: 1px solid var(--border);
     }
-    .navbar .nav-link { color: #c7d2fe; }
-    .navbar .nav-link:hover { color: #ffffff; }
+    .navbar .nav-link {
+      color: var(--muted);
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--text); }
+    .navbar-brand { letter-spacing: -0.5px; }
 
     /* Lang switcher */
     .lang-switch .btn {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.16);
-      color: #e2e8f0;
+      background-color: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: all .2s;
     }
-    .lang-switch .btn.active,
     .lang-switch .btn:hover {
-      background: rgba(79,70,229,.25);
-      border-color: rgba(79,70,229,.45);
+      background-color: var(--surface);
+      color: var(--text);
+    }
+    .lang-switch .btn.active {
+      background-color: var(--primary);
+      border-color: var(--primary);
       color: #fff;
     }
 
     /* Hero */
-    .hero-wrap {
+    .hero {
+      padding: 7rem 0;
       background:
-        radial-gradient(700px 350px at 70% 15%, rgba(79,70,229,.12), transparent 60%),
-        radial-gradient(500px 250px at 15% 20%, rgba(34,211,238,.10), transparent 60%);
-    }
-    .hero { padding: 7rem 0 4.5rem; }
-    .badge-soft {
-      background: rgba(79,70,229,.14);
-      color: #d6d8ff;
-      border: 1px solid rgba(79,70,229,.25);
+        radial-gradient(600px 400px at 110% -10%, rgba(88, 80, 245, 0.15), transparent 70%),
+        radial-gradient(500px 400px at -10% 10%, rgba(56, 189, 248, 0.1), transparent 70%);
     }
     .gradient-text {
-      background: linear-gradient(90deg, #a5b4fc, var(--accent) 60%, #a5b4fc);
+      background: linear-gradient(90deg, var(--text), var(--primary-accent));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    .muted { color: var(--muted); }
-
-    .btn-cta {
-      --shadow: 0 10px 25px -12px var(--ring), 0 6px 12px -10px rgba(0,0,0,.5);
-      background: linear-gradient(135deg, var(--primary), var(--primary-600));
-      border: 1px solid rgba(255,255,255,.12);
-      color: #fff;
-      box-shadow: var(--shadow);
+    .badge-soft {
+      background-color: rgba(88, 80, 245, 0.15);
+      color: #c0bdfb;
+      border: 1px solid rgba(88, 80, 245, 0.3);
+      font-weight: 500;
     }
-    .btn-cta:hover { color: #fff; transform: translateY(-1px); }
 
-    .btn-outline-glass {
-      border: 1px solid rgba(255,255,255,.16);
-      color: #e2e8f0;
-      background: rgba(255,255,255,.03);
+    /* Buttons */
+    .btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      font-weight: 600;
+      transition: transform .2s, box-shadow .2s;
     }
-    .btn-outline-glass:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 10px 25px -10px var(--ring);
+    }
+    .btn-secondary {
+      background-color: var(--surface);
+      border-color: var(--border);
+      color: var(--text);
+      font-weight: 600;
+    }
+     .btn-secondary:hover {
+      background-color: var(--surface-darker);
+      border-color: var(--border);
+      color: var(--text);
+    }
 
     /* Sections / Cards */
-    .section { padding: 4rem 0; }
-    .glass-card {
-      background: radial-gradient(1200px 800px at -10% -20%, rgba(79,70,229,.10), transparent 30%), rgba(255,255,255,.03);
+    .section { padding: 5rem 0; }
+    .feature-card {
+      background-color: var(--surface-darker);
       border: 1px solid var(--border);
       border-radius: 1rem;
-      box-shadow: 0 10px 30px -20px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.06);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px -15px rgba(0,0,0,0.4);
     }
     .feature-icon {
       width: 3rem; height: 3rem;
       display: inline-flex; align-items: center; justify-content: center;
-      border-radius: .75rem;
-      background: rgba(79,70,229,.18);
-      color: #c7d2fe;
-      border: 1px solid rgba(79,70,229,.35);
-    }
-    .separator { height: 1px; background: rgba(255,255,255,.08); }
-
-    /* Bubble hint to help users find the chat */
-    .bubble-hint {
-      position: fixed; right: 20px; bottom: 92px;
-      background: rgba(3, 27, 78, .92);
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-accent));
       color: #fff;
-      border: 1px solid rgba(255,255,255,.18);
-      padding: .5rem .75rem;
-      border-radius: .75rem;
-      font-size: .875rem;
-      box-shadow: 0 10px 25px -12px rgba(0,0,0,.6);
-      z-index: 9999;
-      animation: fadeSlide 6s ease-in-out forwards;
-      pointer-events: none;
-    }
-    @keyframes fadeSlide {
-      0% { opacity: 0; transform: translateY(8px); }
-      10% { opacity: 1; transform: translateY(0); }
-      85% { opacity: 1; }
-      100% { opacity: 0; }
+      font-size: 1.5rem;
     }
 
-    footer { border-top: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.02); }
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background-color: var(--surface-darker);
+    }
 
     /* Anchor offset for sticky nav */
     :target { scroll-margin-top: 90px; }
@@ -153,21 +154,27 @@
   <!-- Header & Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-semibold" href="#">
-        <i class="bi bi-stars me-2 text-info"></i>AI Assistant Pro
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="bi bi-stars text-primary-accent"></i>
+        AI Assistant Pro
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div class="d-flex align-items-center">
+        <div class="btn-group lang-switch me-3 me-lg-0" role="group" aria-label="Language switch">
+          <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" title="English">🇬🇧 EN</button>
+          <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" title="ქართული">🇬🇪 KA</button>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
       <div id="topNav" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
-          <li class="nav-item"><a class="nav-link" href="#features"><span class="i18n i18n-en">Features</span><span class="i18n i18n-ka">ფუნქციები</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="#use"><span class="i18n i18n-en">Use Chat</span><span class="i18n i18n-ka">ჩატის გამოყენება</span></a></li>
-          <li class="nav-item ms-lg-3">
-            <div class="btn-group lang-switch" role="group" aria-label="Language switch">
-              <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" aria-pressed="true" title="English">🇬🇧 EN</button>
-              <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" aria-pressed="false" title="ქართული">🇬🇪 KA</button>
-            </div>
+          <li class="nav-item"><a class="nav-link" href="#features"><span class="i18n i18n-en">Features</span><span class="i18n i18n-ka">თვისებები</span></a></li>
+          <li class="nav-item d-lg-none mt-2">
+            <button class="btn btn-primary w-100" id="open-chat-mobile">
+              <i class="bi bi-chat-dots-fill me-2"></i>
+              <span class="i18n i18n-en">Start Chat</span><span class="i18n i18n-ka">ჩატის დაწყება</span>
+            </button>
           </li>
         </ul>
       </div>
@@ -175,166 +182,87 @@
   </nav>
 
   <!-- Hero -->
-  <div class="container-fluid hero-wrap">
-    <header class="hero">
-      <div class="container">
-        <div class="row align-items-center gy-5">
-          <div class="col-lg-7">
-            <span class="badge rounded-pill badge-soft mb-3">
-              <i class="bi bi-lightning-charge-fill me-1 text-warning"></i>
-              DigitalOcean AI Agent
-            </span>
-            <h1 class="display-5 fw-bold mb-3">
-              <span class="i18n i18n-en">DeepSeek R1 Distill Llama 70B — your fast, reliable on‑page AI assistant</span>
-              <span class="i18n i18n-ka">DeepSeek R1 Distill Llama 70B — სწრაფი და სანდო AI ასისტენტი თქვენს ვებგვერდზე</span>
-            </h1>
-            <p class="lead muted mb-2">
-              <span class="i18n i18n-en">Ask general questions and get concise, useful answers. The chat widget typically appears on the lower‑right.</span>
-              <span class="i18n i18n-ka">დასვით ზოგადი კითხვები და მიიღეთ მოკლე, სასარგებლო პასუხები. ჩატი ჩვეულებრივ ჩანს ქვედა‑მარჯვენა კუთხეში.</span>
-            </p>
-            <div class="alert alert-dark border-0 small d-inline-flex align-items-center gap-2" role="alert">
-              <i class="bi bi-translate text-info"></i>
-              <span class="i18n i18n-en">Available in English for now — Georgian is in progress.</span>
-              <span class="i18n i18n-ka">ამ ეტაპზე მუშაობს მხოლოდ ინგლისურად — ქართული ვერსია მზადდება.</span>
-            </div>
-
-            <div class="d-flex gap-3 mt-4" id="use">
-              <button class="btn btn-cta btn-lg px-4" id="open-chat">
-                <i class="bi bi-chat-dots-fill me-2"></i>
-                <span class="i18n i18n-en">Open Chat</span><span class="i18n i18n-ka">ჩატის გახსნა</span>
-              </button>
-              <a class="btn btn-outline-glass btn-lg px-4" href="#features">
-                <i class="bi bi-grid-3x3-gap-fill me-2"></i>
-                <span class="i18n i18n-en">Explore Features</span><span class="i18n i18n-ka">იხილეთ ფუნქციები</span>
-              </a>
-            </div>
-
-            <div class="d-flex align-items-center gap-4 mt-4">
-              <div class="d-flex align-items-center gap-2">
-                <i class="bi bi-shield-lock text-success"></i>
-                <small class="muted">
-                  <span class="i18n i18n-en">Private by default</span>
-                  <span class="i18n i18n-ka">კონფიდენციალურობა ნაგულისხმევად</span>
-                </small>
-              </div>
-              <div class="d-flex align-items-center gap-2">
-                <i class="bi bi-rocket-takeoff text-info"></i>
-                <small class="muted">
-                  <span class="i18n i18n-en">Fast & lightweight</span>
-                  <span class="i18n i18n-ka">სწრაფი და მსუბუქი</span>
-                </small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-5">
-            <div class="glass-card p-4 p-md-5">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="feature-icon"><i class="bi bi-robot"></i></span>
-                  <strong>
-                    <span class="i18n i18n-en">What to expect</span>
-                    <span class="i18n i18n-ka">რას უნდა ველოდოთ</span>
-                  </strong>
-                </div>
-                <span class="badge rounded-pill text-bg-dark border border-1 border-opacity-25">
-                  <span class="i18n i18n-en">Free access</span>
-                  <span class="i18n i18n-ka">უფასო წვდომა</span>
-                </span>
-              </div>
-              <div class="separator mb-3"></div>
-              <ul class="list-unstyled m-0 row g-3">
-                <li class="col-sm-12">
-                  <i class="bi bi-check2-circle text-success me-2"></i>
-                  <span class="i18n i18n-en">General, helpful answers — focused on clarity.</span>
-                  <span class="i18n i18n-ka">ზოგადი, სასარგებლო პასუხები — ორიენტირებული სიცხადეზე.</span>
-                </li>
-                <li class="col-sm-12">
-                  <i class="bi bi-check2-circle text-success me-2"></i>
-                  <span class="i18n i18n-en">Easy to find — look to the bottom‑right.</span>
-                  <span class="i18n i18n-ka">მარტივად სანახავი — ქვედა‑მარჯვენა კუთხეში.</span>
-                </li>
-                <li class="col-sm-12">
-                  <i class="bi bi-check2-circle text-success me-2"></i>
-                  <span class="i18n i18n-en">Non‑blocking load — optimized performance.</span>
-                  <span class="i18n i18n-ka">არ ბლოკავს ჩატვირთვას — ოპტიმიზირებული მუშაობა.</span>
-                </li>
-              </ul>
-              <div class="alert alert-secondary bg-transparent border-0 mt-4 text-white-50" role="alert" style="border-left: 3px solid rgba(79,70,229,.6);">
-                <span class="i18n i18n-en">Tip: If you can’t find the bubble, use the “Open Chat” button above.</span>
-                <span class="i18n i18n-ka">რჩევა: თუ ბაბლი ვერ იპოვეთ, დააწკაპუნეთ „ჩატის გახსნა“ ღილაკს.</span>
-              </div>
-            </div>
-          </div>
-        </div>
+  <header class="hero text-center">
+    <div class="container">
+      <span class="badge rounded-pill badge-soft px-3 py-2 mb-3">
+        <i class="bi bi-cpu-fill me-1"></i>
+        DeepSeek R1 Distill Llama 70B
+      </span>
+      <h1 class="display-4 fw-bold mb-3">
+        <span class="i18n i18n-block-en">Your fast and reliable AI assistant</span>
+        <span class="i18n i18n-block-ka">თქვენი სწრაფი და სანდო AI ასისტენტი</span>
+      </h1>
+      <p class="lead muted col-lg-8 mx-auto">
+        <span class="i18n i18n-en">This service is free, making information more accessible and helping you make decisions faster. The chat is available in English for now.</span>
+        <span class="i18n i18n-ka">ეს სერვისი უფასოა, რათა ინფორმაცია უფრო ხელმისაწვდომი იყოს და გადაწყვეტილებების მიღება გაგიმარტივდეთ. ამჟამად ჩატი მუშაობს მხოლოდ ინგლისურად.</span>
+      </p>
+      <div class="d-flex gap-3 justify-content-center mt-4 pt-2">
+        <button class="btn btn-primary btn-lg px-4" id="open-chat">
+          <i class="bi bi-chat-dots-fill me-2"></i>
+          <span class="i18n i18n-en">Start Chat</span><span class="i18n i18n-ka">ჩატის დაწყება</span>
+        </button>
+        <a class="btn btn-secondary btn-lg px-4" href="#features">
+          <i class="bi bi-info-circle me-2"></i>
+          <span class="i18n i18n-en">Learn More</span><span class="i18n i18n-ka">გაიგეთ მეტი</span>
+        </a>
       </div>
-    </header>
-  </div>
+    </div>
+  </header>
 
   <!-- Features Section -->
   <section id="features" class="section">
     <div class="container">
       <div class="text-center mb-5">
-        <span class="badge rounded-pill badge-soft mb-2">
-          <span class="i18n i18n-en">Why this chatbot?</span>
-          <span class="i18n i18n-ka">რატომ ეს ჩატი?</span>
-        </span>
         <h2 class="fw-bold">
-          <span class="i18n i18n-en">General information and key benefits</span>
-          <span class="i18n i18n-ka">ზოგადი ინფორმაცია და მთავარი უპირატესობები</span>
+          <span class="i18n i18n-en">Designed for everyone</span>
+          <span class="i18n i18n-ka">შექმნილია ყველასთვის</span>
         </h2>
+        <p class="muted col-lg-6 mx-auto">
+          <span class="i18n i18n-en">A powerful tool that's simple to use and respects your privacy.</span>
+          <span class="i18n i18n-ka">ძლიერი ინსტრუმენტი, რომელიც მარტივია და იცავს თქვენს პირად მონაცემებს.</span>
+        </p>
       </div>
 
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="glass-card h-100 p-4">
-            <div class="feature-icon mb-3"><i class="bi bi-cpu"></i></div>
+          <div class="feature-card h-100 p-4 text-center">
+            <div class="feature-icon mx-auto mb-3"><i class="bi bi-universal-access"></i></div>
             <h5 class="fw-semibold">
-              <span class="i18n i18n-en">Powered by DeepSeek R1 Distill Llama 70B</span>
-              <span class="i18n i18n-ka">DeepSeek R1 Distill Llama 70B‑ით მხარდაჭერილი</span>
+              <span class="i18n i18n-en">Accessible Information</span>
+              <span class="i18n i18n-ka">ხელმისაწვდომი ინფორმაცია</span>
             </h5>
             <p class="muted mb-0">
-              <span class="i18n i18n-en">Runs via a DigitalOcean AI Agent for dependable, production‑grade inference.</span>
-              <span class="i18n i18n-ka">მუშაობს DigitalOcean‑ის AI აგენტით — საიმედო, სამრეწველო დონის პასუხებისთვის.</span>
+              <span class="i18n i18n-en">Provided for free to help you find answers quickly and efficiently.</span>
+              <span class="i18n i18n-ka">გთავაზობთ უფასოდ, რათა პასუხები იპოვოთ სწრაფად და ეფექტურად.</span>
             </p>
           </div>
         </div>
 
         <div class="col-md-4">
-          <div class="glass-card h-100 p-4">
-            <div class="feature-icon mb-3"><i class="bi bi-universal-access"></i></div>
+          <div class="feature-card h-100 p-4 text-center">
+            <div class="feature-icon mx-auto mb-3"><i class="bi bi-shield-check"></i></div>
             <h5 class="fw-semibold">
-              <span class="i18n i18n-en">Accessible and efficient</span>
-              <span class="i18n i18n-ka">ხელმისაწვდომი და ეფექტიანი</span>
+              <span class="i18n i18n-en">Privacy First</span>
+              <span class="i18n i18n-ka">კონფიდენციალურობა</span>
             </h5>
             <p class="muted mb-0">
-              <span class="i18n i18n-en">Shared free to make information more accessible and improve decision‑making speed.</span>
-              <span class="i18n i18n-ka">უფასოდ გაზიარებულია, რათა ინფორმაცია უფრო ხელმისაწვდომი იყოს და გადაწყვეტილებების მიღება დაჩქარდეს.</span>
+              <span class="i18n i18n-en">Your conversations are private. The tool loads without slowing down your browser.</span>
+              <span class="i18n i18n-ka">თქვენი საუბრები პირადია. ინსტრუმენტი არ ანელებს თქვენს ბრაუზერს.</span>
             </p>
           </div>
         </div>
 
         <div class="col-md-4">
-          <div class="glass-card h-100 p-4">
-            <div class="feature-icon mb-3"><i class="bi bi-phone"></i></div>
+          <div class="feature-card h-100 p-4 text-center">
+            <div class="feature-icon mx-auto mb-3"><i class="bi bi-lightbulb"></i></div>
             <h5 class="fw-semibold">
-              <span class="i18n i18n-en">Easy to use on any device</span>
-              <span class="i18n i18n-ka">მარტივი გამოყენება ნებისმიერ მოწყობილობაზე</span>
+              <span class="i18n i18n-en">Simple and Intuitive</span>
+              <span class="i18n i18n-ka">მარტივი და ინტუიციური</span>
             </h5>
             <p class="muted mb-0">
-              <span class="i18n i18n-en">Responsive UI with a simple “Open Chat” button if you can’t find the bubble.</span>
-              <span class="i18n i18n-ka">რესპონსიური ინტერფეისი და „ჩატის გახსნა“ ღილაკი იმ შემთხვევაში, თუ ბაბლი ვერ იპოვეთ.</span>
+              <span class="i18n i18n-en">Just click to start. If you can't find the chat bubble, the "Start Chat" button works too.</span>
+              <span class="i18n i18n-ka">უბრალოდ დააჭირეთ ღილაკს. თუ ჩატის ღილაკს ვერ პოულობთ, გამოიყენეთ „ჩატის დაწყება“.</span>
             </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row g-4 mt-1">
-        <div class="col-12">
-          <div class="alert alert-dark border-0" role="alert">
-            <i class="bi bi-info-circle-fill me-2 text-info"></i>
-            <span class="i18n i18n-en">General scope only: this assistant focuses on general, helpful information.</span>
-            <span class="i18n i18n-ka">ზოგადი დანიშნულება: ეს ასისტენტი უზრუნველყოფს ზოგად, სასარგებლო ინფორმაციას.</span>
           </div>
         </div>
       </div>
@@ -342,21 +270,11 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-4 mt-2">
-    <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
-      <small class="muted">© <span id="year"></span> AI Assistant Pro</small>
-      <small class="muted">
-        <span class="i18n i18n-en">English for now — Georgian coming soon.</span>
-        <span class="i18n i18n-ka">ამ ეტაპზე მხოლოდ ინგლისურად — ქართული მალე დაემატება.</span>
-      </small>
+  <footer class="py-4">
+    <div class="container text-center">
+      <small class="muted">© <span id="year"></span> AI Assistant Pro by Tornike Tsiklauri</small>
     </div>
   </footer>
-
-  <!-- Subtle hint near the bottom-right where the widget appears -->
-  <div id="bubble-hint" class="bubble-hint">
-    <span class="i18n i18n-en">Chat lives here →</span>
-    <span class="i18n i18n-ka">ჩატი აქ არის →</span>
-  </div>
 
   <!-- Bootstrap 5 JS (Bundle with Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -365,14 +283,11 @@
     // i18n toggle
     (function() {
       const root = document.documentElement;
-      const saved = localStorage.getItem('lang');
-      const initial = saved === 'ka' ? 'ka' : 'en';
-      setLang(initial);
-
-      document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
-      document.getElementById('lang-ka').addEventListener('click', () => setLang('ka'));
+      let currentLang = 'en';
 
       function setLang(lang) {
+        if (lang !== 'en' && lang !== 'ka') return;
+        currentLang = lang;
         root.setAttribute('data-lang', lang);
         localStorage.setItem('lang', lang);
         document.getElementById('lang-en').classList.toggle('active', lang === 'en');
@@ -380,63 +295,43 @@
         document.getElementById('lang-en').setAttribute('aria-pressed', String(lang === 'en'));
         document.getElementById('lang-ka').setAttribute('aria-pressed', String(lang === 'ka'));
       }
+
+      const savedLang = localStorage.getItem('lang');
+      setLang(savedLang || 'en'); // Default to English
+
+      document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
+      document.getElementById('lang-ka').addEventListener('click', () => setLang('ka'));
     })();
 
-    // Year
+    // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Attempt to open the chatbot programmatically when user clicks "Open Chat"
-    document.getElementById('open-chat').addEventListener('click', tryOpenChat);
-
-    // Try to find a likely chat launcher near bottom-right and click it
+    // Function to attempt to open the chatbot programmatically
     function tryOpenChat() {
-      const launcher = findChatLauncher();
-      if (launcher) {
-        launcher.click();
-      }
-      // Hide the hint if visible
-      const hint = document.getElementById('bubble-hint');
-      if (hint) hint.style.display = 'none';
-    }
-
-    function findChatLauncher() {
-      // Heuristic: fixed-position clickable element near bottom-right mentioning chat
-      const nodes = Array.from(document.querySelectorAll('button, a, div'));
+      // Heuristic: find a fixed-position element in the bottom-right quadrant
+      const nodes = Array.from(document.querySelectorAll('button, div, iframe'));
       for (const el of nodes) {
         try {
           const style = getComputedStyle(el);
-          if (style.position !== 'fixed') continue;
-          const right = parseFloat(style.right);
-          const bottom = parseFloat(style.bottom);
-          if (isNaN(right) || isNaN(bottom)) continue;
-          if (right > 160 || bottom > 160) continue;
+          if (style.position !== 'fixed' && style.position !== 'absolute') continue;
 
-          const label = ((el.getAttribute('aria-label') || '') + ' ' + (el.title || '') + ' ' + (el.textContent || '')).toLowerCase();
-          if (label.includes('chat') || label.includes('assistant') || label.includes('support')) {
-            return el;
+          const rect = el.getBoundingClientRect();
+          const isBottomRight = rect.bottom > window.innerHeight - 120 && rect.right > window.innerWidth - 120;
+          
+          if (isBottomRight && el.offsetWidth > 30 && el.offsetHeight > 30) {
+            el.click();
+            return; // Found and clicked
           }
-        } catch (_) {}
+        } catch (_) { /* ignore errors */ }
       }
-      return null;
     }
 
-    // Optional: if/when the widget mounts later, update our launcher reference automatically
-    const obs = new MutationObserver(() => {
-      if (findChatLauncher()) {
-        // Keep the hint shorter if bubble is present
-        setTimeout(() => {
-          const hint = document.getElementById('bubble-hint');
-          if (hint) hint.style.display = 'none';
-        }, 3500);
-      }
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
-
+    // Attach click listeners to all "Start Chat" buttons
+    document.getElementById('open-chat').addEventListener('click', tryOpenChat);
+    document.getElementById('open-chat-mobile').addEventListener('click', tryOpenChat);
   </script>
 
-  <!-- CHATBOT EMBED SCRIPT PLACEMENT (DO NOT DELETE) -->
-  <!-- Place the full DigitalOcean Gradient AI Platform JavaScript snippet here. -->
-  <!-- The script must load last for performance. -->
+  <!-- CHATBOT EMBED SCRIPT (DO NOT DELETE) -->
   <script async
     src="https://fap6t6a7bjmtkhl6gh3nqkim.agents.do-ai.run/static/chatbot/widget.js"
     data-agent-id="8f485ea9-a6b5-11f0-b074-4e013e2ddde4"
