@@ -306,29 +306,34 @@
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Function to attempt to open the chatbot programmatically
-    function tryOpenChat() {
-      // Heuristic: find a fixed-position element in the bottom-right quadrant
-      const nodes = Array.from(document.querySelectorAll('button, div, iframe'));
-      for (const el of nodes) {
-        try {
-          const style = getComputedStyle(el);
-          if (style.position !== 'fixed' && style.position !== 'absolute') continue;
-
-          const rect = el.getBoundingClientRect();
-          const isBottomRight = rect.bottom > window.innerHeight - 120 && rect.right > window.innerWidth - 120;
-          
-          if (isBottomRight && el.offsetWidth > 30 && el.offsetHeight > 30) {
-            el.click();
-            return; // Found and clicked
-          }
-        } catch (_) { /* ignore errors */ }
+    /**
+     * NEW: Reliable function to open the DigitalOcean AI chat widget.
+     * It waits for the widget's API to be available on the window object.
+     */
+    function openDoAiChat() {
+      // Check if the API is available
+      if (window.doai && typeof window.doai.openChat === 'function') {
+        window.doai.openChat();
+        return;
       }
+
+      // If not available, set up a poller to wait for it.
+      let attempts = 0;
+      const interval = setInterval(() => {
+        attempts++;
+        if (window.doai && typeof window.doai.openChat === 'function') {
+          clearInterval(interval);
+          window.doai.openChat();
+        } else if (attempts > 20) { // Timeout after ~5 seconds
+          clearInterval(interval);
+          alert('Chat widget could not be loaded. Please try refreshing the page.');
+        }
+      }, 250);
     }
 
     // Attach click listeners to all "Start Chat" buttons
-    document.getElementById('open-chat').addEventListener('click', tryOpenChat);
-    document.getElementById('open-chat-mobile').addEventListener('click', tryOpenChat);
+    document.getElementById('open-chat').addEventListener('click', openDoAiChat);
+    document.getElementById('open-chat-mobile').addEventListener('click', openDoAiChat);
   </script>
 
   <!-- CHATBOT EMBED SCRIPT (DO NOT DELETE) -->
