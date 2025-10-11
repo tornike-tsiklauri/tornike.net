@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Assistant Pro — Gradient Chatbot</title>
-  <meta name="description" content="A single-file Bootstrap 5 template showcasing a modern AI chatbot. Bilingual copy (EN / KA). The chatbot widget loads asynchronously and appears on the right." />
+  <title>AI Assistant Pro — DeepSeek R1 Distill Llama 70B Chatbot (DigitalOcean AI Agent)</title>
+  <meta name="description" content="A single-file Bootstrap 5 landing template for a modern AI chatbot. Bilingual UI (English/Georgian) with simple language switcher. The chatbot widget typically appears on the bottom-right." />
 
   <!-- Bootstrap 5 CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,12 +12,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --bg: #0b1020;
       --surface: #0f172a;
-      --primary: #4f46e5;
+      --primary: #4f46e5;   /* indigo */
       --primary-600: #4338ca;
-      --accent: #22d3ee;
+      --accent: #22d3ee;    /* cyan */
       --text: #e6e9f0;
       --muted: #94a3b8;
       --border: rgba(255,255,255,.10);
@@ -38,11 +38,24 @@
     /* Navbar */
     .navbar {
       backdrop-filter: saturate(150%) blur(8px);
-      background-color: rgba(11,16,32,.65) !important;
+      background-color: rgba(11,16,32,.70) !important;
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .navbar .nav-link { color: #c7d2fe; }
     .navbar .nav-link:hover { color: #ffffff; }
+
+    /* Lang switcher */
+    .lang-switch .btn {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.16);
+      color: #e2e8f0;
+    }
+    .lang-switch .btn.active,
+    .lang-switch .btn:hover {
+      background: rgba(79,70,229,.25);
+      border-color: rgba(79,70,229,.45);
+      color: #fff;
+    }
 
     /* Hero */
     .hero-wrap {
@@ -98,10 +111,38 @@
     }
     .separator { height: 1px; background: rgba(255,255,255,.08); }
 
+    /* Bubble hint to help users find the chat */
+    .bubble-hint {
+      position: fixed; right: 20px; bottom: 92px;
+      background: rgba(3, 27, 78, .92);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.18);
+      padding: .5rem .75rem;
+      border-radius: .75rem;
+      font-size: .875rem;
+      box-shadow: 0 10px 25px -12px rgba(0,0,0,.6);
+      z-index: 9999;
+      animation: fadeSlide 6s ease-in-out forwards;
+      pointer-events: none;
+    }
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(8px); }
+      10% { opacity: 1; transform: translateY(0); }
+      85% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
     footer { border-top: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.02); }
 
     /* Anchor offset for sticky nav */
     :target { scroll-margin-top: 90px; }
+
+    /* Simple i18n visibility */
+    .i18n { display: none; }
+    [data-lang="en"] .i18n-en { display: inline; }
+    [data-lang="ka"] .i18n-ka { display: inline; }
+    [data-lang="en"] .i18n-block-en { display: block; }
+    [data-lang="ka"] .i18n-block-ka { display: block; }
 
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
@@ -119,9 +160,15 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="topNav" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-          <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#features"><span class="i18n i18n-en">Features</span><span class="i18n i18n-ka">ფუნქციები</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="#use"><span class="i18n i18n-en">Use Chat</span><span class="i18n i18n-ka">ჩატის გამოყენება</span></a></li>
+          <li class="nav-item ms-lg-3">
+            <div class="btn-group lang-switch" role="group" aria-label="Language switch">
+              <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" aria-pressed="true" title="English">🇬🇧 EN</button>
+              <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" aria-pressed="false" title="ქართული">🇬🇪 KA</button>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -135,69 +182,87 @@
           <div class="col-lg-7">
             <span class="badge rounded-pill badge-soft mb-3">
               <i class="bi bi-lightning-charge-fill me-1 text-warning"></i>
-              Powered by DigitalOcean Gradient
+              DigitalOcean AI Agent
             </span>
             <h1 class="display-5 fw-bold mb-3">
-              Your on‑page <span class="gradient-text">AI assistant</span> for instant answers
+              <span class="i18n i18n-en">DeepSeek R1 Distill Llama 70B — your fast, reliable on‑page AI assistant</span>
+              <span class="i18n i18n-ka">DeepSeek R1 Distill Llama 70B — სწრაფი და სანდო AI ასისტენტი თქვენს ვებგვერდზე</span>
             </h1>
             <p class="lead muted mb-2">
-              Ask product and technical questions and get quick, accurate replies. Look for the blue chat bubble in the lower‑right corner to start.
-            </p>
-            <p class="muted mb-3">
-              დროის დაკარგვის გარეშე მიიღეთ პასუხები თქვენს კითხვებზე. ჩატის ღილაკი მდებარეობს ქვედა‑მარჯვენა კუთხეში.
+              <span class="i18n i18n-en">Ask general questions and get concise, useful answers. The chat widget typically appears on the lower‑right.</span>
+              <span class="i18n i18n-ka">დასვით ზოგადი კითხვები და მიიღეთ მოკლე, სასარგებლო პასუხები. ჩატი ჩვეულებრივ ჩანს ქვედა‑მარჯვენა კუთხეში.</span>
             </p>
             <div class="alert alert-dark border-0 small d-inline-flex align-items-center gap-2" role="alert">
               <i class="bi bi-translate text-info"></i>
-              English only for now — Georgian is coming soon.
-              <span class="opacity-75">/ ამ ეტაპზე ხელმისაწვდომია მხოლოდ ინგლისურად — ქართული ვერსია მუშაობის პროცესშია.</span>
+              <span class="i18n i18n-en">Available in English for now — Georgian is in progress.</span>
+              <span class="i18n i18n-ka">ამ ეტაპზე მუშაობს მხოლოდ ინგლისურად — ქართული ვერსია მზადდება.</span>
             </div>
-            <div class="d-flex gap-3 mt-4">
-              <a class="btn btn-cta btn-lg px-4" href="#start">
-                <i class="bi bi-chat-dots-fill me-2"></i>Start chatting
-              </a>
+
+            <div class="d-flex gap-3 mt-4" id="use">
+              <button class="btn btn-cta btn-lg px-4" id="open-chat">
+                <i class="bi bi-chat-dots-fill me-2"></i>
+                <span class="i18n i18n-en">Open Chat</span><span class="i18n i18n-ka">ჩატის გახსნა</span>
+              </button>
               <a class="btn btn-outline-glass btn-lg px-4" href="#features">
-                <i class="bi bi-grid-3x3-gap-fill me-2"></i>Explore features
+                <i class="bi bi-grid-3x3-gap-fill me-2"></i>
+                <span class="i18n i18n-en">Explore Features</span><span class="i18n i18n-ka">იხილეთ ფუნქციები</span>
               </a>
             </div>
+
             <div class="d-flex align-items-center gap-4 mt-4">
               <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-shield-lock text-success"></i>
-                <small class="muted">Private by default</small>
+                <small class="muted">
+                  <span class="i18n i18n-en">Private by default</span>
+                  <span class="i18n i18n-ka">კონფიდენციალურობა ნაგულისხმევად</span>
+                </small>
               </div>
               <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-rocket-takeoff text-info"></i>
-                <small class="muted">Fast & lightweight</small>
+                <small class="muted">
+                  <span class="i18n i18n-en">Fast & lightweight</span>
+                  <span class="i18n i18n-ka">სწრაფი და მსუბუქი</span>
+                </small>
               </div>
             </div>
           </div>
+
           <div class="col-lg-5">
             <div class="glass-card p-4 p-md-5">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="d-flex align-items-center gap-2">
                   <span class="feature-icon"><i class="bi bi-robot"></i></span>
-                  <strong>What to expect / რას მივიღებ</strong>
+                  <strong>
+                    <span class="i18n i18n-en">What to expect</span>
+                    <span class="i18n i18n-ka">რას უნდა ველოდოთ</span>
+                  </strong>
                 </div>
+                <span class="badge rounded-pill text-bg-dark border border-1 border-opacity-25">
+                  <span class="i18n i18n-en">Free access</span>
+                  <span class="i18n i18n-ka">უფასო წვდომა</span>
+                </span>
               </div>
               <div class="separator mb-3"></div>
               <ul class="list-unstyled m-0 row g-3">
                 <li class="col-sm-12">
                   <i class="bi bi-check2-circle text-success me-2"></i>
-                  Instant, relevant answers to common questions
-                  <div class="small muted">მყისიერი და ადეკვატური პასუხები გავრცელებულ საკითხებზე</div>
+                  <span class="i18n i18n-en">General, helpful answers — focused on clarity.</span>
+                  <span class="i18n i18n-ka">ზოგადი, სასარგებლო პასუხები — ორიენტირებული სიცხადეზე.</span>
                 </li>
                 <li class="col-sm-12">
                   <i class="bi bi-check2-circle text-success me-2"></i>
-                  Appears as a floating bubble on the lower‑right
-                  <div class="small muted">ჩანს მცურავი ღილაკის სახით ქვედა‑მარჯვენა კუთხეში</div>
+                  <span class="i18n i18n-en">Easy to find — look to the bottom‑right.</span>
+                  <span class="i18n i18n-ka">მარტივად სანახავი — ქვედა‑მარჯვენა კუთხეში.</span>
                 </li>
                 <li class="col-sm-12">
                   <i class="bi bi-check2-circle text-success me-2"></i>
-                  Non‑blocking load, optimized for performance
-                  <div class="small muted">არ ბლოკავს გვერდის ჩატვირთვას — ოპტიმიზირებულია სისწრაფისთვის</div>
+                  <span class="i18n i18n-en">Non‑blocking load — optimized performance.</span>
+                  <span class="i18n i18n-ka">არ ბლოკავს ჩატვირთვას — ოპტიმიზირებული მუშაობა.</span>
                 </li>
               </ul>
               <div class="alert alert-secondary bg-transparent border-0 mt-4 text-white-50" role="alert" style="border-left: 3px solid rgba(79,70,229,.6);">
-                Tip: Click the chat bubble to begin. / მინიშნება: დაიწყეთ ქვედა‑მარჯვენა კუთხეში მდებარე ჩატის ღილაკით.
+                <span class="i18n i18n-en">Tip: If you can’t find the bubble, use the “Open Chat” button above.</span>
+                <span class="i18n i18n-ka">რჩევა: თუ ბაბლი ვერ იპოვეთ, დააწკაპუნეთ „ჩატის გახსნა“ ღილაკს.</span>
               </div>
             </div>
           </div>
@@ -206,83 +271,72 @@
     </header>
   </div>
 
-  <!-- Features -->
+  <!-- Features Section -->
   <section id="features" class="section">
     <div class="container">
       <div class="text-center mb-5">
-        <span class="badge rounded-pill badge-soft mb-2">Key Features • მთავარი თვისებები</span>
-        <h2 class="fw-bold">Built for clarity and speed • შექმნილია სიცხადისა და სისწრაფისთვის</h2>
+        <span class="badge rounded-pill badge-soft mb-2">
+          <span class="i18n i18n-en">Why this chatbot?</span>
+          <span class="i18n i18n-ka">რატომ ეს ჩატი?</span>
+        </span>
+        <h2 class="fw-bold">
+          <span class="i18n i18n-en">General information and key benefits</span>
+          <span class="i18n i18n-ka">ზოგადი ინფორმაცია და მთავარი უპირატესობები</span>
+        </h2>
       </div>
+
       <div class="row g-4">
         <div class="col-md-4">
           <div class="glass-card h-100 p-4">
-            <div class="feature-icon mb-3"><i class="bi bi-lightning-charge"></i></div>
-            <h5 class="fw-semibold">Instant Answers</h5>
-            <p class="muted mb-2">Get quick, concise responses to help you decide faster.</p>
-            <p class="muted small mb-0">მიიღეთ სწრაფი და მოკლე პასუხები, რათა გადაწყვეტილებები სწრაფად მიიღოთ.</p>
+            <div class="feature-icon mb-3"><i class="bi bi-cpu"></i></div>
+            <h5 class="fw-semibold">
+              <span class="i18n i18n-en">Powered by DeepSeek R1 Distill Llama 70B</span>
+              <span class="i18n i18n-ka">DeepSeek R1 Distill Llama 70B‑ით მხარდაჭერილი</span>
+            </h5>
+            <p class="muted mb-0">
+              <span class="i18n i18n-en">Runs via a DigitalOcean AI Agent for dependable, production‑grade inference.</span>
+              <span class="i18n i18n-ka">მუშაობს DigitalOcean‑ის AI აგენტით — საიმედო, სამრეწველო დონის პასუხებისთვის.</span>
+            </p>
           </div>
         </div>
+
         <div class="col-md-4">
           <div class="glass-card h-100 p-4">
-            <div class="feature-icon mb-3"><i class="bi bi-shield-check"></i></div>
-            <h5 class="fw-semibold">Secure & Private</h5>
-            <p class="muted mb-2">Loads asynchronously and respects your browsing experience.</p>
-            <p class="muted small mb-0">იტვირთება ასინქრონულად და არ აშლის თქვენს მოხმარების პროცესს.</p>
+            <div class="feature-icon mb-3"><i class="bi bi-universal-access"></i></div>
+            <h5 class="fw-semibold">
+              <span class="i18n i18n-en">Accessible and efficient</span>
+              <span class="i18n i18n-ka">ხელმისაწვდომი და ეფექტიანი</span>
+            </h5>
+            <p class="muted mb-0">
+              <span class="i18n i18n-en">Shared free to make information more accessible and improve decision‑making speed.</span>
+              <span class="i18n i18n-ka">უფასოდ გაზიარებულია, რათა ინფორმაცია უფრო ხელმისაწვდომი იყოს და გადაწყვეტილებების მიღება დაჩქარდეს.</span>
+            </p>
           </div>
         </div>
+
         <div class="col-md-4">
           <div class="glass-card h-100 p-4">
             <div class="feature-icon mb-3"><i class="bi bi-phone"></i></div>
-            <h5 class="fw-semibold">Mobile‑Friendly</h5>
-            <p class="muted mb-2">Optimized UI that works great on phones, tablets, and desktops.</p>
-            <p class="muted small mb-0">ოპტიმიზირებული ინტერფეისი ტელეფონებზე, ტაბლეტებსა და კომპიუტერებზე.</p>
+            <h5 class="fw-semibold">
+              <span class="i18n i18n-en">Easy to use on any device</span>
+              <span class="i18n i18n-ka">მარტივი გამოყენება ნებისმიერ მოწყობილობაზე</span>
+            </h5>
+            <p class="muted mb-0">
+              <span class="i18n i18n-en">Responsive UI with a simple “Open Chat” button if you can’t find the bubble.</span>
+              <span class="i18n i18n-ka">რესპონსიური ინტერფეისი და „ჩატის გახსნა“ ღილაკი იმ შემთხვევაში, თუ ბაბლი ვერ იპოვეთ.</span>
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- How it works -->
-  <section id="how" class="section">
-    <div class="container">
-      <div class="text-center mb-4">
-        <span class="badge rounded-pill badge-soft mb-2">How it works • როგორ მუშაობს</span>
-        <h3 class="fw-semibold">Three simple steps • სამი მარტივი ნაბიჯი</h3>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="glass-card h-100 p-4">
-            <div class="d-flex align-items-center gap-2">
-              <span class="feature-icon"><i class="bi bi-mouse"></i></span>
-              <strong>Open • გახსნა</strong>
-            </div>
-            <p class="muted mt-3 mb-0">Click the chat bubble at the lower‑right. • დააწკაპუნეთ ქვედა‑მარჯვენა ჩატის ღილაკზე.</p>
+      <div class="row g-4 mt-1">
+        <div class="col-12">
+          <div class="alert alert-dark border-0" role="alert">
+            <i class="bi bi-info-circle-fill me-2 text-info"></i>
+            <span class="i18n i18n-en">General scope only: this assistant focuses on general, helpful information.</span>
+            <span class="i18n i18n-ka">ზოგადი დანიშნულება: ეს ასისტენტი უზრუნველყოფს ზოგად, სასარგებლო ინფორმაციას.</span>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="glass-card h-100 p-4">
-            <div class="d-flex align-items-center gap-2">
-              <span class="feature-icon"><i class="bi bi-question-circle"></i></span>
-              <strong>Ask • დაუსვით კითხვა</strong>
-            </div>
-            <p class="muted mt-3 mb-0">Type your question in English. • შეიყვანეთ კითხვა ინგლისურად.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="glass-card h-100 p-4">
-            <div class="d-flex align-items-center gap-2">
-              <span class="feature-icon"><i class="bi bi-check2-square"></i></span>
-              <strong>Get Results • მიიღეთ პასუხი</strong>
-            </div>
-            <p class="muted mt-3 mb-0">Review the response and continue the conversation. • ნახეთ პასუხი და გააგრძელეთ საუბარი.</p>
-          </div>
-        </div>
-      </div>
-      <div id="start" class="text-center mt-4">
-        <a href="#" class="btn btn-cta btn-lg">
-          <i class="bi bi-chat-left-text me-2"></i>Open the chat bubble • გახსენით ჩატი
-        </a>
-        <div class="small muted mt-2">The widget typically appears on the right. • ჩატი ჩვეულებრივ გამოჩნდება მარჯვნივ.</div>
       </div>
     </div>
   </section>
@@ -291,14 +345,93 @@
   <footer class="py-4 mt-2">
     <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
       <small class="muted">© <span id="year"></span> AI Assistant Pro</small>
-      <small class="muted">English only for now — Georgian coming soon. • ამ ეტაპზე მხოლოდ ინგლისურად — ქართული მალე დაემატება.</small>
+      <small class="muted">
+        <span class="i18n i18n-en">English for now — Georgian coming soon.</span>
+        <span class="i18n i18n-ka">ამ ეტაპზე მხოლოდ ინგლისურად — ქართული მალე დაემატება.</span>
+      </small>
     </div>
   </footer>
 
+  <!-- Subtle hint near the bottom-right where the widget appears -->
+  <div id="bubble-hint" class="bubble-hint">
+    <span class="i18n i18n-en">Chat lives here →</span>
+    <span class="i18n i18n-ka">ჩატი აქ არის →</span>
+  </div>
+
   <!-- Bootstrap 5 JS (Bundle with Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
+    // i18n toggle
+    (function() {
+      const root = document.documentElement;
+      const saved = localStorage.getItem('lang');
+      const initial = saved === 'ka' ? 'ka' : 'en';
+      setLang(initial);
+
+      document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
+      document.getElementById('lang-ka').addEventListener('click', () => setLang('ka'));
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        localStorage.setItem('lang', lang);
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        document.getElementById('lang-ka').classList.toggle('active', lang === 'ka');
+        document.getElementById('lang-en').setAttribute('aria-pressed', String(lang === 'en'));
+        document.getElementById('lang-ka').setAttribute('aria-pressed', String(lang === 'ka'));
+      }
+    })();
+
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Attempt to open the chatbot programmatically when user clicks "Open Chat"
+    document.getElementById('open-chat').addEventListener('click', tryOpenChat);
+
+    // Try to find a likely chat launcher near bottom-right and click it
+    function tryOpenChat() {
+      const launcher = findChatLauncher();
+      if (launcher) {
+        launcher.click();
+      }
+      // Hide the hint if visible
+      const hint = document.getElementById('bubble-hint');
+      if (hint) hint.style.display = 'none';
+    }
+
+    function findChatLauncher() {
+      // Heuristic: fixed-position clickable element near bottom-right mentioning chat
+      const nodes = Array.from(document.querySelectorAll('button, a, div'));
+      for (const el of nodes) {
+        try {
+          const style = getComputedStyle(el);
+          if (style.position !== 'fixed') continue;
+          const right = parseFloat(style.right);
+          const bottom = parseFloat(style.bottom);
+          if (isNaN(right) || isNaN(bottom)) continue;
+          if (right > 160 || bottom > 160) continue;
+
+          const label = ((el.getAttribute('aria-label') || '') + ' ' + (el.title || '') + ' ' + (el.textContent || '')).toLowerCase();
+          if (label.includes('chat') || label.includes('assistant') || label.includes('support')) {
+            return el;
+          }
+        } catch (_) {}
+      }
+      return null;
+    }
+
+    // Optional: if/when the widget mounts later, update our launcher reference automatically
+    const obs = new MutationObserver(() => {
+      if (findChatLauncher()) {
+        // Keep the hint shorter if bubble is present
+        setTimeout(() => {
+          const hint = document.getElementById('bubble-hint');
+          if (hint) hint.style.display = 'none';
+        }, 3500);
+      }
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+
   </script>
 
   <!-- CHATBOT EMBED SCRIPT PLACEMENT (DO NOT DELETE) -->
