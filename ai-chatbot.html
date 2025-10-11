@@ -25,7 +25,7 @@
 
     html, body {
       height: 100%;
-      overflow-y: auto; /* Allow scrolling for features */
+      overflow-y: auto;
     }
 
     body {
@@ -40,7 +40,6 @@
       padding-bottom: 5rem;
     }
     
-    /* Button Styles */
     .btn-primary {
       background: var(--primary);
       border-color: var(--primary);
@@ -49,15 +48,12 @@
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      background: var(--primary);
-      border-color: var(--primary);
       box-shadow: 0 10px 25px -10px var(--ring);
     }
     .btn-primary:disabled {
         cursor: wait;
     }
 
-    /* Features Section */
     .features-section {
         margin-top: 4rem;
         max-width: 900px;
@@ -76,7 +72,6 @@
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     
-    /* Footer */
     footer {
       position: absolute;
       bottom: 1.5rem;
@@ -92,7 +87,6 @@
       <h1 class="display-4 fw-bold mb-3">AI Assistant</h1>
       <p class="lead muted col-lg-8 mx-auto">Click the button below to start a conversation with our AI assistant.</p>
       
-      <!-- Main Button -->
       <div class="mt-4 pt-2">
         <button class="btn btn-primary btn-lg px-5 py-3" id="open-chat-button">
           <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
@@ -101,10 +95,8 @@
         </button>
       </div>
 
-      <!-- Features Section -->
       <section class="features-section">
         <div class="row g-4">
-            <!-- Feature 1: Speed -->
             <div class="col-md-4">
                 <div class="feature-icon">
                     <i class="bi bi-rocket-takeoff-fill"></i>
@@ -112,7 +104,6 @@
                 <h5 class="fw-semibold">Fast & Responsive</h5>
                 <p class="small text-white-50">Get instant answers without delay, powered by a lightweight and optimized interface.</p>
             </div>
-            <!-- Feature 2: Trust -->
             <div class="col-md-4">
                 <div class="feature-icon">
                     <i class="bi bi-shield-check"></i>
@@ -120,7 +111,6 @@
                 <h5 class="fw-semibold">Trusted Technology</h5>
                 <p class="small text-white-50">Built on DigitalOcean and powered by the advanced DeepSeek R1 Distill Llama 70B model.</p>
             </div>
-            <!-- Feature 3: Simplicity -->
             <div class="col-md-4">
                 <div class="feature-icon">
                     <i class="bi bi-lightbulb-fill"></i>
@@ -135,7 +125,7 @@
   </main>
 
   <footer class="text-center">
-      <small class="muted">© <span id="year"></span> AI Assistant by tornike-tsiklauri</small>
+      <small class="muted">© <span id="year">2025</span> AI Assistant by tornike-tsiklauri</small>
   </footer>
 
   <script>
@@ -145,21 +135,16 @@
     let doChatButton = null;
 
     /**
-     * This function uses a MutationObserver to reliably find the real chat button
+     * Uses a MutationObserver to reliably find the real chat button
      * once the external script adds it to the page.
      */
     function findChatButtonOnPage() {
-      // First, check if the button is already there
-      const existingButton = document.querySelector('#do-genai-embed-container button');
-      if (existingButton) {
-        doChatButton = existingButton;
-        return;
-      }
-
-      // If not, create an observer to watch for when it's added
+      console.log("Looking for the chat widget button...");
+      
       const observer = new MutationObserver((mutations, obs) => {
         const chatBubble = document.querySelector('#do-genai-embed-container button');
         if (chatBubble) {
+          console.log('SUCCESS: Chat button element found by observer.', chatBubble);
           doChatButton = chatBubble;
           obs.disconnect(); // Stop observing once we've found it
         }
@@ -180,24 +165,37 @@
       openChatButton.disabled = true;
       buttonIcon.classList.add('d-none');
       buttonSpinner.classList.remove('d-none');
+      console.log("'Start Chat' clicked. Looking for the real button to activate.");
 
-      // If the button is found, click it.
-      if (doChatButton) {
-        doChatButton.click();
+      const clickTheButton = (button) => {
+        console.log("Attempting to dispatch a synthetic click event to the chat button.");
+        const clickEvent = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+        });
+        // Dispatching the event to simulate a real click
+        const dispatched = button.dispatchEvent(clickEvent);
+        console.log(`Event dispatched successfully: ${dispatched}`);
         resetButtonState();
+      };
+      
+      // If the button is already found, click it immediately.
+      if (doChatButton) {
+        clickTheButton(doChatButton);
         return;
       }
       
-      // If the button is not found yet, wait for it.
+      // If the button isn't found yet, wait for a short period.
       let attempts = 0;
       const interval = setInterval(() => {
         attempts++;
         if (doChatButton) {
           clearInterval(interval);
-          doChatButton.click();
-          resetButtonState();
+          clickTheButton(doChatButton);
         } else if (attempts > 20) { // Timeout after 5 seconds
           clearInterval(interval);
+          console.error("TIMEOUT: Chat widget button was not found on the page.");
           alert('Chat widget could not be loaded. Please try refreshing the page.');
           resetButtonState();
         }
@@ -210,7 +208,6 @@
         buttonSpinner.classList.add('d-none');
     }
     
-    document.getElementById('year').textContent = new Date().getFullYear();
     openChatButton.addEventListener('click', handleOpenChatClick);
   </script>
 
