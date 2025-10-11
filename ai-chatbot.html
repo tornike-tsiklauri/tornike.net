@@ -1,10 +1,10 @@
-<!doctype html>
-<html lang="en" data-lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Assistant Pro — Full-Screen Chat Experience</title>
-  <meta name="description" content="A full-screen, immersive AI chat experience powered by DigitalOcean's AI Agent. Bilingual UI (EN/KA)." />
+  <title>AI Assistant</title>
+  <meta name="description" content="A simple, centered button to reliably launch the DigitalOcean AI Agent bubble chat." />
 
   <!-- Bootstrap 5 CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,71 +14,28 @@
   <style>
     :root {
       --bg: #0A0F1E;
-      --surface: #11192e;
+      --surface: #11192E;
       --primary: #5850f5;
-      --primary-accent: #38bdf8;
       --text: #e5eafc;
       --muted: #a1a9c4;
-      --border: rgba(94, 102, 147, 0.2);
       --ring: rgba(88, 80, 245, 0.3);
     }
 
     html, body {
       height: 100%;
-      overflow: hidden; /* Prevent scrollbars */
+      overflow: hidden;
     }
 
     body {
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
       background-color: var(--bg);
       color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
     
-    .main-content {
-      transition: opacity 0.4s ease, filter 0.4s ease;
-    }
-
-    /* Style for when the chat is active */
-    body.chat-active .main-content {
-      opacity: 0.1;
-      filter: blur(8px);
-      pointer-events: none;
-    }
-    
-    /* Lang switcher */
-    .lang-switch {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-    }
-    .lang-switch .btn {
-      background-color: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-    .lang-switch .btn:hover {
-      background-color: var(--surface);
-      color: var(--text);
-    }
-    .lang-switch .btn.active {
-      background-color: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-    }
-
-    /* Badge */
-    .badge-soft {
-      background-color: rgba(88, 80, 245, 0.15);
-      color: #c0bdfb;
-      border: 1px solid rgba(88, 80, 245, 0.3);
-      font-weight: 500;
-    }
-
-    /* Buttons */
+    /* Button Styles */
     .btn-primary {
       background: var(--primary);
       border-color: var(--primary);
@@ -99,94 +56,50 @@
       left: 0;
       right: 0;
     }
-    
-    /* HIDE the default chat widget button */
-    #do-ai-widget-container {
-      display: none !important;
-      visibility: hidden !important;
-    }
-
-    /* Simple i18n visibility */
-    .i18n { display: none; }
-    [data-lang="en"] .i18n-en { display: inline; }
-    [data-lang="ka"] .i18n-ka { display: inline; }
-    [data-lang="en"] .i18n-block-en { display: block; }
-    [data-lang="ka"] .i18n-block-ka { display: block; }
   </style>
 </head>
 <body>
-  <!-- Language Switcher -->
-  <div class="lang-switch">
-    <div class="btn-group" role="group" aria-label="Language switch">
-      <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" title="English">🇬🇧 EN</button>
-      <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" title="ქართული">🇬🇪 KA</button>
-    </div>
-  </div>
 
-  <!-- Main Content -->
-  <main class="main-content text-center">
+  <main>
     <div class="container">
-      <span class="badge rounded-pill badge-soft px-3 py-2 mb-3">
-        <i class="bi bi-cpu-fill me-1"></i>
-        DeepSeek R1 Distill Llama 70B
-      </span>
-      <h1 class="display-4 fw-bold mb-3">
-        <span class="i18n i18n-block-en">AI Chat Assistant</span>
-        <span class="i18n i18n-block-ka">ხელოვნური ინტელექტის ასისტენტი</span>
-      </h1>
-      <p class="lead muted col-lg-8 mx-auto">
-        <span class="i18n i18n-en">Click below to start a conversation. This service is free to make information more accessible.</span>
-        <span class="i18n i18n-ka">საუბრის დასაწყებად დააჭირეთ ღილაკს. ეს სერვისი უფასოა ინფორმაციის ხელმისაწვდომობის გასაზრდელად.</span>
-      </p>
+      <h1 class="display-4 fw-bold mb-3">AI Assistant</h1>
+      <p class="lead muted col-lg-8 mx-auto">Click the button below to start a conversation with our AI assistant.</p>
       <div class="mt-4 pt-2">
         <button class="btn btn-primary btn-lg px-5 py-3" id="open-chat">
+          <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
           <i class="bi bi-chat-dots-fill me-2"></i>
-          <span class="i18n i18n-en">Start Chat</span><span class="i18n i18n-ka">ჩატის დაწყება</span>
+          Start Chat
         </button>
       </div>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="text-center">
-      <small class="muted">© <span id="year"></span> AI Assistant Pro by Tornike Tsiklauri</small>
+      <small class="muted">© 2025 AI Assistant by tornike-tsiklauri</small>
   </footer>
 
-  <!-- Bootstrap 5 JS (Bundle with Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
-    // i18n toggle
-    (function() {
-      const root = document.documentElement;
-      function setLang(lang) {
-        if (lang !== 'en' && lang !== 'ka') return;
-        root.setAttribute('data-lang', lang);
-        localStorage.setItem('lang', lang);
-        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-        document.getElementById('lang-ka').classList.toggle('active', lang === 'ka');
-        document.getElementById('lang-en').setAttribute('aria-pressed', String(lang === 'en'));
-        document.getElementById('lang-ka').setAttribute('aria-pressed', String(lang === 'ka'));
-      }
-      setLang(localStorage.getItem('lang') || 'en');
-      document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
-      document.getElementById('lang-ka').addEventListener('click', () => setLang('ka'));
-    })();
-
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const openChatButton = document.getElementById('open-chat');
+    const buttonIcon = openChatButton.querySelector('i');
+    const buttonSpinner = openChatButton.querySelector('.spinner-border');
 
     /**
-     * NEW: Reliable function to open the DigitalOcean AI chat widget.
-     * It waits for the widget's API to be available on the window object.
+     * This function reliably opens the DigitalOcean AI chat widget.
+     * It waits for the widget's API to be available before trying to open it.
      */
     function openDoAiChat() {
+      // Show loading state
+      openChatButton.disabled = true;
+      buttonIcon.classList.add('d-none');
+      buttonSpinner.classList.remove('d-none');
+
+      // Check if the API is already available
       if (window.doai && typeof window.doai.openChat === 'function') {
         window.doai.openChat();
-        document.body.classList.add('chat-active');
+        resetButtonState();
         return;
       }
-      
+
       // If not available, wait for it.
       let attempts = 0;
       const interval = setInterval(() => {
@@ -194,45 +107,26 @@
         if (window.doai && typeof window.doai.openChat === 'function') {
           clearInterval(interval);
           window.doai.openChat();
-          document.body.classList.add('chat-active');
-        } else if (attempts > 20) { // Timeout after ~5 seconds
+          resetButtonState();
+        } else if (attempts > 20) { // Timeout after 5 seconds
           clearInterval(interval);
           alert('Chat widget could not be loaded. Please try refreshing the page.');
+          resetButtonState();
         }
       }, 250);
     }
     
-    // Attach click listener
-    document.getElementById('open-chat').addEventListener('click', openDoAiChat);
+    function resetButtonState() {
+        openChatButton.disabled = false;
+        buttonIcon.classList.remove('d-none');
+        buttonSpinner.classList.add('d-none');
+    }
 
-    /**
-     * Listen for the chat to close so we can restore the main view.
-     * This relies on observing mutations on the widget's container.
-     */
-    const observer = new MutationObserver((mutations) => {
-      for (const mutation of mutations) {
-        // The widget adds a 'do-ai-widget--open' class when it's open.
-        // We check for its removal to detect when the chat is closed.
-        if (mutation.attributeName === 'class' && !mutation.target.classList.contains('do-ai-widget--open')) {
-          document.body.classList.remove('chat-active');
-        }
-      }
-    });
-
-    // We must wait for the widget container to exist before observing it.
-    const containerObserver = new MutationObserver((_, self) => {
-      const container = document.getElementById('do-ai-widget-container');
-      if (container) {
-        observer.observe(container, { attributes: true });
-        self.disconnect(); // Stop looking for the container itself
-      }
-    });
-    
-    containerObserver.observe(document.body, { childList: true });
-
+    // Attach click listener to the button
+    openChatButton.addEventListener('click', openDoAiChat);
   </script>
 
-  <!-- CHATBOT EMBED SCRIPT (DO NOT DELETE) -->
+  <!-- DigitalOcean AI Agent Bubble Chat Widget Script -->
   <script async
     src="https://fap6t6a7bjmtkhl6gh3nqkim.agents.do-ai.run/static/chatbot/widget.js"
     data-agent-id="8f485ea9-a6b5-11f0-b074-4e013e2ddde4"
