@@ -1,42 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en" data-theme="dark">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Assistant - Powered by DigitalOcean | tornike-tsiklauri</title>
+  <title>AI Assistant</title>
   <meta name="description" content="A premium landing page for a DigitalOcean AI assistant, guiding users to the chat bubble." />
-  <meta name="theme-color" content="#0A0F1E" />
-  <link rel="canonical" href="https://tornike.net/ai-chatbot.html" />
-  <link rel="alternate" hreflang="en" href="https://tornike.net/ai-chatbot.html?lang=en" />
-  <link rel="alternate" hreflang="ka" href="https://tornike.net/ai-chatbot.html?lang=ka" />
-  <link rel="alternate" hreflang="x-default" href="https://tornike.net/ai-chatbot.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tornike.net/ai-chatbot.html" />
-  <meta property="og:title" content="AI Assistant - Powered by DigitalOcean" />
-  <meta property="og:description" content="Chat with our AI assistant powered by DigitalOcean and DeepSeek R1 Distill Llama 70B model. Simple, intuitive, and always ready to help." />
-  <meta property="og:image" content="https://files.tornike.net/ai-platform.svg" />
-  <meta property="og:site_name" content="tornike-tsiklauri" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://tornike.net/ai-chatbot.html" />
-  <meta name="twitter:title" content="AI Assistant - Powered by DigitalOcean" />
-  <meta name="twitter:description" content="Chat with our AI assistant powered by DigitalOcean and DeepSeek R1 Distill Llama 70B model. Simple, intuitive, and always ready to help." />
-  <meta name="twitter:image" content="https://files.tornike.net/ai-platform.svg" />
+      <link rel="icon" type="image/x-icon" href="https://files.tornike.net/favicon_tornike-net/favicon.ico">
 
-  <link rel="icon" type="image/x-icon" href="https://files.tornike.net/favicon_tornike-net/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://files.tornike.net/favicon_tornike-net/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://files.tornike.net/favicon_tornike-net/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="https://files.tornike.net/favicon_tornike-net/android-chrome-512x512.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://files.tornike.net/favicon_tornike-net/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://files.tornike.net/favicon_tornike-net/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://files.tornike.net/favicon_tornike-net/apple-touch-icon.png">
 
+<link rel="icon" type="image/png" sizes="192x192" href="https://files.tornike.net/favicon_tornike-net/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="https://files.tornike.net/favicon_tornike-net/android-chrome-512x512.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="https://files.tornike.net/favicon_tornike-net/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://files.tornike.net/favicon_tornike-net/favicon-16x16.png">
+
+  <!-- Bootstrap 5 CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
-    /* Prevent horizontal overflow */
-    html, body { overflow-x: hidden; }
-
-    /* Dark theme (default) */
     :root {
       --bg: #0A0F1E;
       --surface: #11192E;
@@ -45,46 +29,11 @@
       --text: #e5eafc;
       --muted: #a1a9c4;
       --border: rgba(94, 102, 147, 0.2);
-
-      --card-bg: rgba(255,255,255,0.06);
-      --card-hover-bg: rgba(255,255,255,0.12);
-      --feature-text: var(--muted);
-      --badge-bg: rgba(88, 80, 245, 0.12);
-      --badge-text: #c7cbff;
-
-      --pointer-border: rgba(88, 80, 245, 0.5);
-      --pulse-color: rgba(88, 80, 245, 0.7);
-      --ornament-1: rgba(88, 80, 245, 0.15);
-      --ornament-2: rgba(56, 189, 248, 0.12);
-      --ornament-3: rgba(139, 92, 246, 0.10);
-    }
-
-    [data-theme="light"] {
-      --bg: #f5f7fa;
-      --surface: #ffffff;
-      --primary: #5850f5;
-      --primary-accent: #0284c7;
-      --text: #0f172a;
-      --muted: #475569;
-      --border: rgba(100,116,139,0.18);
-
-      --card-bg: rgba(255,255,255,0.85);
-      --card-hover-bg: #ffffff;
-      --feature-text: #334155;
-      --badge-bg: rgba(88,80,245,0.10);
-      --badge-text: #1e1b4b;
-
-      --pointer-border: rgba(3,27,78,0.35);
-      --pulse-color: rgba(3,27,78,0.35);
-      --ornament-1: rgba(88,80,245,0.10);
-      --ornament-2: rgba(2,132,199,0.10);
-      --ornament-3: rgba(139, 92, 246, 0.08);
     }
 
     html, body {
       height: 100%;
-      background-color: var(--bg);
-      color: var(--text);
+      overflow-y: auto;
     }
 
     body {
@@ -93,534 +42,202 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 2rem 1rem;
-      transition: background-color .3s, color .3s;
-      position: relative;
-      isolation: isolate;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem;
     }
-
-    /* Constrain container for better layout */
-    .site-container {
-      width: 100%;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-
-    /* Enhanced decorative gradient orbs with animation */
-    .bg-ornament::before,
-    .bg-ornament::after {
-      content: "";
-      position: fixed;
-      z-index: -1;
-      filter: blur(80px);
-      border-radius: 50%;
-      opacity: 0.6;
-      transition: opacity .3s ease;
-      animation: float 8s ease-in-out infinite;
-    }
-    .bg-ornament::before {
-      width: 450px; height: 450px;
-      left: -140px; top: -140px;
-      background: radial-gradient(closest-side, var(--ornament-1), transparent);
-    }
-    .bg-ornament::after {
-      width: 500px; height: 500px;
-      right: -180px; bottom: -180px;
-      background: radial-gradient(closest-side, var(--ornament-2), transparent);
-      animation-delay: -4s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(30px, -30px) scale(1.1); }
-      66% { transform: translate(-20px, 20px) scale(0.9); }
-    }
-
-    /* Floating particles */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: -1;
-      pointer-events: none;
-    }
-    .particle {
+    
+    .lang-switch {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: rise 15s infinite ease-in;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 10;
     }
-    @keyframes rise {
-      0% { transform: translateY(100vh) scale(0); opacity: 0; }
-      50% { opacity: 0.4; }
-      100% { transform: translateY(-100vh) scale(1); opacity: 0; }
-    }
-
-    header {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      right: 1rem;
-      z-index: 20;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* Make header controls responsive */
-    .header-controls {
-      display: flex;
-      gap: .75rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .theme-switch, .lang-switch { display: flex; gap: .5rem; align-items: center; }
-
-    .theme-switch .btn,
     .lang-switch .btn {
       background-color: transparent;
       border: 1px solid var(--border);
       color: var(--muted);
-      transition: all .18s ease;
-      padding: .35rem .6rem;
-      font-size: 1rem;
+      transition: all .2s;
     }
-    .theme-switch .btn.active,
+    .lang-switch .btn:hover {
+      background-color: var(--surface);
+      color: var(--text);
+    }
     .lang-switch .btn.active {
       background-color: var(--primary);
       border-color: var(--primary);
       color: #fff;
     }
 
-    /* Logo with enhanced animation */
-    .main-icon { 
-      width: 80px; 
-      height: 80px; 
-      margin-bottom: 1rem; 
-      filter: drop-shadow(0 0 30px rgba(88,80,245,0.4));
-      animation: iconPulse 3s ease-in-out infinite;
-    }
-    @keyframes iconPulse {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(88,80,245,0.4)); }
-      50% { transform: scale(1.05); filter: drop-shadow(0 0 40px rgba(88,80,245,0.6)); }
-    }
-    img, svg { max-width: 100%; height: auto; display: block; }
-
-    .headline-gradient {
-      background: linear-gradient(90deg, var(--primary), var(--primary-accent), var(--primary));
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      word-break: break-word;
-      animation: gradientShift 4s ease infinite;
-    }
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% center; }
-      50% { background-position: 100% center; }
+    .main-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 2rem;
+        filter: drop-shadow(0 0 25px rgba(88, 80, 245, 0.3));
     }
 
-    .lead.muted { color: var(--feature-text); }
-
-    /* Enhanced Features */
-    .features-section { margin-top: 2rem; }
+    .features-section {
+        margin-top: 4rem;
+        max-width: 900px;
+    }
     .feature-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.25rem;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
-      backdrop-filter: saturate(140%) blur(8px);
-      -webkit-backdrop-filter: saturate(140%) blur(8px);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-      text-align: left;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
+        background-color: transparent;
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: background-color .2s;
     }
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-accent));
-      transform: scaleX(0);
-      transition: transform .3s ease;
-    }
-    .feature-card:hover::before {
-      transform: scaleX(1);
-    }
-    .feature-card:hover { 
-      transform: translateY(-6px); 
-      box-shadow: 0 12px 40px rgba(88, 80, 245, 0.2);
-      border-color: rgba(88, 80, 245, 0.4);
-      background: var(--card-hover-bg);
+    .feature-card:hover {
+        background-color: var(--surface);
     }
     .feature-icon {
-      width: 48px;
-      height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: .75rem;
-      background: linear-gradient(135deg, rgba(88, 80, 245, 0.15), rgba(56, 189, 248, 0.15));
-      color: var(--primary);
-      margin-bottom: .75rem;
-      font-size: 1.5rem;
-      transition: transform .25s ease;
-    }
-    .feature-card:hover .feature-icon {
-      transform: scale(1.1) rotate(5deg);
-    }
-    .feature-title { color: var(--text); }
-    .feature-text { color: var(--feature-text); overflow-wrap: anywhere; word-break: break-word; }
-
-    /* KPI badges with enhanced design */
-    .kpis { margin-top: 1rem; display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
-    .kpi-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      background: var(--badge-bg);
-      color: var(--badge-text);
-      border: 1px solid var(--border);
-      padding: .5rem .75rem;
-      border-radius: 999px;
-      font-size: .9rem;
-      font-weight: 600;
-      backdrop-filter: blur(6px);
-      max-width: 260px;
-      white-space: normal;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      transition: all .25s ease;
-    }
-    .kpi-badge:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(88, 80, 245, 0.2);
-      border-color: var(--primary);
-    }
-    .kpi-badge .bi { 
-      color: var(--primary);
-      animation: iconBounce 2s ease-in-out infinite;
-    }
-    @keyframes iconBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
+        color: var(--primary-accent);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
     }
 
-    /* Enhanced Tech section */
-    .tech-section { margin-top: 2.5rem; }
-    .tech-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.25rem;
-      text-align: center;
-      height: 100%;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      backdrop-filter: blur(8px);
-      position: relative;
-      overflow: hidden;
-    }
-    .tech-card::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(88, 80, 245, 0.15), transparent);
-      transform: translate(-50%, -50%);
-      transition: width .4s ease, height .4s ease;
-    }
-    .tech-card:hover::after {
-      width: 300px;
-      height: 300px;
-    }
-    .tech-card:hover { 
-      transform: translateY(-6px) scale(1.02); 
-      box-shadow: 0 12px 40px rgba(88, 80, 245, 0.25);
-      border-color: var(--primary);
-    }
-    .tech-icon { 
-      width: 56px; 
-      height: 56px; 
-      display: inline-flex; 
-      align-items: center; 
-      justify-content: center; 
-      border-radius: 1rem; 
-      background: linear-gradient(135deg, var(--primary), var(--primary-accent)); 
-      color: #fff; 
-      margin-bottom: .75rem; 
-      font-size: 1.5rem;
-      position: relative;
-      z-index: 1;
-      transition: transform .3s ease;
-      box-shadow: 0 4px 12px rgba(88, 80, 245, 0.3);
-    }
-    .tech-card:hover .tech-icon {
-      transform: rotateY(360deg);
-    }
-    .tech-title {
-      position: relative;
-      z-index: 1;
-    }
-    .tech-text {
-      position: relative;
-      z-index: 1;
-      color: var(--feature-text);
-    }
-
-    /* Powered By Section */
-    .powered-section {
-      margin-top: 3rem;
-      padding: 2rem;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1.5rem;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-    .powered-section h3 {
-      margin-bottom: 1.5rem;
-      background: linear-gradient(90deg, var(--primary), var(--primary-accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .powered-logos {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-    .powered-logo-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .75rem;
-      transition: transform .25s ease;
-    }
-    .powered-logo-item:hover {
-      transform: translateY(-4px);
-    }
-    .powered-logo-item a {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .powered-logo-item img {
-      max-height: 40px;
-      width: auto;
-      transition: filter .25s ease;
-      filter: brightness(0.9);
-    }
-    .powered-logo-item:hover img {
-      filter: brightness(1.1);
-    }
-    [data-theme="light"] .powered-logo-item img {
-      filter: brightness(0.8);
-    }
-    [data-theme="light"] .powered-logo-item:hover img {
-      filter: brightness(1);
-    }
-
-    .section-subtitle { color: var(--feature-text); margin-bottom: 1rem; }
-
-    /* Reveal on scroll with stagger */
-    .reveal { 
-      opacity: 0; 
-      transform: translateY(20px); 
-      transition: opacity .6s ease, transform .6s ease; 
-    }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-    .reveal:nth-child(1) { transition-delay: 0.1s; }
-    .reveal:nth-child(2) { transition-delay: 0.2s; }
-    .reveal:nth-child(3) { transition-delay: 0.3s; }
-    .reveal:nth-child(4) { transition-delay: 0.4s; }
-
-    /* Enhanced pointer guide */
+    /* Animated pointer to guide the user */
     .pointer-guide {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      width: 54px;
-      height: 54px;
-      border: 2px solid var(--pointer-border);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-      pointer-events: none;
-      z-index: 9998;
-      box-shadow: 0 0 0 0 var(--pulse-color);
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        width: 60px;
+        height: 60px;
+        border: 2px solid rgba(88, 80, 245, 0.5);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+        pointer-events: none; /* Allows clicking through it */
+        z-index: 9998; /* Just below the chat widget */
     }
+
     @keyframes pulse {
-      0% { 
-        transform: scale(.96); 
-        box-shadow: 0 0 0 0 var(--pulse-color); 
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(88, 80, 245, 0.7);
       }
-      70% { 
-        transform: scale(1.1); 
-        box-shadow: 0 0 0 20px rgba(0,0,0,0); 
+      70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 15px rgba(88, 80, 245, 0);
       }
-      100% { 
-        transform: scale(.96); 
-        box-shadow: 0 0 0 0 rgba(0,0,0,0); 
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(88, 80, 245, 0);
       }
     }
-
-    footer { margin-top: 2.5rem; color: var(--feature-text); }
-
-    /* Small screens adjustments */
-    @media (max-width: 767.98px) {
-      header { align-items: flex-start; gap: .5rem; top: .75rem; left: .75rem; right: .75rem; }
-      .header-controls { width: 100%; justify-content: space-between; }
-      .main-icon { width: 64px; height: 64px; }
-      .headline-gradient { font-size: 1.5rem; }
-      .kpi-badge { max-width: 48vw; font-size: .85rem; padding: .35rem .5rem; }
-      .tech-icon { width: 44px; height: 44px; font-size: 1.2rem; }
-      .feature-card { padding: 1rem; }
-      .feature-icon { width: 40px; height: 40px; font-size: 1.2rem; }
-      .bg-ornament::before { width: 280px; height: 280px; left: -140px; top: -140px; filter: blur(50px); }
-      .bg-ornament::after { width: 300px; height: 300px; right: -150px; bottom: -150px; filter: blur(50px); }
-      .pointer-guide { width: 44px; height: 44px; bottom: 14px; right: 14px; }
-      .powered-logos { gap: 1rem; }
-      .powered-section { padding: 1.5rem 1rem; }
+    
+    footer {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 0;
+      right: 0;
     }
 
-    @media (min-width: 1200px) {
-      .headline-gradient { font-size: 2.25rem; }
-    }
-
-    /* Animated Tech Icons */
-    .tech-icon > svg {
-      width: 32px;
-      height: 32px;
-      transition: transform 0.5s ease-in-out, filter 0.3s ease;
-    }
-
-    .tech-card:hover .tech-icon > svg {
-      transform: rotate(360deg) scale(1.1);
-      filter: drop-shadow(0 0 10px var(--primary));
-    }
-
-    /* Technology Section - SVG Icons */
-    .tech-icon[data-tech="deepseek"] > svg { fill: #64b5f6; }
-    .tech-icon[data-tech="digitalocean"] > svg { fill: #008bcf; }
-    .tech-icon[data-tech="cloudflare"] > svg { fill: #f08080; }
-    .tech-icon[data-tech="github"] > svg { fill: #333; }
-
-    [data-theme="light"] .tech-icon[data-tech="github"] > svg { fill: #333; }
-
-    /* Animated border */
-    .animated-border {
-      position: relative;
-      padding: 20px;
-      border: 2px solid transparent;
-      background: linear-gradient(var(--bg), var(--bg)) padding-box,
-                  linear-gradient(to right, var(--primary), var(--primary-accent)) border-box;
-      border-radius: 1em;
-    }
+    /* Bilingual visibility classes */
+    .i18n { display: none; }
+    [data-lang="en"] .i18n-en { display: inline; }
+    [data-lang="ka"] .i18n-ka { display: inline; }
+    [data-lang="en"] .i18n-block-en { display: block; }
+    [data-lang="ka"] .i18n-block-ka { display: block; }
   </style>
 </head>
-<body class="bg-ornament">
-  <!-- Floating particles -->
-  <div class="particles" aria-hidden="true">
-    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-    <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
-    <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
-    <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
-    <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
-    <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
-    <div class="particle" style="left: 90%; animation-delay: 1s;"></div>
+<body>
+
+  <!-- Language Switcher -->
+  <div class="lang-switch">
+    <div class="btn-group" role="group" aria-label="Language switch">
+      <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" title="English">🇬🇧 EN</button>
+      <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" title="ქართული">🇬🇪 KA</button>
+    </div>
   </div>
 
-  <header>
-    <div class="site-container d-flex align-items-center justify-content-between px-0">
-      <div class="d-flex align-items-center gap-3">
-        <img src="https://files.tornike.net/ai-platform.svg" class="main-icon d-none d-sm-block" alt="AI Platform Icon" loading="lazy" decoding="async">
-        <div>
-          <h1 class="h4 mb-0">
-            <span class="i18n i18n-en headline-gradient">AI Assistant is Ready</span>
-            <span class="i18n i18n-ka headline-gradient">AI მზად არის</span>
-          </h1>
-          <small class="d-block lead muted d-none d-sm-block">
-            <span class="i18n i18n-en">To start the chat, please use the button on the bottom-right.</span>
-            <span class="i18n i18n-ka">საუბრის დასაწყებად, გთხოვთ გამოიყენოთ ღილაკი ქვედა მარჯვენა კუთხეში.</span>
-          </small>
-        </div>
-      </div>
-
-      <div class="header-controls">
-        <div class="theme-switch" role="group" aria-label="Theme">
-          <button id="theme-light" class="btn btn-sm" type="button" title="Light theme" aria-label="Switch to light theme" aria-pressed="false">☀️</button>
-          <button id="theme-dark" class="btn btn-sm active" type="button" title="Dark theme" aria-label="Switch to dark theme" aria-pressed="true">🌙</button>
-        </div>
-        <div class="lang-switch btn-group" role="group" aria-label="Language switch">
-          <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" title="English" aria-pressed="false">🇬🇧 EN</button>
-          <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" title="ქართული" aria-pressed="false">🇬🇪 KA</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main class="site-container">
-    <!-- For smaller screens, show hero under header -->
-    <div class="d-block d-sm-none text-center mb-3">
-      <img src="https://files.tornike.net/ai-platform.svg" class="main-icon mx-auto" alt="AI Platform Icon" loading="lazy" decoding="async">
-      <p class="lead muted mb-0">
+  <main>
+    <div class="container">
+      <img src="https://files.tornike.net/ai-platform.svg" class="main-icon" alt="AI Platform Icon">
+      
+      <h1 class="display-5 fw-bold mb-3">
+        <span class="i18n i18n-en">AI Assistant is Ready</span>
+        <span class="i18n i18n-ka">AI მზად არის</span>
+      </h1>
+      
+      <p class="lead muted col-lg-8 mx-auto">
         <span class="i18n i18n-en">To start the chat, please use the button on the bottom-right.</span>
         <span class="i18n i18n-ka">საუბრის დასაწყებად, გთხოვთ გამოიყენოთ ღილაკი ქვედა მარჯვენა კუთხეში.</span>
       </p>
-    </div>
 
-    <!-- KPIs -->
-    <div class="kpis reveal" aria-label="Key benefits">
-      <span class="kpi-badge"><i class="bi bi-cpu-fill"></i> <span class="i18n i18n-en">Model: DeepSeek R1 Distill Llama 70B</span><span class="i18n i18n-ka">მოდელი: DeepSeek R1 Distill Llama 70B</span></span>
-      <span class="kpi-badge"><i class="bi bi-speedometer2"></i> <span class="i18n i18n-en">Designed for fast, streaming replies</span><span class="i18n i18n-ka">სწრაფი, სტრიმინგ-პასუხები</span></span>
-      <span class="kpi-badge"><i class="bi bi-shield-lock-fill"></i> <span class="i18n i18n-en">Secure by design</span><span class="i18n i18n-ka">უსაფრთხო დიზაინით</span></span>
-    </div>
-
-    <!-- Features -->
-    <section class="features-section">
-      <div class="row g-3 mt-3">
-        <div class="col-12 col-md-6 reveal">
-          <div class="feature-card">
-            <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
-            <h6 class="fw-semibold feature-title">
-              <span class="i18n i18n-en">Trusted Technology</span>
-              <span class="i18n i18n-ka">სანდო ტექნოლოგია</span>
-            </h6>
-            <p class="small feature-text mb-0">
-              <span class="i18n i18n-en">Powered by DigitalOcean and the DeepSeek R1 Distill Llama 70B model.</span>
-              <span class="i18n i18n-ka">მუშაობს DigitalOcean-ის საფუძველზე და DeepSeek R1 Distill Llama 70B მოდელზე.</span>
-            </p>
-          </div>
+      <!-- Features Section -->
+      <section class="features-section">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+                    <h6 class="fw-semibold">
+                        <span class="i18n i18n-en">Trusted Technology</span>
+                        <span class="i18n i18n-ka">სანდო ტექნოლოგია</span>
+                    </h6>
+                    <p class="small text-white-50 mb-0">
+                        <span class="i18n i18n-en">Powered by DigitalOcean and the DeepSeek R1 Distill Llama 70B model.</span>
+                        <span class="i18n i18n-ka">მუშაობს DigitalOcean-ის უსაფრთხო სისტემაზე, ხელოვნური ინტელექტის მძლავრი მოდელის გამოყენებით.</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-lightbulb-fill"></i></div>
+                    <h6 class="fw-semibold">
+                        <span class="i18n i18n-en">Simple & Intuitive</span>
+                        <span class="i18n i18n-ka">მარტივი და დეტალური</span>
+                    </h6>
+                    <p class="small text-white-50 mb-0">
+                        <span class="i18n i18n-en">A clean, focused experience. The assistant is always one click away.</span>
+                        <span class="i18n i18n-ka">AI ყოველთვის თქვენთანაა, სულ ერთი დაწკაპუნებაა საჭირო.</span>
+                    </p>
+                </div>
+            </div>
         </div>
+      </section>
 
-        <div class="col-12 col-md-6 reveal">
-          <div class="feature-card">
-            <div class="feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
-            <h6 class="fw-semibold feature-title">
-              <span class="i18n i18n-en">
+    </div>
+  </main>
+
+  <!-- Animated guide to point to the chat bubble -->
+  <div class="pointer-guide"></div>
+
+  <footer class="text-center">
+      <small class="muted">© <span id="year"></span> AI Assistant by tornike-tsiklauri</small>
+  </footer>
+
+  <script>
+    // Bilingual Language Switcher
+    (function() {
+      const root = document.documentElement;
+      function setLang(lang) {
+        if (lang !== 'en' && lang !== 'ka') return;
+        root.setAttribute('data-lang', lang);
+        localStorage.setItem('lang', lang);
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        document.getElementById('lang-ka').classList.toggle('active', lang === 'ka');
+      }
+      // Set default language to English if no preference is saved
+      setLang(localStorage.getItem('lang') || 'en');
+      document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
+      document.getElementById('lang-ka').addEventListener('click', () => setLang('ka'));
+    })();
+    
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- DigitalOcean AI Agent Bubble Chat Widget Script -->
+  <script async
+    src="https://fap6t6a7bjmtkhl6gh3nqkim.agents.do-ai.run/static/chatbot/widget.js"
+    data-agent-id="8f485ea9-a6b5-11f0-b074-4e013e2ddde4"
+    data-chatbot-id="-n3kGMxYJrovP4mKahq__i1eo3psiVHV"
+    data-name="AI"
+    data-primary-color="#031B4E"
+    data-secondary-color="#E5E8ED"
+    data-button-background-color="#0061EB"
+    data-starting-message="Hello! How can I help you today?"
+    data-logo="https://files.tornike.net/ai-platform.svg">
+  </script>
+</body>
+</html>
