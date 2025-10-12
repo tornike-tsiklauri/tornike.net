@@ -510,6 +510,36 @@
     @media (min-width: 1200px) {
       .headline-gradient { font-size: 2.25rem; }
     }
+
+    /* Animated Tech Icons */
+    .tech-icon > svg {
+      width: 32px;
+      height: 32px;
+      transition: transform 0.5s ease-in-out, filter 0.3s ease;
+    }
+
+    .tech-card:hover .tech-icon > svg {
+      transform: rotate(360deg) scale(1.1);
+      filter: drop-shadow(0 0 10px var(--primary));
+    }
+
+    /* Technology Section - SVG Icons */
+    .tech-icon[data-tech="deepseek"] > svg { fill: #64b5f6; }
+    .tech-icon[data-tech="digitalocean"] > svg { fill: #008bcf; }
+    .tech-icon[data-tech="cloudflare"] > svg { fill: #f08080; }
+    .tech-icon[data-tech="github"] > svg { fill: #333; }
+
+    [data-theme="light"] .tech-icon[data-tech="github"] > svg { fill: #333; }
+
+    /* Animated border */
+    .animated-border {
+      position: relative;
+      padding: 20px;
+      border: 2px solid transparent;
+      background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                  linear-gradient(to right, var(--primary), var(--primary-accent)) border-box;
+      border-radius: 1em;
+    }
   </style>
 </head>
 <body class="bg-ornament">
@@ -593,242 +623,4 @@
           <div class="feature-card">
             <div class="feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
             <h6 class="fw-semibold feature-title">
-              <span class="i18n i18n-en">Fast & Responsive</span>
-              <span class="i18n i18n-ka">სწრაფი და რეაქტიული</span>
-            </h6>
-            <p class="small feature-text mb-0">
-              <span class="i18n i18n-en">Streaming answers appear as they're generated—no waiting for long loads.</span>
-              <span class="i18n i18n-ka">პასუხები იბადება და ერთდროულად ჩანს—აღარ გელოდებათ გრძელი ჩატვირთვა.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 reveal">
-          <div class="feature-card">
-            <div class="feature-icon"><i class="bi bi-emoji-smile-fill"></i></div>
-            <h6 class="fw-semibold feature-title">
-              <span class="i18n i18n-en">Simple & Intuitive</span>
-              <span class="i18n i18n-ka">მარტივი და ინტუიციური</span>
-            </h6>
-            <p class="small feature-text mb-0">
-              <span class="i18n i18n-en">A clean, focused experience. The assistant is always one click away.</span>
-              <span class="i18n i18n-ka">სუფთა და მარტივი გამოცდილება—AI მუდამ ერთი დაწკაპვით ხელმისაწვდომია.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 reveal">
-          <div class="feature-card">
-            <div class="feature-icon"><i class="bi bi-lock-fill"></i></div>
-            <h6 class="fw-semibold feature-title">
-              <span class="i18n i18n-en">Private by Default</span>
-              <span class="i18n i18n-ka">კონფიდენციალურობა ნაგულისხმევად</span>
-            </h6>
-            <p class="small feature-text mb-0">
-              <span class="i18n i18n-en">Built with security and privacy best practices at every layer.</span>
-              <span class="i18n i18n-ka">დაცვა და კონფიდენციალურობა გათვალისწინებულია ყველა ფენაზე.</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Technology Section -->
-    <section class="tech-section">
-      <h2 class="h4 section-title mt-4 headline-gradient">
-        <span class="i18n i18n-en">The Technology Behind Your AI Assistant</span>
-        <span class="i18n i18n-ka">ტექნოლოგიები თქვენი AI ასისტენტის მიღმა</span>
-      </h2>
-      <p class="section-subtitle col-lg-8 mx-auto">
-        <span class="i18n i18n-en">Modern infrastructure and a powerful model work together to make it fast, reliable, and secure.</span>
-        <span class="i18n i18n-ka">თანამედროვე ინფრასტრუქტურა და ძლიერი მოდელი ერთად უზრუნველყოფენ სისწრაფეს, სანდოობას და უსაფრთხოებას.</span>
-      </p>
-
-      <div class="row g-3 mt-2">
-        <div class="col-12 col-md-6 col-lg-3 reveal">
-          <div class="tech-card h-100">
-            <div class="tech-icon"><i class="bi bi-robot"></i></div>
-            <h6 class="tech-title mb-1 fw-semibold">
-              <span class="i18n i18n-en">DeepSeek R1</span>
-              <span class="i18n i18n-ka">DeepSeek R1</span>
-            </h6>
-            <p class="tech-text small mb-0">
-              <span class="i18n i18n-en">A state-of-the-art AI model tuned for helpful, fast responses.</span>
-              <span class="i18n i18n-ka">თანამედროვე AI მოდელი, მორგებული სასარგებლო და სწრაფ პასუხებზე.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-lg-3 reveal">
-          <div class="tech-card h-100">
-            <div class="tech-icon"><i class="bi bi-cloud-fill"></i></div>
-            <h6 class="tech-title mb-1 fw-semibold">
-              <span class="i18n i18n-en">DigitalOcean</span>
-              <span class="i18n i18n-ka">DigitalOcean</span>
-            </h6>
-            <p class="tech-text small mb-0">
-              <span class="i18n i18n-en">High-performance servers keep the AI responsive and available.</span>
-              <span class="i18n i18n-ka">მაღალი წარმადობის სერვერები უზრუნველყოფენ სისწრაფესა და ხელმისაწვდომობას.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-lg-3 reveal">
-          <div class="tech-card h-100">
-            <div class="tech-icon"><i class="bi bi-shield-check"></i></div>
-            <h6 class="tech-title mb-1 fw-semibold">
-              <span class="i18n i18n-en">Cloudflare</span>
-              <span class="i18n i18n-ka">Cloudflare</span>
-            </h6>
-            <p class="tech-text small mb-0">
-              <span class="i18n i18n-en">Global edge network boosts speed and protects against threats.</span>
-              <span class="i18n i18n-ka">გლობალური ქსელი ზრდის სიჩქარეს და იცავს კიბერ-რისკებისგან.</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-lg-3 reveal">
-          <div class="tech-card h-100">
-            <div class="tech-icon"><i class="bi bi-github"></i></div>
-            <h6 class="tech-title mb-1 fw-semibold">
-              <span class="i18n i18n-en">GitHub</span>
-              <span class="i18n i18n-ka">GitHub</span>
-            </h6>
-            <p class="tech-text small mb-0">
-              <span class="i18n i18n-en">Source control and automated deployments keep the site reliable.</span>
-              <span class="i18n i18n-ka">კოდის მართვა და ავტომატური განთავსება საიტს სანდოს ხდის.</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Powered By Section with DigitalOcean Referral -->
-    <section class="powered-section reveal">
-      <h3 class="h5 fw-semibold">
-        <span class="i18n i18n-en">⚡ Powered By</span>
-        <span class="i18n i18n-ka">⚡ გამოიყენება</span>
-      </h3>
-      <p class="section-subtitle mb-3">
-        <span class="i18n i18n-en">Built on industry-leading infrastructure and tools</span>
-        <span class="i18n i18n-ka">აშენებულია ინდუსტრიის წამყვან ინფრასტრუქტურასა და ხელსაწყოებზე</span>
-      </p>
-      <div class="powered-logos">
-        <div class="powered-logo-item">
-          <a href="https://www.digitalocean.com/?refcode=6c33855fb8fb&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge" target="_blank" rel="noopener noreferrer">
-            <img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" />
-          </a>
-        </div>
-        <div class="powered-logo-item">
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub">
-            <svg height="40" viewBox="0 0 16 16" width="40" style="fill: var(--text);">
-              <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-            </svg>
-          </a>
-        </div>
-        <div class="powered-logo-item">
-          <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer" title="Cloudflare">
-            <svg height="40" viewBox="0 0 109 40" width="109" style="fill: var(--text);">
-              <path d="M69.8 13.5c-1.3-5-5.8-8.5-11.1-8.5s-9.8 3.5-11.1 8.5c-4.8.6-8.5 4.7-8.5 9.7 0 5.4 4.4 9.8 9.8 9.8h19.5c5.4 0 9.8-4.4 9.8-9.8.1-5-3.6-9.1-8.4-9.7zm-11.1 15.7c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <p class="small mt-3 mb-0 text-muted">
-        <span class="i18n i18n-en">Click the DigitalOcean badge to get started with $200 in credit over 60 days</span>
-        <span class="i18n i18n-ka">დააწკაპუნეთ DigitalOcean-ის ბეჯზე და მიიღეთ $200 კრედიტი 60 დღის განმავლობაში</span>
-      </p>
-    </section>
-  </main>
-
-  <div class="pointer-guide" aria-hidden="true"></div>
-
-  <footer class="text-center">
-    <small class="muted">© <span id="year"></span> AI Assistant by tornike-tsiklauri</small>
-  </footer>
-
-  <script>
-    // Theme Switcher with System Preference Detection
-    (function() {
-      const root = document.documentElement;
-      const themeLight = document.getElementById('theme-light');
-      const themeDark = document.getElementById('theme-dark');
-
-      function setTheme(theme) {
-        if (theme !== 'light' && theme !== 'dark') return;
-        root.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        themeLight.classList.toggle('active', theme === 'light');
-        themeDark.classList.toggle('active', theme === 'dark');
-        themeLight.setAttribute('aria-pressed', theme === 'light');
-        themeDark.setAttribute('aria-pressed', theme === 'dark');
-        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'light' ? '#f5f7fa' : '#0A0F1E');
-      }
-
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const savedTheme = localStorage.getItem('theme');
-      const defaultTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-      setTheme(defaultTheme);
-
-      themeLight.addEventListener('click', () => setTheme('light'));
-      themeDark.addEventListener('click', () => setTheme('dark'));
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) setTheme(e.matches ? 'dark' : 'light');
-      });
-    })();
-
-    // Bilingual Language Switcher
-    (function() {
-      const root = document.documentElement;
-      const langEn = document.getElementById('lang-en');
-      const langKa = document.getElementById('lang-ka');
-
-      function setLang(lang) {
-        if (lang !== 'en' && lang !== 'ka') return;
-        root.setAttribute('data-lang', lang);
-        localStorage.setItem('lang', lang);
-        langEn.classList.toggle('active', lang === 'en');
-        langKa.classList.toggle('active', lang === 'ka');
-        langEn.setAttribute('aria-pressed', lang === 'en');
-        langKa.setAttribute('aria-pressed', lang === 'ka');
-        root.setAttribute('lang', lang);
-      }
-
-      setLang(localStorage.getItem('lang') || 'en');
-      langEn.addEventListener('click', () => setLang('en'));
-      langKa.addEventListener('click', () => setLang('ka'));
-    })();
-
-    // Reveal on scroll
-    (function() {
-      const els = document.querySelectorAll('.reveal');
-      const io = new IntersectionObserver((entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            e.target.classList.add('in');
-            io.unobserve(e.target);
-          }
-        }
-      }, { threshold: 0.12 });
-      els.forEach(el => io.observe(el));
-    })();
-
-    // Set year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- DigitalOcean AI Agent Bubble Chat Widget Script -->
-  <script async
-    src="https://fap6t6a7bjmtkhl6gh3nqkim.agents.do-ai.run/static/chatbot/widget.js"
-    data-agent-id="8f485ea9-a6b5-11f0-b074-4e013e2ddde4"
-    data-chatbot-id="-n3kGMxYJrovP4mKahq__i1eo3psiVHV"
-    data-name="AI"
-    data-primary-color="#031B4E"
-    data-secondary-color="#E5E8ED"
-    data-button-background-color="#0061EB"
-    data-starting-message="Hello! How can I help you today?"
-    data-logo="https://files.tornike.net/ai-platform.svg">
-  </script>
-</body>
-</html>
+              <span class="i18n i18n-en">
