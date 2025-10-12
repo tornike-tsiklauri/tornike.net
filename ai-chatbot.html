@@ -56,6 +56,7 @@
       --pulse-color: rgba(88, 80, 245, 0.7);
       --ornament-1: rgba(88, 80, 245, 0.15);
       --ornament-2: rgba(56, 189, 248, 0.12);
+      --ornament-3: rgba(139, 92, 246, 0.10);
     }
 
     [data-theme="light"] {
@@ -77,6 +78,7 @@
       --pulse-color: rgba(3,27,78,0.35);
       --ornament-1: rgba(88,80,245,0.10);
       --ornament-2: rgba(2,132,199,0.10);
+      --ornament-3: rgba(139, 92, 246, 0.08);
     }
 
     html, body {
@@ -107,26 +109,60 @@
       padding-right: 1rem;
     }
 
-    /* Decorative gradient orbs (responsive) */
+    /* Enhanced decorative gradient orbs with animation */
     .bg-ornament::before,
     .bg-ornament::after {
       content: "";
       position: fixed;
       z-index: -1;
-      filter: blur(60px);
+      filter: blur(80px);
       border-radius: 50%;
-      opacity: 0.8;
+      opacity: 0.6;
       transition: opacity .3s ease;
+      animation: float 8s ease-in-out infinite;
     }
     .bg-ornament::before {
-      width: 380px; height: 380px;
-      left: -120px; top: -120px;
+      width: 450px; height: 450px;
+      left: -140px; top: -140px;
       background: radial-gradient(closest-side, var(--ornament-1), transparent);
     }
     .bg-ornament::after {
-      width: 420px; height: 420px;
-      right: -160px; bottom: -160px;
+      width: 500px; height: 500px;
+      right: -180px; bottom: -180px;
       background: radial-gradient(closest-side, var(--ornament-2), transparent);
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: rise 15s infinite ease-in;
+    }
+    @keyframes rise {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      50% { opacity: 0.4; }
+      100% { transform: translateY(-100vh) scale(1); opacity: 0; }
     }
 
     header {
@@ -167,39 +203,92 @@
       color: #fff;
     }
 
-    /* Logo and hero */
-    .main-icon { width: 80px; height: 80px; margin-bottom: 1rem; filter: drop-shadow(0 0 25px rgba(88,80,245,0.28)); }
+    /* Logo with enhanced animation */
+    .main-icon { 
+      width: 80px; 
+      height: 80px; 
+      margin-bottom: 1rem; 
+      filter: drop-shadow(0 0 30px rgba(88,80,245,0.4));
+      animation: iconPulse 3s ease-in-out infinite;
+    }
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(88,80,245,0.4)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 40px rgba(88,80,245,0.6)); }
+    }
     img, svg { max-width: 100%; height: auto; display: block; }
 
     .headline-gradient {
-      background: linear-gradient(90deg, var(--primary), var(--primary-accent));
+      background: linear-gradient(90deg, var(--primary), var(--primary-accent), var(--primary));
+      background-size: 200% auto;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       word-break: break-word;
+      animation: gradientShift 4s ease infinite;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 100% center; }
     }
 
     .lead.muted { color: var(--feature-text); }
 
-    /* Features */
+    /* Enhanced Features */
     .features-section { margin-top: 2rem; }
     .feature-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 1rem;
       padding: 1.25rem;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
       backdrop-filter: saturate(140%) blur(8px);
       -webkit-backdrop-filter: saturate(140%) blur(8px);
       box-shadow: 0 2px 16px rgba(0,0,0,0.06);
       text-align: left;
       height: 100%;
+      position: relative;
+      overflow: hidden;
     }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-accent));
+      transform: scaleX(0);
+      transition: transform .3s ease;
+    }
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+    .feature-card:hover { 
+      transform: translateY(-6px); 
+      box-shadow: 0 12px 40px rgba(88, 80, 245, 0.2);
+      border-color: rgba(88, 80, 245, 0.4);
+      background: var(--card-hover-bg);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: .75rem;
+      background: linear-gradient(135deg, rgba(88, 80, 245, 0.15), rgba(56, 189, 248, 0.15));
+      color: var(--primary);
+      margin-bottom: .75rem;
+      font-size: 1.5rem;
+      transition: transform .25s ease;
+    }
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
     .feature-title { color: var(--text); }
     .feature-text { color: var(--feature-text); overflow-wrap: anywhere; word-break: break-word; }
 
-    /* KPI badges */
+    /* KPI badges with enhanced design */
     .kpis { margin-top: 1rem; display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
     .kpi-badge {
       display: inline-flex;
@@ -208,7 +297,7 @@
       background: var(--badge-bg);
       color: var(--badge-text);
       border: 1px solid var(--border);
-      padding: .45rem .65rem;
+      padding: .5rem .75rem;
       border-radius: 999px;
       font-size: .9rem;
       font-weight: 600;
@@ -217,32 +306,160 @@
       white-space: normal;
       overflow-wrap: anywhere;
       word-break: break-word;
+      transition: all .25s ease;
     }
-    .kpi-badge .bi { color: var(--primary); }
+    .kpi-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(88, 80, 245, 0.2);
+      border-color: var(--primary);
+    }
+    .kpi-badge .bi { 
+      color: var(--primary);
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
 
-    /* Tech section / cards */
+    /* Enhanced Tech section */
     .tech-section { margin-top: 2.5rem; }
     .tech-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 1rem;
-      padding: 1.15rem;
-      text-align: left;
+      padding: 1.25rem;
+      text-align: center;
       height: 100%;
-      transition: transform .18s, box-shadow .18s;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
       overflow-wrap: anywhere;
       word-break: break-word;
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
     }
-    .tech-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
-    .tech-icon { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: .75rem; background: linear-gradient(135deg, var(--primary), var(--primary-accent)); color: #fff; margin-bottom: .6rem; font-size: 1.2rem; }
+    .tech-card::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(88, 80, 245, 0.15), transparent);
+      transform: translate(-50%, -50%);
+      transition: width .4s ease, height .4s ease;
+    }
+    .tech-card:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+    .tech-card:hover { 
+      transform: translateY(-6px) scale(1.02); 
+      box-shadow: 0 12px 40px rgba(88, 80, 245, 0.25);
+      border-color: var(--primary);
+    }
+    .tech-icon { 
+      width: 56px; 
+      height: 56px; 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      border-radius: 1rem; 
+      background: linear-gradient(135deg, var(--primary), var(--primary-accent)); 
+      color: #fff; 
+      margin-bottom: .75rem; 
+      font-size: 1.5rem;
+      position: relative;
+      z-index: 1;
+      transition: transform .3s ease;
+      box-shadow: 0 4px 12px rgba(88, 80, 245, 0.3);
+    }
+    .tech-card:hover .tech-icon {
+      transform: rotateY(360deg);
+    }
+    .tech-title {
+      position: relative;
+      z-index: 1;
+    }
+    .tech-text {
+      position: relative;
+      z-index: 1;
+      color: var(--feature-text);
+    }
+
+    /* Powered By Section */
+    .powered-section {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .powered-section h3 {
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--primary-accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .powered-logos {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .powered-logo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+      transition: transform .25s ease;
+    }
+    .powered-logo-item:hover {
+      transform: translateY(-4px);
+    }
+    .powered-logo-item a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .powered-logo-item img {
+      max-height: 40px;
+      width: auto;
+      transition: filter .25s ease;
+      filter: brightness(0.9);
+    }
+    .powered-logo-item:hover img {
+      filter: brightness(1.1);
+    }
+    [data-theme="light"] .powered-logo-item img {
+      filter: brightness(0.8);
+    }
+    [data-theme="light"] .powered-logo-item:hover img {
+      filter: brightness(1);
+    }
 
     .section-subtitle { color: var(--feature-text); margin-bottom: 1rem; }
 
-    /* Reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(10px); transition: opacity .45s ease, transform .45s ease; }
+    /* Reveal on scroll with stagger */
+    .reveal { 
+      opacity: 0; 
+      transform: translateY(20px); 
+      transition: opacity .6s ease, transform .6s ease; 
+    }
     .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal:nth-child(1) { transition-delay: 0.1s; }
+    .reveal:nth-child(2) { transition-delay: 0.2s; }
+    .reveal:nth-child(3) { transition-delay: 0.3s; }
+    .reveal:nth-child(4) { transition-delay: 0.4s; }
 
-    /* Pointer guide (responsive) */
+    /* Enhanced pointer guide */
     .pointer-guide {
       position: fixed;
       bottom: 22px;
@@ -254,11 +471,21 @@
       animation: pulse 2s infinite;
       pointer-events: none;
       z-index: 9998;
+      box-shadow: 0 0 0 0 var(--pulse-color);
     }
     @keyframes pulse {
-      0% { transform: scale(.96); box-shadow: 0 0 0 0 var(--pulse-color); }
-      70% { transform: scale(1.08); box-shadow: 0 0 0 14px rgba(0,0,0,0); }
-      100% { transform: scale(.96); box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+      0% { 
+        transform: scale(.96); 
+        box-shadow: 0 0 0 0 var(--pulse-color); 
+      }
+      70% { 
+        transform: scale(1.1); 
+        box-shadow: 0 0 0 20px rgba(0,0,0,0); 
+      }
+      100% { 
+        transform: scale(.96); 
+        box-shadow: 0 0 0 0 rgba(0,0,0,0); 
+      }
     }
 
     footer { margin-top: 2.5rem; color: var(--feature-text); }
@@ -270,11 +497,14 @@
       .main-icon { width: 64px; height: 64px; }
       .headline-gradient { font-size: 1.5rem; }
       .kpi-badge { max-width: 48vw; font-size: .85rem; padding: .35rem .5rem; }
-      .tech-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .tech-icon { width: 44px; height: 44px; font-size: 1.2rem; }
       .feature-card { padding: 1rem; }
-      .bg-ornament::before { width: 260px; height: 260px; left: -140px; top: -140px; filter: blur(40px); }
-      .bg-ornament::after { width: 260px; height: 260px; right: -120px; bottom: -120px; filter: blur(40px); }
+      .feature-icon { width: 40px; height: 40px; font-size: 1.2rem; }
+      .bg-ornament::before { width: 280px; height: 280px; left: -140px; top: -140px; filter: blur(50px); }
+      .bg-ornament::after { width: 300px; height: 300px; right: -150px; bottom: -150px; filter: blur(50px); }
       .pointer-guide { width: 44px; height: 44px; bottom: 14px; right: 14px; }
+      .powered-logos { gap: 1rem; }
+      .powered-section { padding: 1.5rem 1rem; }
     }
 
     @media (min-width: 1200px) {
@@ -283,6 +513,18 @@
   </style>
 </head>
 <body class="bg-ornament">
+  <!-- Floating particles -->
+  <div class="particles" aria-hidden="true">
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
+    <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 1s;"></div>
+  </div>
 
   <header>
     <div class="site-container d-flex align-items-center justify-content-between px-0">
@@ -355,7 +597,7 @@
               <span class="i18n i18n-ka">სწრაფი და რეაქტიული</span>
             </h6>
             <p class="small feature-text mb-0">
-              <span class="i18n i18n-en">Streaming answers appear as they’re generated—no waiting for long loads.</span>
+              <span class="i18n i18n-en">Streaming answers appear as they're generated—no waiting for long loads.</span>
               <span class="i18n i18n-ka">პასუხები იბადება და ერთდროულად ჩანს—აღარ გელოდებათ გრძელი ჩატვირთვა.</span>
             </p>
           </div>
@@ -406,9 +648,9 @@
         <div class="col-12 col-md-6 col-lg-3 reveal">
           <div class="tech-card h-100">
             <div class="tech-icon"><i class="bi bi-robot"></i></div>
-            <h6 class="tech-title mb-1">
-              <span class="i18n i18n-en">DeepSeek R1 Distill Llama 70B</span>
-              <span class="i18n i18n-ka">DeepSeek R1 Distill Llama 70B</span>
+            <h6 class="tech-title mb-1 fw-semibold">
+              <span class="i18n i18n-en">DeepSeek R1</span>
+              <span class="i18n i18n-ka">DeepSeek R1</span>
             </h6>
             <p class="tech-text small mb-0">
               <span class="i18n i18n-en">A state-of-the-art AI model tuned for helpful, fast responses.</span>
@@ -420,7 +662,7 @@
         <div class="col-12 col-md-6 col-lg-3 reveal">
           <div class="tech-card h-100">
             <div class="tech-icon"><i class="bi bi-cloud-fill"></i></div>
-            <h6 class="tech-title mb-1">
+            <h6 class="tech-title mb-1 fw-semibold">
               <span class="i18n i18n-en">DigitalOcean</span>
               <span class="i18n i18n-ka">DigitalOcean</span>
             </h6>
@@ -434,7 +676,7 @@
         <div class="col-12 col-md-6 col-lg-3 reveal">
           <div class="tech-card h-100">
             <div class="tech-icon"><i class="bi bi-shield-check"></i></div>
-            <h6 class="tech-title mb-1">
+            <h6 class="tech-title mb-1 fw-semibold">
               <span class="i18n i18n-en">Cloudflare</span>
               <span class="i18n i18n-ka">Cloudflare</span>
             </h6>
@@ -448,17 +690,54 @@
         <div class="col-12 col-md-6 col-lg-3 reveal">
           <div class="tech-card h-100">
             <div class="tech-icon"><i class="bi bi-github"></i></div>
-            <h6 class="tech-title mb-1">
+            <h6 class="tech-title mb-1 fw-semibold">
               <span class="i18n i18n-en">GitHub</span>
               <span class="i18n i18n-ka">GitHub</span>
             </h6>
             <p class="tech-text small mb-0">
               <span class="i18n i18n-en">Source control and automated deployments keep the site reliable.</span>
-              <span class="i18n i18n-ka">კოდის მართვა და ავტომატური განთავსება საიტს სანდოსხდის.</span>
+              <span class="i18n i18n-ka">კოდის მართვა და ავტომატური განთავსება საიტს სანდოს ხდის.</span>
             </p>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Powered By Section with DigitalOcean Referral -->
+    <section class="powered-section reveal">
+      <h3 class="h5 fw-semibold">
+        <span class="i18n i18n-en">⚡ Powered By</span>
+        <span class="i18n i18n-ka">⚡ გამოიყენება</span>
+      </h3>
+      <p class="section-subtitle mb-3">
+        <span class="i18n i18n-en">Built on industry-leading infrastructure and tools</span>
+        <span class="i18n i18n-ka">აშენებულია ინდუსტრიის წამყვან ინფრასტრუქტურასა და ხელსაწყოებზე</span>
+      </p>
+      <div class="powered-logos">
+        <div class="powered-logo-item">
+          <a href="https://www.digitalocean.com/?refcode=6c33855fb8fb&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge" target="_blank" rel="noopener noreferrer">
+            <img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" />
+          </a>
+        </div>
+        <div class="powered-logo-item">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <svg height="40" viewBox="0 0 16 16" width="40" style="fill: var(--text);">
+              <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="powered-logo-item">
+          <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer" title="Cloudflare">
+            <svg height="40" viewBox="0 0 109 40" width="109" style="fill: var(--text);">
+              <path d="M69.8 13.5c-1.3-5-5.8-8.5-11.1-8.5s-9.8 3.5-11.1 8.5c-4.8.6-8.5 4.7-8.5 9.7 0 5.4 4.4 9.8 9.8 9.8h19.5c5.4 0 9.8-4.4 9.8-9.8.1-5-3.6-9.1-8.4-9.7zm-11.1 15.7c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <p class="small mt-3 mb-0 text-muted">
+        <span class="i18n i18n-en">Click the DigitalOcean badge to get started with $200 in credit over 60 days</span>
+        <span class="i18n i18n-ka">დააწკაპუნეთ DigitalOcean-ის ბეჯზე და მიიღეთ $200 კრედიტი 60 დღის განმავლობაში</span>
+      </p>
     </section>
   </main>
 
