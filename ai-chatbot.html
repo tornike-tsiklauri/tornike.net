@@ -6,30 +6,22 @@
   <title>AI Assistant - Powered by DigitalOcean | tornike-tsiklauri</title>
   <meta name="description" content="A premium landing page for a DigitalOcean AI assistant, guiding users to the chat bubble." />
   <meta name="theme-color" content="#0A0F1E" />
-  
-  <!-- Canonical URL -->
   <link rel="canonical" href="https://tornike.net/ai-chatbot.html" />
-  
-  <!-- Hreflang for international SEO -->
   <link rel="alternate" hreflang="en" href="https://tornike.net/ai-chatbot.html?lang=en" />
   <link rel="alternate" hreflang="ka" href="https://tornike.net/ai-chatbot.html?lang=ka" />
   <link rel="alternate" hreflang="x-default" href="https://tornike.net/ai-chatbot.html" />
-  
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tornike.net/ai-chatbot.html" />
   <meta property="og:title" content="AI Assistant - Powered by DigitalOcean" />
   <meta property="og:description" content="Chat with our AI assistant powered by DigitalOcean and DeepSeek R1 Distill Llama 70B model. Simple, intuitive, and always ready to help." />
   <meta property="og:image" content="https://files.tornike.net/ai-platform.svg" />
   <meta property="og:site_name" content="tornike-tsiklauri" />
-  
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://tornike.net/ai-chatbot.html" />
   <meta name="twitter:title" content="AI Assistant - Powered by DigitalOcean" />
   <meta name="twitter:description" content="Chat with our AI assistant powered by DigitalOcean and DeepSeek R1 Distill Llama 70B model. Simple, intuitive, and always ready to help." />
   <meta name="twitter:image" content="https://files.tornike.net/ai-platform.svg" />
-  
+
   <link rel="icon" type="image/x-icon" href="https://files.tornike.net/favicon_tornike-net/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="https://files.tornike.net/favicon_tornike-net/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="https://files.tornike.net/favicon_tornike-net/android-chrome-192x192.png">
@@ -37,12 +29,13 @@
   <link rel="icon" type="image/png" sizes="32x32" href="https://files.tornike.net/favicon_tornike-net/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://files.tornike.net/favicon_tornike-net/favicon-16x16.png">
 
-  <!-- Bootstrap 5 CSS (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
+    /* Prevent horizontal overflow */
+    html, body { overflow-x: hidden; }
+
     /* Dark theme (default) */
     :root {
       --bg: #0A0F1E;
@@ -53,9 +46,8 @@
       --muted: #a1a9c4;
       --border: rgba(94, 102, 147, 0.2);
 
-      /* Components */
-      --card-bg: rgba(255, 255, 255, 0.06);
-      --card-hover-bg: rgba(255, 255, 255, 0.12);
+      --card-bg: rgba(255,255,255,0.06);
+      --card-hover-bg: rgba(255,255,255,0.12);
       --feature-text: var(--muted);
       --badge-bg: rgba(88, 80, 245, 0.12);
       --badge-text: #c7cbff;
@@ -66,7 +58,6 @@
       --ornament-2: rgba(56, 189, 248, 0.12);
     }
 
-    /* Light theme */
     [data-theme="light"] {
       --bg: #f5f7fa;
       --surface: #ffffff;
@@ -74,23 +65,22 @@
       --primary-accent: #0284c7;
       --text: #0f172a;
       --muted: #475569;
-      --border: rgba(100, 116, 139, 0.18);
+      --border: rgba(100,116,139,0.18);
 
-      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-bg: rgba(255,255,255,0.85);
       --card-hover-bg: #ffffff;
       --feature-text: #334155;
-      --badge-bg: rgba(88, 80, 245, 0.10);
+      --badge-bg: rgba(88,80,245,0.10);
       --badge-text: #1e1b4b;
 
-      --pointer-border: rgba(3, 27, 78, 0.35);
-      --pulse-color: rgba(3, 27, 78, 0.35);
-      --ornament-1: rgba(88, 80, 245, 0.10);
-      --ornament-2: rgba(2, 132, 199, 0.10);
+      --pointer-border: rgba(3,27,78,0.35);
+      --pulse-color: rgba(3,27,78,0.35);
+      --ornament-1: rgba(88,80,245,0.10);
+      --ornament-2: rgba(2,132,199,0.10);
     }
 
     html, body {
       height: 100%;
-      overflow-y: auto;
       background-color: var(--bg);
       color: var(--text);
     }
@@ -101,13 +91,23 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 2rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      padding: 2rem 1rem;
+      transition: background-color .3s, color .3s;
       position: relative;
       isolation: isolate;
     }
 
-    /* Decorative gradient orbs */
+    /* Constrain container for better layout */
+    .site-container {
+      width: 100%;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Decorative gradient orbs (responsive) */
     .bg-ornament::before,
     .bg-ornament::after {
       content: "";
@@ -131,112 +131,76 @@
 
     header {
       position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      right: 1.5rem;
-      z-index: 10;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      z-index: 20;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 1rem;
+      flex-wrap: wrap;
     }
-    
-    .theme-switch {
+
+    /* Make header controls responsive */
+    .header-controls {
       display: flex;
-      gap: 0.5rem;
+      gap: .75rem;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .theme-switch .btn {
-      background-color: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      transition: all .2s;
-      padding: 0.375rem 0.75rem;
-      font-size: 1.25rem;
-      line-height: 1;
-    }
-    .theme-switch .btn:hover {
-      background-color: var(--surface);
-      color: var(--text);
-      border-color: var(--primary);
-    }
-    .theme-switch .btn.active {
-      background-color: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-    }
-    
+    .theme-switch, .lang-switch { display: flex; gap: .5rem; align-items: center; }
+
+    .theme-switch .btn,
     .lang-switch .btn {
       background-color: transparent;
       border: 1px solid var(--border);
       color: var(--muted);
-      transition: all .2s;
+      transition: all .18s ease;
+      padding: .35rem .6rem;
+      font-size: 1rem;
     }
-    .lang-switch .btn:hover {
-      background-color: var(--surface);
-      color: var(--text);
-    }
+    .theme-switch .btn.active,
     .lang-switch .btn.active {
       background-color: var(--primary);
       border-color: var(--primary);
       color: #fff;
     }
 
-    .main-icon {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 1.25rem;
-      filter: drop-shadow(0 0 25px rgba(88, 80, 245, 0.3));
-    }
+    /* Logo and hero */
+    .main-icon { width: 80px; height: 80px; margin-bottom: 1rem; filter: drop-shadow(0 0 25px rgba(88,80,245,0.28)); }
+    img, svg { max-width: 100%; height: auto; display: block; }
 
     .headline-gradient {
       background: linear-gradient(90deg, var(--primary), var(--primary-accent));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      word-break: break-word;
     }
 
     .lead.muted { color: var(--feature-text); }
 
-    .features-section {
-      margin-top: 2.25rem;
-      max-width: 980px;
-      margin-left: auto; margin-right: auto;
-    }
+    /* Features */
+    .features-section { margin-top: 2rem; }
     .feature-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 1rem;
-      padding: 1.5rem;
-      transition: transform .18s ease, background-color .2s ease, box-shadow .18s ease, border-color .18s ease;
+      padding: 1.25rem;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
       backdrop-filter: saturate(140%) blur(8px);
       -webkit-backdrop-filter: saturate(140%) blur(8px);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
       text-align: left;
       height: 100%;
     }
-    .feature-card:hover {
-      background: var(--card-hover-bg);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(0,0,0,0.12);
-      border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
-    }
-    .feature-icon {
-      color: var(--primary);
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
     .feature-title { color: var(--text); }
-    .feature-text { color: var(--feature-text); }
+    .feature-text { color: var(--feature-text); overflow-wrap: anywhere; word-break: break-word; }
 
     /* KPI badges */
-    .kpis {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: .75rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .kpis { margin-top: 1rem; display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
     .kpi-badge {
       display: inline-flex;
       align-items: center;
@@ -244,70 +208,47 @@
       background: var(--badge-bg);
       color: var(--badge-text);
       border: 1px solid var(--border);
-      padding: .5rem .75rem;
+      padding: .45rem .65rem;
       border-radius: 999px;
       font-size: .9rem;
       font-weight: 600;
       backdrop-filter: blur(6px);
+      max-width: 260px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     .kpi-badge .bi { color: var(--primary); }
 
-    /* Tech grid */
-    .tech-section {
-      margin-top: 3rem;
-      max-width: 1100px;
-      margin-left: auto; margin-right: auto;
-    }
-    .section-title {
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-    .section-subtitle {
-      color: var(--feature-text);
-      margin-bottom: 1.25rem;
-    }
+    /* Tech section / cards */
+    .tech-section { margin-top: 2.5rem; }
     .tech-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 1rem;
-      padding: 1.25rem;
-      height: 100%;
+      padding: 1.15rem;
       text-align: left;
-      transition: transform .18s ease, background-color .2s ease, box-shadow .18s ease, border-color .18s ease;
-      backdrop-filter: saturate(140%) blur(8px);
-      -webkit-backdrop-filter: saturate(140%) blur(8px);
+      height: 100%;
+      transition: transform .18s, box-shadow .18s;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
-    .tech-card:hover {
-      background: var(--card-hover-bg);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(0,0,0,0.12);
-      border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
-    }
-    .tech-icon {
-      width: 40px; height: 40px;
-      display: inline-flex;
-      align-items: center; justify-content: center;
-      border-radius: .75rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-accent) 100%);
-      color: #fff;
-      margin-bottom: .75rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,.15);
-      font-size: 1.25rem;
-    }
-    .tech-title { color: var(--text); margin-bottom: .25rem; }
-    .tech-text { color: var(--feature-text); margin: 0; }
+    .tech-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+    .tech-icon { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: .75rem; background: linear-gradient(135deg, var(--primary), var(--primary-accent)); color: #fff; margin-bottom: .6rem; font-size: 1.2rem; }
+
+    .section-subtitle { color: var(--feature-text); margin-bottom: 1rem; }
 
     /* Reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal { opacity: 0; transform: translateY(10px); transition: opacity .45s ease, transform .45s ease; }
     .reveal.in { opacity: 1; transform: translateY(0); }
 
-    /* Animated pointer to guide the user */
+    /* Pointer guide (responsive) */
     .pointer-guide {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 60px;
-      height: 60px;
+      bottom: 22px;
+      right: 22px;
+      width: 54px;
+      height: 54px;
       border: 2px solid var(--pointer-border);
       border-radius: 50%;
       animation: pulse 2s infinite;
@@ -315,194 +256,212 @@
       z-index: 9998;
     }
     @keyframes pulse {
-      0%   { transform: scale(0.95); box-shadow: 0 0 0 0 var(--pulse-color); }
-      70%  { transform: scale(1.1);  box-shadow: 0 0 0 15px rgba(0,0,0,0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+      0% { transform: scale(.96); box-shadow: 0 0 0 0 var(--pulse-color); }
+      70% { transform: scale(1.08); box-shadow: 0 0 0 14px rgba(0,0,0,0); }
+      100% { transform: scale(.96); box-shadow: 0 0 0 0 rgba(0,0,0,0); }
     }
 
-    footer {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 0;
-      right: 0;
-    }
-    footer .muted { color: var(--feature-text); }
+    footer { margin-top: 2.5rem; color: var(--feature-text); }
 
-    /* Bilingual visibility classes */
-    .i18n { display: none; }
-    [data-lang="en"] .i18n-en { display: inline; }
-    [data-lang="ka"] .i18n-ka { display: inline; }
-    [data-lang="en"] .i18n-block-en { display: block; }
-    [data-lang="ka"] .i18n-block-ka { display: block; }
+    /* Small screens adjustments */
+    @media (max-width: 767.98px) {
+      header { align-items: flex-start; gap: .5rem; top: .75rem; left: .75rem; right: .75rem; }
+      .header-controls { width: 100%; justify-content: space-between; }
+      .main-icon { width: 64px; height: 64px; }
+      .headline-gradient { font-size: 1.5rem; }
+      .kpi-badge { max-width: 48vw; font-size: .85rem; padding: .35rem .5rem; }
+      .tech-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .feature-card { padding: 1rem; }
+      .bg-ornament::before { width: 260px; height: 260px; left: -140px; top: -140px; filter: blur(40px); }
+      .bg-ornament::after { width: 260px; height: 260px; right: -120px; bottom: -120px; filter: blur(40px); }
+      .pointer-guide { width: 44px; height: 44px; bottom: 14px; right: 14px; }
+    }
+
+    @media (min-width: 1200px) {
+      .headline-gradient { font-size: 2.25rem; }
+    }
   </style>
 </head>
 <body class="bg-ornament">
 
-  <!-- Header with Theme and Language Switchers -->
   <header>
-    <div class="theme-switch">
-      <button id="theme-light" class="btn btn-sm" type="button" title="Light theme" aria-label="Switch to light theme" aria-pressed="false">☀️</button>
-      <button id="theme-dark" class="btn btn-sm active" type="button" title="Dark theme" aria-label="Switch to dark theme" aria-pressed="true">🌙</button>
-    </div>
-    
-    <div class="lang-switch">
-      <div class="btn-group" role="group" aria-label="Language switch">
-        <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" title="English" aria-pressed="false">🇬🇧 EN</button>
-        <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" title="ქართული" aria-pressed="false">🇬🇪 KA</button>
+    <div class="site-container d-flex align-items-center justify-content-between px-0">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://files.tornike.net/ai-platform.svg" class="main-icon d-none d-sm-block" alt="AI Platform Icon" loading="lazy" decoding="async">
+        <div>
+          <h1 class="h4 mb-0">
+            <span class="i18n i18n-en headline-gradient">AI Assistant is Ready</span>
+            <span class="i18n i18n-ka headline-gradient">AI მზად არის</span>
+          </h1>
+          <small class="d-block lead muted d-none d-sm-block">
+            <span class="i18n i18n-en">To start the chat, please use the button on the bottom-right.</span>
+            <span class="i18n i18n-ka">საუბრის დასაწყებად, გთხოვთ გამოიყენოთ ღილაკი ქვედა მარჯვენა კუთხეში.</span>
+          </small>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="theme-switch" role="group" aria-label="Theme">
+          <button id="theme-light" class="btn btn-sm" type="button" title="Light theme" aria-label="Switch to light theme" aria-pressed="false">☀️</button>
+          <button id="theme-dark" class="btn btn-sm active" type="button" title="Dark theme" aria-label="Switch to dark theme" aria-pressed="true">🌙</button>
+        </div>
+        <div class="lang-switch btn-group" role="group" aria-label="Language switch">
+          <button id="lang-en" class="btn btn-sm" type="button" data-lang="en" title="English" aria-pressed="false">🇬🇧 EN</button>
+          <button id="lang-ka" class="btn btn-sm" type="button" data-lang="ka" title="ქართული" aria-pressed="false">🇬🇪 KA</button>
+        </div>
       </div>
     </div>
   </header>
 
-  <main>
-    <div class="container">
-      <img src="https://files.tornike.net/ai-platform.svg" class="main-icon" alt="AI Platform Icon" loading="lazy" decoding="async">
-      
-      <h1 class="display-5 fw-bold mb-2">
-        <span class="i18n i18n-en headline-gradient">AI Assistant is Ready</span>
-        <span class="i18n i18n-ka headline-gradient">AI მზად არის</span>
-      </h1>
-      
-      <p class="lead muted col-lg-8 mx-auto">
+  <main class="site-container">
+    <!-- For smaller screens, show hero under header -->
+    <div class="d-block d-sm-none text-center mb-3">
+      <img src="https://files.tornike.net/ai-platform.svg" class="main-icon mx-auto" alt="AI Platform Icon" loading="lazy" decoding="async">
+      <p class="lead muted mb-0">
         <span class="i18n i18n-en">To start the chat, please use the button on the bottom-right.</span>
         <span class="i18n i18n-ka">საუბრის დასაწყებად, გთხოვთ გამოიყენოთ ღილაკი ქვედა მარჯვენა კუთხეში.</span>
       </p>
-
-      <!-- KPI badges -->
-      <div class="kpis reveal" aria-label="Key benefits">
-        <span class="kpi-badge"><i class="bi bi-cpu-fill"></i> <span class="i18n i18n-en">Model: DeepSeek R1 Distill Llama 70B</span><span class="i18n i18n-ka">მოდელი: DeepSeek R1 Distill Llama 70B</span></span>
-        <span class="kpi-badge"><i class="bi bi-speedometer2"></i> <span class="i18n i18n-en">Designed for fast, streaming replies</span><span class="i18n i18n-ka">სწრაფი, სტრიმინგ-პასუხები</span></span>
-        <span class="kpi-badge"><i class="bi bi-shield-lock-fill"></i> <span class="i18n i18n-en">Secure by design</span><span class="i18n i18n-ka">უსაფრთხო დიზაინით</span></span>
-      </div>
-
-      <!-- Features Section -->
-      <section class="features-section">
-        <div class="row g-4">
-          <div class="col-md-6 reveal">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
-              <h6 class="fw-semibold feature-title">
-                <span class="i18n i18n-en">Trusted Technology</span>
-                <span class="i18n i18n-ka">სანდო ტექნოლოგია</span>
-              </h6>
-              <p class="small feature-text mb-0">
-                <span class="i18n i18n-en">Powered by DigitalOcean and the DeepSeek R1 Distill Llama 70B model.</span>
-                <span class="i18n i18n-ka">მუშაობს DigitalOcean-ის საფუძველზე და DeepSeek R1 Distill Llama 70B მოდელზე.</span>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 reveal">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
-              <h6 class="fw-semibold feature-title">
-                <span class="i18n i18n-en">Fast & Responsive</span>
-                <span class="i18n i18n-ka">სწრაფი და რეაქტიული</span>
-              </h6>
-              <p class="small feature-text mb-0">
-                <span class="i18n i18n-en">Streaming answers appear as they’re generated—no waiting for long loads.</span>
-                <span class="i18n i18n-ka">პასუხები იბადება და ერთდროულად ჩანს—აღარ გელოდებათ გრძელი ჩატვირთვა.</span>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 reveal">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="bi bi-emoji-smile-fill"></i></div>
-              <h6 class="fw-semibold feature-title">
-                <span class="i18n i18n-en">Simple & Intuitive</span>
-                <span class="i18n i18n-ka">მარტივი და ინტუიციური</span>
-              </h6>
-              <p class="small feature-text mb-0">
-                <span class="i18n i18n-en">A clean, focused experience. The assistant is always one click away.</span>
-                <span class="i18n i18n-ka">სუფთა და მარტივი გამოცდილება—AI მუდამ ერთი დაწკაპვით ხელმისაწვდომია.</span>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 reveal">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="bi bi-lock-fill"></i></div>
-              <h6 class="fw-semibold feature-title">
-                <span class="i18n i18n-en">Private by Default</span>
-                <span class="i18n i18n-ka">კონფიდენციალურობა ნაგულისხმევად</span>
-              </h6>
-              <p class="small feature-text mb-0">
-                <span class="i18n i18n-en">Built with security and privacy best practices at every layer.</span>
-                <span class="i18n i18n-ka">დაცვა და კონფიდენციალურობა გათვალისწინებულია ყველა ფენაზე.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Technology Section -->
-      <section class="tech-section">
-        <h2 class="section-title headline-gradient">
-          <span class="i18n i18n-en">The Technology Behind Your AI Assistant</span>
-          <span class="i18n i18n-ka">ტექნოლოგიები თქვენი AI ასისტენტის მიღმა</span>
-        </h2>
-        <p class="section-subtitle col-lg-8 mx-auto">
-          <span class="i18n i18n-en">Modern infrastructure and a powerful model work together to make it fast, reliable, and secure.</span>
-          <span class="i18n i18n-ka">თანამედროვე ინფრასტრუქტურა და ძლიერი მოდელი ერთად უზრუნველყოფენ სისწრაფეს, სანდოობას და უსაფრთხოებას.</span>
-        </p>
-
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-3 reveal">
-            <div class="tech-card h-100">
-              <div class="tech-icon"><i class="bi bi-robot"></i></div>
-              <h6 class="tech-title">
-                <span class="i18n i18n-en">DeepSeek R1 Distill Llama 70B</span>
-                <span class="i18n i18n-ka">DeepSeek R1 Distill Llama 70B</span>
-              </h6>
-              <p class="tech-text">
-                <span class="i18n i18n-en">A state-of-the-art AI model tuned for helpful, fast responses.</span>
-                <span class="i18n i18n-ka">თანამედროვე AI მოდელი, მორგებული სასარგებლო და სწრაფ პასუხებზე.</span>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 reveal">
-            <div class="tech-card h-100">
-              <div class="tech-icon"><i class="bi bi-cloud-fill"></i></div>
-              <h6 class="tech-title">
-                <span class="i18n i18n-en">DigitalOcean</span>
-                <span class="i18n i18n-ka">DigitalOcean</span>
-              </h6>
-              <p class="tech-text">
-                <span class="i18n i18n-en">High-performance servers keep the AI responsive and available.</span>
-                <span class="i18n i18n-ka">მაღალი წარმადობის სერვერები უზრუნველყოფენ სისწრაფესა და ხელმისაწვდომობას.</span>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 reveal">
-            <div class="tech-card h-100">
-              <div class="tech-icon"><i class="bi bi-shield-check"></i></div>
-              <h6 class="tech-title">
-                <span class="i18n i18n-en">Cloudflare</span>
-                <span class="i18n i18n-ka">Cloudflare</span>
-              </h6>
-              <p class="tech-text">
-                <span class="i18n i18n-en">Global edge network boosts speed and protects against threats.</span>
-                <span class="i18n i18n-ka">გლობალური ქსელი ზრდის სიჩქარეს და იცავს კიბერ-რისკებისგან.</span>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 reveal">
-            <div class="tech-card h-100">
-              <div class="tech-icon"><i class="bi bi-github"></i></div>
-              <h6 class="tech-title">
-                <span class="i18n i18n-en">GitHub</span>
-                <span class="i18n i18n-ka">GitHub</span>
-              </h6>
-              <p class="tech-text">
-                <span class="i18n i18n-en">Source control and automated deployments keep the site reliable.</span>
-                <span class="i18n i18n-ka">კოდის მართვა და ავტომატური განთავსება საიტს სანდოსხდის.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </div>
+
+    <!-- KPIs -->
+    <div class="kpis reveal" aria-label="Key benefits">
+      <span class="kpi-badge"><i class="bi bi-cpu-fill"></i> <span class="i18n i18n-en">Model: DeepSeek R1 Distill Llama 70B</span><span class="i18n i18n-ka">მოდელი: DeepSeek R1 Distill Llama 70B</span></span>
+      <span class="kpi-badge"><i class="bi bi-speedometer2"></i> <span class="i18n i18n-en">Designed for fast, streaming replies</span><span class="i18n i18n-ka">სწრაფი, სტრიმინგ-პასუხები</span></span>
+      <span class="kpi-badge"><i class="bi bi-shield-lock-fill"></i> <span class="i18n i18n-en">Secure by design</span><span class="i18n i18n-ka">უსაფრთხო დიზაინით</span></span>
+    </div>
+
+    <!-- Features -->
+    <section class="features-section">
+      <div class="row g-3 mt-3">
+        <div class="col-12 col-md-6 reveal">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+            <h6 class="fw-semibold feature-title">
+              <span class="i18n i18n-en">Trusted Technology</span>
+              <span class="i18n i18n-ka">სანდო ტექნოლოგია</span>
+            </h6>
+            <p class="small feature-text mb-0">
+              <span class="i18n i18n-en">Powered by DigitalOcean and the DeepSeek R1 Distill Llama 70B model.</span>
+              <span class="i18n i18n-ka">მუშაობს DigitalOcean-ის საფუძველზე და DeepSeek R1 Distill Llama 70B მოდელზე.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 reveal">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+            <h6 class="fw-semibold feature-title">
+              <span class="i18n i18n-en">Fast & Responsive</span>
+              <span class="i18n i18n-ka">სწრაფი და რეაქტიული</span>
+            </h6>
+            <p class="small feature-text mb-0">
+              <span class="i18n i18n-en">Streaming answers appear as they’re generated—no waiting for long loads.</span>
+              <span class="i18n i18n-ka">პასუხები იბადება და ერთდროულად ჩანს—აღარ გელოდებათ გრძელი ჩატვირთვა.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 reveal">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-emoji-smile-fill"></i></div>
+            <h6 class="fw-semibold feature-title">
+              <span class="i18n i18n-en">Simple & Intuitive</span>
+              <span class="i18n i18n-ka">მარტივი და ინტუიციური</span>
+            </h6>
+            <p class="small feature-text mb-0">
+              <span class="i18n i18n-en">A clean, focused experience. The assistant is always one click away.</span>
+              <span class="i18n i18n-ka">სუფთა და მარტივი გამოცდილება—AI მუდამ ერთი დაწკაპვით ხელმისაწვდომია.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 reveal">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-lock-fill"></i></div>
+            <h6 class="fw-semibold feature-title">
+              <span class="i18n i18n-en">Private by Default</span>
+              <span class="i18n i18n-ka">კონფიდენციალურობა ნაგულისხმევად</span>
+            </h6>
+            <p class="small feature-text mb-0">
+              <span class="i18n i18n-en">Built with security and privacy best practices at every layer.</span>
+              <span class="i18n i18n-ka">დაცვა და კონფიდენციალურობა გათვალისწინებულია ყველა ფენაზე.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="tech-section">
+      <h2 class="h4 section-title mt-4 headline-gradient">
+        <span class="i18n i18n-en">The Technology Behind Your AI Assistant</span>
+        <span class="i18n i18n-ka">ტექნოლოგიები თქვენი AI ასისტენტის მიღმა</span>
+      </h2>
+      <p class="section-subtitle col-lg-8 mx-auto">
+        <span class="i18n i18n-en">Modern infrastructure and a powerful model work together to make it fast, reliable, and secure.</span>
+        <span class="i18n i18n-ka">თანამედროვე ინფრასტრუქტურა და ძლიერი მოდელი ერთად უზრუნველყოფენ სისწრაფეს, სანდოობას და უსაფრთხოებას.</span>
+      </p>
+
+      <div class="row g-3 mt-2">
+        <div class="col-12 col-md-6 col-lg-3 reveal">
+          <div class="tech-card h-100">
+            <div class="tech-icon"><i class="bi bi-robot"></i></div>
+            <h6 class="tech-title mb-1">
+              <span class="i18n i18n-en">DeepSeek R1 Distill Llama 70B</span>
+              <span class="i18n i18n-ka">DeepSeek R1 Distill Llama 70B</span>
+            </h6>
+            <p class="tech-text small mb-0">
+              <span class="i18n i18n-en">A state-of-the-art AI model tuned for helpful, fast responses.</span>
+              <span class="i18n i18n-ka">თანამედროვე AI მოდელი, მორგებული სასარგებლო და სწრაფ პასუხებზე.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 reveal">
+          <div class="tech-card h-100">
+            <div class="tech-icon"><i class="bi bi-cloud-fill"></i></div>
+            <h6 class="tech-title mb-1">
+              <span class="i18n i18n-en">DigitalOcean</span>
+              <span class="i18n i18n-ka">DigitalOcean</span>
+            </h6>
+            <p class="tech-text small mb-0">
+              <span class="i18n i18n-en">High-performance servers keep the AI responsive and available.</span>
+              <span class="i18n i18n-ka">მაღალი წარმადობის სერვერები უზრუნველყოფენ სისწრაფესა და ხელმისაწვდომობას.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 reveal">
+          <div class="tech-card h-100">
+            <div class="tech-icon"><i class="bi bi-shield-check"></i></div>
+            <h6 class="tech-title mb-1">
+              <span class="i18n i18n-en">Cloudflare</span>
+              <span class="i18n i18n-ka">Cloudflare</span>
+            </h6>
+            <p class="tech-text small mb-0">
+              <span class="i18n i18n-en">Global edge network boosts speed and protects against threats.</span>
+              <span class="i18n i18n-ka">გლობალური ქსელი ზრდის სიჩქარეს და იცავს კიბერ-რისკებისგან.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 reveal">
+          <div class="tech-card h-100">
+            <div class="tech-icon"><i class="bi bi-github"></i></div>
+            <h6 class="tech-title mb-1">
+              <span class="i18n i18n-en">GitHub</span>
+              <span class="i18n i18n-ka">GitHub</span>
+            </h6>
+            <p class="tech-text small mb-0">
+              <span class="i18n i18n-en">Source control and automated deployments keep the site reliable.</span>
+              <span class="i18n i18n-ka">კოდის მართვა და ავტომატური განთავსება საიტს სანდოსხდის.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Animated guide to point to the chat bubble -->
   <div class="pointer-guide" aria-hidden="true"></div>
 
   <footer class="text-center">
@@ -515,55 +474,48 @@
       const root = document.documentElement;
       const themeLight = document.getElementById('theme-light');
       const themeDark = document.getElementById('theme-dark');
-      
+
       function setTheme(theme) {
         if (theme !== 'light' && theme !== 'dark') return;
         root.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-        
         themeLight.classList.toggle('active', theme === 'light');
         themeDark.classList.toggle('active', theme === 'dark');
         themeLight.setAttribute('aria-pressed', theme === 'light');
         themeDark.setAttribute('aria-pressed', theme === 'dark');
-        
         const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        if (metaThemeColor) {
-          metaThemeColor.setAttribute('content', theme === 'light' ? '#f5f7fa' : '#0A0F1E');
-        }
+        if (metaThemeColor) metaThemeColor.setAttribute('content', theme === 'light' ? '#f5f7fa' : '#0A0F1E');
       }
-      
+
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const savedTheme = localStorage.getItem('theme');
       const defaultTheme = savedTheme || (prefersDark ? 'dark' : 'light');
       setTheme(defaultTheme);
-      
+
       themeLight.addEventListener('click', () => setTheme('light'));
       themeDark.addEventListener('click', () => setTheme('dark'));
-      
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (!localStorage.getItem('theme')) setTheme(e.matches ? 'dark' : 'light');
       });
     })();
-    
+
     // Bilingual Language Switcher
     (function() {
       const root = document.documentElement;
       const langEn = document.getElementById('lang-en');
       const langKa = document.getElementById('lang-ka');
-      
+
       function setLang(lang) {
         if (lang !== 'en' && lang !== 'ka') return;
         root.setAttribute('data-lang', lang);
         localStorage.setItem('lang', lang);
-        
         langEn.classList.toggle('active', lang === 'en');
         langKa.classList.toggle('active', lang === 'ka');
         langEn.setAttribute('aria-pressed', lang === 'en');
         langKa.setAttribute('aria-pressed', lang === 'ka');
-        
         root.setAttribute('lang', lang);
       }
-      
+
       setLang(localStorage.getItem('lang') || 'en');
       langEn.addEventListener('click', () => setLang('en'));
       langKa.addEventListener('click', () => setLang('ka'));
@@ -579,11 +531,11 @@
             io.unobserve(e.target);
           }
         }
-      }, { threshold: 0.15 });
+      }, { threshold: 0.12 });
       els.forEach(el => io.observe(el));
     })();
-    
-    // Set current year
+
+    // Set year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
