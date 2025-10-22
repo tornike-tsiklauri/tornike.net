@@ -7,7 +7,6 @@
     <meta name="keywords" content="Tornike Tsiklauri, თორნიკე წიკლაური, contact, email, professional, web developer, IT support">
     <meta name="author" content="Tornike Tsiklauri">
     <link rel="canonical" href="https://tornike.net/">
-    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tornike.net/">
@@ -20,38 +19,47 @@
     <meta property="twitter:title" content="Tornike Tsiklauri | თორნიკე წიკლაური">
     <meta property="twitter:description" content="Professional contact page - Web Development & IT Support Services">
     <meta property="twitter:image" content="https://files.tornike.net/Tornike-tsiklauri-about2.jpeg">
-    
     <title>Tornike Tsiklauri | თორნიკე წიკლაური - Professional Contact</title>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" crossorigin="anonymous">
+    <!-- Removed Bootstrap CSS and Icons, replaced with custom styles -->
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --dark-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-            --dark-color: #1a1a2e;
-            --light-color: #f8f9fa;
-            --text-dark: #2d3748;
+            /* Updated color scheme */
+            --primary-hue: 230; /* Blue */
+            --secondary-hue: 300; /* Purple */
+            --accent-hue: 180; /* Teal */
+            --primary-gradient: linear-gradient(135deg, hsl(var(--primary-hue), 70%, 50%), hsl(var(--secondary-hue), 70%, 50%));
+            --secondary-gradient: linear-gradient(135deg, hsl(var(--accent-hue), 50%, 60%), hsl(var(--primary-hue), 50%, 60%));
+            --dark-gradient: linear-gradient(135deg, hsl(240, 10%, 10%), hsl(220, 15%, 15%));
+            --primary-color: hsl(var(--primary-hue), 70%, 50%);
+            --secondary-color: hsl(var(--secondary-hue), 70%, 50%);
+            --accent-color: hsl(var(--accent-hue), 50%, 60%);
+            --dark-color: hsl(240, 10%, 10%);
+            --light-color: hsl(220, 20%, 98%);
+            --text-dark: hsl(220, 10%, 15%);
+            --text-light: hsl(220, 10%, 95%);
+            --bg-card: hsla(0, 0%, 100%, 0.9);
             --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --border-radius: 16px;
+            --shadow-main: 0 10px 40px rgba(0, 0, 0, 0.15);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.25);
+            --shadow-contact: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Changed font */
             background-color: var(--light-color);
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.7; /* Increased line height */
             overflow-x: hidden;
+            background-image: radial-gradient(rgba(102, 126, 234, 0.05) 1px, transparent 1px), radial-gradient(rgba(118, 75, 162, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
         }
-
         /* Animated Background */
         .animated-bg {
             position: fixed;
@@ -60,18 +68,14 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            opacity: 0.05;
+            background: radial-gradient(ellipse at 50% 0%, hsla(var(--primary-hue), 50%, 50%, 0.1) 0%, transparent 70%),
+                        radial-gradient(ellipse at 100% 100%, hsla(var(--secondary-hue), 50%, 50%, 0.1) 0%, transparent 70%);
+            animation: gradientShift 20s ease infinite alternate; /* Changed animation */
         }
-
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(2deg); }
         }
-
         /* Language Switcher */
         .language-switcher {
             position: fixed;
@@ -80,14 +84,14 @@
             z-index: 1000;
             display: flex;
             gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 0.5rem;
+            background: var(--bg-card);
+            padding: 0.6rem;
             border-radius: 50px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-main);
+            backdrop-filter: blur(12px); /* Increased blur */
             animation: slideDown 0.6s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Added subtle border */
         }
-
         @keyframes slideDown {
             from {
                 opacity: 0;
@@ -98,21 +102,20 @@
                 transform: translateY(0);
             }
         }
-
         .language-switcher button {
             border: none;
             background: transparent;
             color: var(--text-dark);
-            padding: 0.5rem 1.25rem;
+            padding: 0.6rem 1.5rem; /* Increased padding */
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem; /* Slightly larger font */
             cursor: pointer;
             transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
+            min-width: 40px; /* Ensures minimum button size */
         }
-
         .language-switcher button::before {
             content: '';
             position: absolute;
@@ -125,33 +128,30 @@
             opacity: 0;
             transition: var(--transition-smooth);
         }
-
         .language-switcher button:hover {
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05); /* Added scale on hover */
         }
-
         .language-switcher button:hover::before {
             opacity: 1;
         }
-
         .language-switcher button.active {
             background: var(--primary-gradient);
             color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.5); /* Enhanced shadow */
         }
-
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95)), 
-                        url('https://images.unsplash.com/photo-1542831371-29b0f74f9408?w=1920') no-repeat center center/cover;
-            color: white;
-            padding: 10rem 2rem 8rem;
+            background: var(--dark-gradient);
+            color: var(--text-light);
+            padding: 12rem 2rem 10rem; /* Increased padding */
             text-align: center;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
         .hero-section::before {
             content: '';
             position: absolute;
@@ -159,119 +159,115 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
-            animation: pulse 4s ease-in-out infinite;
+            background: radial-gradient(circle at 50% 50%, hsla(var(--primary-hue), 50%, 50%, 0.15) 0%, transparent 60%); /* Adjusted gradient */
+            animation: pulse 5s ease-in-out infinite alternate; /* Changed animation */
         }
-
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
         }
-
         .hero-content {
             position: relative;
             z-index: 1;
-            animation: fadeInUp 1s ease;
+            animation: fadeInUp 1.2s ease; /* Slower fade in */
+            max-width: 800px; /* Added max width */
         }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px); /* Increased distance */
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
         .hero-section h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(3rem, 6vw, 5rem); /* Larger font sizes */
             font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #a8b2ff 100%);
+            margin-bottom: 1.2rem; /* Increased margin */
+            background: linear-gradient(135deg, #ffffff 0%, #d0d4ff 100%); /* Lighter gradient */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em; /* Slightly tighter letter spacing */
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Added subtle text shadow */
         }
-
         .hero-section p {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            margin-top: 1rem;
-            opacity: 0.9;
+            font-size: clamp(1.2rem, 2.5vw, 1.7rem); /* Larger font sizes */
+            margin-top: 1.2rem;
+            opacity: 0.95; /* Increased opacity */
             font-weight: 300;
-            animation: fadeInUp 1s ease 0.2s both;
+            animation: fadeInUp 1.2s ease 0.3s both; /* Delayed animation */
+            max-width: 600px; /* Added max width */
+            margin-left: auto;
+            margin-right: auto;
         }
-
         .hero-decoration {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 350px; /* Increased size */
+            height: 350px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
-            filter: blur(60px);
-            animation: float 6s ease-in-out infinite;
+            background: radial-gradient(circle, hsla(var(--primary-hue), 50%, 50%, 0.25) 0%, transparent 70%); /* Adjusted gradient */
+            filter: blur(70px); /* Increased blur */
+            animation: float 8s ease-in-out infinite alternate; /* Changed animation */
+            z-index: 0; /* Ensure it's behind content */
         }
-
         .hero-decoration:nth-child(1) {
-            top: -100px;
-            left: -100px;
+            top: -120px;
+            left: -120px;
+            animation-delay: 0s;
         }
-
         .hero-decoration:nth-child(2) {
-            bottom: -100px;
-            right: -100px;
-            animation-delay: 3s;
+            bottom: -120px;
+            right: -120px;
+            animation-delay: 4s;
         }
-
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-40px) translateX(20px); }
+            100% { transform: translateY(0) translateX(0); }
         }
-
         /* Info Section */
         .info-section {
-            padding: 6rem 2rem;
+            padding: 8rem 2rem; /* Increased padding */
             position: relative;
+            background-color: hsla(220, 20%, 98%, 0.8); /* Added slight tint */
         }
-
         .section-title {
             text-align: center;
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.2rem); /* Larger font sizes */
             font-weight: 700;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem; /* Increased margin */
             color: var(--dark-color);
             position: relative;
             display: inline-block;
             left: 50%;
             transform: translateX(-50%);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Added subtle text shadow */
         }
-
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px; /* Increased distance */
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
+            width: 100px; /* Increased width */
+            height: 6px; /* Increased height */
+            background: var(--secondary-gradient); /* Changed gradient */
+            border-radius: 3px;
         }
-
         .icon-box {
-            background: white;
-            border-radius: 24px;
-            padding: 3rem 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: var(--transition-smooth);
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 4rem 2.5rem; /* Increased padding */
+            box-shadow: var(--shadow-main);
+            transition: var(--transition-bounce); /* Changed transition */
             height: 100%;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.15); /* Increased border opacity */
         }
-
         .icon-box::before {
             content: '';
             position: absolute;
@@ -279,74 +275,69 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--primary-gradient);
+            background: var(--secondary-gradient); /* Changed gradient */
             opacity: 0;
             transition: var(--transition-smooth);
             z-index: 0;
         }
-
         .icon-box:hover::before {
-            opacity: 0.05;
+            opacity: 0.08; /* Slightly more opaque on hover */
         }
-
         .icon-box:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
-            border-color: var(--primary-color);
+            transform: translateY(-20px) scale(1.03); /* Increased lift and scale */
+            box-shadow: var(--shadow-hover); /* Enhanced shadow */
+            border-color: var(--accent-color); /* Changed border color on hover */
         }
-
         .icon-box-content {
             position: relative;
             z-index: 1;
         }
-
         .icon-wrapper {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
+            width: 100px; /* Increased size */
+            height: 100px;
+            margin: 0 auto 2rem; /* Increased margin */
             background: var(--primary-gradient);
-            border-radius: 20px;
+            border-radius: 24px; /* Increased border radius */
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            transition: var(--transition-smooth);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4); /* Enhanced shadow */
+            transition: var(--transition-bounce); /* Changed transition */
         }
-
         .icon-box:hover .icon-wrapper {
-            transform: rotateY(360deg);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            transform: rotateY(360deg) scale(1.1); /* Added scale */
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6); /* Enhanced shadow */
         }
-
-        .icon-wrapper i {
-            font-size: 2.5rem;
+        .icon-wrapper svg {
+            font-size: 3rem; /* Increased icon size */
             color: white;
+            width: 60%;
+            height: 60%;
         }
-
         .icon-box h3 {
-            font-size: 1.75rem;
+            font-size: 2rem; /* Increased font size */
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; /* Increased margin */
             color: var(--dark-color);
         }
-
         .icon-box p {
-            font-size: 1.1rem;
+            font-size: 1.2rem; /* Increased font size */
             color: var(--text-dark);
-            opacity: 0.8;
-            line-height: 1.8;
+            opacity: 0.85; /* Increased opacity */
+            line-height: 1.9; /* Increased line height */
+            max-width: 500px; /* Added max width */
+            margin-left: auto;
+            margin-right: auto;
         }
-
         /* Contact Section */
         .contact-section {
             background: var(--dark-gradient);
-            color: white;
-            padding: 5rem 2rem;
+            color: var(--text-light);
+            padding: 7rem 2rem; /* Increased padding */
             text-align: center;
             position: relative;
             overflow: hidden;
         }
-
         .contact-section::before {
             content: '';
             position: absolute;
@@ -354,96 +345,106 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
-            opacity: 0.3;
+            background: url('data:image/svg+xml,<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg"><rect x="70" y="70" width="10" height="10" fill="hsla(0,0%,100%,0.05)"/></svg>') repeat;
+            opacity: 0.4; /* Increased opacity */
         }
-
         .contact-content {
             position: relative;
             z-index: 1;
-            max-width: 600px;
+            max-width: 700px; /* Increased max width */
             margin: 0 auto;
         }
-
         .contact-section h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-size: clamp(2.2rem, 4.5vw, 2.8rem); /* Larger font sizes */
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem; /* Increased margin */
         }
-
         .contact-section p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
+            font-size: 1.3rem; /* Increased font size */
+            opacity: 0.95; /* Increased opacity */
+            margin-bottom: 2.5rem; /* Increased margin */
+            max-width: 550px; /* Added max width */
+            margin-left: auto;
+            margin-right: auto;
         }
-
         .email-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            background: white;
+            gap: 1rem; /* Increased gap */
+            padding: 1.2rem 3rem; /* Increased padding */
+            background: var(--light-color);
             color: var(--primary-color);
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 60px; /* Increased border radius */
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition-smooth);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem; /* Increased font size */
+            transition: var(--transition-bounce); /* Changed transition */
+            box-shadow: var(--shadow-contact);
+            border: 2px solid rgba(255, 255, 255, 0.1); /* Added subtle border */
         }
-
         .email-link:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            background: var(--primary-gradient);
+            transform: translateY(-8px) scale(1.08); /* Increased lift and scale */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+            background: var(--secondary-gradient); /* Changed background on hover */
             color: white;
         }
-
-        .email-link i {
-            font-size: 1.3rem;
+        .email-link svg {
+            font-size: 1.5rem; /* Increased icon size */
             transition: var(--transition-smooth);
+            width: 1.5em;
+            height: 1.5em;
         }
-
-        .email-link:hover i {
-            transform: rotate(360deg);
+        .email-link:hover svg {
+            transform: rotate(360deg) scale(1.2); /* Added scale */
         }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .language-switcher {
                 top: 1rem;
                 right: 1rem;
+                padding: 0.5rem;
             }
-
+             .language-switcher button {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.85rem;
+            }
             .hero-section {
-                padding: 8rem 1rem 6rem;
+                padding: 10rem 1rem 8rem;
             }
-
+            .hero-section h1 {
+                font-size: clamp(2.5rem, 8vw, 3.5rem);
+            }
+            .hero-section p {
+                 font-size: clamp(1.1rem, 3vw, 1.4rem);
+            }
             .info-section {
-                padding: 4rem 1rem;
+                padding: 6rem 1rem;
             }
-
             .icon-box {
-                padding: 2rem 1.5rem;
+                padding: 3rem 2rem;
             }
-
             .contact-section {
-                padding: 4rem 1rem;
+                padding: 6rem 1rem;
+            }
+            .contact-section p {
+                font-size: 1.15rem;
+            }
+            .email-link {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                gap: 0.8rem;
             }
         }
-
         /* Accessibility: Focus styles */
         button:focus-visible,
         a:focus-visible {
-            outline: 3px solid var(--primary-color);
+            outline: 3px solid var(--accent-color);
             outline-offset: 4px;
         }
-
         /* Smooth scroll */
         html {
             scroll-behavior: smooth;
         }
-
         /* Skip to main content link for screen readers */
         .skip-link {
             position: absolute;
@@ -455,7 +456,6 @@
             text-decoration: none;
             z-index: 100;
         }
-
         .skip-link:focus {
             top: 0;
         }
@@ -464,12 +464,10 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="animated-bg" aria-hidden="true"></div>
-
     <nav class="language-switcher" role="navigation" aria-label="Language switcher">
         <button id="lang-en" aria-label="Switch to English" type="button">EN</button>
         <button id="lang-ka" class="active" aria-label="Switch to Georgian" type="button">KA</button>
     </nav>
-
     <header class="hero-section" role="banner">
         <div class="hero-decoration" aria-hidden="true"></div>
         <div class="hero-decoration" aria-hidden="true"></div>
@@ -478,7 +476,6 @@
             <p id="hero-subtitle">პირადი ელ-ფოსტა</p>
         </div>
     </header>
-
     <main id="main-content">
         <section class="info-section" aria-labelledby="email-title">
             <div class="container">
@@ -487,9 +484,10 @@
                         <article class="icon-box">
                             <div class="icon-box-content">
                                 <div class="icon-wrapper" aria-hidden="true">
+                                    <!-- Updated SVG Icon -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                        <path d="m2 7 10 7 10-7"/>
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
                                     </svg>
                                 </div>
                                 <h3 id="email-title">პირადი ელ-ფოსტა</h3>
@@ -500,19 +498,21 @@
                 </div>
             </div>
         </section>
-
         <section class="contact-section" aria-labelledby="contact-title">
             <div class="contact-content">
                 <h2 id="contact-title">კონტაქტი</h2>
                 <p id="contact-text">ნებისმიერი შეკითხვისთვის დაგვიკავშირდით:</p>
                 <a href="mailto:contact@tornike.net" class="email-link" id="contact-email-link" aria-label="Send email to contact@tornike.net">
-                    <i class="bi bi-envelope-fill"></i>
+                    <!-- Replaced Bootstrap Icon with SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
                     <span id="contact-email">contact@tornike.net</span>
                 </a>
             </div>
         </section>
     </main>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <script>
         const content = {
@@ -535,7 +535,6 @@
                 contactEmail: "contact@tornike.net"
             }
         };
-
         const elements = {
             langEnBtn: document.getElementById('lang-en'),
             langKaBtn: document.getElementById('lang-ka'),
@@ -548,10 +547,8 @@
             contactEmail: document.getElementById('contact-email'),
             contactEmailLink: document.getElementById('contact-email-link')
         };
-
         function setLanguage(lang) {
             const texts = content[lang];
-            
             // Update text content
             elements.heroTitle.textContent = texts.heroTitle;
             elements.heroSubtitle.textContent = texts.heroSubtitle;
@@ -560,22 +557,17 @@
             elements.contactTitle.textContent = texts.contactTitle;
             elements.contactText.textContent = texts.contactText;
             elements.contactEmail.textContent = texts.contactEmail;
-            
             // Update href and aria-label
             elements.contactEmailLink.href = `mailto:${texts.contactEmail}`;
             elements.contactEmailLink.setAttribute('aria-label', `Send email to ${texts.contactEmail}`);
-            
             // Update HTML lang attribute
             document.documentElement.lang = lang;
-            
             // Update active button states
             elements.langEnBtn.classList.toggle('active', lang === 'en');
             elements.langKaBtn.classList.toggle('active', lang === 'ka');
-            
             // Update aria-pressed attributes
             elements.langEnBtn.setAttribute('aria-pressed', lang === 'en');
             elements.langKaBtn.setAttribute('aria-pressed', lang === 'ka');
-            
             // Store preference
             try {
                 sessionStorage.setItem('preferredLanguage', lang);
@@ -583,11 +575,9 @@
                 // Storage not available, continue without saving preference
             }
         }
-
         // Event listeners
         elements.langEnBtn.addEventListener('click', () => setLanguage('en'));
         elements.langKaBtn.addEventListener('click', () => setLanguage('ka'));
-
         // Initialize with saved preference or default to Georgian
         let initialLang = 'ka';
         try {
@@ -596,7 +586,6 @@
             // Storage not available, use default
         }
         setLanguage(initialLang);
-
         // Keyboard navigation enhancement
         document.addEventListener('keydown', (e) => {
             if (e.altKey && e.key === 'l') {
@@ -607,3 +596,4 @@
     </script>
 </body>
 </html>
+
